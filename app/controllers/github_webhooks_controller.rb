@@ -1,4 +1,6 @@
 class GithubWebhooksController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     case request.headers["X-Github-Event"]
     when "ping"
