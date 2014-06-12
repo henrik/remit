@@ -1,5 +1,8 @@
 doctype html
-html(ng-app="Remit" ng-init="counts={ commits: #{Commit.count}, comments: #{Comment.count} }")
+html(
+  ng-app="Remit"
+  ng-init="counts = { commits: #{Commit.count}, comments: #{Comment.count} }; comments = #{@comments.to_json}; commits = #{@commits.to_json}"
+)
   head
     title(ng-bind="pageTitle") Remit
     = stylesheet_link_tag    "application", media: "all"
