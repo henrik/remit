@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "Receiving GitHub payloads by webhook" do
   it "handles pings zenfully" do
