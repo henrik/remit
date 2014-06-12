@@ -6,6 +6,15 @@ A tool for commit-by-commit code review of repositories on GitHub.
 
 More or less a rewrite of [Hubreview](https://github.com/joakimk/hubreview) to try some new things starting from a fresh slate.
 
+## The brilliance of the name
+
+* **Re**view com**mit**s
+* Dictionary meanings like
+  * "an item referred to someone for consideration"
+  * "refer (a matter for decision) to an authority"
+  * "send (someone) from one tribunal to another for a trial or hearing"
+  * "forgive (a sin)"
+
 ## Idea dump
 
 * Use AngularJS for the front-end! Whee!
