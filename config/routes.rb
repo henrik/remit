@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'commits#index'
+  resource :github_webhook, only: [ :create ]
 end

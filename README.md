@@ -29,6 +29,10 @@ Run:
 
 Visit <http://localhost:9292>
 
+## Test
+
+    rake
+
 ## Production
 
 ### Set the app up on Heroku
@@ -42,7 +46,7 @@ Visit <http://localhost:9292>
 
 In the settings for any repo you want to use this with, add a webhook.
 
-    Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github-webhook?auth_key=MY_AUTH_KEY
+    Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github_webhook?auth_key=MY_AUTH_KEY
     Content type:  application/json
     Let me select individual events:  [x] Push  [x] Commit comment
 
