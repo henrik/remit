@@ -24,9 +24,9 @@ class GithubWebhooksController < ApplicationController
   def store_comment
     data = params[:comment]
 
-    comment = Comment.create!(
-      payload: data,
-    )
+    comment = Comment.where(github_id: data[:id]).first_or_initialize
+    comment.payload = data
+    comment.save!
 
     render text: "Thanks!"
   end
