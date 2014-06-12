@@ -55,10 +55,6 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
 ## Idea dump
 
 * exception logger
-* Use AngularJS for the front-end! Whee!
-* Store away both commits and comments via webhooks.
-  * Store the raw data in one field so we can easily migrate data later.
-* Three tabs: commits/comments/prefs
 * Configure an email for your gravatar
 * Configure a committer name substring to determine "your" commits (considering pair commits) - possibly default to using the email?
 * Get websockets solid (in dev, test and prod). Maybe use an external service like Pusher?
@@ -69,3 +65,4 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
 * Bundle or link to a script to set up the same webhook on multiple repos?
 * MAYBE: stats on how much you review. But avoid it becoming a competition.
 * spec auth?
+* spec angular stuff

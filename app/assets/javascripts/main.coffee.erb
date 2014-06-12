@@ -13,4 +13,8 @@ app.config ($routeProvider) ->
     when("/comments",
       templateUrl: "<%= asset_path("comments.html") %>"
       controller: "CommentsCtrl"
+    ).
+    when("/settings",
+      templateUrl: "<%= asset_path("settings.html") %>"
+      controller: "SettingsCtrl"
     )
