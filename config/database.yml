@@ -81,5 +81,4 @@ test:
 production:
   <<: *default
   database: remit_production
-  username: remit
   password: <%= ENV['REMIT_DATABASE_PASSWORD'] %>
