@@ -24,7 +24,8 @@ Assumes you have
 Run:
 
     bundle
-    rails server
+    bin/rake db:setup
+    bin/rails server
 
 Visit <http://localhost:9292>
 
