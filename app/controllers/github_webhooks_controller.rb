@@ -7,6 +7,8 @@ class GithubWebhooksController < ApplicationController
       pong
     when "commit_comment"
       store_comment
+    when "push"
+      store_commits
     else
       render text: "Unhandled event.", status: 412
     end
@@ -27,6 +29,18 @@ class GithubWebhooksController < ApplicationController
     comment = Comment.where(github_id: data[:id]).first_or_initialize
     comment.payload = data
     comment.save!
+
+    render text: "Thanks!"
+  end
+
+  def store_commits
+    data_list = params[:commits]
+
+    data_list.each do |data|
+      commit = Commit.where(sha: data[:sha]).first_or_initialize
+      commit.payload = data
+      commit.save!
+    end
 
     render text: "Thanks!"
   end

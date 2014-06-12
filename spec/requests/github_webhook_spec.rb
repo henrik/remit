@@ -29,16 +29,44 @@ describe "Receiving GitHub payloads by webhook" do
     expect(Comment.find_by_github_id(1).payload[:body]).to eq "Hi."
 
     post "/github_webhook",
-      { comment: { id: 2, body: "What's up?" } },
-      { "X-Github-Event" => "commit_comment" }
-
-    expect(Comment.count).to eq 2
-
-    post "/github_webhook",
       { comment: { id: 1, body: "Bye." } },
       { "X-Github-Event" => "commit_comment" }
 
-    expect(Comment.count).to eq 2
+    expect(Comment.count).to eq 1
     expect(Comment.find_by_github_id(1).payload[:body]).to eq "Bye."
+  end
+
+  it "stores commits" do
+    post "/github_webhook",
+      {
+        commits: [
+          { sha: "faa", url: "http://example.com/1" },
+          { sha: "aaf", url: "http://example.com/2" },
+         ]
+      },
+      { "X-Github-Event" => "push" }
+
+    expect(response).to be_success
+
+    expect(Commit.count).to eq 2
+
+    commit = Commit.last!
+    expect(commit.payload[:url]).to eq "http://example.com/2"
+  end
+
+  it "updates commits if they're sent again" do
+    post "/github_webhook",
+      { commits: [ { sha: "faa", url: "http://example.com/1" } ] },
+      { "X-Github-Event" => "push" }
+
+    expect(Commit.count).to eq 1
+    expect(Commit.find_by_sha("faa").payload[:url]).to eq "http://example.com/1"
+
+    post "/github_webhook",
+      { commits: [ { sha: "faa", url: "http://example.com/111" } ] },
+      { "X-Github-Event" => "push" }
+
+    expect(Commit.count).to eq 1
+    expect(Commit.find_by_sha("faa").payload[:url]).to eq "http://example.com/111"
   end
 end
