@@ -3,9 +3,9 @@ class Comment < ActiveRecord::Base
 
   scope :newest_first, -> { order("id DESC") }
 
-  def to_json
-    super(
+  def as_json(opts = {})
+    super(opts.reverse_merge(
       except: [ :payload ],
-    )
+    ))
   end
 end

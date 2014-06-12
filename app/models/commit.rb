@@ -7,10 +7,10 @@ class Commit < ActiveRecord::Base
     sha.first(10)
   end
 
-  def to_json
-    super(
+  def as_json(opts = {})
+    super(opts.reverse_merge(
       except: [ :payload ],
       methods: [ :short_sha ],
-    )
+    ))
   end
 end
