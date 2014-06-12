@@ -8,7 +8,7 @@ More or less a rewrite of [Hubreview](https://github.com/joakimk/hubreview) to t
 
 ## The brilliance of the name
 
-* **Re**view com**mit**s
+* <b>Re</b>view com<b>mit</b>s
 * Dictionary meanings like
   * "an item referred to someone for consideration"
   * "refer (a matter for decision) to an authority"
