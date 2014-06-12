@@ -30,12 +30,22 @@ Visit <http://localhost:9292>
 
 ## Production
 
-Do this:
+### Set the app up on Heroku
 
     heroku new remit-SOMETHING-UNIQUE
     heroku addons:add heroku-postgresql:dev
-    heroku config:set API_KEY=`ruby -rsecurerandom -e "p SecureRandom.urlsafe_base64"`
+    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "p SecureRandom.urlsafe_base64"`
     git push heroku
+
+### Configure the webhook on GitHub
+
+In the settings for any repo you want to use this with, add a webhook.
+
+    Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github-webhook?auth_key=MY_AUTH_KEY
+    Content type:  application/json
+    Let me select individual events:  [x] Push  [x] Commit comment
+
+Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku config:get AUTH_KEY`).
 
 ## Idea dump
 
@@ -50,4 +60,5 @@ Do this:
   * TODO Consider the review over when you click "Reviewed" or if you click "Abandon review" or after a timeout?
 * Show faces to indicate who did review something
 * Show how old the oldest unreviewed commit is (with a link to review it)
+* Bundle or link to a script to set up the same webhook on multiple repos?
 * MAYBE: stats on how much you review. But avoid it becoming a competition.
