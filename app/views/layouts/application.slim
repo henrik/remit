@@ -1,8 +1,16 @@
 doctype html
-html(ng-app)
+html(ng-app="Remit" ng-init="counts={ commits: #{Commit.count}, comments: #{Comment.count} }")
   head
     title Remit
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body= yield
+  body
+
+    nav
+      ul
+        li: a(href="#/") Home
+        li: a(href="#/commits") Commits
+        li: a(href="#/comments") Comments
+
+    div(ng-view)= yield

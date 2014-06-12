@@ -1,0 +1,16 @@
+window.app = angular.module("Remit", [])
+
+app.config ($routeProvider) ->
+  $routeProvider.
+    when("/",
+      templateUrl: "<%= asset_path("welcome.html") %>"
+      controller: "HomeCtrl"
+    ).
+    when("/commits",
+      templateUrl: "<%= asset_path("commits.html") %>"
+      controller: "CommitsCtrl"
+    ).
+    when("/comments",
+      templateUrl: "<%= asset_path("comments.html") %>"
+      controller: "CommentsCtrl"
+    )
