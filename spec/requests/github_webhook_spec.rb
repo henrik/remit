@@ -11,7 +11,7 @@ describe "Receiving GitHub payloads by webhook" do
 
   it "stores commit comments" do
     post "/github_webhook",
-      { payload: { comment: { some: "Data." } }.to_json },
+      { comment: { some: "Data." } .to_json },
       { "X-Github-Event" => "commit_comment" }
 
     expect(response).to be_success

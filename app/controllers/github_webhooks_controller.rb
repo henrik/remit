@@ -22,14 +22,11 @@ class GithubWebhooksController < ApplicationController
   # https://developer.github.com/v3/activity/events/types/#commitcommentevent
   # https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository
   def store_comment
+    data = JSON.parse(params[:comment], symbolize_names: true)
     comment = Comment.create!(
-      payload: payload[:comment],
+      payload: data,
     )
 
     render text: "Thanks!"
-  end
-
-  def payload
-    @payload ||= JSON.parse(params[:payload], symbolize_names: true)
   end
 end
