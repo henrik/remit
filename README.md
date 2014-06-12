@@ -24,7 +24,7 @@ Assumes you have
 Run:
 
     bundle
-    rackup
+    rails server
 
 Visit <http://localhost:9292>
 
