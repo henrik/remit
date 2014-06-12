@@ -15,6 +15,28 @@ More or less a rewrite of [Hubreview](https://github.com/joakimk/hubreview) to t
   * "send (someone) from one tribunal to another for a trial or hearing"
   * "forgive (a sin)"
 
+## Development
+
+Assumes you have
+  * Ruby 2.1.1
+  * Bundler
+
+Run:
+
+    bundle
+    rackup
+
+Visit <http://localhost:9292>
+
+## Production
+
+Do this:
+
+    heroku new remit-SOMETHING-UNIQUE
+    heroku addons:add heroku-postgresql:dev
+    heroku config:set API_KEY=`ruby -rsecurerandom -e "p SecureRandom.urlsafe_base64"`
+    git push heroku
+
 ## Idea dump
 
 * Use AngularJS for the front-end! Whee!
