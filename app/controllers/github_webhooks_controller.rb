@@ -4,8 +4,9 @@ class GithubWebhooksController < ApplicationController
   def create
     case request.headers["X-Github-Event"]
     when "ping"
-      # http://developer.github.com/webhooks/#ping-event
-      handle_ping
+      pong
+    when "commit_comment"
+      store_comment
     else
       render text: "Unhandled event.", status: 412
     end
@@ -13,7 +14,22 @@ class GithubWebhooksController < ApplicationController
 
   private
 
-  def handle_ping
+  # http://developer.github.com/webhooks/#ping-event
+  def pong
     render text: "Pong!"
+  end
+
+  # https://developer.github.com/v3/activity/events/types/#commitcommentevent
+  # https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository
+  def store_comment
+    comment = Comment.create!(
+      payload: payload[:comment],
+    )
+
+    render text: "Thanks!"
+  end
+
+  def payload
+    @payload ||= JSON.parse(params[:payload], symbolize_names: true)
   end
 end
