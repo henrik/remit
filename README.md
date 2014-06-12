@@ -54,6 +54,7 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
 
 ## Idea dump
 
+* exception logger
 * Use AngularJS for the front-end! Whee!
 * Store away both commits and comments via webhooks.
   * Store the raw data in one field so we can easily migrate data later.
