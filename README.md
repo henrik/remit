@@ -39,7 +39,7 @@ Visit <http://localhost:9292>
 
     heroku new remit-SOMETHING-UNIQUE
     heroku addons:add heroku-postgresql:dev
-    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "p SecureRandom.urlsafe_base64"`
+    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"`
     git push heroku master
 
 ### Configure the webhook on GitHub
@@ -67,3 +67,4 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
 * Show how old the oldest unreviewed commit is (with a link to review it)
 * Bundle or link to a script to set up the same webhook on multiple repos?
 * MAYBE: stats on how much you review. But avoid it becoming a competition.
+* spec auth?
