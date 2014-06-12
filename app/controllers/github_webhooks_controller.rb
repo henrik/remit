@@ -33,6 +33,8 @@ class GithubWebhooksController < ApplicationController
     render text: "Thanks!"
   end
 
+  # https://developer.github.com/v3/activity/events/types/#pushevent
+  # https://developer.github.com/v3/repos/commits/
   def store_commits
     data_list = params[:commits]
 
