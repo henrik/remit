@@ -33,13 +33,16 @@ class GithubWebhooksController < ApplicationController
     render text: "Thanks!"
   end
 
-  # https://developer.github.com/v3/activity/events/types/#pushevent
-  # https://developer.github.com/v3/repos/commits/
   def store_commits
     data_list = params[:commits]
 
     data_list.each do |data|
-      commit = Commit.where(sha: data[:sha]).first_or_initialize
+      data = data.merge(
+        repository: params[:repository],
+        pusher: params[:pusher],
+      )
+
+      commit = Commit.where(sha: data[:id]).first_or_initialize
       commit.payload = data
       commit.save!
     end
