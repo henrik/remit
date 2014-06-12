@@ -22,7 +22,8 @@ class GithubWebhooksController < ApplicationController
   # https://developer.github.com/v3/activity/events/types/#commitcommentevent
   # https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository
   def store_comment
-    data = JSON.parse(params[:comment], symbolize_names: true)
+    data = params[:comment]
+
     comment = Comment.create!(
       payload: data,
     )
