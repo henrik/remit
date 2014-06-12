@@ -11,8 +11,6 @@ More or less a rewrite of [Hubreview](https://github.com/joakimk/hubreview) to t
 * <b>Re</b>view com<b>mit</b>s
 * Dictionary meanings like
   * "an item referred to someone for consideration"
-  * "refer (a matter for decision) to an authority"
-  * "send (someone) from one tribunal to another for a trial or hearing"
   * "forgive (a sin)"
 
 ## Development
