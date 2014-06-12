@@ -36,7 +36,7 @@ Visit <http://localhost:9292>
     heroku new remit-SOMETHING-UNIQUE
     heroku addons:add heroku-postgresql:dev
     heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "p SecureRandom.urlsafe_base64"`
-    git push heroku
+    git push heroku master
 
 ### Configure the webhook on GitHub
 
