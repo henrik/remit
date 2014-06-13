@@ -43,6 +43,8 @@ GEM
     erubis (2.7.0)
     execjs (2.2.0)
     hike (1.2.3)
+    honeybadger (1.15.0)
+      json
     i18n (0.6.9)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
@@ -140,6 +142,7 @@ PLATFORMS
 DEPENDENCIES
   angular-rails
   coffee-rails (~> 4.0.0)
+  honeybadger
   jquery-rails
   pg
   rails (= 4.1.1)
