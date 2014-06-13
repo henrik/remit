@@ -2,7 +2,7 @@ h2 Commits
 
 ul
   li(ng-repeat="commit in commits" ng-class="{ 'your-last-clicked-commit': state.currentCommit == commit }")
-    img gravatar-src="commit.author_email" gravatar-size="40" gravatar-secure="true"
+    img gravatar-src="commit.author_email"
     '
     a href="{{commit.url}}" ng-click="state.currentCommit = commit" target="_blank"
       | {{commit.short_sha}}
