@@ -62,7 +62,6 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
   * TODO Consider the review over when you click "Reviewed" or if you click "Abandon review" or after a timeout?
 * Show faces to indicate who did review something
 * Show how old the oldest unreviewed commit is (with a link to review it)
-* Bundle or link to a script to set up the same webhook on multiple repos?
 * MAYBE: stats on how much you review. But avoid it becoming a competition.
 * spec auth?
 * spec angular stuff
