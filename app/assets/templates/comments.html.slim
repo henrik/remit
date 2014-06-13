@@ -1,5 +1,5 @@
 ul
-  li(ng-repeat="comment in comments | orderBy:github_id track by comment.github_id")
+  li(ng-repeat="comment in comments track by comment.github_id")
     p
       strong= "{{comment.sender_name}}"
       '
