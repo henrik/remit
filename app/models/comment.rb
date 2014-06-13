@@ -13,13 +13,17 @@ class Comment < ActiveRecord::Base
 
   def as_json(opts = {})
     super(opts.reverse_merge(
-      methods: [ :body, :sender_name ],
+      methods: [ :body, :sender_name, :url ],
       only: [],
     ))
   end
 
   def body
     payload[:body]
+  end
+
+  def url
+    payload[:html_url]
   end
 
   def sender_name
