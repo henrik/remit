@@ -18,6 +18,13 @@ class Commit < ActiveRecord::Base
     commit
   end
 
+  def as_json(opts = {})
+    super(opts.reverse_merge(
+      methods: [ :short_sha, :author_email, :summary, :url ],
+      only: [],
+    ))
+  end
+
   def short_sha
     sha.first(10)
   end
@@ -36,12 +43,5 @@ class Commit < ActiveRecord::Base
 
   def url
     payload.fetch(:url)
-  end
-
-  def as_json(opts = {})
-    super(opts.reverse_merge(
-      methods: [ :short_sha, :author_email, :summary, :url ],
-      only: [],
-    ))
   end
 end

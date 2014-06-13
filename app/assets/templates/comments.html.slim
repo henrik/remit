@@ -3,10 +3,12 @@ h2 Comments
 ul
   li(ng-repeat="comment in comments")
     p
-      strong
-        ' {{comment.sender_name}}
-      ' on a commit by
+      strong= "{{comment.sender_name}}"
       '
+      ' on
+      strong= "{{comment.short_commit_sha}}"
+      '
+      ' by
       strong
         ' {{comment.commit_author_name}}
     p ng-bind-html-unsafe="comment.body | emoji"
