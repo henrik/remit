@@ -30,17 +30,10 @@ class GithubWebhooksController < ApplicationController
   end
 
   def store_commits
-    data_list = params[:commits]
+    payloads = params[:commits]
 
-    data_list.each do |data|
-      data = data.merge(
-        repository: params[:repository],
-        pusher: params[:pusher],
-      )
-
-      commit = Commit.where(sha: data[:id]).first_or_initialize
-      commit.payload = data
-      commit.save!
+    payloads.each do |payload|
+      Commit.create_or_update_from_payload(payload, params)
     end
 
     render text: "Thanks!"
