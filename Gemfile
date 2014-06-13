@@ -16,7 +16,6 @@ gem 'spring', group: :development
 
 gem 'unicorn'
 gem 'rails_12factor', group: :production
-gem 'rake', group: :test  # For Travis CI
 
 group :development, :test do
   gem 'rspec-rails'
