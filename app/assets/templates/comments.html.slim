@@ -11,5 +11,5 @@ ul
       ' by
       strong
         ' {{comment.commit_author_name}}
-    p ng-bind-html-unsafe="comment.body | emoji"
+    p ng-bind-html="comment.body | emoji | trustBoundHtml"
     a(href="{{comment.url}}" target="_blank") View
