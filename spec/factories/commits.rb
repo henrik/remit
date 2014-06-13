@@ -10,12 +10,13 @@ FactoryGirl.define do
     sequence(:sha) { |n| "abc#{n}" }
     payload {
       {
+        id: sha,
+        message: message,
+        url: url,
         author: {
           email: "mymail@example.com",
           username: "myusername",
         },
-        message: message,
-        url: url,
       }
     }
   end

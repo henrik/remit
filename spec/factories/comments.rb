@@ -12,10 +12,12 @@ FactoryGirl.define do
 
     payload {
       {
+        id: github_id,
+        body: body,
+        commit_id: commit_sha,
         user: {
           login: user_login,
         },
-        body: body,
       }
     }
   end

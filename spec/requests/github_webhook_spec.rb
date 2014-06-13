@@ -1,6 +1,12 @@
 require "rails_helper"
 
 describe "Receiving GitHub payloads by webhook" do
+  before do
+    Pusher.app_id = "123"
+    Pusher.key    = "abc"
+    Pusher.secret = "def"
+  end
+
   it "handles pings zenfully" do
     post "/github_webhook",
       { zen: "Yo.", hook_id: 123 },
@@ -11,7 +17,7 @@ describe "Receiving GitHub payloads by webhook" do
 
   it "stores commit comments" do
     post "/github_webhook",
-      { comment: { id: 1, body: "Hi.", commit_id: "faa" } },
+      { comment: attributes_for(:comment, body: "Hi.")[:payload] },
       { "X-Github-Event" => "commit_comment" }
 
     expect(response).to be_success
@@ -24,8 +30,8 @@ describe "Receiving GitHub payloads by webhook" do
     post "/github_webhook",
       {
         commits: [
-          { id: "faa", url: "http://example.com/1" },
-          { id: "aaf", url: "http://example.com/2" },
+          attributes_for(:commit, sha: "faa")[:payload],
+          attributes_for(:commit, sha: "aaf")[:payload],
         ],
         repository: { name: "myrepo" },
         pusher: { name: "mypusher" },

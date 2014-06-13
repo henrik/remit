@@ -25,17 +25,26 @@ class GithubWebhooksController < ApplicationController
   # https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository
   def store_comment
     payload = params[:comment]
-    Comment.create_or_update_from_payload(payload)
+    comment = Comment.create_or_update_from_payload(payload)
+
+    push "comment_updated", comment: comment.to_json
+
     render text: "Thanks!"
   end
 
   def store_commits
     payloads = params[:commits]
 
-    payloads.each do |payload|
+    commits = payloads.map { |payload|
       Commit.create_or_update_from_payload(payload, params)
-    end
+    }
+
+    push "commits_updated", commits: commits.to_json
 
     render text: "Thanks!"
+  end
+
+  def push(event, hash)
+    Pusher["the_channel"].trigger(event, hash)
   end
 end

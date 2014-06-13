@@ -7,7 +7,6 @@ html(
     title(ng-bind="pageTitle") Remit
     link rel="shortcut icon" href=image_path("favicon.png")
     = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
   body
 
@@ -26,3 +25,23 @@ html(
       a> href="http://github.com/henrik/remit" Remit
       ' by
       a href="http://barsoom.se" Barsoom
+
+    = javascript_include_tag "application"
+    script src="http://js.pusher.com/2.0/pusher.min.js"
+
+    javascript:
+      // If your Heroku application is within the EU region,
+      // uncomment the following lines
+      // Pusher.host = 'ws-eu.pusher.com';
+      // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
+
+      var pusher = new Pusher('#{Pusher.key}');
+      var channel = pusher.subscribe('the_channel');
+
+      channel.bind("commits_updated", function(data) {
+        console.log("commits updated: %o", data.commits);
+      });
+
+      channel.bind("comment_updated", function(data) {
+        console.log("comment updated: %o", data.comment);
+      });
