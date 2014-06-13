@@ -28,8 +28,8 @@ class Commit < ActiveRecord::Base
 
   def as_json(opts = {})
     super(opts.reverse_merge(
-      except: [ :payload ],
       methods: [ :short_sha, :author_email ],
+      only: [],
     ))
   end
 end
