@@ -1,5 +1,3 @@
-window.app = angular.module("Remit", [ "ngRoute", "ui.gravatar", "emoji" ])
-
 app.config ($routeProvider) ->
   $routeProvider.
     when("/",
@@ -17,8 +15,3 @@ app.config ($routeProvider) ->
       templateUrl: "<%= asset_path("settings.html") %>"
       controller: "SettingsCtrl"
     )
-
-angular.module("ui.gravatar").config (gravatarServiceProvider) ->
-    gravatarServiceProvider.secure = true  # https
-    gravatarServiceProvider.defaults =
-      size: 40
