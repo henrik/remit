@@ -35,10 +35,13 @@ end
 
 describe Comment, "#as_json" do
   let(:comment) {
-    Comment.new(payload: {
-      body: "Yo.",
-      user: { login: "henrik" },
-    })
+    Comment.new(
+      commit_sha: "faa",
+      payload: {
+        body: "Yo.",
+        user: { login: "henrik" },
+      },
+    )
   }
 
   it "includes the desired attributes" do
