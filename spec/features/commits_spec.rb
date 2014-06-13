@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "foo", :js do
-  it "blah" do
+describe "Commits page", :js do
+  it "works" do
     commit = Commit.create!(
       sha: "cafebabe",
       payload: {
