@@ -1,5 +1,7 @@
-p commits plz!
+h2 Commits
 
 ul
   li(ng-repeat="commit in commits")
-    ' sha: {{commit.short_sha}}
+    img gravatar-src="commit.author_email" gravatar-size="40"
+    '
+    ' {{commit.short_sha}}

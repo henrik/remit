@@ -22,10 +22,14 @@ class Commit < ActiveRecord::Base
     sha.first(10)
   end
 
+  def author_email
+    payload.fetch(:author).fetch(:email)
+  end
+
   def as_json(opts = {})
     super(opts.reverse_merge(
       except: [ :payload ],
-      methods: [ :short_sha ],
+      methods: [ :short_sha, :author_email ],
     ))
   end
 end
