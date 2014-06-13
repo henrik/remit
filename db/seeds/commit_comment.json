@@ -1,8 +1,8 @@
 {
   "comment": {
-    "url": "https://api.github.com/repos/henrik/remit/comments/6655111",
-    "html_url": "https://github.com/henrik/remit/commit/aa34b782bd1615c024755a4594df5099a52bc54a#commitcomment-6655111",
-    "id": 6655111,
+    "url": "https://api.github.com/repos/henrik/remit/comments/6660671",
+    "html_url": "https://github.com/henrik/remit/commit/a101bbefdfc75da2611e977d8accd668d58604a8#commitcomment-6660671",
+    "id": 6660671,
     "user": {
       "login": "henrik",
       "id": 216,
@@ -22,13 +22,13 @@
       "type": "User",
       "site_admin": false
     },
-    "position": null,
-    "line": null,
-    "path": null,
-    "commit_id": "aa34b782bd1615c024755a4594df5099a52bc54a",
-    "created_at": "2014-06-12T22:43:08Z",
-    "updated_at": "2014-06-12T22:43:08Z",
-    "body": "Commenting to see if it works!"
+    "position": 7,
+    "line": 11,
+    "path": "db/seeds.rb",
+    "commit_id": "a101bbefdfc75da2611e977d8accd668d58604a8",
+    "created_at": "2014-06-13T11:47:47Z",
+    "updated_at": "2014-06-13T11:47:47Z",
+    "body": "Example commit to put into the seed data. *Remitception!* :8ball: "
   },
   "repository": {
     "id": 20775809,
@@ -94,8 +94,8 @@
     "labels_url": "https://api.github.com/repos/henrik/remit/labels{/name}",
     "releases_url": "https://api.github.com/repos/henrik/remit/releases{/id}",
     "created_at": "2014-06-12T17:05:33Z",
-    "updated_at": "2014-06-12T22:40:44Z",
-    "pushed_at": "2014-06-12T22:40:44Z",
+    "updated_at": "2014-06-13T11:38:04Z",
+    "pushed_at": "2014-06-13T11:38:03Z",
     "git_url": "git://github.com/henrik/remit.git",
     "ssh_url": "git@github.com:henrik/remit.git",
     "clone_url": "https://github.com/henrik/remit.git",
@@ -110,9 +110,9 @@
     "has_wiki": true,
     "forks_count": 0,
     "mirror_url": null,
-    "open_issues_count": 0,
+    "open_issues_count": 1,
     "forks": 0,
-    "open_issues": 0,
+    "open_issues": 1,
     "watchers": 0,
     "default_branch": "master"
   },

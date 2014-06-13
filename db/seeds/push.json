@@ -1,0 +1,152 @@
+{
+  "ref": "refs/heads/master",
+  "after": "076a1ccfc24d5d49486158a63511630536625963",
+  "before": "ceb1fc7f673350967acd7e95ae8d844c36afb2a7",
+  "created": false,
+  "deleted": false,
+  "forced": false,
+  "compare": "https://github.com/henrik/remit/compare/ceb1fc7f6733...076a1ccfc24d",
+  "commits": [
+    {
+      "id": "8364e1f1f1876ba76d0718032b0ca44b5f7162c2",
+      "distinct": true,
+      "message": "Spec Comment#as_json",
+      "timestamp": "2014-06-13T08:34:41+02:00",
+      "url": "https://github.com/henrik/remit/commit/8364e1f1f1876ba76d0718032b0ca44b5f7162c2",
+      "author": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "committer": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "spec/models/comment_spec.rb"
+      ]
+    },
+    {
+      "id": "a101bbefdfc75da2611e977d8accd668d58604a8",
+      "distinct": true,
+      "message": "List more comment data. Seed some.",
+      "timestamp": "2014-06-13T09:11:19+02:00",
+      "url": "https://github.com/henrik/remit/commit/a101bbefdfc75da2611e977d8accd668d58604a8",
+      "author": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "committer": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "added": [
+        "db/seeds/commit_comment.json"
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "app/assets/templates/comments.html.slim",
+        "app/controllers/github_webhooks_controller.rb",
+        "app/models/comment.rb",
+        "db/seeds.rb",
+        "spec/models/comment_spec.rb"
+      ]
+    },
+    {
+      "id": "076a1ccfc24d5d49486158a63511630536625963",
+      "distinct": true,
+      "message": "Extract Commit.create_or_update_from_payload",
+      "timestamp": "2014-06-13T09:19:15+02:00",
+      "url": "https://github.com/henrik/remit/commit/076a1ccfc24d5d49486158a63511630536625963",
+      "author": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "committer": {
+        "name": "Henrik Nyh",
+        "email": "henrik@nyh.se",
+        "username": "henrik"
+      },
+      "added": [
+
+      ],
+      "removed": [
+
+      ],
+      "modified": [
+        "app/controllers/github_webhooks_controller.rb",
+        "app/models/commit.rb",
+        "spec/models/comment_spec.rb"
+      ]
+    }
+  ],
+  "head_commit": {
+    "id": "076a1ccfc24d5d49486158a63511630536625963",
+    "distinct": true,
+    "message": "Extract Commit.create_or_update_from_payload",
+    "timestamp": "2014-06-13T09:19:15+02:00",
+    "url": "https://github.com/henrik/remit/commit/076a1ccfc24d5d49486158a63511630536625963",
+    "author": {
+      "name": "Henrik Nyh",
+      "email": "henrik@nyh.se",
+      "username": "henrik"
+    },
+    "committer": {
+      "name": "Henrik Nyh",
+      "email": "henrik@nyh.se",
+      "username": "henrik"
+    },
+    "added": [
+
+    ],
+    "removed": [
+
+    ],
+    "modified": [
+      "app/controllers/github_webhooks_controller.rb",
+      "app/models/commit.rb",
+      "spec/models/comment_spec.rb"
+    ]
+  },
+  "repository": {
+    "id": 20775809,
+    "name": "remit",
+    "url": "https://github.com/henrik/remit",
+    "description": "A tool for commit-by-commit code review of repositories on GitHub.",
+    "homepage": "",
+    "watchers": 0,
+    "stargazers": 0,
+    "forks": 0,
+    "fork": false,
+    "size": 0,
+    "owner": {
+      "name": "henrik",
+      "email": "henrik@nyh.se"
+    },
+    "private": false,
+    "open_issues": 1,
+    "has_issues": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "language": "Ruby",
+    "created_at": 1402592733,
+    "pushed_at": 1402643988,
+    "master_branch": "master"
+  },
+  "pusher": {
+    "name": "henrik",
+    "email": "henrik@nyh.se"
+  }
+}

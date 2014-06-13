@@ -5,6 +5,8 @@ class Commit < ActiveRecord::Base
 
   def self.create_or_update_from_payload(payload, parent_payload)
     payload = payload.deep_symbolize_keys
+    parent_payload = parent_payload.deep_symbolize_keys
+
     payload = payload.merge(
       repository: parent_payload.fetch(:repository),
       pusher: parent_payload.fetch(:pusher),
