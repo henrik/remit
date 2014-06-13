@@ -44,3 +44,13 @@ describe Commit, ".create_or_update_from_payload" do
     expect(commit.payload[:pusher][:name]).to eq "mypusher"
   end
 end
+
+describe Commit, "#summary" do
+  it "truncates the first line of the message to 50 chars" do
+    message = "#{"1234567890" * 6}\nMore."
+
+    commit = Commit.new(payload: { message: message })
+
+    expect(commit.summary).to eq("1234567890" * 5)
+  end
+end
