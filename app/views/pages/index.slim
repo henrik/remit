@@ -13,11 +13,11 @@ html(
 
     nav.top-nav
       ul
-        li ng-class="{ current: currentPage('/commits') }"
+        li ng-class="navClass('/commits')"
           a(href="#/commits") Commits
-        li ng-class="{ current: currentPage('/comments') }"
+        li ng-class="navClass('/comments')"
           a(href="#/comments") Comments
-        li ng-class="{ current: currentPage('/settings') }"
+        li ng-class="navClass('/settings')"
           a(href="#/settings") Settings
 
     div(ng-view)
