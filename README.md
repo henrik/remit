@@ -16,7 +16,7 @@ More or less a rewrite of [Hubreview](https://github.com/joakimk/hubreview) to t
 ## Development
 
 Assumes you have
-  * Ruby 2.1.1
+  * Ruby 2.1.2
   * Bundler
 
 Run:
