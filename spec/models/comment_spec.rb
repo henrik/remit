@@ -35,12 +35,10 @@ end
 
 describe Comment, "#as_json" do
   let(:comment) {
-    Comment.new(
+    build(:comment,
       commit_sha: "faa",
-      payload: {
-        body: "Yo.",
-        user: { login: "henrik" },
-      },
+      body: "Yo.",
+      user_login: "henrik",
     )
   }
 
@@ -55,12 +53,12 @@ end
 describe Comment, "#commit" do
   it "finds a related commit if there is one" do
     commit = create(:commit, sha: "faa")
-    comment = Comment.create!(github_id: 1, commit_sha: "faa")
+    comment = create(:comment, commit_sha: "faa")
     expect(comment.commit).to eq commit
   end
 
   it "returns nil if the commit is not stored" do
-    comment = Comment.create!(github_id: 1, commit_sha: "faa")
+    comment = create(:comment, commit_sha: "faa")
     expect(comment.commit).to be_nil
   end
 end
