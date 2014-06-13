@@ -42,7 +42,9 @@ Visit <http://localhost:9292>
 
 ### Configure the webhook on GitHub
 
-In the settings for any repo you want to use this with, add a webhook.
+Working at [Barsoom](http://barsoom.se)? [We've got you covered.](https://github.com/barsoom/servers/wiki/Automatically-apply-webhooks-to-all-our-repos)
+
+Not so fortunate? In the settings for any repo you want to use this with, add a webhook:
 
     Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github_webhook?auth_key=MY_AUTH_KEY
     Content type:  application/json
