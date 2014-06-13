@@ -4,6 +4,7 @@ ul
   li(ng-repeat="commit in commits")
     img gravatar-src="commit.author_email" gravatar-size="40" gravatar-secure="true"
     '
-    ' {{commit.short_sha}}
+    a href="{{commit.url}}" target="_blank"
+      | {{commit.short_sha}}
     '
     ' {{commit.summary}}
