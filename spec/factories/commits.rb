@@ -2,11 +2,15 @@
 
 FactoryGirl.define do
   factory :commit do
+    ignore do
+      message { "A lovely commit." }
+    end
+
     sequence(:sha) { |n| "abc#{n}" }
     payload {
       {
         author: { email: "x@y.com", username: "x", },
-        message: "x",
+        message: message,
         url: "/",
       }
     }

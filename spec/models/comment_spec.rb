@@ -54,7 +54,7 @@ end
 
 describe Comment, "#commit" do
   it "finds a related commit if there is one" do
-    commit = Commit.create!(sha: "faa")
+    commit = create(:commit, sha: "faa")
     comment = Comment.create!(github_id: 1, commit_sha: "faa")
     expect(comment.commit).to eq commit
   end
