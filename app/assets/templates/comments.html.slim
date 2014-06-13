@@ -1,5 +1,8 @@
-p comments?!
+h2 Comments
 
 ul
   li(ng-repeat="comment in comments")
-    ' github_id: {{comment.github_id}}
+    p: strong
+      ' {{comment.sender_name}}
+    p
+      ' {{comment.body}}
