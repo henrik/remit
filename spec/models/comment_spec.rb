@@ -9,7 +9,7 @@ describe Comment, ".create_or_update_from_payload" do
 
     expect(comment).to be_persisted
     expect(comment.github_id).to eq 123
-    expect(comment.body).to eq "Hi."
+    expect(comment.payload[:body]).to eq "Hi."
   end
 
   it "updates an old record if the id is not new" do
@@ -25,7 +25,7 @@ describe Comment, ".create_or_update_from_payload" do
 
     comment.reload
     expect(comment.github_id).to eq 123
-    expect(comment.body).to eq "Bye."
+    expect(comment.payload[:body]).to eq "Bye."
   end
 end
 

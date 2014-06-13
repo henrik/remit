@@ -6,13 +6,14 @@ class Commit < ActiveRecord::Base
   def self.create_or_update_from_payload(payload, parent_payload)
     payload = payload.deep_symbolize_keys
     payload = payload.merge(
-      repository: parent_payload[:repository],
-      pusher: parent_payload[:pusher],
+      repository: parent_payload.fetch(:repository),
+      pusher: parent_payload.fetch(:pusher),
     )
 
-    comment = Commit.where(sha: payload[:id]).first_or_initialize
-    comment.payload = payload
-    comment.save!
+    commit = Commit.where(sha: payload.fetch(:id)).first_or_initialize
+    commit.payload = payload
+    commit.save!
+    commit
   end
 
   def short_sha

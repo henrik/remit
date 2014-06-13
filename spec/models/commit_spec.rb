@@ -1,5 +1,46 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Commit, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Commit, ".create_or_update_from_payload" do
+  let(:parent_payload) {
+    {
+      repository: { name: "myrepo" },
+      pusher: { name: "mypusher" },
+    }
+  }
+
+  it "creates a record with the payload and an identifying SHA hash" do
+    commit = Commit.create_or_update_from_payload({
+      id: "faa",
+      url: "url",
+    }, parent_payload)
+
+    expect(commit).to be_persisted
+    expect(commit.sha).to eq "faa"
+    expect(commit.payload[:url]).to eq "url"
+  end
+
+  it "updates an old record if the id is not new" do
+    commit = Commit.create_or_update_from_payload({
+      id: "faa",
+      url: "url1",
+    }, parent_payload)
+
+    Commit.create_or_update_from_payload({
+      id: "faa",
+      url: "url2",
+    }, parent_payload)
+
+    commit.reload
+    expect(commit.sha).to eq "faa"
+    expect(commit.payload[:url]).to eq "url2"
+  end
+
+  it "merges in the repository and pusher info from the parent payload" do
+    commit = Commit.create_or_update_from_payload({
+      id: "faa",
+    }, parent_payload)
+
+    expect(commit.payload[:repository][:name]).to eq "myrepo"
+    expect(commit.payload[:pusher][:name]).to eq "mypusher"
+  end
 end
