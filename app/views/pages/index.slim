@@ -11,13 +11,18 @@ html(
     = csrf_meta_tags
   body
 
-    nav
+    nav.top-nav
       ul
-        li: a(href="#/commits") Commits
-        li: a(href="#/comments") Comments
-        li: a(href="#/settings") Settings
+        li ng-class="{ current: currentPage('/commits') }"
+          a(href="#/commits") Commits
+        li ng-class="{ current: currentPage('/comments') }"
+          a(href="#/comments") Comments
+        li ng-class="{ current: currentPage('/settings') }"
+          a(href="#/settings") Settings
 
     div(ng-view)
 
     footer
-      a href="http://github.com/henrik/remit" Remit on GitHub
+      a> href="http://github.com/henrik/remit" Remit
+      ' by
+      a href="http://barsoom.se" Barsoom

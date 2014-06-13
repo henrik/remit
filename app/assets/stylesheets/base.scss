@@ -1,0 +1,32 @@
+$font-medium: 14px;
+$font-small: 12px;
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: $font-medium;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: $font-small;
+}
+
+.top-nav {
+  margin-bottom: 40px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    &.current {
+      font-weight: bold;
+    }
+  }
+  a {
+    padding: 5px 10px;
+  }
+}

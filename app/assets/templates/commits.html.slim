@@ -1,6 +1,4 @@
-h2 Commits
-
-ul
+ul.commits-list
   li(ng-repeat="commit in commits" ng-class="{ 'your-last-clicked-commit': state.currentCommit == commit }")
     img gravatar-src="commit.author_email"
     '
