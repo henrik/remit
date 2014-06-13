@@ -9,6 +9,12 @@ if Rails.env.development?
 
   puts "* Create an example commit"
   commit_payload = JSON.parse(File.read("#{Rails.root}/db/seeds/push.json"))
+
+  Commit.create_or_update_from_payload(
+    commit_payload["commits"].first,
+    commit_payload
+  )
+
   Commit.create_or_update_from_payload(
     commit_payload["commits"].second,
     commit_payload
