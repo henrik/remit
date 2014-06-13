@@ -1,5 +1,6 @@
 $font-medium: 14px;
 $font-small: 12px;
+$vspace: 40px;
 
 body {
   font-family: Helvetica, sans-serif;
@@ -9,12 +10,12 @@ body {
 }
 
 footer {
-  margin-top: 40px;
+  margin-top: $vspace;
   font-size: $font-small;
 }
 
 .top-nav {
-  margin-bottom: 40px;
+  margin-bottom: $vspace;
 
   ul {
     list-style-type: none;
