@@ -4,6 +4,7 @@ app.controller "HomeCtrl", ($rootScope, $scope) ->
 
 app.controller "CommitsCtrl", ($rootScope, $scope) ->
   $rootScope.pageTitle = "Commits"
+  $scope.state = { currentCommit: null }
 
 app.controller "CommentsCtrl", ($rootScope, $scope) ->
   $rootScope.pageTitle = "Comments"
