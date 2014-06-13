@@ -26,29 +26,8 @@ html(
       ' by
       a href="http://barsoom.se" Barsoom
 
-    = javascript_include_tag "application"
     script src="//js.pusher.com/2.0/pusher.min.js"
+    = javascript_include_tag "application"
 
     javascript:
-      // If your Heroku application is within the EU region,
-      // uncomment the following lines
-      // Pusher.host = 'ws-eu.pusher.com';
-      // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
-
-      // DEBUG
-      // Pusher.log = function(message) {
-      //   if (window.console && window.console.log) {
-      //     window.console.log(message);
-      //   }
-      // };
-
-      var pusher = new Pusher("#{Pusher.key}");
-      var channel = pusher.subscribe("the_channel");
-
-      channel.bind("comment_updated", function(data) {
-        console.log("got comment", JSON.parse(data.comment));
-      });
-
-      channel.bind("commits_updated", function(data) {
-        console.log("got commits", JSON.parse(data.commits));
-      });
+      window.pusherKey = "#{Pusher.key}";
