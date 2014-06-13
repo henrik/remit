@@ -1,5 +1,5 @@
 ul.commits-list
-  li(ng-repeat="commit in commits" ng-class="{ 'your-last-clicked-commit': state.currentCommit == commit }")
+  li(ng-repeat="commit in commits | orderBy:short_sha track by commit.short_sha" ng-class="{ 'your-last-clicked-commit': state.currentCommit == commit }")
     img gravatar-src="commit.author_email"
     '
     a href="{{commit.url}}" ng-click="state.currentCommit = commit" target="_blank"

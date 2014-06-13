@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
 
   def as_json(opts = {})
     super(opts.reverse_merge(
-      methods: [ :body, :sender_name, :url, :commit_author_name, :short_commit_sha ],
+      methods: [ :github_id, :body, :sender_name, :url, :commit_author_name, :short_commit_sha ],
       only: [],
     ))
   end
