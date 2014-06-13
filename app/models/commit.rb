@@ -26,6 +26,10 @@ class Commit < ActiveRecord::Base
     payload.fetch(:author).fetch(:email)
   end
 
+  def author_name
+    payload.fetch(:author).fetch(:username)
+  end
+
   def summary
     payload.fetch(:message).lines.first.first(50)
   end
