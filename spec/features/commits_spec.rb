@@ -2,14 +2,7 @@ require "rails_helper"
 
 describe "Commits page", :js do
   it "works" do
-    commit = Commit.create!(
-      sha: "cafebabe",
-      payload: {
-        author: { email: "x@y.com", username: "x", },
-        message: "x",
-        url: "/",
-      },
-    )
+    commit = create(:commit, sha: "cafebabe")
 
     visit "/"
     click_link "Commits"
