@@ -35,13 +35,20 @@ html(
       // Pusher.host = 'ws-eu.pusher.com';
       // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
 
-      var pusher = new Pusher('#{Pusher.key}');
-      var channel = pusher.subscribe('the_channel');
+      // DEBUG
+      // Pusher.log = function(message) {
+      //   if (window.console && window.console.log) {
+      //     window.console.log(message);
+      //   }
+      // };
 
-      channel.bind("commits_updated", function(data) {
-        console.log("commits updated: %o", data.commits);
-      });
+      var pusher = new Pusher("#{Pusher.key}");
+      var channel = pusher.subscribe("the_channel");
 
       channel.bind("comment_updated", function(data) {
-        console.log("comment updated: %o", data.comment);
+        console.log("got comment", JSON.parse(data.comment));
+      });
+
+      channel.bind("commits_updated", function(data) {
+        console.log("got commits", JSON.parse(data.commits));
       });
