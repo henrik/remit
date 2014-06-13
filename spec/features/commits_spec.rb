@@ -2,7 +2,9 @@ require "rails_helper"
 
 describe "Commits page", :js do
   it "works" do
-    commit = create(:commit, sha: "cafebabe")
+    # url is "/" since we'll click the link later, and we want a local
+    # path that exists.
+    commit = create(:commit, sha: "cafebabe", url: "/")
 
     visit "/"
     click_link "Commits"
