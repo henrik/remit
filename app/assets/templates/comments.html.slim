@@ -4,6 +4,5 @@ ul
   li(ng-repeat="comment in comments")
     p: strong
       ' {{comment.sender_name}}
-    p
-      ' {{comment.body}}
+    p ng-bind-html-unsafe="comment.body | emoji"
     a(href="{{comment.url}}") View
