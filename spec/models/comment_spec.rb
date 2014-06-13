@@ -1,5 +1,34 @@
 require "rails_helper"
 
+describe Comment, ".create_or_update_from_payload" do
+  it "creates a record with the payload and a github_id" do
+    comment = Comment.create_or_update_from_payload(
+      id: 123,
+      body: "Hi.",
+    )
+
+    expect(comment).to be_persisted
+    expect(comment.github_id).to eq 123
+    expect(comment.body).to eq "Hi."
+  end
+
+  it "updates an old record if the id is not new" do
+    comment = Comment.create_or_update_from_payload(
+      id: 123,
+      body: "Hi.",
+    )
+
+    Comment.create_or_update_from_payload(
+      id: 123,
+      body: "Bye.",
+    )
+
+    comment.reload
+    expect(comment.github_id).to eq 123
+    expect(comment.body).to eq "Bye."
+  end
+end
+
 describe Comment, "#as_json" do
   let(:comment) {
     Comment.new(payload: {

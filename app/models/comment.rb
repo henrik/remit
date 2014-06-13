@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
     comment = Comment.where(github_id: payload[:id]).first_or_initialize
     comment.payload = payload
     comment.save!
+    comment
   end
 
   def as_json(opts = {})

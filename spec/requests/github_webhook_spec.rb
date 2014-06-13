@@ -20,22 +20,6 @@ describe "Receiving GitHub payloads by webhook" do
     expect(comment.payload[:body]).to eq "Hi."
   end
 
-  it "updates commit comments if they're sent again" do
-    post "/github_webhook",
-      { comment: { id: 1, body: "Hi." } },
-      { "X-Github-Event" => "commit_comment" }
-
-    expect(Comment.count).to eq 1
-    expect(Comment.find_by_github_id(1).payload[:body]).to eq "Hi."
-
-    post "/github_webhook",
-      { comment: { id: 1, body: "Bye." } },
-      { "X-Github-Event" => "commit_comment" }
-
-    expect(Comment.count).to eq 1
-    expect(Comment.find_by_github_id(1).payload[:body]).to eq "Bye."
-  end
-
   it "stores commits" do
     post "/github_webhook",
       {
