@@ -9,14 +9,13 @@ html(
     = stylesheet_link_tag    "application", media: "all"
     = csrf_meta_tags
   body
+    .fluid-app-info
+      p: strong GitHub goes here.
+      p
+        ' Please use <a href="http://fluidapp.com/">Fluid.app</a>.
+        ' <a href="https://github.com/henrik/remit#readme">See README</a> for instructions.
+
     .wrapper
-
-      .fluid-app-info
-        p: strong GitHub goes here.
-        p
-          ' Please use <a href="http://fluidapp.com/">Fluid.app</a>.
-          ' <a href="https://github.com/henrik/remit#readme">See README</a> for instructions.
-
       nav.top-nav
         ul
           li ng-class="navClass('/commits')"
@@ -29,9 +28,9 @@ html(
       div(ng-view)
 
       footer
-        a> href="http://github.com/henrik/remit" Remit
+        a> href="http://github.com/henrik/remit" target="_blank" Remit
         ' by
-        a href="http://henrik.nyh.se" Henrik Nyh
+        a href="http://henrik.nyh.se" target="_blank" Henrik Nyh
 
     script src="//js.pusher.com/2.0/pusher.min.js"
     = javascript_include_tag "application"

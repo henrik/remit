@@ -9,9 +9,10 @@ ul.commits-list
       p
         a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
           ' {{commit.summary}}
-      p
+      p.commit-details
         a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
-          ' {{commit.short_sha}}
+          | {{commit.short_sha}}
+        '
         ' in
         strong= "{{commit.repository}} / {{commit.branch}}"
         '

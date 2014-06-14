@@ -16,11 +16,13 @@
   }
 }
 
+$content-width: 560px;
+
 .fluid-app-info {
   background: $gray;
   padding: 20px;
   position: absolute;
-  left: 560px;
+  left: $content-width;
   right: 0;
   top: 0;
   bottom: 0;
@@ -29,4 +31,13 @@
 
   font-size: $font-large;
   font-weight: 100;
+}
+
+.wrapper {
+  width: $content-width - $body-padding-y;
+}
+
+footer {
+  margin-top: $vspace;
+  font-size: $font-small;
 }
