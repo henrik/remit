@@ -60,6 +60,7 @@ Visit <http://localhost:9292>
 
     heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
     git push heroku master
+    heroku run rake db:schema:load
 
 #### Configure the webhook on GitHub
 
