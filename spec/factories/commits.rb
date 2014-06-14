@@ -7,7 +7,7 @@ FactoryGirl.define do
       url "http://example.com"
     end
 
-    sequence(:sha) { |n| "abc#{n}" }
+    sha { SecureRandom.hex(20) }
     payload {
       {
         id: sha,
@@ -20,4 +20,8 @@ FactoryGirl.define do
       }
     }
   end
+end
+
+def FactoryGirl.commit_payload(custom = {})
+  attributes_for(:commit, custom).fetch(:payload)
 end

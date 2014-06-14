@@ -30,8 +30,8 @@ describe "Receiving GitHub payloads by webhook" do
     post "/github_webhook",
       {
         commits: [
-          attributes_for(:commit, sha: "faa")[:payload],
-          attributes_for(:commit, sha: "aaf")[:payload],
+          FactoryGirl.commit_payload(sha: "faa"),
+          FactoryGirl.commit_payload(sha: "aaf"),
         ],
         repository: { name: "myrepo" },
         pusher: { name: "mypusher" },
