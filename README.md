@@ -16,11 +16,11 @@ Review the Remit commits using Remit:
 
 ### Why commit-by-commit review?
 
-If you think truly continuous integration and delivery (perhaps with feature flags) is important, you may not work with pull requests as a rule.
+If you think truly continuous integration and delivery (perhaps with feature flags) is important, you may prefer not to work with pull requests as a rule.
 
-If you don't work with pull requests, commit-by-commit review is what you get.
+If you don't work with pull requests, commit-by-commit review is what you get. It has some benefits and some downtimes compared to review by pull request.
 
-Blog post: ["The risks of feature branches and pre-merge code review"](http://thepugautomatic.com/2014/02/code-review/).
+Read more in this blog post: ["The risks of feature branches and pre-merge code review"](http://thepugautomatic.com/2014/02/code-review/).
 
 ### The name
 
