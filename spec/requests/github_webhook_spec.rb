@@ -35,6 +35,7 @@ describe "Receiving GitHub payloads by webhook" do
         ],
         repository: { name: "myrepo" },
         pusher: { name: "mypusher" },
+        ref: "refs/heads/master",
       },
       { "X-Github-Event" => "push" }
 

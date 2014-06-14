@@ -21,6 +21,8 @@ FactoryGirl.define do
           username: author_username,
           name: "Commit Author",
         },
+        repository: { name: "myrepo" },
+        pusher: { name: "Commit Pusher" },
       }
     }
   end
