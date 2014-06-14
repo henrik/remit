@@ -8,6 +8,12 @@ Keeps track of what has been reviewed and links to GitHub commits for the actual
 
 Also tracks comments on commits.
 
+### Demo
+
+Review the Remit commits using Remit:
+
+<https://remit-on-remit.herokuapp.com/?auth_key=demo>
+
 ### Why commit-by-commit review?
 
 If you think truly continuous integration and delivery (perhaps with feature flags) is important, you may not work with pull requests as a rule.
