@@ -51,8 +51,13 @@ Visit <http://localhost:9292>
 #### Set the app up on Heroku
 
     heroku new remit-SOMETHING-UNIQUE
+
+    # DB. Free plan with max 10,000 rows.
     heroku addons:add heroku-postgresql:dev
+
+    # For WebSockets. Free plan with 20 concurrents, 100,000 messages/month. https://addons.heroku.com/pusher
     heroku addons:add pusher
+
     heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
     git push heroku master
 
