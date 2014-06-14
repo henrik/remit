@@ -5,6 +5,7 @@ FactoryGirl.define do
     ignore do
       message "A lovely commit."
       url "http://example.com"
+      author_username { [ nil, "fakeuser" ].sample }  # Empty for pair commits
     end
 
     sha { SecureRandom.hex(20) }
@@ -15,7 +16,8 @@ FactoryGirl.define do
         url: url,
         author: {
           email: "mymail@example.com",
-          username: "myusername",
+          username: author_username,
+          name: "Commit Author",
         },
       }
     }
