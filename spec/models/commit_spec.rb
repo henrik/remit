@@ -3,6 +3,7 @@ require "rails_helper"
 describe Commit, ".create_or_update_from_payload" do
   let(:parent_payload) {
     {
+      ref: "refs/heads/master",
       repository: { name: "myrepo" },
       pusher: { name: "mypusher" },
     }
@@ -35,13 +36,14 @@ describe Commit, ".create_or_update_from_payload" do
     expect(commit.payload[:url]).to eq "url2"
   end
 
-  it "merges in the repository and pusher info from the parent payload" do
+  it "merges in some info from the parent payload" do
     commit = Commit.create_or_update_from_payload({
       id: "faa",
     }, parent_payload)
 
     expect(commit.payload[:repository][:name]).to eq "myrepo"
     expect(commit.payload[:pusher][:name]).to eq "mypusher"
+    expect(commit.payload[:ref]).to eq "refs/heads/master"
   end
 end
 
@@ -52,5 +54,12 @@ describe Commit, "#summary" do
     commit = build(:commit, message: message)
 
     expect(commit.summary).to eq("1234567890" * 5)
+  end
+end
+
+describe Commit, "#branch" do
+  it "extracts it from the ref" do
+    commit = build(:commit, ref: "refs/heads/master")
+    expect(commit.branch).to eq "master"
   end
 end

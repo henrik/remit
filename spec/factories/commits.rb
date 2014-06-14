@@ -6,11 +6,13 @@ FactoryGirl.define do
       message "A lovely commit."
       url "http://example.com"
       author_username { [ nil, "fakeuser" ].sample }  # Empty for pair commits
+      ref "refs/heads/master"
     end
 
     sha { SecureRandom.hex(20) }
     payload {
       {
+        ref: ref,
         id: sha,
         message: message,
         url: url,

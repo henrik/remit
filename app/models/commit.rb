@@ -8,6 +8,7 @@ class Commit < ActiveRecord::Base
     parent_payload = parent_payload.deep_symbolize_keys
 
     payload = payload.merge(
+      ref: parent_payload.fetch(:ref),
       repository: parent_payload.fetch(:repository),
       pusher: parent_payload.fetch(:pusher),
     )
@@ -27,6 +28,7 @@ class Commit < ActiveRecord::Base
         :summary,
         :url,
         :repository,
+        :branch,
       ],
       only: [],
     ))
@@ -46,6 +48,10 @@ class Commit < ActiveRecord::Base
 
   def repository
     payload.fetch(:repository).fetch(:name)
+  end
+
+  def branch
+    payload.fetch(:ref).split("/").last
   end
 
   def summary

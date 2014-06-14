@@ -12,7 +12,7 @@ ul.commits-list
       a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
         ' {{commit.short_sha}}
       ' in
-      strong= "{{commit.repository}}"
+      strong= "{{commit.repository}} / {{commit.branch}}"
       '
       ' by
       strong= "{{commit.author_name}}"
