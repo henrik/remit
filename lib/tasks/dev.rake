@@ -10,6 +10,7 @@ namespace :dev do
         commits: Array.new(count) { FactoryGirl.commit_payload },
         repository: { name: "fakerepo" },
         pusher: { name: "fakepusher" },
+        ref: "refs/heads/master",
       },
       { "X-Github-Event" => "push" }
 

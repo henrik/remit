@@ -12,7 +12,6 @@ FactoryGirl.define do
     sha { SecureRandom.hex(20) }
     payload {
       {
-        ref: ref,
         id: sha,
         message: message,
         url: url,
@@ -21,6 +20,7 @@ FactoryGirl.define do
           username: author_username,
           name: "Commit Author",
         },
+        ref: ref,
         repository: { name: "myrepo" },
         pusher: { name: "Commit Pusher" },
       }
