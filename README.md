@@ -58,7 +58,7 @@ Visit <http://localhost:9292>
     # For WebSockets. Free plan with 20 concurrents, 100,000 messages/month. https://addons.heroku.com/pusher
     heroku addons:add pusher
 
-    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
+    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
     git push heroku master
     heroku run rake db:schema:load
 
@@ -68,11 +68,11 @@ Working at [Barsoom](http://barsoom.se)? [We've got you covered.](https://github
 
 Not so fortunate? In the settings for any repo you want to use this with, add a webhook:
 
-    Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github_webhook?auth_key=MY_AUTH_KEY
+    Payload URL:   https://remit-SOMETHING-UNIQUE.herokuapp.com/github_webhook?auth_key=MY_WEBHOOK_KEY
     Content type:  application/json
     Let me select individual events:  [x] Push  [x] Commit comment
 
-Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku config:get AUTH_KEY`).
+Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
 
 
 ## Credits
