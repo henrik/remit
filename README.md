@@ -2,7 +2,7 @@
 
 **Very much a work in progress! Beware.**
 
-Web app for commit-by-commit code review of GitHub repositories.
+Web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
 
 Keeps track of what has been reviewed and links to GitHub commits for the actual review.
 
