@@ -1,6 +1,17 @@
 .commits-list {
   list-style-type: none;
   padding: 0;
+  margin-left: -$body-padding-y;
+}
+
+.commit {
+  margin: 20px 0;
+  border-bottom: 1px solid $gray;
+  &:first-child { border-top: 1px solid $gray; }
+}
+
+.commit-wrapper {
+  margin: 0 20px;
 }
 
 .your-last-clicked-commit {
@@ -8,6 +19,7 @@
 }
 
 img.commit-avatar {
+  background: $gray;
   width: 40px;
   height: 40px;
   float: left;

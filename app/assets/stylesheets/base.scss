@@ -7,7 +7,7 @@ body {
   font-family: Helvetica, sans-serif;
   font-size: $font-medium;
   margin: 0;
-  padding: 10px 20px;
+  padding: 10px $body-padding-y;
 }
 
 a {
