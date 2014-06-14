@@ -1,0 +1,32 @@
+.top-nav {
+  margin-bottom: $vspace;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    &.current {
+      font-weight: bold;
+    }
+  }
+  a {
+    padding: 5px 10px;
+  }
+}
+
+.fluid-app-info {
+  background: #efefef;
+  padding: 20px;
+  position: absolute;
+  left: 560px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 300px;
+  text-align: center;
+
+  font-size: $font-large;
+  font-weight: 100;
+}

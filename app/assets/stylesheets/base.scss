@@ -1,6 +1,7 @@
-$font-medium: 14px;
-$font-small: 12px;
-$vspace: 40px;
+html {
+  // No horizontal scrollbars on account of the GitHub placeholder.
+  overflow-x: hidden;
+}
 
 body {
   font-family: Helvetica, sans-serif;
@@ -9,25 +10,12 @@ body {
   padding: 10px 20px;
 }
 
+a {
+  color: #555;
+  &:hover { color: #777; }
+}
+
 footer {
   margin-top: $vspace;
   font-size: $font-small;
-}
-
-.top-nav {
-  margin-bottom: $vspace;
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    &.current {
-      font-weight: bold;
-    }
-  }
-  a {
-    padding: 5px 10px;
-  }
 }
