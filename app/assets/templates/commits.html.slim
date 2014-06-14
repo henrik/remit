@@ -1,5 +1,5 @@
 ul.commits-list
-  li(
+  li.commit(
     ng-repeat="commit in commits track by commit.short_sha"
     ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit) }"
   )

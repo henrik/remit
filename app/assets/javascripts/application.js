@@ -12,6 +12,7 @@
 //
 //= require angular
 //= require angular-route
+//= require angular-animate
 //= require_tree ./vendor
 //= require ./angular/app
 //= require_tree ./angular

@@ -1,5 +1,5 @@
 window.app = angular.module("Remit",
-  [ "ngRoute", "doowb.angular-pusher", "ui.gravatar", "emoji" ])
+  [ "ngRoute", "ngAnimate", "doowb.angular-pusher", "ui.gravatar", "emoji" ])
 
 app.config (PusherServiceProvider) ->
   PusherServiceProvider
