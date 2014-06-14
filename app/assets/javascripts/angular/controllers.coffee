@@ -1,6 +1,11 @@
-app.controller "CommitsCtrl", ($rootScope, $scope) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, Commits) ->
   $rootScope.pageTitle = "Commits"
-  $scope.state = { currentCommit: null }
+
+  $scope.isYourLastClicked = (commit) ->
+    commit == Commits.yourLastClicked
+
+  $scope.clicked = (commit) ->
+    Commits.yourLastClicked = commit
 
 app.controller "CommentsCtrl", ($rootScope, $scope) ->
   $rootScope.pageTitle = "Comments"

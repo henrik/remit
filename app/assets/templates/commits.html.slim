@@ -1,8 +1,11 @@
 ul.commits-list
-  li(ng-repeat="commit in commits track by commit.short_sha" ng-class="{ 'your-last-clicked-commit': state.currentCommit == commit }")
+  li(
+    ng-repeat="commit in commits track by commit.short_sha"
+    ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit) }"
+  )
     img gravatar-src="commit.author_email"
     '
-    a href="{{commit.url}}" ng-click="state.currentCommit = commit" target="_blank"
+    a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
       | {{commit.short_sha}}
     '
     ' {{commit.summary}}
