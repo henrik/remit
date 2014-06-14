@@ -11,5 +11,8 @@ ul.commits-list
     p
       a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
         ' {{commit.short_sha}}
+      ' in
+      strong= "{{commit.repository}}"
+      '
       ' by
       strong= "{{commit.author_name}}"

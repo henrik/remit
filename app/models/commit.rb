@@ -26,6 +26,7 @@ class Commit < ActiveRecord::Base
         :author_email,
         :summary,
         :url,
+        :repository,
       ],
       only: [],
     ))
@@ -41,6 +42,10 @@ class Commit < ActiveRecord::Base
 
   def author_name
     payload.fetch(:author).fetch(:name)
+  end
+
+  def repository
+    payload.fetch(:repository).fetch(:name)
   end
 
   def summary
