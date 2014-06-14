@@ -3,9 +3,9 @@
 FactoryGirl.define do
   factory :commit do
     ignore do
-      message "A lovely commit."
+      message { Faker::Company.catch_phrase }
       url "http://example.com"
-      author_username { [ nil, "fakeuser" ].sample }  # Empty for pair commits
+      author_username { [ nil, Faker::Internet.user_name ].sample }  # Empty for pair commits
       ref "refs/heads/master"
     end
 
@@ -18,11 +18,11 @@ FactoryGirl.define do
         author: {
           email: "mymail@example.com",
           username: author_username,
-          name: "Commit Author",
+          name: Faker::Name.name,
         },
         ref: ref,
         repository: { name: "myrepo" },
-        pusher: { name: "Commit Pusher" },
+        pusher: { name: Faker::Name.name },
       }
     }
   end
