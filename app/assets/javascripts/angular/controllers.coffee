@@ -13,7 +13,5 @@ app.controller "CommentsCtrl", ($rootScope, $scope) ->
 app.controller "SettingsCtrl", ($rootScope, $scope) ->
   $rootScope.pageTitle = "Settings"
 
-app.controller "FluidAppCtrl", ($scope, $window) ->
-  # Check for a URL query string param like "?app=true".
-  # Can't use $location; that looks for params in the hashbang.
-  $scope.inFluidApp = $window.location.search.match(/[&?]app=[^&]/)
+app.controller "FluidAppInfoCtrl", ($scope, FluidApp) ->
+  $scope.inFluidApp = FluidApp.running

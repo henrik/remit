@@ -10,4 +10,4 @@ ul
       strong
         ' {{comment.commit_author_name}}
     p ng-bind-html="comment.body | emoji | trustBoundHtml"
-    a(href="{{comment.url}}" target="_blank") View
+    a(href="{{comment.url}}" fluid-app-link) View

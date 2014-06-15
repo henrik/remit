@@ -7,10 +7,10 @@ ul.commits-list
       img.commit-avatar gravatar-src="commit.author_email"
       '
       p
-        a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
+        a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           ' {{commit.summary}}
       p.commit-details
-        a href="{{commit.url}}" ng-click="clicked(commit)" target="_blank"
+        a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           | {{commit.short_sha}}
         '
         ' in

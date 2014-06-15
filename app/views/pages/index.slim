@@ -6,15 +6,15 @@ html(
   head
     title(ng-bind="pageTitle") Remit
     link rel="shortcut icon" href=image_path("favicon.png")
-    = stylesheet_link_tag    "application", media: "all"
+    = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
   body
-    .fluid-app-info ng-controller="FluidAppCtrl"
+    .fluid-app-info ng-controller="FluidAppInfoCtrl"
       div ng-hide="inFluidApp"
         p: strong GitHub goes here.
         p
-          ' Please use <a href="http://fluidapp.com/">Fluid.app</a>.
-          ' <a href="https://github.com/henrik/remit#use-with-fluidapp">See README</a> for instructions.
+          ' Please use <a href="http://fluidapp.com/" fluid-app-link>Fluid.app</a>.
+          ' <a href="https://github.com/henrik/remit#use-with-fluidapp" fluid-app-link>See README</a> for instructions.
       div ng-show="inFluidApp"
         p: strong Fluid.app detected.
         p Resize the pane so this becomes hidden.
@@ -32,9 +32,10 @@ html(
       div(ng-view)
 
       footer
-        a> href="http://github.com/henrik/remit" target="_blank" Remit
+        a(href="http://github.com/henrik/remit" fluid-app-link) Remit
+        '
         ' by
-        a href="http://henrik.nyh.se" target="_blank" Henrik Nyh
+        a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
 
     = javascript_include_tag "application"
 
