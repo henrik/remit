@@ -53,6 +53,12 @@ $content-width: 560px;
   font-weight: 100;
 }
 
+.fluid-app-info-main {
+  font-weight: $weight-bold;
+  font-size: $font-larger;
+  margin: $vspace 0;
+}
+
 .wrapper {
   position: absolute;
   top: 0;
