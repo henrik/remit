@@ -35,7 +35,11 @@
 }
 
 .your-last-clicked-commit {
-  border-right: 10px solid $gold;
+  background: $yellow;
+}
+
+.your-last-clicked-commit.is-reviewed {
+  background: $yellow-green;
 }
 
 .commit.authored-by-you,
