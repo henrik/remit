@@ -29,6 +29,27 @@
   border-right: 10px solid goldenrod;
 }
 
+.commit.authored-by-you {
+  margin: 10px 0;
+  height: 28px;
+
+  .commit-wrapper {
+    opacity: 0.6;
+  }
+
+  .commit-avatar {
+    width: 20px;
+    height: 20px;
+    margin-top: -1px;
+  }
+  .sha, .by-author {
+    display: none;
+  }
+  .commit-summary, .commit-details {
+    display: inline;
+  }
+}
+
 img.commit-avatar {
   background: $gray;
   width: 40px;

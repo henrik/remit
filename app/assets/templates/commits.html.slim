@@ -1,20 +1,23 @@
+p Your name: {{yourName}}
+
 ul.commits-list
   li.commit(
     ng-repeat="commit in commits track by commit.short_sha"
-    ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit) }"
+    ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit) }"
   )
     .commit-wrapper
       img.commit-avatar gravatar-src="commit.author_email"
       '
-      p
+      p.commit-summary
         a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           ' {{commit.summary}}
       p.commit-details
-        a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
+        a.sha(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           | {{commit.short_sha}}
         '
         ' in
         strong= "{{commit.repository}} / {{commit.branch}}"
         '
-        ' by
-        strong= "{{commit.author_name}}"
+        span.by-author
+          ' by
+          strong= "{{commit.author_name}}"

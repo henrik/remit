@@ -6,6 +6,7 @@ FactoryGirl.define do
       message { Faker::Company.catch_phrase }
       url "http://example.com"
       author_username { [ nil, Faker::Internet.user_name ].sample }  # Empty for pair commits
+      author_name { Faker::Name.name }
       ref "refs/heads/master"
     end
 
@@ -18,7 +19,7 @@ FactoryGirl.define do
         author: {
           email: "mymail@example.com",
           username: author_username,
-          name: Faker::Name.name,
+          name: author_name,
         },
         ref: ref,
         repository: { name: "myrepo" },

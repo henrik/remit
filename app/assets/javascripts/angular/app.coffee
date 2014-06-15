@@ -1,5 +1,8 @@
-window.app = angular.module("Remit",
-  [ "ngRoute", "ngAnimate", "doowb.angular-pusher", "ui.gravatar", "emoji" ])
+window.app = angular.module "Remit",
+  [
+    "ngRoute", "ngAnimate",
+    "doowb.angular-pusher", "ui.gravatar", "emoji", "LocalStorageModule",
+  ]
 
 app.config (PusherServiceProvider) ->
   # Configure for pusher-fake in tests.
