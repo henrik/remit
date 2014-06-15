@@ -57,6 +57,6 @@ $content-width: 560px;
 }
 
 footer {
-  margin-top: $vspace;
+  margin: $vspace $left-column-inset 0 $left-column-inset;
   font-size: $font-small;
 }

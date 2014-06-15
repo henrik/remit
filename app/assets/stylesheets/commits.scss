@@ -4,13 +4,12 @@
 }
 
 .commit {
-  margin: 20px 0;
   border-bottom: 1px solid $gray;
   &:first-child { border-top: 1px solid $gray; }
 }
 
 .commit-wrapper {
-  margin: 0 20px;
+  margin: 0 $left-column-inset;
 }
 
 .commit-details {
@@ -18,7 +17,7 @@
 }
 
 .your-last-clicked-commit {
-  border-left: 10px solid goldenrod;
+  border-right: 10px solid goldenrod;
 }
 
 img.commit-avatar {
@@ -27,6 +26,7 @@ img.commit-avatar {
   height: 40px;
   float: left;
   margin: 4px 10px 4px 0;
+  border-radius: 5px;
 }
 
 // angular-animation
