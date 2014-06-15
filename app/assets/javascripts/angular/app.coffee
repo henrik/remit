@@ -20,7 +20,9 @@ app.run ($rootScope, $location, Pusher) ->
       slice(0, $rootScope.maxRecords)  # Stay within the maxRecords limit.
 
   subscribe "comment_updated", (data) ->
-    $rootScope.comments.unshift(data.comment)
+    $rootScope.comments = [ data.comment ].
+      concat($rootScope.comments).
+      slice(0, $rootScope.maxRecords)  # Stay within the maxRecords limit.
 
   subscribe "commit_reviewed", (data) ->
     for commit in $rootScope.commits
