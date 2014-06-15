@@ -1,10 +1,10 @@
 .top-nav {
-  margin-bottom: $vspace;
-
   ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
   }
+
   li {
     display: inline-block;
     width: 33%;
@@ -13,16 +13,24 @@
     border-right: 1px solid $gray;
     &:last-child { border-right: 0; }
 
+    border-bottom: 1px solid $gray;
+    &.current { border-bottom-color: transparent; }
+
     // Put the opacity on the link, not the li,
     // so it doesn't affect the borders.
     a { opacity: 0.5; }
-    &.current a { opacity: 1; }
+    &.current a {
+      opacity: 1;
+      font-weight: 600;
+    }
   }
+
   a {
     box-sizing: border-box;
     display: block;
     width: 100%;
     padding: 15px 10px;
+    text-decoration: none;
   }
 }
 

@@ -1,6 +1,7 @@
 .commits-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .commit {
@@ -12,7 +13,6 @@
   top: -1px;
 
   &:first-child {
-    border-top: 1px solid $gray;
     top: 0;
   }
 }
