@@ -5,7 +5,16 @@
 
 .commit {
   border-bottom: 1px solid $gray;
-  &:first-child { border-top: 1px solid $gray; }
+
+  // Without this, the "last-clicked" border-right doesn't go all the way up.
+  border-top: 1px solid transparent;
+  position: relative;
+  top: -1px;
+
+  &:first-child {
+    border-top: 1px solid $gray;
+    top: 0;
+  }
 }
 
 .commit-wrapper {
