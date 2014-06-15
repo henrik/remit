@@ -15,7 +15,26 @@ namespace :dev do
       },
       { "X-Github-Event" => "push" }
 
-    puts "Server responds:"
-    puts session.response.body
+    puts "Done!"
+  end
+
+  desc "Send ENV['N'] (default: 1) fake comments by webhook"
+  task :comments => :environment do
+    count = ENV["N"].to_i.nonzero? || 1
+
+    puts "Sending #{count} fake #{count == 1 ? "comment" : "comments"} to the webhook…"
+
+    session = ActionDispatch::Integration::Session.new(Rails.application)
+
+    count.times do
+      # Must be unique.
+      github_id = Comment.maximum(:github_id) + 1
+
+      session.post "/github_webhook",
+        { comment: FactoryGirl.comment_payload(github_id: github_id) },
+        { "X-Github-Event" => "commit_comment" }
+    end
+
+    puts "Done!"
   end
 end

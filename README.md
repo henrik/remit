@@ -48,9 +48,10 @@ Run:
 
 Visit <http://localhost:9292>
 
-#### Fake new commits coming in
+#### Fake new data coming in
 
-    rake dev:commits
+    rake dev:commits N=3  # 3 new commits
+    rake dev:comments N=3  # 3 new comments
 
 ### Test
 
