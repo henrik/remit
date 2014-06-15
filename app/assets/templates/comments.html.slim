@@ -9,7 +9,7 @@ ul
       ' by
       strong
         ' {{comment.commit_author_name}}
-    p ng-bind-html="comment.body"
+    p="{{comment.body}}"
 
     / FIXME: Apply emoji after this security issue has been adressed:
     / https://github.com/globaldev/angular-emoji-filter/issues/7
