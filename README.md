@@ -48,6 +48,10 @@ Run:
 
 Visit <http://localhost:9292>
 
+#### Fake new commits coming in
+
+    rake dev:commits
+
 ### Test
 
     rake
