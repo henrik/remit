@@ -27,12 +27,12 @@ app.run ($rootScope, $location, Pusher) ->
   # We must receive pushes even before the respective controllers have loaded.
 
   Pusher.subscribe "the_channel", "commits_updated", (data) ->
-    console.log "got commits", JSON.parse(data.commits)
+    console.log "got commits", data.commits
 
     # concat didn't trigger an update for some reason
-    for commit in JSON.parse(data.commits).reverse()
+    for commit in data.commits.reverse()
       $rootScope.commits.unshift(commit)
 
   Pusher.subscribe "the_channel", "comment_updated", (data) ->
-    console.log "got comment", JSON.parse(data.comment)
-    $rootScope.comments.unshift(JSON.parse(data.comment))
+    console.log "got comment", data.comment
+    $rootScope.comments.unshift(data.comment)

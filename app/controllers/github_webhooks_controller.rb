@@ -27,7 +27,7 @@ class GithubWebhooksController < ApplicationController
     payload = params[:comment]
     comment = Comment.create_or_update_from_payload(payload)
 
-    push "comment_updated", comment: comment.to_json
+    push "comment_updated", comment: comment.as_json
 
     render text: "Thanks!"
   end
@@ -39,7 +39,7 @@ class GithubWebhooksController < ApplicationController
       Commit.create_or_update_from_payload(payload, params)
     }
 
-    push "commits_updated", commits: commits.to_json
+    push "commits_updated", commits: commits.as_json
 
     render text: "Thanks!"
   end

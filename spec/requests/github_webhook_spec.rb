@@ -10,7 +10,7 @@ describe "Receiving GitHub payloads by webhook", :pusher do
   end
 
   it "stores commit comments and pushes an event" do
-    expect_push "comment_updated", { comment: a_string_including("Hi.") }
+    expect_push "comment_updated", { comment: a_hash_including("body" => "Hi.") }
 
     post "/github_webhook",
       { comment: attributes_for(:comment, body: "Hi.")[:payload] },
@@ -23,7 +23,12 @@ describe "Receiving GitHub payloads by webhook", :pusher do
   end
 
   it "stores commits and pushes an event" do
-    expect_push "commits_updated", { commits: a_string_including("faa") }
+    expect_push "commits_updated", {
+      commits: [
+        a_hash_including("short_sha" => "faa" ),
+        a_hash_including("short_sha" => "aaf" ),
+      ],
+    }
 
     post "/github_webhook",
       {
