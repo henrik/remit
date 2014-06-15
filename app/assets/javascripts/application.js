@@ -17,6 +17,7 @@
 //= require angular-gravatar
 //= require angular-local-storage
 //= require angular-pusher
+//= require pusher
 
 //= require_tree ./vendor
 //= require ./angular/app
