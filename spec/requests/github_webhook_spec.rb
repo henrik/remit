@@ -49,8 +49,6 @@ describe "Receiving GitHub payloads by webhook" do
   private
 
   def expect_push(event, hash)
-    pusher_instance = double(:pusher_instance)
-    expect(Pusher).to receive(:[]).with("the_channel").and_return(pusher_instance)
-    expect(pusher_instance).to receive(:trigger).with(event, hash)
+    expect(Pusher).to receive(:trigger).with("the_channel", event, hash)
   end
 end

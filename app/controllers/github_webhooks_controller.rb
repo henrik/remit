@@ -45,7 +45,7 @@ class GithubWebhooksController < ApplicationController
   end
 
   def push(event, hash)
-    Pusher["the_channel"].trigger(event, hash)
+    Pusher.trigger("the_channel", event, hash)
   end
 
   def require_auth_key
