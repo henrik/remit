@@ -21,7 +21,7 @@
     a { opacity: 0.5; }
     &.current a {
       opacity: 1;
-      font-weight: 600;
+      font-weight: $weight-bold;
     }
   }
 

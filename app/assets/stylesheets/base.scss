@@ -14,3 +14,25 @@ a {
   color: #555;
   &:hover { color: #777; }
 }
+
+label {
+  font-weight: $weight-bold;
+}
+
+input, button {
+  font-size: $font-medium;
+  padding: 5px 10px;
+}
+
+input {
+  border: 1px solid $dark-gray;
+}
+
+button {
+  background: $gray;
+  border: 1px solid $dark-gray;
+  border-radius: 5px;
+  box-shadow: $dark-gray 0 1px 0;
+  &:active { background: $mid-gray; }
+  &:focus { outline: 0; }
+}
