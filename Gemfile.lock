@@ -31,7 +31,6 @@ GEM
     addressable (2.3.6)
     angular_rails_csrf (1.0.1)
       rails (>= 3, < 5)
-    angularjs-rails (1.2.16)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     capybara (2.3.0)
@@ -120,11 +119,15 @@ GEM
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
     rails-assets-angular (1.2.18)
+    rails-assets-angular-animate (1.2.18)
+      rails-assets-angular (= 1.2.18)
     rails-assets-angular-gravatar (0.1.5)
       rails-assets-angular (~> 1.0)
     rails-assets-angular-local-storage (0.0.5)
     rails-assets-angular-pusher (0.0.8)
       rails-assets-angular (~> 1.2.0)
+    rails-assets-angular-route (1.2.18)
+      rails-assets-angular (= 1.2.18)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -202,7 +205,6 @@ PLATFORMS
 
 DEPENDENCIES
   angular_rails_csrf
-  angularjs-rails
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
@@ -214,9 +216,12 @@ DEPENDENCIES
   pusher
   pusher-fake
   rails (= 4.1.1)
+  rails-assets-angular
+  rails-assets-angular-animate
   rails-assets-angular-gravatar
   rails-assets-angular-local-storage
   rails-assets-angular-pusher
+  rails-assets-angular-route
   rails_12factor
   rspec-rails
   sass-rails (~> 4.0.3)

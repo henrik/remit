@@ -7,7 +7,6 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'angularjs-rails'
 gem 'slim'
 gem 'honeybadger'
 gem 'pusher'
@@ -33,7 +32,9 @@ end
 # After adding one, remember to:
 #   * require from application.js / application.scss
 #   * restart the Rails server
-gem 'rails-assets-angular-gravatar'
+gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
+gem 'rails-assets-angular-animate'
 gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-local-storage'
 gem 'rails-assets-angular-pusher'
