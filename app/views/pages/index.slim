@@ -1,7 +1,7 @@
 doctype html
 html(
   ng-app="Remit"
-  ng-init="comments = #{comments.to_json}; commits = #{commits.to_json}"
+  ng-init="comments = #{comments.to_json}; commits = #{commits.to_json}; maxRecords = #{max_records.to_json}"
 )
   head
     title(ng-bind="pageTitle") Remit

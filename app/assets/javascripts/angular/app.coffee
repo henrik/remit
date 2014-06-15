@@ -15,7 +15,9 @@ app.run ($rootScope, $location, Pusher) ->
     Pusher.subscribe "the_channel", event, cb
 
   subscribe "commits_updated", (data) ->
-    $rootScope.commits = data.commits.concat($rootScope.commits)
+    $rootScope.commits = data.commits.
+      concat($rootScope.commits).
+      slice(0, $rootScope.maxRecords)  # Stay within the maxRecords limit.
 
   subscribe "comment_updated", (data) ->
     $rootScope.comments.unshift(data.comment)
