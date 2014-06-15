@@ -30,6 +30,10 @@ group :development, :test do
 end
 
 # Bower components via rails-assets.org
+# After adding one, remember to:
+#   * require from application.js / application.scss
+#   * restart the Rails server
+gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-local-storage'
 gem 'rails-assets-angular-pusher'
