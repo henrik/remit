@@ -15,9 +15,7 @@ app.run ($rootScope, $location, Pusher) ->
     Pusher.subscribe "the_channel", event, cb
 
   subscribe "commits_updated", (data) ->
-    # concat didn't trigger an update for some reason
-    for commit in data.commits.reverse()
-      $rootScope.commits.unshift(commit)
+    $rootScope.commits = data.commits.concat($rootScope.commits)
 
   subscribe "comment_updated", (data) ->
     $rootScope.comments.unshift(data.comment)
