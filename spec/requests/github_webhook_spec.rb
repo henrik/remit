@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Receiving GitHub payloads by webhook" do
+describe "Receiving GitHub payloads by webhook", :pusher do
   it "handles pings zenfully" do
     post "/github_webhook",
       { zen: "Yo.", hook_id: 123 },
@@ -22,7 +22,7 @@ describe "Receiving GitHub payloads by webhook" do
     expect(comment.payload[:body]).to eq "Hi."
   end
 
-  it "stores commits" do
+  it "stores commits and pushes an event" do
     expect_push "commits_updated", { commits: a_string_including("faa") }
 
     post "/github_webhook",
@@ -49,6 +49,6 @@ describe "Receiving GitHub payloads by webhook" do
   private
 
   def expect_push(event, hash)
-    expect(Pusher).to receive(:trigger).with("the_channel", event, hash)
+    expect(Pusher).to receive(:trigger).with("the_channel", event, hash).and_call_original
   end
 end

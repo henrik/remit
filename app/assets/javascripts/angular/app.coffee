@@ -2,11 +2,18 @@ window.app = angular.module("Remit",
   [ "ngRoute", "ngAnimate", "doowb.angular-pusher", "ui.gravatar", "emoji" ])
 
 app.config (PusherServiceProvider) ->
+  # Configure for pusher-fake in tests.
+  if window.pusherOptions
+    opts = pusherOptions
+  else
+    opts = {}
+
+  # Uncomment for debug.
+  # opts.log = (m) -> window.console.log(m)
+
   PusherServiceProvider
-    .setToken(pusherKey)
-    .setOptions({
-      #log: (m) -> window.console.log(m)
-    })
+    .setToken(window.pusherKey)
+    .setOptions(opts)
 
 angular.module("ui.gravatar").config (gravatarServiceProvider) ->
     gravatarServiceProvider.secure = true  # https
@@ -22,8 +29,6 @@ app.run ($rootScope, $location, Pusher) ->
   Pusher.subscribe "the_channel", "commits_updated", (data) ->
     console.log "got commits", JSON.parse(data.commits)
 
-    # unshift would be ineffective; we push and sort with a filter
-    # http://stackoverflow.com/a/16874794/6962
     # concat didn't trigger an update for some reason
     for commit in JSON.parse(data.commits).reverse()
       $rootScope.commits.unshift(commit)

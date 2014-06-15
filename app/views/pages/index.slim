@@ -39,3 +39,7 @@ html(
 
     javascript:
       window.pusherKey = "#{Pusher.key}";
+
+    - if Rails.env.test?
+      javascript:
+        window.pusherOptions = #{raw PusherFake.configuration.to_options.to_json};
