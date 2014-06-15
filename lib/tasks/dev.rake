@@ -15,7 +15,7 @@ namespace :dev do
       },
       { "X-Github-Event" => "push" }
 
-    body = session.response.body
-    p "Server responds: #{body}"
+    puts "Server responds:"
+    puts session.response.body
   end
 end
