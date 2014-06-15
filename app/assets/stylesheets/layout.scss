@@ -10,10 +10,10 @@
     width: 33%;
     text-align: center;
 
-    border-right: 1px solid $gray;
+    border-right: 1px solid $border-color;
     &:last-child { border-right: 0; }
 
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $border-color;
     &.current { border-bottom-color: transparent; }
 
     // Put the opacity on the link, not the li,
@@ -65,6 +65,8 @@ $content-width: 560px;
 }
 
 footer {
-  margin: $vspace $left-column-inset 0 $left-column-inset;
+  border-top: 1px solid $border-color;
+  padding: $vspace $left-column-inset $vspace $left-column-inset;
+  margin: 0;
   font-size: $font-small;
 }
