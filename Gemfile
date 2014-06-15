@@ -29,9 +29,11 @@ group :development, :test do
 end
 
 # Bower components via rails-assets.org
+#
 # After adding one, remember to:
 #   * require from application.js / application.scss
 #   * restart the Rails server
+#
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-animate'
