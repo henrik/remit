@@ -19,6 +19,5 @@
 //= require angular-pusher
 //= require pusher
 
-//= require_tree ./vendor
 //= require ./angular/app
 //= require_tree ./angular

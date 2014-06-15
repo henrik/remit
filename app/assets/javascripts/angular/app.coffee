@@ -1,7 +1,7 @@
 window.app = angular.module "Remit",
   [
     "ngRoute", "ngAnimate",
-    "doowb.angular-pusher", "ui.gravatar", "emoji", "LocalStorageModule",
+    "doowb.angular-pusher", "ui.gravatar", "LocalStorageModule",
   ]
 
 app.config (PusherServiceProvider) ->
