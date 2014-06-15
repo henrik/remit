@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Receiving GitHub payloads by webhook", :pusher do
+describe "Receiving GitHub payloads by webhook" do
   it "handles pings zenfully" do
     post "/github_webhook",
       { zen: "Yo.", hook_id: 123 },

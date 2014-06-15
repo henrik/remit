@@ -39,3 +39,13 @@ app.run ($rootScope, $location, Pusher) ->
   Pusher.subscribe "the_channel", "comment_updated", (data) ->
     console.log "got comment", data.comment
     $rootScope.comments.unshift(data.comment)
+
+  Pusher.subscribe "the_channel", "commit_reviewed", (data) ->
+    for commit in $rootScope.commits
+      if commit.id == data.id
+        commit.reviewed = true
+
+  Pusher.subscribe "the_channel", "commit_unreviewed", (data) ->
+    for commit in $rootScope.commits
+      if commit.id == data.id
+        commit.reviewed = false

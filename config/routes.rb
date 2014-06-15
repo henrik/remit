@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resource :github_webhook, only: [ :create ]
+  post "/commits/:id/reviewed" => 'commits#reviewed'
+  delete "/commits/:id/unreviewed" => 'commits#unreviewed'
 end

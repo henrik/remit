@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def require_auth_key
     raise "Implement me in subclasses."
   end
+
+  def push_event(event, hash)
+    Pusher.trigger("the_channel", event, hash)
+  end
 end

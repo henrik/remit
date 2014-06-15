@@ -1,14 +1,19 @@
 ul.commits-list
   li.commit(
-    ng-repeat="commit in commits track by commit.short_sha"
-    ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit) }"
+    ng-repeat="commit in commits track by commit.id"
+    ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
   )
     .commit-wrapper
+      button.small.mark-as-reviewed ng-click="markAsReviewed(commit)" ng-hide="commit.reviewed" Mark as reviewed
+      button.small.mark-as-new ng-click="markAsNew(commit)" ng-show="commit.reviewed" Mark as new
+
       img.commit-avatar gravatar-src="commit.author_email"
       '
+
       p.commit-summary
         a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           | {{commit.summary}}
+
       p.commit-details
         a.sha(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
           | {{commit.short_sha}}

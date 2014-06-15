@@ -12,6 +12,12 @@ app.controller "CommitsCtrl", ($rootScope, $scope, Commits, localStorageService)
   $scope.clicked = (commit) ->
     Commits.yourLastClicked = commit
 
+  $scope.markAsReviewed = (commit) ->
+    Commits.markAsReviewed(commit)
+
+  $scope.markAsNew = (commit) ->
+    Commits.markAsNew(commit)
+
 app.controller "CommentsCtrl", ($rootScope, $scope) ->
   $rootScope.pageTitle = "Comments"
 

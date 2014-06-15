@@ -27,7 +27,7 @@ class GithubWebhooksController < ApplicationController
     payload = params[:comment]
     comment = Comment.create_or_update_from_payload(payload)
 
-    push "comment_updated", comment: comment.as_json
+    push_event "comment_updated", comment: comment.as_json
 
     render text: "Thanks!"
   end
@@ -39,13 +39,9 @@ class GithubWebhooksController < ApplicationController
       Commit.create_or_update_from_payload(payload, params)
     }
 
-    push "commits_updated", commits: commits.as_json
+    push_event "commits_updated", commits: commits.as_json
 
     render text: "Thanks!"
-  end
-
-  def push(event, hash)
-    Pusher.trigger("the_channel", event, hash)
   end
 
   def require_auth_key

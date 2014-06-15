@@ -12,10 +12,6 @@
   position: relative;
   top: -1px;
 
-  &:first-child {
-    top: 0;
-  }
-
   &:last-child {
     border-bottom: 0;
   }
@@ -30,7 +26,11 @@
 }
 
 .your-last-clicked-commit {
-  border-right: 10px solid goldenrod;
+  border-right: 10px solid $gold;
+}
+
+.is-reviewed {
+  background: $green;
 }
 
 .commit.authored-by-you {
@@ -47,7 +47,7 @@
     margin-top: -2px;
   }
 
-  .sha, .by-author {
+  .sha, .by-author, button {
     display: none;
   }
 
@@ -63,6 +63,14 @@ img.commit-avatar {
   float: left;
   margin: 4px 10px 4px 0;
   border-radius: 5px;
+}
+
+.commit button {
+  float: right;
+}
+
+.mark-as-reviewed {
+  background-color: $green;
 }
 
 // angular-animation

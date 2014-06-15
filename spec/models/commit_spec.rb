@@ -63,3 +63,32 @@ describe Commit, "#branch" do
     expect(commit.branch).to eq "master"
   end
 end
+
+describe Commit, "#reviewed?" do
+  it "is true if reviewed_at is set" do
+    commit = build(:commit, reviewed_at: Time.now)
+    expect(commit.reviewed?).to be_truthy
+  end
+end
+
+describe Commit, "#mark_as_reviewed" do
+  it "assigns reviewed_at and persists the record" do
+    commit = build(:commit, reviewed_at: nil)
+
+    commit.mark_as_reviewed
+
+    expect(commit).to be_persisted
+    expect(commit.reviewed_at).to be_present
+  end
+end
+
+describe Commit, "#mark_as_unreviewed" do
+  it "unassigns reviewed_at and persists the record" do
+    commit = build(:commit, reviewed_at: Time.now)
+
+    commit.mark_as_unreviewed
+
+    expect(commit).to be_persisted
+    expect(commit.reviewed_at).to be_nil
+  end
+end

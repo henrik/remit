@@ -22,6 +22,7 @@ class Commit < ActiveRecord::Base
   def as_json(opts = {})
     super(opts.reverse_merge(
       methods: [
+        :id,
         :short_sha,
         :author_name,
         :author_email,
@@ -29,6 +30,7 @@ class Commit < ActiveRecord::Base
         :url,
         :repository,
         :branch,
+        :reviewed,
       ],
       only: [],
     ))
@@ -60,5 +62,21 @@ class Commit < ActiveRecord::Base
 
   def url
     payload.fetch(:url)
+  end
+
+  def reviewed?
+    reviewed_at?
+  end
+
+  # Named without questionmark for as_json.
+  # FIXME: Generate JSON in a better way.
+  alias_method :reviewed, :reviewed?
+
+  def mark_as_reviewed
+    update_attribute(:reviewed_at, Time.now)
+  end
+
+  def mark_as_unreviewed
+    update_attribute(:reviewed_at, nil)
   end
 end

@@ -28,6 +28,8 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
+    angular_rails_csrf (1.0.1)
+      rails (>= 3, < 5)
     angularjs-rails (1.2.16)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
@@ -192,6 +194,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular_rails_csrf
   angularjs-rails
   capybara
   coffee-rails (~> 4.0.0)
