@@ -22,3 +22,7 @@ FactoryGirl.define do
     }
   end
 end
+
+def FactoryGirl.comment_payload(custom = {})
+  attributes_for(:comment, custom).fetch(:payload)
+end

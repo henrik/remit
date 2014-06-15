@@ -13,7 +13,7 @@ describe "Receiving GitHub payloads by webhook", :pusher do
     expect_push "comment_updated", { comment: a_hash_including("body" => "Hi.") }
 
     post "/github_webhook",
-      { comment: attributes_for(:comment, body: "Hi.")[:payload] },
+      { comment: FactoryGirl.comment_payload(body: "Hi.") },
       { "X-Github-Event" => "commit_comment" }
 
     expect(response).to be_success
