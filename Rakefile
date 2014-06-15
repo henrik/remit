@@ -4,3 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+# Run JS unit tests after the default task (i.e. the RSpec suite).
+task :default => "spec:javascript"

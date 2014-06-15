@@ -26,6 +26,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pusher-fake'
+  gem 'jasmine-rails'
 end
 
 # Bower components via rails-assets.org
@@ -41,3 +42,7 @@ gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-local-storage'
 gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
+
+group :development, :test do
+  gem 'rails-assets-angular-mocks'
+end
