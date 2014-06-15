@@ -48,9 +48,9 @@ $content-width: 560px;
 .wrapper {
   position: absolute;
   top: 0;
-  left: $body-padding-y;
+  left: 0;
   bottom: 0;
-  width: $content-width - $body-padding-y;
+  width: $content-width;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0 0 $vspace 0;
