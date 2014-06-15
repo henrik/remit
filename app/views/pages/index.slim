@@ -9,11 +9,15 @@ html(
     = stylesheet_link_tag    "application", media: "all"
     = csrf_meta_tags
   body
-    .fluid-app-info
-      p: strong GitHub goes here.
-      p
-        ' Please use <a href="http://fluidapp.com/">Fluid.app</a>.
-        ' <a href="https://github.com/henrik/remit#use-with-fluidapp">See README</a> for instructions.
+    .fluid-app-info ng-controller="FluidAppCtrl"
+      div ng-hide="inFluidApp"
+        p: strong GitHub goes here.
+        p
+          ' Please use <a href="http://fluidapp.com/">Fluid.app</a>.
+          ' <a href="https://github.com/henrik/remit#use-with-fluidapp">See README</a> for instructions.
+      div ng-show="inFluidApp"
+        p: strong Fluid.app detected.
+        p Resize the pane so this becomes hidden.
 
     .wrapper
       nav.top-nav

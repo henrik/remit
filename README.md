@@ -104,12 +104,13 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
   * Panel Preferences:
     * Panel split divider style: thin (may need a restart of the app to kick in)
   * The first of the two "Browsa" panels:
-    * Enter the Remit URL as home page, including the `?auth_key=SOMETHING` parameter.
+    * Enter the Remit URL as home page, including the `?auth_key=SOMETHING` parameter, and tack on an `app=true` parameter.
     * Navigation bar: is always hidden
     * Clicked links open in: current tab in current window
 * In the "Panels" menu, select the first Browsa panel to show it
 * Drag the divider until it looks good
 
+The `app=true` parameter tells Remit you want it to behave differently than in a regular browser.
 
 ## Credits
 
