@@ -17,18 +17,3 @@ app.controller "CommitsCtrl", ($rootScope, $scope, Commits, localStorageService)
 
   $scope.markAsNew = (commit) ->
     Commits.markAsNew(commit)
-
-app.controller "CommentsCtrl", ($rootScope, $scope) ->
-  $rootScope.pageTitle = "Comments"
-
-app.controller "SettingsCtrl", ($rootScope, $scope, localStorageService) ->
-  $rootScope.pageTitle = "Settings"
-
-  $scope.settings =
-    name: localStorageService.get("name")
-
-  $scope.save = ->
-    localStorageService.set("name", $scope.settings.name)
-
-app.controller "FluidAppInfoCtrl", ($scope, FluidApp) ->
-  $scope.inFluidApp = FluidApp.running
