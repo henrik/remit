@@ -10,14 +10,12 @@ html(
     = csrf_meta_tags
   body
     .fluid-app-info ng-controller="FluidAppInfoCtrl"
-      div ng-hide="inFluidApp"
-        p: strong GitHub goes here.
-        p
-          ' Please use <a href="http://fluidapp.com/" fluid-app-link>Fluid.app</a>.
-          ' <a href="https://github.com/henrik/remit#use-with-fluidapp" fluid-app-link>See README</a> for instructions.
-      div ng-show="inFluidApp"
-        p: strong Fluid.app detected.
-        p Resize the pane so this becomes hidden.
+      p: strong GitHub goes here.
+      p ng-hide="inFluidApp"
+        ' Please use <a href="http://fluidapp.com/" fluid-app-link>Fluid.app</a>.
+        ' <a href="https://github.com/henrik/remit#use-with-fluidapp" fluid-app-link>See README</a> for instructions.
+      p ng-show="inFluidApp"
+        ' Fluid.app detected. Resize the pane so this becomes hidden.
 
     .wrapper
       nav.top-nav
