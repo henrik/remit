@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   force_ssl if: :production?
-  before_filter :require_auth_key
+  before_filter :require_auth_key, if: :production?
 
   private
 

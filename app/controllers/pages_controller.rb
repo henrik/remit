@@ -12,8 +12,6 @@ class PagesController < ApplicationController
   private
 
   def require_auth_key
-    return unless production?
-
     expected_key = ENV["AUTH_KEY"]
 
     raise "AUTH_KEY must be configured in production. Please see README." unless expected_key

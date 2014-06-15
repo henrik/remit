@@ -49,15 +49,11 @@ class GithubWebhooksController < ApplicationController
   end
 
   def require_auth_key
-    return unless production?
+    unless ENV["WEBHOOK_KEY"]
+      raise "WEBHOOK_KEY must be configured in production. Please see README."
+    end
 
-    expected_key = ENV["WEBHOOK_KEY"]
-
-    raise "WEBHOOK_KEY must be configured in production. Please see README." unless expected_key
-
-    if params[:auth_key] == expected_key
-      true
-    else
+    unless params[:auth_key] == ENV["WEBHOOK_KEY"]
       render status: 401, text: "Not authorized! Did you forget to provide auth_key in the URL?"
     end
   end
