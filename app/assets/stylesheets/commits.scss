@@ -21,6 +21,15 @@
   margin: 0 10px;
 }
 
+.commit-avatar {
+  background: $gray;
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin: 1px 10px 4px 0;
+  border-radius: 5px;
+}
+
 .commit-details {
   font-size: $font-small;
 }
@@ -29,16 +38,9 @@
   border-right: 10px solid $gold;
 }
 
-.is-reviewed {
-  background: $green;
-}
-
-.commit.authored-by-you {
+.commit.authored-by-you,
+.commit.is-reviewed {
   padding: 8px 0;
-
-  .commit-wrapper {
-    opacity: 0.6;
-  }
 
   .commit-avatar {
     width: 20px;
@@ -46,7 +48,7 @@
     margin-top: -2px;
   }
 
-  .sha, .by-author, button {
+  .sha, .by-author {
     display: none;
   }
 
@@ -55,13 +57,22 @@
   }
 }
 
-.commit-avatar {
-  background: $gray;
-  width: 40px;
-  height: 40px;
-  float: left;
-  margin: 1px 10px 4px 0;
-  border-radius: 5px;
+.authored-by-you {
+  .commit-wrapper {
+    opacity: 0.6;
+  }
+
+  button {
+    display: none;
+  }
+}
+
+.is-reviewed {
+  background: $green;
+
+  button {
+    margin-top: -3px;
+  }
 }
 
 .commit button {
