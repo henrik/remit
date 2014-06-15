@@ -1,5 +1,6 @@
 ruby '2.1.2'
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.1.1'
 gem 'pg'
@@ -27,3 +28,8 @@ group :development, :test do
   gem 'faker'
   gem 'pusher-fake'
 end
+
+# Bower components via rails-assets.org
+gem 'rails-assets-angular-gravatar'
+gem 'rails-assets-angular-local-storage'
+gem 'rails-assets-angular-pusher'

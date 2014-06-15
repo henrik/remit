@@ -9,10 +9,17 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
+// From angularjs-rails
 //= require angular
 //= require angular-route
 //= require angular-animate
+
+// Bower components via rails-assets.org
+//= require angular-gravatar
+//= require angular-local-storage
+//= require angular-pusher
+
 //= require_tree ./vendor
 //= require ./angular/app
 //= require_tree ./angular
