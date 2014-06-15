@@ -1,3 +1,6 @@
+# Handles updates to commits.
+# Looking for the list of commits? That's JS via PagesController.
+
 class CommitsController < UserFacingController
   def reviewed
     id = params[:id].to_i
