@@ -1,4 +1,6 @@
 class PagesController < UserFacingController
+  # The number of records to show (on load and after updates).
+  # The reason for a limit is that we expect (but haven't verified) it could get slow.
   NUMBER_OF_COMMENTS = 250
   NUMBER_OF_COMMITS  = 250
 

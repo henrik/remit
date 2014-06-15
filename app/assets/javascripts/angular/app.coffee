@@ -8,25 +8,28 @@ app.run ($rootScope, $location, Pusher) ->
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path
 
-  # We must receive pushes even before the respective controllers have loaded.
+  # Why is this not in the respective controllers? Because we
+  # must receive pushes even before you visit (=load) them.
 
-  Pusher.subscribe "the_channel", "commits_updated", (data) ->
-    console.log "got commits", data.commits
+  subscribe = (event, cb) ->
+    Pusher.subscribe "the_channel", event, cb
 
+  subscribe "commits_updated", (data) ->
     # concat didn't trigger an update for some reason
     for commit in data.commits.reverse()
       $rootScope.commits.unshift(commit)
 
-  Pusher.subscribe "the_channel", "comment_updated", (data) ->
-    console.log "got comment", data.comment
+  subscribe "comment_updated", (data) ->
     $rootScope.comments.unshift(data.comment)
 
-  Pusher.subscribe "the_channel", "commit_reviewed", (data) ->
+  subscribe "commit_reviewed", (data) ->
     for commit in $rootScope.commits
       if commit.id == data.id
         commit.reviewed = true
+        return  # Break the loop
 
-  Pusher.subscribe "the_channel", "commit_unreviewed", (data) ->
+  subscribe "commit_unreviewed", (data) ->
     for commit in $rootScope.commits
       if commit.id == data.id
         commit.reviewed = false
+        return  # Break the loop
