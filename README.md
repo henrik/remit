@@ -85,6 +85,32 @@ Not so fortunate? In the settings for any repo you want to use this with, add a 
 Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
 
 
+## Use with Fluid.app
+
+With [Fluid.app](http://fluidapp.com/), you can see Remit side-by-side with GitHub in two panes.
+
+This is not possible with regular iframes, as GitHub doesn't allow embedding.
+
+Fluid.app is for OS X. Please do contribute instructions for other platforms.
+
+* Install [Fluid.app](http://fluidapp.com/).
+* Launch Fluid.app, create a new app:
+  * The URL should be `http://github.com`.
+  * Use any name and icon you like. It defaults to the GitHub icon.
+  * Let it launch the app.
+* Open your app's preferences and configure it like this:
+  * Whitelist:
+    * Allow browsing to any URL
+  * Panel Preferences:
+    * Panel split divider style: thin (may need a restart of the app to kick in)
+  * The first of the two "Browsa" panels:
+    * Enter the Remit URL as home page, including the `?auth_key=SOMETHING` parameter.
+    * Navigation bar: is always hidden
+    * Clicked links open in: current tab in current window
+* In the "Panels" menu, select the first Browsa panel to show it
+* Drag the divider until it looks good
+
+
 ## Credits
 
 * Mostly by [Henrik Nyh](http://henrik.nyh.se)
