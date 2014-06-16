@@ -7,9 +7,7 @@ describe "fluidAppLink directive", ->
   FluidApp = undefined
 
   beforeEach ->
-    module ($provide) ->
-      $provide.value("FluidApp", {})
-      null
+    provide "FluidApp", {}
 
     inject (_FluidApp_) ->
       FluidApp = _FluidApp_
