@@ -55,7 +55,19 @@ Visit <http://localhost:9292>
 
 ### Test
 
+    # Full suite
     rake
+
+    # Only Ruby tests, skip JS unit tests
+    rake spec
+
+    # Only JS unit tests (Jasmine in a headless browser)
+    # Yes, you need to provide the RAILS_ENV: https://github.com/searls/jasmine-rails/issues/121
+    RAILS_ENV=test rake spec:javascript
+
+    # The same JS unit tests in a headful browser
+    # Assumes you've started a dev server with bin/rails server
+    open http://localhost:3000/specs
 
 ### Production
 
