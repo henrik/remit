@@ -88,9 +88,9 @@ Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku co
 
 ## Use with Fluid.app
 
-With [Fluid.app](http://fluidapp.com/), you can see Remit side-by-side with GitHub in two panes.
+Remit is intended to be used side-by-side with a GitHub pane.
 
-This is not possible with regular iframes, as GitHub doesn't allow embedding.
+This is sadly not possible with regular frames or iframes, as GitHub doesn't allow embedding. But it can be achieved with [Fluid.app](http://fluidapp.com/).
 
 Fluid.app is for OS X. Please do contribute instructions for other platforms.
 
@@ -103,7 +103,7 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
   * Whitelist:
     * Allow browsing to any URL
   * Panel Preferences:
-    * Panel split divider style: thin (may need a restart of the app to kick in)
+    * Panel split divider style: thin (a purely aesthetic choice; may need a restart of the app to kick in)
   * The first of the two "Browsa" panels:
     * Enter the Remit URL as home page, including the `?auth_key=SOMETHING` parameter, and tack on an `app=true` parameter.
     * Navigation bar: is always hidden
