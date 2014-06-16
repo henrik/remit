@@ -22,5 +22,5 @@ describe "Service: FluidApp.running", ->
       expect(FluidApp.running).toBeFalsy()
 
 
-stubQueryString = (value) ->
-  provide "$window", { location: { search: value } }
+  stubQueryString = (value) ->
+    provide "$window", { location: { search: value } }

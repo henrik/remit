@@ -3,15 +3,15 @@
 #= require angular/directives/fluid_app_link
 
 describe "fluidAppLink directive", ->
-  $compile = $rootScope = undefined
-  FluidApp = {}
 
+  FluidApp = {}
   beforeEach ->
     provide "FluidApp", FluidApp
 
-    inject (_$compile_, _$rootScope_) ->
-      $compile = _$compile_
-      $rootScope = _$rootScope_
+  $compile = $rootScope = undefined
+  beforeEach inject (_$compile_, _$rootScope_) ->
+    $compile = _$compile_
+    $rootScope = _$rootScope_
 
   it "adds no target if FluidApp.running is true", ->
     FluidApp.running = true
