@@ -3,8 +3,6 @@
 #= require angular/directives/fluid_app_link
 
 describe "fluidAppLink directive", ->
-  beforeEach module "Remit"
-
   $compile = $rootScope = undefined
   FluidApp = undefined
 

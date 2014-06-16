@@ -2,6 +2,8 @@
 #= require angular/angular
 #= require angular-mocks/angular-mocks
 
+beforeEach module "Remit"
+
 window.provide = (name, value) ->
   module ($provide) ->
     $provide.value name, value

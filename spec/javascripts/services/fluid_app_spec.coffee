@@ -3,8 +3,6 @@
 #= require angular/services/fluid_app
 
 describe "Service: FluidApp.running", ->
-  beforeEach module "Remit"
-
   it "is true if the location query string contains ?app=something", ->
     stubQueryString "?app=1"
 
