@@ -4,7 +4,12 @@ window.app = angular.module "Remit",
     "doowb.angular-pusher", "ui.gravatar", "LocalStorageModule",
   ]
 
-app.run ($rootScope, $location, Pusher) ->
+app.run ($rootScope, $location, localStorageService, Pusher) ->
+
+  $rootScope.settings =
+    email: localStorageService.get("email")
+    name: localStorageService.get("name")
+
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path
 

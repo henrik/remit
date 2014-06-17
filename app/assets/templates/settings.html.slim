@@ -1,19 +1,17 @@
 .settings-wrapper
-  img.settings-gravatar gravatar-src="settings.email"
+  form
+    / TODO: Better feedback.
 
-  form ng-submit="save()"
     p
       label for="setting-email" Your email:
       '
-      input id="setting-email" ng-model="settings.email"
+      input type="email" id="setting-email" ng-change="save()" ng-model="settings.email"
 
     p.help-text Uniquely identifies you as a reviewer. Used for your Gravatar.
 
     p
       label for="setting-name" Your name:
       '
-      input id="setting-name" ng-model="settings.name"
+      input id="setting-name" ng-change="save()" ng-model="settings.name"
 
     p.help-text Determines <em>your</em> commits by substring: if your name is "Ada Lovelace", a commit authored by "Ada Lovelace and Charles Babbage" is considered yours.
-
-    p: button.big Save

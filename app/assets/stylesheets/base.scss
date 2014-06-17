@@ -19,7 +19,7 @@ label {
   font-weight: $weight-bold;
 }
 
-input, button.big {
+input {
   font-size: $font-medium;
   padding: 5px 10px;
 }
@@ -38,10 +38,5 @@ button {
     border-radius: 3px;
     font-size: $font-smaller;
     padding: 3px 5px;
-  }
-
-  &.big {
-    box-shadow: $dark-gray 0 1px 0;
-    border-radius: 5px;
   }
 }
