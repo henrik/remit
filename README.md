@@ -125,6 +125,25 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
 
 The `app=true` parameter tells Remit you want it to behave differently than in a regular browser.
 
+## Import reviewed state from Hubreview
+
+Run this in a Heroku console in the Hubreview repo:
+
+```
+json = Revision.where(reviewed: true).pluck(:name, :in_review_at, :created_at, :review_time).map { |n,ra,ca,rt| { sha: n, at: ((ra || ca) + rt.to_i).to_i } }.to_json; nil
+File.write("tmp/json", json)
+`scp tmp/json you@your-server`
+```
+
+And this in Remit:
+
+```
+`scp you@your-server:json tmp/json`
+raw = File.read("tmp/json"); raw.length
+data = JSON.parse(raw); data.first
+data.each { |x| Commit.where(sha: x["sha"]).where("reviewed_at IS NULL").update_all(reviewed_at: Time.at(x["at"])) }
+```
+
 ## Credits
 
 * Mostly by [Henrik Nyh](http://henrik.nyh.se)
