@@ -13,6 +13,7 @@ describe Commit, ".create_or_update_from_payload" do
     commit = Commit.create_or_update_from_payload({
       id: "faa",
       url: "url",
+      author: { username: "uname" },
     }, parent_payload)
 
     expect(commit).to be_persisted
@@ -24,11 +25,13 @@ describe Commit, ".create_or_update_from_payload" do
     commit = Commit.create_or_update_from_payload({
       id: "faa",
       url: "url1",
+      author: { username: "uname" },
     }, parent_payload)
 
     Commit.create_or_update_from_payload({
       id: "faa",
       url: "url2",
+      author: { username: "uname" },
     }, parent_payload)
 
     commit.reload
@@ -39,6 +42,7 @@ describe Commit, ".create_or_update_from_payload" do
   it "merges in some info from the parent payload" do
     commit = Commit.create_or_update_from_payload({
       id: "faa",
+      author: { username: "uname" },
     }, parent_payload)
 
     expect(commit.payload[:repository][:name]).to eq "myrepo"
