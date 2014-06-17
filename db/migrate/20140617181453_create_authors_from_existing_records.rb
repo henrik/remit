@@ -6,7 +6,7 @@ class CreateAuthorsFromExistingRecords < ActiveRecord::Migration
       author = Author.create_or_update_from_payload(
         name: payload.fetch(:name),
         email: payload.fetch(:email),
-        username: payload.fetch(:username),
+        username: payload[:username],
       )
 
       commit.update_attribute(:author_id, author.id)
