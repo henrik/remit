@@ -8,8 +8,8 @@ app.run ($rootScope, $location, Pusher) ->
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path
 
-  # Why is this not in the respective controllers? Because we
-  # must receive pushes even before you visit (=load) them.
+  # Why is this not in the respective controllers?
+  # Because we must receive pushes even before you visit (=load) them.
 
   subscribe = (event, cb) ->
     Pusher.subscribe "the_channel", event, cb
