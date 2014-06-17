@@ -5,7 +5,7 @@ class Commit < ActiveRecord::Base
   belongs_to :reviewed_by_author, class: Author
 
   scope :newest_first, -> { order("id DESC") }
-  scope :includes_for_listing, -> { includes(:author) }
+  scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
 
   def self.create_or_update_from_payload(payload, parent_payload)
     payload = payload.deep_symbolize_keys
@@ -40,6 +40,7 @@ class Commit < ActiveRecord::Base
         :repository,
         :branch,
         :reviewed,
+        :reviewer_email,
       ],
       only: [],
     ))
@@ -71,6 +72,10 @@ class Commit < ActiveRecord::Base
 
   def url
     payload.fetch(:url)
+  end
+
+  def reviewer_email
+    reviewed_by_author_id && reviewed_by_author.email
   end
 
   def reviewed?

@@ -5,8 +5,11 @@ ul.commits-list
     ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
   )
     .commit-wrapper
-      button.small.mark-as-reviewed ng-click="markAsReviewed(commit)" ng-hide="commit.reviewed" Mark as reviewed
-      button.small.mark-as-new ng-click="markAsNew(commit)" ng-show="commit.reviewed" Mark as new
+      .commit-controls
+        button.small.mark-as-reviewed ng-click="markAsReviewed(commit)" ng-hide="commit.reviewed" Mark as reviewed
+
+        img.commit-reviewer-avatar gravatar-src="commit.reviewer_email" ng-show="commit.reviewer_email"
+        button.small.mark-as-new ng-click="markAsNew(commit)" ng-show="commit.reviewed" Mark as new
 
       img.commit-avatar gravatar-src="commit.author_email"
       '

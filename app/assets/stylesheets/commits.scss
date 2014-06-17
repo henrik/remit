@@ -1,3 +1,5 @@
+$small-gravatar-side: 20px;
+
 .commits-list {
   list-style-type: none;
   padding: 0;
@@ -47,8 +49,8 @@
   padding: 8px 0;
 
   .commit-avatar {
-    width: 20px;
-    height: 20px;
+    width: $small-gravatar-side;
+    height: $small-gravatar-side;
     margin-top: -2px;
   }
 
@@ -74,13 +76,26 @@
 .is-reviewed {
   background: $green;
 
-  button {
+  .commit-controls {
     margin-top: -3px;
   }
 }
 
-.commit button {
+.commit-controls {
   float: right;
+  margin-left: 5px;
+
+  .mark-as-new {
+    // No idea why we need this.
+    position: relative;
+    top: -5px;
+  }
+}
+
+.commit-reviewer-avatar {
+  width: $small-gravatar-side;
+  height: $small-gravatar-side;
+  margin-right: 5px;
 }
 
 .mark-as-reviewed {
