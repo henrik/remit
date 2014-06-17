@@ -1,69 +1,72 @@
 require "rails_helper"
 
 describe "Commits page", :js do
-  it "works" do
-    # url is "/" since we'll click the link later, and we want a local
-    # path that exists.
-    commit = create(:commit, sha: "cafebabe", url: "/")
+  it "works for simultaneous visitors" do
+    create(:commit, sha: "cafebabe", url: "/")  # URL is "/" so clicking a commit brings us back.
 
-    in_browser(:one) do
+    visitors :ada, :charles do
       visit "/"
-      click_link "Commits"
-
       expect(page).to have_content "cafebabe"
     end
 
-    in_browser(:two) do
-      visit "/"
-      click_link "Commits"
+    visitor :ada do
+      commit_becomes_marked_as_last_clicked do
+        click_link "cafebabe"
+      end
 
-      expect(page).to have_content "cafebabe"
-    end
-
-    in_browser(:one) do
-      # Marks as last clicked.
-      expect(page).not_to have_selector(".your-last-clicked-commit")
-      click_link "cafebabe"
-      expect(page).to have_selector(".your-last-clicked-commit")
-
-      # Marks as reviewed.
-      expect_commit_not_to_look_reviewed
+      # Ada marks it as reviewed.
+      commit_does_not_look_reviewed
       click_button "Mark as reviewed"
-      expect_commit_to_look_reviewed
+      commit_looks_reviewed
     end
 
-    # Should be persisted in DB.
-    sleep 0.1  # FIXME: :/ Waiting for non-DOM Ajax to complete.
-    commit.reload
-    expect(commit).to be_reviewed
+    commit_is_marked_as_reviewed_in_db
 
-    in_browser(:two) do
-      # User two sees it as reviewed.
-      expect_commit_to_look_reviewed
+    visitor :charles do
+      # Charles sees that Ada reviewed it.
+      commit_looks_reviewed
 
-      # Mark as new again.
+      # Charles marks it as new.
       click_button "Mark as new"
-      expect_commit_not_to_look_reviewed
+      commit_does_not_look_reviewed
     end
 
-    in_browser(:one) do
-      # User one sees it as no longer reviewed.
-      expect_commit_not_to_look_reviewed
+    visitor :ada do
+      # Ada sees that Charles marked it as new again.
+      commit_does_not_look_reviewed
     end
   end
 
   private
 
-  def expect_commit_to_look_reviewed
+  def visitors(*names, &block)
+    names.each do |name|
+      visitor(name, &block)
+    end
+  end
+
+  def commit_becomes_marked_as_last_clicked
+    expect(page).not_to have_selector(".your-last-clicked-commit")
+    yield
+    expect(page).to have_selector(".your-last-clicked-commit")
+  end
+
+  def commit_is_marked_as_reviewed_in_db
+    sleep 0.1  # FIXME: :/ Waiting for non-DOM Ajax to complete.
+    commit = Commit.last!
+    expect(commit).to be_reviewed
+  end
+
+  def commit_looks_reviewed
     expect(page).to have_selector(".is-reviewed")
   end
 
-  def expect_commit_not_to_look_reviewed
+  def commit_does_not_look_reviewed
     expect(page).not_to have_selector(".is-reviewed")
   end
 
   # http://blog.bruzilla.com/post/20889863144/using-multiple-capybara-sessions-in-rspec-request-specs
-  def in_browser(name)
+  def visitor(name)
     old_session = Capybara.session_name
     Capybara.session_name = name
     yield

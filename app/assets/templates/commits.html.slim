@@ -1,5 +1,6 @@
 ul.commits-list
   li.commit(
+    id="commit-{{commit.id}}"
     ng-repeat="commit in commits track by commit.id"
     ng-class="{ 'your-last-clicked-commit': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
   )
