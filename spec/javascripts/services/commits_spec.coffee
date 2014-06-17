@@ -6,15 +6,18 @@ describe "Service: Commits.markAsReviewed", ->
   it "marks the model as reviewed", ->
     inject (Commits) ->
       commit = {}
-      Commits.markAsReviewed(commit)
+      Commits.markAsReviewed(commit, "charles@babbage.com")
       expect(commit.reviewed).toBeTruthy()
 
   it "tells the server it was reviewed", ->
     inject (Commits, $httpBackend) ->
-      $httpBackend.expect("POST", "/commits/123/reviewed").respond()
+      $httpBackend.expect("POST",
+        "/commits/123/reviewed",
+        email: "charles@babbage.com"
+      ).respond()
 
       commit = { id: 123 }
-      Commits.markAsReviewed(commit)
+      Commits.markAsReviewed(commit, "charles@babbage.com")
 
       $httpBackend.flush()
 

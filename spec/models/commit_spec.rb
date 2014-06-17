@@ -96,24 +96,26 @@ describe Commit, "#reviewed?" do
   end
 end
 
-describe Commit, "#mark_as_reviewed" do
-  it "assigns reviewed_at and persists the record" do
+describe Commit, "#mark_as_reviewed_by" do
+  it "assigns reviewed_at, reviewed_by_author and persists the record" do
     commit = build(:commit, reviewed_at: nil)
 
-    commit.mark_as_reviewed
+    commit.mark_as_reviewed_by("charles@babbage.com")
 
     expect(commit).to be_persisted
     expect(commit.reviewed_at).to be_present
+    expect(commit.reviewed_by_author.email).to eq "charles@babbage.com"
   end
 end
 
 describe Commit, "#mark_as_unreviewed" do
-  it "unassigns reviewed_at and persists the record" do
-    commit = build(:commit, reviewed_at: Time.now)
+  it "unassigns reviewed_at and reviewed_by_author and persists the record" do
+    commit = build(:commit, reviewed_at: Time.now, reviewed_by_author: Author.new)
 
     commit.mark_as_unreviewed
 
     expect(commit).to be_persisted
     expect(commit.reviewed_at).to be_nil
+    expect(commit.reviewed_by_author).to be_nil
   end
 end

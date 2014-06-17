@@ -2,6 +2,7 @@ class Commit < ActiveRecord::Base
   serialize :payload, Hash
 
   belongs_to :author
+  belongs_to :reviewed_by_author, class: Author
 
   scope :newest_first, -> { order("id DESC") }
   scope :includes_for_listing, -> { includes(:author) }
@@ -80,11 +81,19 @@ class Commit < ActiveRecord::Base
   # FIXME: Generate JSON in a better way.
   alias_method :reviewed, :reviewed?
 
-  def mark_as_reviewed
-    update_attribute(:reviewed_at, Time.now)
+  def mark_as_reviewed_by(email)
+    author = email.presence && Author.create_or_update_from_payload(email: email)
+
+    update_attributes!(
+      reviewed_at: Time.now,
+      reviewed_by_author: author,
+    )
   end
 
   def mark_as_unreviewed
-    update_attribute(:reviewed_at, nil)
+    update_attributes!(
+      reviewed_at: nil,
+      reviewed_by_author: nil,
+    )
   end
 end

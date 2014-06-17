@@ -11,7 +11,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, Commits, localStorageService)
     Commits.yourLastClicked = commit
 
   $scope.markAsReviewed = (commit) ->
-    Commits.markAsReviewed(commit)
+    Commits.markAsReviewed(commit, $scope.settings.email)
 
   $scope.markAsNew = (commit) ->
     Commits.markAsNew(commit)

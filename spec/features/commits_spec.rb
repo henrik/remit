@@ -10,6 +10,8 @@ describe "Commits page", :js do
     end
 
     visitor :ada do
+      configure_settings
+
       commit_becomes_marked_as_last_clicked do
         click_link "cafebabe"
       end
@@ -20,7 +22,7 @@ describe "Commits page", :js do
       commit_looks_reviewed
     end
 
-    commit_is_marked_as_reviewed_in_db
+    commit_is_marked_as_reviewed_by_ada
 
     visitor :charles do
       # Charles sees that Ada reviewed it.
@@ -45,16 +47,23 @@ describe "Commits page", :js do
     end
   end
 
+  def configure_settings
+    visit "/settings"
+    fill_in "Your email", with: "ada@lovelace.com"
+    visit "/"
+  end
+
   def commit_becomes_marked_as_last_clicked
     expect(page).not_to have_selector(".your-last-clicked-commit")
     yield
     expect(page).to have_selector(".your-last-clicked-commit")
   end
 
-  def commit_is_marked_as_reviewed_in_db
+  def commit_is_marked_as_reviewed_by_ada
     sleep 0.1  # FIXME: :/ Waiting for non-DOM Ajax to complete.
     commit = Commit.last!
     expect(commit).to be_reviewed
+    expect(commit.reviewed_by_author.email).to eq "ada@lovelace.com"
   end
 
   def commit_looks_reviewed
