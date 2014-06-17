@@ -1,4 +1,7 @@
-$small-gravatar-side: 20px;
+@mixin small-gravatar {
+  width: 20px;
+  height: 20px;
+}
 
 .commits-list {
   list-style-type: none;
@@ -49,8 +52,7 @@ $small-gravatar-side: 20px;
   padding: 8px 0;
 
   .commit-avatar {
-    width: $small-gravatar-side;
-    height: $small-gravatar-side;
+    @include small-gravatar;
     margin-top: -2px;
   }
 
@@ -93,8 +95,7 @@ $small-gravatar-side: 20px;
 }
 
 .commit-reviewer-avatar {
-  width: $small-gravatar-side;
-  height: $small-gravatar-side;
+  @include small-gravatar;
   margin-right: 5px;
 }
 
