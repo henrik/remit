@@ -1,6 +1,8 @@
 class Commit < ActiveRecord::Base
   serialize :payload, Hash
 
+  belongs_to :author
+
   scope :newest_first, -> { order("id DESC") }
 
   def self.create_or_update_from_payload(payload, parent_payload)
@@ -13,9 +15,14 @@ class Commit < ActiveRecord::Base
       pusher: parent_payload.fetch(:pusher),
     )
 
+    author_payload = payload.fetch(:author)
+    author = Author.create_or_update_from_payload(author_payload)
+
     commit = Commit.where(sha: payload.fetch(:id)).first_or_initialize
     commit.payload = payload
+    commit.author = author
     commit.save!
+
     commit
   end
 

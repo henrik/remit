@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615173312) do
+ActiveRecord::Schema.define(version: 20140617173806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "payload",    null: false
@@ -22,8 +30,10 @@ ActiveRecord::Schema.define(version: 20140615173312) do
     t.datetime "updated_at"
     t.integer  "github_id",  null: false
     t.string   "commit_sha", null: false
+    t.integer  "author_id"
   end
 
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
   add_index "comments", ["commit_sha"], name: "index_comments_on_commit_sha", using: :btree
   add_index "comments", ["github_id"], name: "index_comments_on_github_id", unique: true, using: :btree
 
@@ -33,8 +43,10 @@ ActiveRecord::Schema.define(version: 20140615173312) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "reviewed_at"
+    t.integer  "author_id"
   end
 
+  add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
   add_index "commits", ["sha"], name: "index_commits_on_sha", unique: true, using: :btree
 
 end

@@ -45,6 +45,17 @@ describe Commit, ".create_or_update_from_payload" do
     expect(commit.payload[:pusher][:name]).to eq "mypusher"
     expect(commit.payload[:ref]).to eq "refs/heads/master"
   end
+
+  it "creates or updates an author record" do
+    commit = Commit.create_or_update_from_payload({
+      id: "faa",
+      author: {
+        name: "Ada Lovelace",
+      }
+    }, parent_payload)
+
+    expect(commit.author.name).to eq "Ada Lovelace"
+  end
 end
 
 describe Commit, "#as_json" do
