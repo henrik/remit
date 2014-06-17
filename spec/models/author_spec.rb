@@ -67,6 +67,16 @@ describe Author, ".create_or_update_from_payload" do
     expect(author.name).to eq "Ada Lovelace"
     expect(author.email).to eq "ada@lovelace.com"
   end
+
+  it "doesn't find old records by nil attribute values" do
+    author1 = Author.create_or_update_from_payload(email: nil, username: "adalovelace")
+    author2 = Author.create_or_update_from_payload(email: nil, username: "charlesbabbage")
+    expect(author1.id).not_to eq(author2.id)
+
+    author1 = Author.create_or_update_from_payload(email: "ada@lovelace.com", username: nil)
+    author2 = Author.create_or_update_from_payload(email: "charles@babbage.com", username: nil)
+    expect(author1.id).not_to eq(author2.id)
+  end
 end
 
 describe Author, "validations" do
