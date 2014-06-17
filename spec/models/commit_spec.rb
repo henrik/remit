@@ -47,6 +47,16 @@ describe Commit, ".create_or_update_from_payload" do
   end
 end
 
+describe Commit, "#as_json" do
+  it "builds a hash of properties" do
+    commit = build(:commit, sha: "foo", reviewed_at: Time.now)
+    expect(commit.as_json).to include(
+      "short_sha" => "foo",
+      "reviewed" => true,
+    )
+  end
+end
+
 describe Commit, "#summary" do
   it "truncates the first line of the message to 50 chars" do
     message = "#{"1234567890" * 6}\nMore."
