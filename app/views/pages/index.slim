@@ -9,14 +9,6 @@ html(
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
   body
-    .fluid-app-info ng-controller="FluidAppInfoCtrl"
-      p.fluid-app-info-main GitHub goes here.
-      div ng-hide="inFluidApp"
-        p We recommend using <a href="http://fluidapp.com/" fluid-app-link>Fluid.app</a>.
-        p <a href="https://github.com/henrik/remit#use-with-fluidapp" fluid-app-link>See README</a> for instructions.
-      div ng-show="inFluidApp"
-        p Fluid.app detected. Resize the pane so this becomes hidden.
-
     .wrapper
       img.settings-gravatar gravatar-src="settings.email"
 

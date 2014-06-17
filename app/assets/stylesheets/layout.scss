@@ -34,39 +34,10 @@
   }
 }
 
-$content-width: 560px;
-
-.fluid-app-info {
-  background: $gray;
-  color: #220;
-  text-shadow: #fff 1px 1px 1px;
-  padding: 20px;
-  position: absolute;
-  left: $content-width;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  min-width: 300px;
-  text-align: center;
-
-  font-size: $font-large;
-  font-weight: 100;
-}
-
-.fluid-app-info-main {
-  font-weight: $weight-bold;
-  font-size: $font-larger;
-  margin: $vspace 0;
-}
-
 .wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: $content-width;
-  overflow-x: hidden;
-  overflow-y: auto;
+  background: #fff;
+  width: 100%;
+  max-width: 700px;
   padding: 0 0 $vspace 0;
 }
 
