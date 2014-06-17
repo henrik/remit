@@ -10,13 +10,13 @@ describe "Service: FluidApp.running", ->
       expect(FluidApp.running).toBeTruthy()
 
   it "is false if the location query string does not contain an app value", ->
-    stubQuerParameter "app", ""
+    stubQueryParameter "app", ""
 
     inject (FluidApp) ->
       expect(FluidApp.running).toBeFalsy()
 
 
-  stubQuerParameter = (key, value) ->
+  stubQueryParameter = (key, value) ->
     qs = {}
     qs[key] = value
     provide "$location", { search: -> qs }
