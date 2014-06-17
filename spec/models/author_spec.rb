@@ -53,6 +53,24 @@ describe Author, ".create_or_update_from_payload" do
     expect(author1.email).to eq "other@lovelace.com"
     expect(author1.username).to eq "adalovelace"
   end
+
+  it "doesn't overwrite attributes with empty values" do
+    author1 = Author.create_or_update_from_payload(
+      name: "Ada Lovelace",
+      email: "ada@lovelace.com",
+      username: "adalovelace",
+    )
+
+    author2 = Author.create_or_update_from_payload(
+      username: "adalovelace",
+    )
+
+    author1.reload
+    expect(author1.id).to eq(author2.id)
+    expect(author1.name).to eq "Ada Lovelace"
+    expect(author1.email).to eq "ada@lovelace.com"
+    expect(author1.username).to eq "adalovelace"
+  end
 end
 
 describe Author, "validations" do

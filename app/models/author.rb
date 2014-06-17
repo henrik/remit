@@ -8,12 +8,14 @@ class Author < ActiveRecord::Base
   def self.create_or_update_from_payload(payload)
     payload = payload.symbolize_keys
 
-    existing_author = where("email = ? OR username = ?", *payload.values_at(:email, :username)).first
+    name, email, username = payload.values_at(:name, :email, :username)
+
+    existing_author = where("email = ? OR username = ?", email, username).first
 
     author = existing_author || Author.new
-    author.name = payload[:name]
-    author.email = payload[:email]
-    author.username = payload[:username]
+    author.name = name if name
+    author.email = email if email
+    author.username = username if username
     author.save!
 
     author
