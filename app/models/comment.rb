@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   serialize :payload, Hash
 
+  belongs_to :author
   belongs_to :commit,
     foreign_key: :commit_sha,
     primary_key: :sha
@@ -10,10 +11,17 @@ class Comment < ActiveRecord::Base
 
   def self.create_or_update_from_payload(payload)
     payload = payload.deep_symbolize_keys
+
+    # This is the only attribute we get.
+    author_username = payload.fetch(:user).fetch(:login)
+    author = Author.create_or_update_from_payload(username: author_username)
+
     comment = Comment.where(github_id: payload[:id]).first_or_initialize
     comment.commit_sha = payload[:commit_id]
     comment.payload = payload
+    comment.author = author
     comment.save!
+
     comment
   end
 

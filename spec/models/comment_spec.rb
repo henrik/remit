@@ -6,6 +6,7 @@ describe Comment, ".create_or_update_from_payload" do
       id: 123,
       commit_id: "faa",
       body: "Hi.",
+      user: { login: "username" },
     )
 
     expect(comment).to be_persisted
@@ -19,17 +20,30 @@ describe Comment, ".create_or_update_from_payload" do
       id: 123,
       commit_id: "faa",
       body: "Hi.",
+      user: { login: "username" },
     )
 
     Comment.create_or_update_from_payload(
       id: 123,
       commit_id: "faa",
       body: "Bye.",
+      user: { login: "username" },
     )
 
     comment.reload
     expect(comment.github_id).to eq 123
     expect(comment.payload[:body]).to eq "Bye."
+  end
+
+  it "creates or updates an author record" do
+    comment = Comment.create_or_update_from_payload(
+      id: 123,
+      commit_id: "faa",
+      body: "Hi.",
+      user: { login: "username" },
+    )
+
+    expect(comment.author.username).to eq "username"
   end
 end
 
