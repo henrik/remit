@@ -10,7 +10,7 @@ html(
     = csrf_meta_tags
   body
     .wrapper
-      img.settings-gravatar gravatar-src="settings.email"
+      img.settings-gravatar gravatar-src="settings.email" ng-show="settings.email"
 
       nav.top-nav
         ul
