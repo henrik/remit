@@ -1,4 +1,6 @@
-app.config ($routeProvider) ->
+app.config ($routeProvider, $locationProvider) ->
+  $locationProvider.html5Mode(true)
+
   $routeProvider.
     when("/",
       redirectTo: "/commits"
