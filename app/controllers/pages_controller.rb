@@ -6,8 +6,8 @@ class PagesController < UserFacingController
   def index
     render locals: {
       max_records: MAX_RECORDS,
-      comments: Comment.newest_first.include_commits.last(MAX_RECORDS),
-      commits: Commit.newest_first.last(MAX_RECORDS),
+      comments: Comment.newest_first.includes_for_listing.last(MAX_RECORDS),
+      commits: Commit.newest_first.includes_for_listing.last(MAX_RECORDS),
     }
   end
 end

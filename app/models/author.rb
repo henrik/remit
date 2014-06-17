@@ -21,6 +21,12 @@ class Author < ActiveRecord::Base
     author
   end
 
+  # If the author was created from a comment,
+  # it will only have a username.
+  def name_or_username
+    name || username
+  end
+
   private
 
   def has_at_least_one_property

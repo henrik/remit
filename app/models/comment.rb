@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
     primary_key: :sha
 
   scope :newest_first, -> { order("id DESC") }
-  scope :include_commits, -> { includes(:commit) }
+  scope :includes_for_listing, -> { includes({ :commit => :author }, :author) }
 
   def self.create_or_update_from_payload(payload)
     payload = payload.deep_symbolize_keys
@@ -27,7 +27,7 @@ class Comment < ActiveRecord::Base
 
   def as_json(opts = {})
     super(opts.reverse_merge(
-      methods: [ :github_id, :body, :sender_name, :url, :commit_author_name, :short_commit_sha ],
+      methods: [ :github_id, :body, :author_name, :url, :commit_author_name, :short_commit_sha ],
       only: [],
     ))
   end
@@ -44,16 +44,15 @@ class Comment < ActiveRecord::Base
     commit_sha.first(10)
   end
 
-  def sender_name
-    # The payload sadly doesn't include a full name.
-    # The commit payloads do, so maybe we could map via that?
-    payload[:user][:login]
+  def author_name
+    author.name_or_username
   end
 
   def commit_author_name
     if commit
       commit.author_name
     else
+      # TODO: null object?
       "Unknown author"
     end
   end

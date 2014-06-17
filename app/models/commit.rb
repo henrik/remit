@@ -4,6 +4,7 @@ class Commit < ActiveRecord::Base
   belongs_to :author
 
   scope :newest_first, -> { order("id DESC") }
+  scope :includes_for_listing, -> { includes(:author) }
 
   def self.create_or_update_from_payload(payload, parent_payload)
     payload = payload.deep_symbolize_keys
@@ -48,11 +49,11 @@ class Commit < ActiveRecord::Base
   end
 
   def author_email
-    payload.fetch(:author).fetch(:email)
+    author.email
   end
 
   def author_name
-    payload.fetch(:author).fetch(:name)
+    author.name
   end
 
   def repository

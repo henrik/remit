@@ -52,14 +52,14 @@ describe Comment, "#as_json" do
     build(:comment,
       commit_sha: "faa",
       body: "Yo.",
-      user_login: "henrik",
+      author: Author.new(username: "charlesbabbage"),
     )
   }
 
   it "includes the desired attributes" do
     expect(comment.as_json).to include({
       body: "Yo.",
-      sender_name: "henrik",
+      author_name: "charlesbabbage",
     }.stringify_keys)
   end
 end

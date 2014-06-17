@@ -5,19 +5,28 @@ FactoryGirl.define do
     ignore do
       message { Faker::Company.catch_phrase }
       url "http://example.com"
+      author_email { "mymail@example.com" }
       author_username { [ nil, Faker::Internet.user_name ].sample }  # Empty for pair commits
       author_name { Faker::Name.name }
       ref "refs/heads/master"
     end
 
     sha { SecureRandom.hex(20) }
+
+    author {
+      build(:author,
+        email: author_email,
+        username: author_username,
+        name: author_name)
+    }
+
     payload {
       {
         id: sha,
         message: message,
         url: url,
         author: {
-          email: "mymail@example.com",
+          email: author_email,
           username: author_username,
           name: author_name,
         },

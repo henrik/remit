@@ -1,7 +1,7 @@
 ul
   li(ng-repeat="comment in comments track by comment.github_id")
     p
-      strong= "{{comment.sender_name}}"
+      strong= "{{comment.author_name}}"
       '
       ' on
       strong= "{{comment.short_commit_sha}}"

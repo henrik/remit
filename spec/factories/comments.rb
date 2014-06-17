@@ -10,6 +10,8 @@ FactoryGirl.define do
     sequence(:github_id)
     sequence(:commit_sha) { |n| "aaf#{n}" }
 
+    author { build(:author, username: user_login) }
+
     payload {
       {
         id: github_id,
