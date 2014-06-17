@@ -2,7 +2,7 @@
 #= require helpers/fake_app
 #= require angular/directives/fluid_app_link
 
-describe "fluidAppLink directive", ->
+describe "Directive: fluidAppLink", ->
 
   FluidApp = {}
   beforeEach ->
