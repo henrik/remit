@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, Commits, localStorageService) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, Commits) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
