@@ -11,6 +11,7 @@ describe "Settings page", :js do
 
     click_link "Settings"
     fill_in "Your name", with: "Ada Lovelace"
+    fill_in "Your email", with: "ada@lovelace.com"
     click_button "Save"
 
     click_link "Commits"
@@ -18,5 +19,6 @@ describe "Settings page", :js do
 
     click_link "Settings"
     expect(find_field("Your name").value).to eq "Ada Lovelace"
+    expect(find_field("Your email").value).to eq "ada@lovelace.com"
   end
 end
