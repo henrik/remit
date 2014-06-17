@@ -78,6 +78,7 @@ footer {
 }
 
 .settings-gravatar {
+  @include big-gravatar;
   position: absolute;
   top: 2px;
   right: 2px;
