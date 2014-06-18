@@ -6,14 +6,16 @@ namespace :dev do
     puts "Sending #{count} fake #{count == 1 ? "commit" : "commits"} to the webhook…"
 
     session = ActionDispatch::Integration::Session.new(Rails.application)
-    session.post "/github_webhook",
+    response = session.post("/github_webhook",
       {
         commits: Array.new(count) { FactoryGirl.commit_payload },
-        repository: { name: "fakerepo" },
+        repository: { name: "fakerepo", master_branch: "master" },
+        ref: "refs/heads/master",
       },
-      { "X-Github-Event" => "push" }
+      { "X-Github-Event" => "push" },
+    )
 
-    puts "Done!"
+    puts "Done with response code #{response}"
   end
 
   desc "Send ENV['N'] (default: 1) fake comments by webhook"
@@ -24,15 +26,17 @@ namespace :dev do
 
     session = ActionDispatch::Integration::Session.new(Rails.application)
 
+    responses = []
     count.times do
       # Must be unique.
       github_id = Comment.maximum(:github_id) + 1
 
-      session.post "/github_webhook",
+      responses << session.post("/github_webhook",
         { comment: FactoryGirl.comment_payload(github_id: github_id) },
-        { "X-Github-Event" => "commit_comment" }
+        { "X-Github-Event" => "commit_comment" },
+      )
     end
 
-    puts "Done!"
+    puts "Done with response codes #{responses.join(", ")}"
   end
 end
