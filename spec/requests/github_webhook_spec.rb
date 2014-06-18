@@ -37,7 +37,6 @@ describe "Receiving GitHub payloads by webhook" do
           FactoryGirl.commit_payload(sha: "aaf"),
         ],
         repository: { name: "myrepo", master_branch: "master" },
-        pusher: { name: "mypusher" },
         ref: "refs/heads/master",
       },
       { "X-Github-Event" => "push" }
@@ -58,7 +57,6 @@ describe "Receiving GitHub payloads by webhook" do
           FactoryGirl.commit_payload(sha: "faa"),
         ],
         repository: { name: "myrepo", master_branch: "master" },
-        pusher: { name: "mypusher" },
         ref: "refs/heads/mybranch",
       },
       { "X-Github-Event" => "push" }

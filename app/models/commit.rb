@@ -16,9 +16,7 @@ class Commit < ActiveRecord::Base
     parent_payload = parent_payload.deep_symbolize_keys
 
     payload = payload.merge(
-      ref: parent_payload.fetch(:ref),
       repository: parent_payload.fetch(:repository),
-      pusher: parent_payload.fetch(:pusher),
     )
 
     author_payload = payload.fetch(:author)

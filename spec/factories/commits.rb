@@ -8,7 +8,6 @@ FactoryGirl.define do
       author_email { "mymail@example.com" }
       author_username { [ nil, Faker::Internet.user_name ].sample }  # Empty for pair commits
       author_name { Faker::Name.name }
-      ref "refs/heads/master"
     end
 
     sha { SecureRandom.hex(20) }
@@ -30,9 +29,7 @@ FactoryGirl.define do
           username: author_username,
           name: author_name,
         },
-        ref: ref,
         repository: { name: "myrepo" },
-        pusher: { name: Faker::Name.name },
       }
     }
   end
