@@ -16,3 +16,4 @@ angular.module("ui.gravatar").config (gravatarServiceProvider) ->
     gravatarServiceProvider.secure = true  # https
     gravatarServiceProvider.defaults =
       size: 40
+      default: "mm"  # "Mystery man" silhouette placeholder.
