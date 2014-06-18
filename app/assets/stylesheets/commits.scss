@@ -73,7 +73,8 @@
   margin-left: 5px;
   margin-top: 13px;
 
-  .mark-as-new {
+  button {
+    vertical-align: top;
   }
 }
 
@@ -84,8 +85,10 @@
 }
 
 .commit-reviewer-avatar {
-  margin-left: 10px;
   @include small-gravatar;
+  margin-left: 6px;
+  // No idea why we need this, but without it we get extra height.
+  margin-bottom: -3px;
 }
 
 .mark-as-reviewed {
