@@ -3,14 +3,14 @@
 #= require angular/services/commits
 
 describe "Service: Commits.markAsReviewed", ->
-  it "marks the model as reviewed", ->
+  it "optimistically marks the model as reviewed", ->
     inject (Commits) ->
       commit = {}
       Commits.markAsReviewed(commit, "charles@babbage.com")
       expect(commit.reviewed).toBeTruthy()
       expect(commit.reviewer_email).toEqual("charles@babbage.com")
 
-  it "tells the server it was reviewed", ->
+  it "tells the server it was reviewed and returns a promise", ->
     inject (Commits, $httpBackend) ->
       $httpBackend.expect("POST",
         "/commits/123/reviewed",
@@ -18,12 +18,13 @@ describe "Service: Commits.markAsReviewed", ->
       ).respond()
 
       commit = { id: 123 }
-      Commits.markAsReviewed(commit, "charles@babbage.com")
+      rval = Commits.markAsReviewed(commit, "charles@babbage.com")
+      expect(typeof(rval.success)).toEqual("function")
 
       $httpBackend.flush()
 
 describe "Service: Commits.markAsNew", ->
-  it "marks the model as not reviewed", ->
+  it "optimistically marks the model as not reviewed", ->
     inject (Commits) ->
       commit = { reviewed: true, reviewer_email: "charles@babbage.com" }
       Commits.markAsNew(commit)
@@ -35,6 +36,7 @@ describe "Service: Commits.markAsNew", ->
       $httpBackend.expect("DELETE", "/commits/123/unreviewed").respond()
 
       commit = { id: 123 }
-      Commits.markAsNew(commit)
+      rval = Commits.markAsNew(commit)
+      expect(typeof(rval.success)).toEqual("function")
 
       $httpBackend.flush()

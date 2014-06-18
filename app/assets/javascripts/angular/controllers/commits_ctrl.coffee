@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, Commits) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
@@ -11,7 +11,12 @@ app.controller "CommitsCtrl", ($rootScope, $scope, Commits) ->
     Commits.yourLastClicked = commit
 
   $scope.markAsReviewed = (commit) ->
-    Commits.markAsReviewed(commit, $scope.settings.email)
+    Commits.markAsReviewed(commit, $scope.settings.email).
+      error(reportServerError)
 
   $scope.markAsNew = (commit) ->
-    Commits.markAsNew(commit)
+    Commits.markAsNew(commit).
+      error(reportServerError)
+
+  reportServerError = ->
+    $window.alert("Server error! Your update may have been lost.")

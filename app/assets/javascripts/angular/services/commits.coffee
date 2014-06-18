@@ -2,13 +2,15 @@ app.service "Commits", ($http) ->
   this.yourLastClicked = null
 
   this.markAsReviewed = (commit, byEmail) ->
-    $http.post("/commits/#{commit.id}/reviewed", email: byEmail)
+    promise = $http.post("/commits/#{commit.id}/reviewed", email: byEmail)
     commit.reviewed = true
     commit.reviewer_email = byEmail
+    promise
 
   this.markAsNew = (commit) ->
-    $http.delete("/commits/#{commit.id}/unreviewed")
+    promise = $http.delete("/commits/#{commit.id}/unreviewed")
     commit.reviewed = false
     commit.reviewer_email = null
+    promise
 
   this
