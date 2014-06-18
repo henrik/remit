@@ -1,6 +1,6 @@
 # Remit
 
-**Very much a work in progress! Beware.**
+**Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
 
 Web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
 
