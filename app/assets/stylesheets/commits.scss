@@ -5,6 +5,7 @@
 }
 
 .commit {
+  overflow: auto;  // Contain floats.
   border-bottom: 1px solid $border-color;
 
   // Without this, the "last-clicked" border-right doesn't go all the way up.
