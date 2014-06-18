@@ -11,7 +11,7 @@ ul.commits-list
         '
         button.small.mark-as-new ng-click="markAsNew(commit)" ng-show="commit.reviewed" Mark as new
         '
-        img.commit-reviewer-avatar gravatar-src="commit.reviewer_email" ng-show="commit.reviewer_email"
+        img.commit-reviewer-avatar gravatar-src="commit.reviewer_email || 'show-a-placeholder'" ng-show="commit.reviewed"
 
       img.commit-avatar gravatar-src="commit.author_email"
       '
