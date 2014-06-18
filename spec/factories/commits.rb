@@ -5,7 +5,7 @@ FactoryGirl.define do
     ignore do
       message { Faker::Company.catch_phrase }
       url "http://example.com"
-      author_email { "mymail@example.com" }
+      author_email { Faker::Internet.email }
       author_username { [ nil, Faker::Internet.user_name ].sample }  # Empty for pair commits
       author_name { Faker::Name.name }
     end

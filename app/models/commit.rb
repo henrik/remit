@@ -41,9 +41,9 @@ class Commit < ActiveRecord::Base
         :url,
         :repository,
         :branch,
+        :timestamp,
         :reviewed,
         :reviewer_email,
-        :timestamp,
       ],
       only: [],
     ))

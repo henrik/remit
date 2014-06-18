@@ -1,3 +1,18 @@
+p.left-to-review ng-show="stats.allUnreviewed"
+  ' Commits to review:
+  '
+  strong= "{{stats.youCanReview}}"
+  '
+  ' by others,
+  strong= "{{stats.yourUnreviewed}}"
+  '
+  ' by you
+
+p.nothing-left-to-review ng-hide="stats.allUnreviewed"
+  strong Nothing left to review!
+  '
+  ' Good job.
+
 ul.commits-list
   li.commit(
     id="commit-{{commit.id}}"
