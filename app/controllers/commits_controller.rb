@@ -6,8 +6,9 @@ class CommitsController < UserFacingController
     id = params[:id].to_i
     email = params[:email]
 
-    Commit.find(id).mark_as_reviewed_by(email)
-    push_event "commit_reviewed", id: id
+    commit = Commit.find(id)
+    commit.mark_as_reviewed_by(email)
+    push_event "commit_reviewed", commit
 
     render text: "OK"
   end
