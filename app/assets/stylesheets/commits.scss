@@ -96,6 +96,11 @@
   font-weight: $weight-bold;
 }
 
+.mark-as-new {
+  opacity: 0.5;
+  &:hover { opacity: 1; }
+}
+
 // angular-animation
 
 .commit.ng-enter,
