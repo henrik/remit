@@ -88,8 +88,8 @@
 }
 
 .commit-reviewer-avatar {
+  margin-left: 10px;
   @include small-gravatar;
-  margin-right: 5px;
 }
 
 .mark-as-reviewed {
