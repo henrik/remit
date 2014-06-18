@@ -1,4 +1,4 @@
-app.service "FluidApp", ($location) ->
-  # Check for a URL query string param like "?app=true".
-  # Would like to use $window.fluid but Browsa panes don't see that.
-  this.running = !!$location.search().app
+app.service "FluidApp", ($window) ->
+  # Check the user agent.
+  # Cannot check $window.fluid since Browsa panes don't have that.
+  this.running = $window.navigator.userAgent.indexOf("FluidApp") != -1

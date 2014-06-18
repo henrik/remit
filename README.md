@@ -117,13 +117,13 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
   * Panel Preferences:
     * Panel split divider style: thin (a purely aesthetic choice; may need a restart of the app to kick in)
   * The first of the two "Browsa" panels:
-    * Enter the Remit URL as home page, including the `?auth_key=MY_WEBHOOK_KEY` parameter, and tack on an `app=true` parameter. E.g. `https://remit-SOMETHING-UNIQUE.herokuapp.com/?app=true&auth_key=MY_WEBHOOK_KEY`
+    * Enter the Remit URL as home page, including the `auth_key` parameter. E.g. `https://remit-SOMETHING-UNIQUE.herokuapp.com/?auth_key=MY_AUTH_KEY`
     * Navigation bar: is always hidden
     * Clicked links open in: current tab in current window
 * In the "Panels" menu, select the first Browsa panel to show it
 * Drag the divider until it looks good
 
-The `app=true` parameter tells Remit you want it to behave differently than in a regular browser.
+Remit will automatically remove the `target="_blank"` from links when Fluid.app is detected, so "current tab in current window" does the right thing.
 
 ## Import reviewed state from Hubreview
 

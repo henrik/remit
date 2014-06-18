@@ -3,20 +3,18 @@
 #= require angular/services/fluid_app
 
 describe "Service: FluidApp.running", ->
-  it "is true if the location query string contains app=something", ->
-    stubQueryParameter "app", "1"
+  it "is true if the user agent contains 'FluidApp'", ->
+    stubUserAgent "Bla FluidApp Bla"
 
     inject (FluidApp) ->
       expect(FluidApp.running).toBeTruthy()
 
-  it "is false if the location query string does not contain an app value", ->
-    stubQueryParameter "app", ""
+  it "is false if the user agent does not contain 'FluidApp'", ->
+    stubUserAgent "Bla Chrome Bla"
 
     inject (FluidApp) ->
       expect(FluidApp.running).toBeFalsy()
 
 
-  stubQueryParameter = (key, value) ->
-    qs = {}
-    qs[key] = value
-    provide "$location", { search: -> qs }
+  stubUserAgent = (agent) ->
+    provide "$window", { navigator: { userAgent: agent } }
