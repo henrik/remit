@@ -33,10 +33,12 @@ app.run ($rootScope, $location, localStorageService, Pusher) ->
     for commit in $rootScope.commits
       if commit.id == data.id
         commit.reviewed = true
+        commit.reviewer_email = data.reviewer_email
         return  # Break the loop
 
   subscribe "commit_unreviewed", (data) ->
     for commit in $rootScope.commits
       if commit.id == data.id
         commit.reviewed = false
+        commit.reviewer_email = null
         return  # Break the loop
