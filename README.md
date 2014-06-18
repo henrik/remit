@@ -95,7 +95,7 @@ Not so fortunate? In the settings for any repo you want to use this with, add a 
     Content type:  application/json
     Let me select individual events:  [x] Push  [x] Commit comment
 
-Where `MY_AUTH_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
+Where `MY_WEBHOOK_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
 
 
 ## Use with Fluid.app
@@ -117,7 +117,7 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
   * Panel Preferences:
     * Panel split divider style: thin (a purely aesthetic choice; may need a restart of the app to kick in)
   * The first of the two "Browsa" panels:
-    * Enter the Remit URL as home page, including the `?auth_key=SOMETHING` parameter, and tack on an `app=true` parameter.
+    * Enter the Remit URL as home page, including the `?auth_key=MY_WEBHOOK_KEY` parameter, and tack on an `app=true` parameter. E.g. `https://remit-SOMETHING-UNIQUE.herokuapp.com/?app=true&auth_key=MY_WEBHOOK_KEY`
     * Navigation bar: is always hidden
     * Clicked links open in: current tab in current window
 * In the "Panels" menu, select the first Browsa panel to show it
