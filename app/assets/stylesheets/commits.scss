@@ -1,8 +1,6 @@
-$commit-inset: 10px;
-
 .left-to-review, .nothing-left-to-review {
   background: $mid-gray;
-  margin: $commit-inset;
+  margin: 10px 0;
   padding: 10px;
   text-align: center;
 }
@@ -20,7 +18,7 @@ $commit-inset: 10px;
 }
 
 .commit-wrapper {
-  margin: 0 $commit-inset;
+  margin: 0 10px;
   overflow: auto;  // Contain floats.
 }
 
