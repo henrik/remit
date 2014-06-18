@@ -25,8 +25,8 @@ describe "Receiving GitHub payloads by webhook" do
   it "stores commits and pushes an event" do
     expect_push "commits_updated", {
       commits: [
-        a_hash_including("summary" => "hi" ),
-        a_hash_including("summary" => "ho" ),
+        a_hash_including(summary: "hi" ),
+        a_hash_including(summary: "ho" ),
       ],
     }
 

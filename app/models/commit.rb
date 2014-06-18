@@ -30,31 +30,8 @@ class Commit < ActiveRecord::Base
     commit
   end
 
-  def as_json(opts = {})
-    super(opts.reverse_merge(
-      methods: [
-        :id,
-        :author_name,
-        :author_email,
-        :summary,
-        :url,
-        :repository,
-        :branch,
-        :timestamp,
-        :received_timestamp,
-        :reviewed,
-        :reviewer_email,
-      ],
-      only: [],
-    ))
-  end
-
-  def author_email
-    author.email
-  end
-
-  def author_name
-    author.name
+  def as_json(_opts = {})
+    CommitSerializer.new(self).as_json
   end
 
   def repository
@@ -73,21 +50,9 @@ class Commit < ActiveRecord::Base
     payload.fetch(:timestamp)
   end
 
-  def received_timestamp
-    created_at.iso8601
-  end
-
-  def reviewer_email
-    reviewed_by_author_id && reviewed_by_author.email
-  end
-
   def reviewed?
     reviewed_at?
   end
-
-  # Named without questionmark for as_json.
-  # FIXME: Generate JSON in a better way.
-  alias_method :reviewed, :reviewed?
 
   def mark_as_reviewed_by(email)
     author = email.presence && Author.create_or_update_from_payload(email: email)

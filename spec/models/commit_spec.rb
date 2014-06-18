@@ -57,7 +57,7 @@ describe Commit, "#as_json" do
   it "builds a hash of properties" do
     commit = build(:commit, reviewed_at: Time.now, created_at: Time.now)
     expect(commit.as_json).to include(
-      "reviewed" => true,
+      reviewed: true,
     )
   end
 end
