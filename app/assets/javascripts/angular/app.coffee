@@ -1,7 +1,7 @@
 window.app = angular.module "Remit",
   [
     "ngRoute", "ngAnimate",
-    "doowb.angular-pusher", "ui.gravatar", "LocalStorageModule",
+    "doowb.angular-pusher", "ui.gravatar", "LocalStorageModule", "angularMoment",
   ]
 
 app.run ($rootScope, $location, localStorageService, Pusher) ->

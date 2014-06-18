@@ -19,5 +19,9 @@
 //= require angular-pusher
 //= require pusher
 
+//= require moment
+//= require moment-lang-override
+//= require angular-moment
+
 //= require ./angular/app
 //= require_tree ./angular

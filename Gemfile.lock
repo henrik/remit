@@ -133,10 +133,14 @@ GEM
     rails-assets-angular-local-storage (0.0.5)
     rails-assets-angular-mocks (1.2.18)
       rails-assets-angular (= 1.2.18)
+    rails-assets-angular-moment (0.7.1)
+      rails-assets-angular (>= 1.0.0, < 1.4.0)
+      rails-assets-moment (>= 2.0.0, < 2.7.0)
     rails-assets-angular-pusher (0.0.8)
       rails-assets-angular (~> 1.2.0)
     rails-assets-angular-route (1.2.18)
       rails-assets-angular (= 1.2.18)
+    rails-assets-moment (2.6.0)
     rails-assets-pusher (2.2.2)
     rails_12factor (0.0.2)
       rails_serve_static_assets
@@ -232,6 +236,7 @@ DEPENDENCIES
   rails-assets-angular-gravatar
   rails-assets-angular-local-storage
   rails-assets-angular-mocks
+  rails-assets-angular-moment
   rails-assets-angular-pusher
   rails-assets-angular-route
   rails-assets-pusher

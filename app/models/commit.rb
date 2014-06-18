@@ -43,6 +43,7 @@ class Commit < ActiveRecord::Base
         :branch,
         :reviewed,
         :reviewer_email,
+        :timestamp,
       ],
       only: [],
     ))
@@ -70,6 +71,10 @@ class Commit < ActiveRecord::Base
 
   def url
     payload.fetch(:url)
+  end
+
+  def timestamp
+    payload.fetch(:timestamp)
   end
 
   def reviewer_email
