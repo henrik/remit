@@ -1,4 +1,8 @@
 class Commit < ActiveRecord::Base
+  # Some argue 50 chars is a good length for the summary part of a commit message.
+  # http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+  MESSAGE_SUMMARY_LENGTH = 50
+
   serialize :payload, Hash
 
   belongs_to :author
@@ -67,7 +71,7 @@ class Commit < ActiveRecord::Base
   end
 
   def summary
-    payload.fetch(:message).lines.first.first(50)
+    payload.fetch(:message).lines.first.first(MESSAGE_SUMMARY_LENGTH)
   end
 
   def url
