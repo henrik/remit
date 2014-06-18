@@ -36,7 +36,7 @@ describe "Receiving GitHub payloads by webhook" do
           FactoryGirl.commit_payload(sha: "faa"),
           FactoryGirl.commit_payload(sha: "aaf"),
         ],
-        repository: { name: "myrepo" },
+        repository: { name: "myrepo", master_branch: "master" },
         pusher: { name: "mypusher" },
         ref: "refs/heads/master",
       },
@@ -49,6 +49,23 @@ describe "Receiving GitHub payloads by webhook" do
     commit = Commit.first!
     expect(commit.sha).to eq "faa"
     expect(commit.payload[:repository][:name]).to eq "myrepo"
+  end
+
+  it "skips commits that are not on the master branch" do
+    post "/github_webhook",
+      {
+        commits: [
+          FactoryGirl.commit_payload(sha: "faa"),
+        ],
+        repository: { name: "myrepo", master_branch: "master" },
+        pusher: { name: "mypusher" },
+        ref: "refs/heads/mybranch",
+      },
+      { "X-Github-Event" => "push" }
+
+    expect(response).to be_success
+
+    expect(Commit.count).to be 0
   end
 
   private

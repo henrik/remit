@@ -82,13 +82,6 @@ describe Commit, "#summary" do
   end
 end
 
-describe Commit, "#branch" do
-  it "extracts it from the ref" do
-    commit = build(:commit, ref: "refs/heads/master")
-    expect(commit.branch).to eq "master"
-  end
-end
-
 describe Commit, "#reviewed?" do
   it "is true if reviewed_at is set" do
     commit = build(:commit, reviewed_at: Time.now)

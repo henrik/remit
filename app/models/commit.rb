@@ -66,10 +66,6 @@ class Commit < ActiveRecord::Base
     payload.fetch(:repository).fetch(:name)
   end
 
-  def branch
-    payload.fetch(:ref).split("/").last
-  end
-
   def summary
     payload.fetch(:message).lines.first.first(MESSAGE_SUMMARY_LENGTH)
   end

@@ -35,13 +35,23 @@ class GithubWebhooksController < ApplicationController
   def store_commits
     payloads = params[:commits]
 
-    commits = payloads.map { |payload|
-      Commit.create_or_update_from_payload(payload, params)
-    }
+    # Ignore commits outside the master branch.
+    # It's usually experimental work in progress and not ready for review.
+    if on_master_branch?(payloads)
+      commits = payloads.map { |payload|
+        Commit.create_or_update_from_payload(payload, params)
+      }
 
-    push_event "commits_updated", commits: commits.as_json
+      push_event "commits_updated", commits: commits.as_json
+    end
 
     render text: "Thanks!"
+  end
+
+  def on_master_branch?(payload)
+    pushed_branch = params.fetch(:ref).split("/").last
+    master_branch = params.fetch(:repository).fetch(:master_branch)
+    pushed_branch == master_branch
   end
 
   def require_auth_key
