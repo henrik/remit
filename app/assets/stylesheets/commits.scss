@@ -12,13 +12,14 @@
 
 .commit-wrapper {
   margin: 0 10px;
+  overflow: auto;  // Contain floats.
 }
 
 .commit-avatar {
   @include big-gravatar;
   background: $gray;
   float: left;
-  margin: 1px 10px 4px 0;
+  margin: 14px 10px 4px 0;
 }
 
 .commit-details {
@@ -39,7 +40,8 @@
 
   .commit-avatar {
     @include small-gravatar;
-    margin-top: -2px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .sha, .by-author {
@@ -48,6 +50,7 @@
 
   .commit-summary, .commit-details {
     display: inline;
+    line-height: $small-gravatar-side;
   }
 }
 
@@ -63,20 +66,20 @@
 
 .is-reviewed {
   background: $green;
-
-  .commit-controls {
-    margin-top: -3px;
-  }
 }
 
 .commit-controls {
   float: right;
   margin-left: 5px;
+  margin-top: 13px;
 
   .mark-as-new {
-    // No idea why we need this.
-    position: relative;
-    top: -5px;
+  }
+}
+
+.is-reviewed, .authored-by-you {
+  .commit-controls {
+    margin-top: 0;
   }
 }
 

@@ -1,6 +1,6 @@
 @mixin small-gravatar {
-  width: 20px;
-  height: 20px;
+  width: $small-gravatar-side;
+  height: $small-gravatar-side;
   border-radius: 3px;
 }
 
