@@ -12,7 +12,8 @@
   padding: 10px 10px;
 }
 
-.comment-proper-body {
+.comment-proper-body,
+.comment-proper-author {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -21,6 +22,7 @@
 .comment-proper-author {
   padding: 5px 10px;
   line-height: 24px;
+  font-size: $font-small;
 }
 
 .comment-commit-author-gravatar,
@@ -38,8 +40,4 @@
 
 .comment-proper-author {
   background: $gray;
-}
-
-.comment-proper-link {
-  float: right;
 }

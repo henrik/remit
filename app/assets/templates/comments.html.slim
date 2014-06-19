@@ -16,7 +16,6 @@ ul.comments-list
         span.unknown-commit ng-hide="commit"
           strong
             ' {{comment.commit_sha}}
-
-        a.comment-proper-link(href="{{comment.url}}" fluid-app-link) View
       .comment-proper-body
-        ' {{comment.body}}
+        a(href="{{comment.url}}" fluid-app-link)
+          ' {{comment.body}}
