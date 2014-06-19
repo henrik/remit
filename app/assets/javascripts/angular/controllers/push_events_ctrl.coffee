@@ -1,8 +1,7 @@
 app.controller "PushEventsCtrl", ($scope, Pusher) ->
 
-  # We must receive pushes even before you visit (=load)
-  # one of the subview controllers (e.g. CommitsCtrl),
-  # so it can't be handled there.
+  # We must receive pushes even before you visit (=load) one of the subview
+  # controllers (e.g. CommitsCtrl), so it can't be handled there.
 
   subscribe = (event, cb) ->
     Pusher.subscribe "the_channel", event, cb
