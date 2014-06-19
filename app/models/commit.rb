@@ -34,7 +34,6 @@ class Commit < ActiveRecord::Base
     super(opts.reverse_merge(
       methods: [
         :id,
-        :short_sha,
         :author_name,
         :author_email,
         :summary,
@@ -47,10 +46,6 @@ class Commit < ActiveRecord::Base
       ],
       only: [],
     ))
-  end
-
-  def short_sha
-    sha.first(10)
   end
 
   def author_email

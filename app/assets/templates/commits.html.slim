@@ -36,9 +36,6 @@ ul.commits-list
           | {{commit.summary}}
 
       p.commit-details
-        a.sha(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
-          | {{commit.short_sha}}
-        '
         ' in
         strong= "{{commit.repository}}"
         '

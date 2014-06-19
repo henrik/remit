@@ -2,18 +2,18 @@ require "rails_helper"
 
 describe "Commits page", :js do
   it "works for simultaneous visitors" do
-    create(:commit, sha: "cafebabe", url: "/")  # URL is "/" so clicking a commit brings us back.
+    create(:commit, message: "Compute Bernoulli numbers.", url: "/")  # URL is "/" so clicking a commit brings us back.
 
     visitors :ada, :charles do
       visit "/"
-      expect(page).to have_content "cafebabe"
+      expect(page).to have_content "Compute Bernoulli numbers."
     end
 
     visitor :ada do
       configure_settings
 
       commit_becomes_marked_as_last_clicked do
-        click_link "cafebabe"
+        click_link "Compute Bernoulli numbers."
       end
 
       # Ada marks it as reviewed.

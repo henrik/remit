@@ -4,6 +4,7 @@ app.directive "topNavLink", ($location) ->
   template: "<a href={{href}}><span ng-transclude></span></a>"
   scope:
     href: "@topNavLink"
+
   link: (scope, element, attrs) ->
     scope.location = $location
     scope.$watch "location.path()", (path) ->
