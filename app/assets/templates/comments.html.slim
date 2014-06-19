@@ -1,27 +1,30 @@
-ul
-  li(ng-repeat="comment in comments track by comment.github_id" ng-init="commit = comment.commit_data")
-    .unknown-commit ng-hide="commit"
-      p all we know is the sha: {{comment.short_commit_sha}}
+ul.comments-list
+  li.comment(ng-repeat="comment in comments track by comment.github_id" ng-init="commit = comment.commit_data")
+    .comment-commit.unknown-commit ng-hide="commit"
+      .comment-commit-summary
+        ' {{comment.commit_sha}}
+      .comment-commit-author
+        ' The only commit details we have is the SHA.
 
-    .commit ng-show="commit"
-      p
+    .comment-commit ng-show="commit"
+      .comment-commit-summary
         ' {{commit.summary}}
-      p
-        img.commit-reviewer-avatar gravatar-src="commit.author_email"
+      .comment-commit-author
+        img.comment-commit-author-avatar gravatar-src="commit.author_email"
+        strong
+          ' {{commit.author_name}}
         '
         ' authored
         span am-time-ago="commit.timestamp" title="{{commit.timestamp}}"
+
+    .comment-proper
+      .comment-proper-author
+        img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
         '
-        ' by
-        ' {{commit.author_name}}
-    p
-      img.commit-reviewer-avatar gravatar-src="comment.author_email" ng-show="comment.author_email"
-      '
-      strong= "{{comment.author_name}}"
-      '
-      ' commented
-      span am-time-ago="comment.timestamp" title="{{commit.timestamp}}"
-
-    p="{{comment.body}}"
-
-    a(href="{{comment.url}}" fluid-app-link) View
+        strong= "{{comment.author_name}}"
+        '
+        ' commented
+        span am-time-ago="comment.timestamp" title="{{comment.timestamp}}"
+        a.comment-proper-link(href="{{comment.url}}" fluid-app-link) View
+      .comment-proper-body
+        ' {{comment.body}}

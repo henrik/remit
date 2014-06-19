@@ -1,0 +1,36 @@
+.comments-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+}
+
+.comment {
+}
+
+.comment-commit {
+  background: $blue;
+  border: 1px solid $dark-blue;
+  font-size: $font-small;
+}
+
+.comment-commit-summary {
+  padding: 10px 10px;
+}
+
+.comment-commit-author {
+  background: #fff;
+  padding: 5px 10px;
+  line-height: $small-gravatar-side;
+}
+
+.comment-commit-author-avatar {
+  @include small-gravatar;
+  // No idea why we need this.
+  margin-bottom: -6px;
+  margin-right: 4px;
+}
+
+.comment-proper {
+  margin-top: 10px;
+  border: 1px solid $mid-gray;
+}

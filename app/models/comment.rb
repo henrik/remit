@@ -33,7 +33,7 @@ class Comment < ActiveRecord::Base
         :author_name,
         :url,
         :commit_author_name,
-        :short_commit_sha,
+        :commit_sha,
         # TODO: generate JSON differently so we can call this "commit"
         :commit_data,
         :author_email,
@@ -52,11 +52,7 @@ class Comment < ActiveRecord::Base
   end
 
   def timestamp
-    payload[:timestamp]
-  end
-
-  def short_commit_sha
-    commit_sha.first(10)
+    payload[:created_at]
   end
 
   def author_name

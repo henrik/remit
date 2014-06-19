@@ -1,0 +1,55 @@
+.comments-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+}
+
+.comment {
+  margin: $vspace 0;
+}
+
+.comment-commit {
+  background: $blue;
+  border: 1px solid $dark-blue;
+  font-size: $font-small;
+}
+
+.comment-commit-summary,
+.comment-proper-body {
+  padding: 10px 10px;
+}
+
+.comment-commit-author,
+.comment-proper-author {
+  padding: 5px 10px;
+  line-height: $small-gravatar-side;
+}
+
+.comment-commit-author {
+  background: #fff;
+}
+
+.unknown-commit .comment-commit-author {
+  font-style: italic;
+}
+
+.comment-commit-author-avatar,
+.comment-proper-author-gravatar {
+  @include small-gravatar;
+  // No idea why we need this.
+  margin-bottom: -6px;
+  margin-right: 4px;
+}
+
+.comment-proper {
+  margin-top: 10px;
+  border: 1px solid $mid-gray;
+}
+
+.comment-proper-author {
+  background: $gray;
+}
+
+.comment-proper-link {
+  float: right;
+}
