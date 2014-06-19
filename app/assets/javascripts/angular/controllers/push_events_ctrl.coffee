@@ -6,9 +6,6 @@ app.controller "PushEventsCtrl", ($scope, Pusher) ->
   subscribe = (event, cb) ->
     Pusher.subscribe "the_channel", event, cb
 
-  limitRecords = (list) ->
-    list.slice(0, $scope.maxRecords)
-
   subscribe "commits_updated", (data) ->
     $scope.commits = limitRecords data.commits.concat($scope.commits)
 
@@ -16,15 +13,20 @@ app.controller "PushEventsCtrl", ($scope, Pusher) ->
     $scope.comments = limitRecords [ data.comment ].concat($scope.comments)
 
   subscribe "commit_reviewed", (data) ->
-    for commit in $scope.commits
-      if commit.id == data.id
-        commit.reviewed = true
-        commit.reviewer_email = data.reviewer_email
-        return  # Break the loop
+    withCommit data, (commit) ->
+      commit.reviewed = true
+      commit.reviewer_email = data.reviewer_email
 
   subscribe "commit_unreviewed", (data) ->
+    withCommit data, (commit) ->
+      commit.reviewed = false
+      commit.reviewer_email = null
+
+  limitRecords = (list) ->
+    list.slice(0, $scope.maxRecords)
+
+  withCommit = (data, cb) ->
     for commit in $scope.commits
       if commit.id == data.id
-        commit.reviewed = false
-        commit.reviewer_email = null
+        cb(commit)
         return  # Break the loop
