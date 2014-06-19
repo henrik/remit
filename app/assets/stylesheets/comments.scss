@@ -12,6 +12,12 @@
   padding: 10px 10px;
 }
 
+.comment-proper-body {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .comment-proper-author {
   padding: 5px 10px;
   line-height: 24px;
