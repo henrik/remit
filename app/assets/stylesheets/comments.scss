@@ -41,3 +41,7 @@
 .comment-proper-author {
   background: $gray;
 }
+
+.comment.authored-by-you {
+  opacity: $authored-by-you-opacity;
+}

@@ -61,9 +61,9 @@
   }
 }
 
-.authored-by-you {
+.commit.authored-by-you {
   .commit-wrapper {
-    opacity: 0.6;
+    opacity: $authored-by-you-opacity;
   }
 
   button {
@@ -71,7 +71,7 @@
   }
 }
 
-.is-reviewed {
+.commit.is-reviewed {
   background: $green;
 }
 
@@ -86,7 +86,7 @@
   }
 }
 
-.is-reviewed, .authored-by-you {
+.commit.is-reviewed, .commit.authored-by-you {
   .commit-controls {
     margin-top: 0;
   }

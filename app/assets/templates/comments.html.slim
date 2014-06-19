@@ -1,5 +1,9 @@
 ul.comments-list
-  li.comment(ng-repeat="comment in comments track by comment.github_id" ng-init="commit = comment.commit_data")
+  li.comment(
+    ng-repeat="comment in comments track by comment.github_id"
+    ng-init="commit = comment.commit_data"
+    ng-class="{ 'authored-by-you': authoredByYou(comment) }"
+  )
     .comment-proper
       .comment-proper-author
         img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
