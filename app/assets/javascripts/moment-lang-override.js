@@ -14,7 +14,7 @@
         relativeTime : {
             future : "",
             past : "%s ago",
-            s : "secs",
+            s : "0m",
             m : "1m",
             mm : "%dm",
             h : "1h",

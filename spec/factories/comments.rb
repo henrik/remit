@@ -17,6 +17,7 @@ FactoryGirl.define do
         id: github_id,
         body: body,
         commit_id: commit_sha,
+        created_at: Time.now.iso8601,
         user: {
           login: user_login,
         },

@@ -1,31 +1,23 @@
 ul.comments-list
   li.comment(ng-repeat="comment in comments track by comment.github_id" ng-init="commit = comment.commit_data")
-    .comment-commit.unknown-commit ng-hide="commit"
-      .comment-commit-author
-        ' The only commit details we have is the SHA.
-      .comment-commit-summary
-        ' {{comment.commit_sha}}
-
-    .comment-commit ng-show="commit"
-      .comment-commit-author
-        img.comment-commit-author-avatar gravatar-src="commit.author_email"
-        strong
-          ' {{commit.author_name}}
-        '
-        ' authored
-        span am-time-ago="commit.timestamp" title="{{commit.timestamp}}"
-      .comment-commit-summary
-        a(href="{{comment.url}}" fluid-app-link)
-          ' {{commit.summary}}
-
     .comment-proper
       .comment-proper-author
         img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
         '
         strong= "{{comment.author_name}}"
         '
-        ' commented
         span am-time-ago="comment.timestamp" title="{{comment.timestamp}}"
+        '
+        ' on
+        span.known-commit ng-show="commit"
+          strong
+            ' {{commit.author_name}}'s
+          em
+            ' "{{commit.summary}}"
+        span.unknown-commit ng-hide="commit"
+          strong
+            ' {{comment.commit_sha}}
+
         a.comment-proper-link(href="{{comment.url}}" fluid-app-link) View
       .comment-proper-body
         ' {{comment.body}}
