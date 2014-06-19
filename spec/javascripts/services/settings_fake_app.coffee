@@ -1,3 +1,3 @@
-window.app = angular.module("RemitWithIpCookie", [ "ipCookie" ])
+window.app = angular.module("AppWithIpCookie", [ "ipCookie" ])
 
-beforeEach module "RemitWithIpCookie"
+beforeEach angular.mock.module("AppWithIpCookie")
