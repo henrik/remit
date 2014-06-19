@@ -1,0 +1,12 @@
+# Only intended for use by Barsoom.
+
+set -e
+
+echo "\nDeploying production\n"
+git push heroku
+
+echo "\nDeploying Remit-on-Remit demo\n"
+git push demo
+
+echo "\nPushing to GitHub\n"
+git push origin
