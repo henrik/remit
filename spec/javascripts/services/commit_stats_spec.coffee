@@ -6,7 +6,7 @@ describe "Service: CommitStats.stats()", ->
   beforeEach inject (_CommitStats_) ->
     CommitStats = _CommitStats_
 
-  it "counts reviewed commits", ->
+  it "counts unreviewed commits", ->
     commits = [
       { reviewed: false },
       { reviewed: true },
@@ -24,7 +24,7 @@ describe "Service: CommitStats.stats()", ->
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.youCanReview).toEqual(1)
 
-  it "counts your commits", ->
+  it "counts unreviewed commits by you", ->
     commits = [
       { reviewed: false, author_name: "The Ada L" },
       { reviewed: false, author_name: "Charles Baby" },
