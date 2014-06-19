@@ -105,7 +105,7 @@
 
 .mark-as-new {
   opacity: 0.5;
-  &:hover { opacity: 1; }
+  .commit:hover & { opacity: 1; }
 }
 
 // angular-animation
