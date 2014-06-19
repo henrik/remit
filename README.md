@@ -115,6 +115,7 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
   * Whitelist:
     * Allow browsing to any URL
   * Panel Preferences:
+    * [X] New windows automatically display visible Panels from previous window
     * Panel split divider style: thin (a purely aesthetic choice; may need a restart of the app to kick in)
   * The first of the two "Browsa" panels:
     * Enter the Remit URL as home page, including the `auth_key` parameter. E.g. `https://remit-SOMETHING-UNIQUE.herokuapp.com/?auth_key=MY_AUTH_KEY`
