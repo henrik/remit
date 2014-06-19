@@ -39,10 +39,10 @@ gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-animate'
 gem 'rails-assets-angular-gravatar'
-gem 'rails-assets-angular-local-storage'
 gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
 gem 'rails-assets-angular-moment'
+gem 'rails-assets-angular-cookie'
 
 group :development, :test do
   gem 'rails-assets-angular-mocks'

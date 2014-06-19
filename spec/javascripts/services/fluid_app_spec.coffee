@@ -1,4 +1,5 @@
 #= require helpers/spec_helper
+#= require helpers/fake_app
 #= require angular/services/fluid_app
 
 describe "Service: FluidApp.running", ->

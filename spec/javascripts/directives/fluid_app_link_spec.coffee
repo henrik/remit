@@ -1,4 +1,5 @@
 #= require helpers/spec_helper
+#= require helpers/fake_app
 #= require angular/directives/fluid_app_link
 
 describe "Directive: fluidAppLink", ->

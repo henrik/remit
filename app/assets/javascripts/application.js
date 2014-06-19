@@ -15,7 +15,7 @@
 //= require angular-route
 //= require angular-animate
 //= require angular-gravatar
-//= require angular-local-storage
+//= require angular-cookie
 //= require angular-pusher
 //= require pusher
 

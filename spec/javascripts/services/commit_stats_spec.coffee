@@ -1,4 +1,5 @@
 #= require helpers/spec_helper
+#= require helpers/fake_app
 #= require angular/services/commit_stats
 
 describe "Service: CommitStats.stats()", ->

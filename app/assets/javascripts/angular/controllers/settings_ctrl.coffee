@@ -1,6 +1,5 @@
-app.controller "SettingsCtrl", ($rootScope, $scope, localStorageService) ->
+app.controller "SettingsCtrl", ($rootScope, $scope, Settings) ->
   $rootScope.pageTitle = "Settings"
 
   $scope.save = ->
-    localStorageService.set("email", $scope.settings.email)
-    localStorageService.set("name", $scope.settings.name)
+    Settings.save()

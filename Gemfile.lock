@@ -128,9 +128,10 @@ GEM
     rails-assets-angular (1.2.18)
     rails-assets-angular-animate (1.2.18)
       rails-assets-angular (= 1.2.18)
+    rails-assets-angular-cookie (4.0.2)
+      rails-assets-angular
     rails-assets-angular-gravatar (0.1.5)
       rails-assets-angular (~> 1.0)
-    rails-assets-angular-local-storage (0.0.5)
     rails-assets-angular-mocks (1.2.18)
       rails-assets-angular (= 1.2.18)
     rails-assets-angular-moment (0.7.1)
@@ -233,8 +234,8 @@ DEPENDENCIES
   rails (= 4.1.1)
   rails-assets-angular
   rails-assets-angular-animate
+  rails-assets-angular-cookie
   rails-assets-angular-gravatar
-  rails-assets-angular-local-storage
   rails-assets-angular-mocks
   rails-assets-angular-moment
   rails-assets-angular-pusher

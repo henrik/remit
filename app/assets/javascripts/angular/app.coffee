@@ -1,14 +1,11 @@
 window.app = angular.module "Remit",
   [
     "ngRoute", "ngAnimate",
-    "doowb.angular-pusher", "ui.gravatar", "LocalStorageModule", "angularMoment",
+    "doowb.angular-pusher", "ui.gravatar", "ipCookie", "angularMoment",
   ]
 
-app.run ($rootScope, $location, localStorageService, Pusher) ->
-
-  $rootScope.settings =
-    email: localStorageService.get("email")
-    name: localStorageService.get("name")
+app.run ($rootScope, $location, Settings, Pusher) ->
+  $rootScope.settings = Settings.load()
 
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path
