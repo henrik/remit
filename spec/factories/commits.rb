@@ -24,7 +24,6 @@ FactoryGirl.define do
         id: sha,
         message: message,
         url: url,
-        timestamp: Time.now.iso8601,
         author: {
           email: author_email,
           username: author_username,

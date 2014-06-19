@@ -60,7 +60,7 @@ end
 
 describe Commit, "#as_json" do
   it "builds a hash of properties" do
-    commit = build(:commit, sha: "foo", reviewed_at: Time.now)
+    commit = build(:commit, sha: "foo", reviewed_at: Time.now, created_at: Time.now)
     expect(commit.as_json).to include(
       "short_sha" => "foo",
       "reviewed" => true,
