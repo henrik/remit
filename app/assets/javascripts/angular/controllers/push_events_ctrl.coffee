@@ -29,4 +29,4 @@ app.controller "PushEventsCtrl", ($scope, Pusher) ->
     for commit in $scope.commits
       if commit.id == data.id
         cb(commit)
-        return  # Break the loop
+        break
