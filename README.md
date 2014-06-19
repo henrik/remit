@@ -53,6 +53,10 @@ Visit <http://localhost:9292>
     rake dev:commits N=3  # 3 new commits
     rake dev:comments N=3  # 3 new comments
 
+#### See what a full payload looks like
+
+See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments).
+
 ### Test
 
     # Full suite
