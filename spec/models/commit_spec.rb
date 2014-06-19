@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe Commit, ".create_or_update_from_payload" do
+  let(:payload) { FactoryGirl.commit_partial_payload }
+
   let(:parent_payload) {
     {
       repository: { name: "myrepo" },
@@ -8,11 +10,10 @@ describe Commit, ".create_or_update_from_payload" do
   }
 
   it "creates a record with the payload and an identifying SHA hash" do
-    commit = Commit.create_or_update_from_payload({
+    commit = Commit.create_or_update_from_payload(payload.merge(
       id: "faa",
       url: "url",
-      author: { username: "uname" },
-    }, parent_payload)
+    ), parent_payload)
 
     expect(commit).to be_persisted
     expect(commit.sha).to eq "faa"
@@ -20,17 +21,15 @@ describe Commit, ".create_or_update_from_payload" do
   end
 
   it "updates an old record if the id is not new" do
-    commit = Commit.create_or_update_from_payload({
+    commit = Commit.create_or_update_from_payload(payload.merge(
       id: "faa",
       url: "url1",
-      author: { username: "uname" },
-    }, parent_payload)
+    ), parent_payload)
 
-    Commit.create_or_update_from_payload({
+    Commit.create_or_update_from_payload(payload.merge(
       id: "faa",
       url: "url2",
-      author: { username: "uname" },
-    }, parent_payload)
+    ), parent_payload)
 
     commit.reload
     expect(commit.sha).to eq "faa"
@@ -38,21 +37,17 @@ describe Commit, ".create_or_update_from_payload" do
   end
 
   it "merges in repository info from the parent payload" do
-    commit = Commit.create_or_update_from_payload({
-      id: "faa",
-      author: { username: "uname" },
-    }, parent_payload)
+    commit = Commit.create_or_update_from_payload(payload, {
+      repository: { name: "myrepo" },
+    })
 
     expect(commit.payload[:repository][:name]).to eq "myrepo"
   end
 
   it "creates or updates an author record" do
-    commit = Commit.create_or_update_from_payload({
-      id: "faa",
-      author: {
-        name: "Ada Lovelace",
-      }
-    }, parent_payload)
+    commit = Commit.create_or_update_from_payload(payload.merge(
+      author: { name: "Ada Lovelace" },
+    ), parent_payload)
 
     expect(commit.author.name).to eq "Ada Lovelace"
   end

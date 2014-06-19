@@ -24,6 +24,7 @@ FactoryGirl.define do
         id: sha,
         message: message,
         url: url,
+        timestamp: Time.now.iso8601,
         author: {
           email: author_email,
           username: author_username,
@@ -37,4 +38,9 @@ end
 
 def FactoryGirl.commit_payload(custom = {})
   attributes_for(:commit, custom).fetch(:payload)
+end
+
+# The per-commit payload before we add on more keys.
+def FactoryGirl.commit_partial_payload(custom = {})
+  commit_payload(custom).except(:repository)
 end
