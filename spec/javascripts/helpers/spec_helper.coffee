@@ -1,5 +1,6 @@
 #= require angular
 #= require angular-mocks
+#= require helpers/fake_app
 
 beforeEach module "Remit"
 

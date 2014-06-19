@@ -1,5 +1,4 @@
 #= require helpers/spec_helper
-#= require helpers/fake_app
 #= require angular/directives/nav_link
 
 describe "Directive: navLink", ->

@@ -1,5 +1,4 @@
 #= require helpers/spec_helper
-#= require helpers/fake_app
 #= require angular/services/commits
 
 describe "Service: Commits.markAsReviewed", ->
