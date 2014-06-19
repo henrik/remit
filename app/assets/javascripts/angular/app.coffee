@@ -1,8 +1,11 @@
-window.app = angular.module "Remit",
-  [
-    "ngRoute", "ngAnimate",
-    "doowb.angular-pusher", "ui.gravatar", "ipCookie", "angularMoment",
-  ]
+window.app = angular.module "Remit", [
+  "ngRoute"
+  "ngAnimate"
+  "doowb.angular-pusher"
+  "ui.gravatar"
+  "ipCookie"
+  "angularMoment"
+]
 
 app.run ($rootScope, $location, Settings, Pusher) ->
   $rootScope.settings = Settings.load()
@@ -16,15 +19,14 @@ app.run ($rootScope, $location, Settings, Pusher) ->
   subscribe = (event, cb) ->
     Pusher.subscribe "the_channel", event, cb
 
+  limitRecords = (list) ->
+    list.slice(0, $rootScope.maxRecords)
+
   subscribe "commits_updated", (data) ->
-    $rootScope.commits = data.commits.
-      concat($rootScope.commits).
-      slice(0, $rootScope.maxRecords)  # Stay within the maxRecords limit.
+    $rootScope.commits = limitRecords data.commits.concat($rootScope.commits)
 
   subscribe "comment_updated", (data) ->
-    $rootScope.comments = [ data.comment ].
-      concat($rootScope.comments).
-      slice(0, $rootScope.maxRecords)  # Stay within the maxRecords limit.
+    $rootScope.comments = limitRecords [ data.comment ].concat($rootScope.comments)
 
   subscribe "commit_reviewed", (data) ->
     for commit in $rootScope.commits
