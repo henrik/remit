@@ -8,7 +8,7 @@ html(
     link rel="shortcut icon" href=image_path("favicon.png")
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
-  body
+  body ng-controller="PushEventsCtrl"
     .wrapper
       img.settings-gravatar gravatar-src="settings.email" ng-show="settings.email"
 
