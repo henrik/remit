@@ -89,6 +89,10 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
     git push heroku master
     heroku run rake db:schema:load
 
+If you want to use [Honeybadger](https://www.honeybadger.io) for exception tracking, also do
+
+    heroku config:set HONEYBADGER_API_KEY=your_key
+
 #### Configure the webhook on GitHub
 
 Working at [Barsoom](http://barsoom.se)? [We've got you covered.](https://github.com/barsoom/servers/wiki/Automatically-apply-webhooks-to-all-our-repos)
