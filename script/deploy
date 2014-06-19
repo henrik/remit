@@ -2,11 +2,11 @@
 
 set -e
 
-echo "\nDeploying production\n"
+echo; echo "Deploying production"; echo
 git push heroku
 
-echo "\nDeploying Remit-on-Remit demo\n"
+echo; echo "Deploying Remit-on-Remit demo"; echo
 git push demo
 
-echo "\nPushing to GitHub\n"
+echo; echo "Pushing to GitHub"; echo
 git push origin
