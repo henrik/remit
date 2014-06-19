@@ -9,6 +9,7 @@
 }
 
 .comment-commit {
+  @include contain-floats;
   background: $blue;
   border: 1px solid $dark-blue;
   font-size: $font-small;
@@ -22,11 +23,13 @@
 .comment-commit-author,
 .comment-proper-author {
   padding: 5px 10px;
-  line-height: $small-gravatar-side;
+  line-height: 24px;
 }
 
 .comment-commit-author {
   background: #fff;
+  max-width: 50%;
+  float: right;
 }
 
 .unknown-commit .comment-commit-author {
@@ -36,10 +39,11 @@
 .comment-commit-author-avatar,
 .comment-proper-author-gravatar {
   @include small-gravatar;
-  // No idea why we need this.
-  margin-bottom: -6px;
   margin-right: 4px;
+  // No idea why we need this, but the avatar is aligned wrong otherwise.
+  margin-bottom: -6px;
 }
+
 
 .comment-proper {
   margin-top: 10px;
