@@ -43,5 +43,15 @@
 }
 
 .comment.authored-by-you {
-  opacity: 0.3;
+  opacity: 0.4;
+}
+
+.comment.on-your-commit {
+  .comment-proper-author {
+    background: $dark-blue;
+  }
+
+  .comment-proper-body {
+    background: $blue;
+  }
 }

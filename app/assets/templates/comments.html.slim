@@ -2,7 +2,7 @@ ul.comments-list
   li.comment(
     ng-repeat="comment in comments track by comment.github_id"
     ng-init="commit = comment.commit_data"
-    ng-class="{ 'authored-by-you': authoredByYou(comment) }"
+    ng-class="{ 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
   )
     .comment-proper
       .comment-proper-author

@@ -3,3 +3,6 @@ app.controller "CommentsCtrl", ($rootScope, $scope) ->
 
   $scope.authoredByYou = (comment) ->
     $scope.settings.name and comment.author_name.indexOf($scope.settings.name) != -1
+
+  $scope.onYourCommit = (commit) ->
+    $scope.settings.name and commit and commit.author_name.indexOf($scope.settings.name) != -1
