@@ -3,6 +3,7 @@ ul.comments-list
     .comment-proper
       .comment-proper-author
         img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
+        img.comment-commit-author-gravatar gravatar-src="commit.author_email" ng-show="commit"
         '
         strong= "{{comment.author_name}}"
         '
@@ -10,8 +11,6 @@ ul.comments-list
         '
         ' on
         span.known-commit ng-show="commit"
-          strong
-            ' {{commit.author_name}}'s
           em
             ' "{{commit.summary}}"
         span.unknown-commit ng-hide="commit"

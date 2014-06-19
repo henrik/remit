@@ -8,42 +8,22 @@
   margin: 10px 0;
 }
 
-.comment-commit {
-  @include contain-floats;
-  background: $blue;
-  border: 1px solid $dark-blue;
-  font-size: $font-small;
-}
-
-.comment-commit-summary,
 .comment-proper-body {
   padding: 10px 10px;
 }
 
-.comment-commit-author,
 .comment-proper-author {
   padding: 5px 10px;
   line-height: 24px;
 }
 
-.comment-commit-author {
-  background: #fff;
-  max-width: 50%;
-  float: right;
-}
-
-.unknown-commit .comment-commit-author {
-  font-style: italic;
-}
-
-.comment-commit-author-avatar,
+.comment-commit-author-gravatar,
 .comment-proper-author-gravatar {
   @include small-gravatar;
   margin-right: 4px;
   // No idea why we need this, but the avatar is aligned wrong otherwise.
   margin-bottom: -6px;
 }
-
 
 .comment-proper {
   margin-top: 10px;

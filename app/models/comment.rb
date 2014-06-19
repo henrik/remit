@@ -32,7 +32,6 @@ class Comment < ActiveRecord::Base
         :body,
         :author_name,
         :url,
-        :commit_author_name,
         :commit_sha,
         # TODO: generate JSON differently so we can call this "commit"
         :commit_data,

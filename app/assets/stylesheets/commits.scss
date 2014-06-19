@@ -12,14 +12,14 @@
 }
 
 .commit {
-  overflow: auto;  // Contain floats.
+  @include contain-floats;
   border-bottom: 1px solid $border-color;
   &:last-child { border-bottom: 0; }
 }
 
 .commit-wrapper {
+  @include contain-floats;
   margin: 0 10px;
-  overflow: auto;  // Contain floats.
 }
 
 .commit-avatar {
