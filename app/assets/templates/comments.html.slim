@@ -6,7 +6,7 @@
   p
     label
       input type="checkbox" ng-model="settings.include_comments_on_others" ng-change="saveSettings()"
-      ' Include comments on commits by others
+      ' Include comments on others' commits
 
 ul.comments-list(
   ng-class="{ 'hide-comments-by-me': !settings.include_my_comments, 'hide-comments-on-others': !settings.include_comments_on_others }"
