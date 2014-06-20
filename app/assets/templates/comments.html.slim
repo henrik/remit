@@ -4,22 +4,22 @@ ul.comments-list
     ng-init="commit = comment.commit_data"
     ng-class="{ 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
   )
-    .comment-proper
-      .comment-proper-author
-        img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
-        img.comment-commit-author-gravatar gravatar-src="commit.author_email" ng-show="commit"
-        '
-        strong= "{{comment.author_name}}"
-        '
-        span am-time-ago="comment.timestamp" title="{{comment.timestamp}}"
-        '
-        ' on
-        span.known-commit ng-show="commit"
-          em.comment-commit-summary
-            ' "{{commit.summary}}"
-        span.unknown-commit ng-hide="commit"
-          strong
-            ' {{comment.commit_sha}}
-      .comment-proper-body
-        a(href="{{comment.url}}" fluid-app-link)
+    a(href="{{comment.url}}" fluid-app-link)
+      .comment-proper
+        .comment-proper-author
+          img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
+          img.comment-commit-author-gravatar gravatar-src="commit.author_email" ng-show="commit"
+          '
+          strong= "{{comment.author_name}}"
+          '
+          span am-time-ago="comment.timestamp" title="{{comment.timestamp}}"
+          '
+          ' on
+          span.known-commit ng-show="commit"
+            em.comment-commit-summary
+              ' "{{commit.summary}}"
+          span.unknown-commit ng-hide="commit"
+            strong
+              ' {{comment.commit_sha}}
+        .comment-proper-body
           ' {{comment.body}}

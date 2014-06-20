@@ -20,12 +20,12 @@ input {
 }
 
 input {
-  border: 1px solid $dark-gray;
+  border: 1px solid $darker-gray;
 }
 
 button {
   background: $gray;
-  border: 1px solid $dark-gray;
+  border: 1px solid $darker-gray;
   &:active { background: $mid-gray; }
   &:focus { outline: 0; }
 

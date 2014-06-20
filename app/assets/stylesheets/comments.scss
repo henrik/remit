@@ -6,6 +6,11 @@
 
 .comment {
   margin: 10px 0;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover { color: inherit; }
+  }
 }
 
 .comment-proper-body {
@@ -36,6 +41,10 @@
 .comment-proper {
   margin-top: 10px;
   border: 1px solid $mid-gray;
+  &:hover {
+    border-color: $dark-gray;
+    -webkit-transform: scale(1.01);
+  }
 }
 
 .comment-proper-author {
