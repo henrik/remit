@@ -1,6 +1,6 @@
 class PagesController < UserFacingController
-  # The number of records to show (on load and after updates).
-  # The reason for a limit is that we expect (but haven't verified) it could get slow.
+  # The number of records to show (on load and after updates), for speed.
+  # Gets slower with more records.
   MAX_RECORDS = 200
 
   def index
