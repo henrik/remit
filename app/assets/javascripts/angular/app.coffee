@@ -8,7 +8,8 @@ window.app = angular.module "Remit", [
 ]
 
 app.run ($rootScope, $location, Settings) ->
-  $rootScope.settings = Settings.load()
+  $rootScope.settings = Settings.load
+    include_my_comments: true
 
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path

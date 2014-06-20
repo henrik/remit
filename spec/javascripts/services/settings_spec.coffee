@@ -25,3 +25,12 @@ describe "Service: Settings", ->
 
     myScope.settings = Settings.load()
     expect(myScope.settings.name).toEqual("Ada")
+
+  it "accepts defaults", ->
+    settings = Settings.load(mydefault: "hello")
+    expect(settings.mydefault).toEqual("hello")
+
+    Settings.save()
+
+    settings = Settings.load(mydefault: "something else")
+    expect(settings.mydefault).toEqual("hello")

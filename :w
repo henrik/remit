@@ -1,10 +1,14 @@
-.comment-settings
-  label
-    input type="checkbox" ng-model="settings.include_my_comments" ng-change="saveSettings()"
-    ' Include comments I wrote
+label
+  input(
+    type="checkbox"
+    ng-init="includeMyComments = !settings.hide_comments_by_me"
+    ng-model="includeMyComments"
+    ng-change="settings_hide_comments_by_me = !includeMyComments; saveSettings()"
+  )
+  ' Include comments I wrote
 
 ul.comments-list(
-  ng-class="{ 'hide-comments-by-me': !settings.include_my_comments }"
+  ng-class="{ 'hide-comments-by-me': settings.hide_comments_by_me }"
 )
   li.comment(
     ng-repeat="comment in comments track by comment.github_id"

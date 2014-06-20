@@ -1,3 +1,7 @@
+.comment-settings {
+  margin: 20px 10px;
+}
+
 .comments-list {
   list-style-type: none;
   padding: 0;
@@ -63,4 +67,8 @@
   .comment-proper-body {
     background: $blue;
   }
+}
+
+.comments-list.hide-comments-by-me .authored-by-you {
+  display: none;
 }
