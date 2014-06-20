@@ -41,7 +41,6 @@ gem 'rails-assets-angular-animate'
 gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
-gem 'rails-assets-angular-moment'
 gem 'rails-assets-angular-cookie'
 
 group :development, :test do

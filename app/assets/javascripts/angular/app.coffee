@@ -4,7 +4,6 @@ window.app = angular.module "Remit", [
   "doowb.angular-pusher"
   "ui.gravatar"
   "ipCookie"
-  "angularMoment"
 ]
 
 app.run ($rootScope, $location, Settings) ->
