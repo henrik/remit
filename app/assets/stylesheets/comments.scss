@@ -1,5 +1,11 @@
 .comment-settings {
   margin: 20px 10px;
+  text-align: center;
+
+  label {
+    margin-left: 20px;
+    &:first-child { margin-left: 0; }
+  }
 }
 
 .comments-list {

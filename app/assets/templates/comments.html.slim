@@ -1,12 +1,10 @@
 .comment-settings
-  p
-    label
-      input type="checkbox" ng-model="settings.include_my_comments" ng-change="saveSettings()"
-      ' Include comments I wrote
-  p
-    label
-      input type="checkbox" ng-model="settings.include_comments_on_others" ng-change="saveSettings()"
-      ' Include comments on others' commits
+  label
+    input type="checkbox" ng-model="settings.include_my_comments" ng-change="saveSettings()"
+    ' Comments I wrote
+  label
+    input type="checkbox" ng-model="settings.include_comments_on_others" ng-change="saveSettings()"
+    ' Comments on others
 
 ul.comments-list(
   ng-class="{ 'hide-comments-by-me': !settings.include_my_comments, 'hide-comments-on-others': !settings.include_comments_on_others }"
