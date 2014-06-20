@@ -52,6 +52,7 @@
   @include grow-on-hover;
   margin-top: 10px;
   border: 1px solid $mid-gray;
+  border-radius: 3px;
   &:hover {
     border-color: $dark-gray;
   }
