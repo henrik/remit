@@ -13,6 +13,7 @@
 
 .commit {
   @include contain-floats;
+  @include grow-on-hover;
   border-bottom: 1px solid $border-color;
   &:last-child { border-bottom: 0; }
 }

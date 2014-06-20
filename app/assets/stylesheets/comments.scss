@@ -49,11 +49,11 @@
 }
 
 .comment-proper {
+  @include grow-on-hover;
   margin-top: 10px;
   border: 1px solid $mid-gray;
   &:hover {
     border-color: $dark-gray;
-    -webkit-transform: scale(1.01);
   }
 }
 

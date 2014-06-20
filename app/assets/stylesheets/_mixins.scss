@@ -13,3 +13,7 @@
 @mixin contain-floats {
   overflow: auto;
 }
+
+@mixin grow-on-hover {
+  &:hover { -webkit-transform: scale(1.01); }
+}
