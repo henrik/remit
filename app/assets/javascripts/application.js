@@ -18,6 +18,7 @@
 //= require angular-cookie
 //= require angular-pusher
 //= require pusher
+//= require angular-once
 
 //= require ./angular/app
 //= require_tree ./angular

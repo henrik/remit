@@ -32,14 +32,13 @@ ul.commits-list
       '
 
       p.commit-summary
-        a(href="{{commit.url}}" ng-click="clicked(commit)" fluid-app-link)
-          | {{commit.summary}}
+        a(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link once-text="commit.summary")
 
       p.commit-details
         '
         ' in
-        strong= "{{commit.repository}}"
+        strong once-text="commit.repository"
         '
         span.by-author
           ' by
-          strong= "{{commit.author_name}}"
+          strong once-text="commit.author_name"

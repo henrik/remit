@@ -42,6 +42,7 @@ gem 'rails-assets-angular-gravatar'
 gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
 gem 'rails-assets-angular-cookie'
+gem 'rails-assets-angular-once'
 
 group :development, :test do
   gem 'rails-assets-angular-mocks'

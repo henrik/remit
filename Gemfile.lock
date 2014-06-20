@@ -134,6 +134,7 @@ GEM
       rails-assets-angular (~> 1.0)
     rails-assets-angular-mocks (1.2.18)
       rails-assets-angular (= 1.2.18)
+    rails-assets-angular-once (0.1.8)
     rails-assets-angular-pusher (0.0.8)
       rails-assets-angular (~> 1.2.0)
     rails-assets-angular-route (1.2.18)
@@ -233,6 +234,7 @@ DEPENDENCIES
   rails-assets-angular-cookie
   rails-assets-angular-gravatar
   rails-assets-angular-mocks
+  rails-assets-angular-once
   rails-assets-angular-pusher
   rails-assets-angular-route
   rails-assets-pusher
