@@ -6,14 +6,14 @@ app.config ($routeProvider, $locationProvider) ->
       redirectTo: "/commits"
     ).
     when("/commits",
-      templateUrl: "<%= asset_path("commits.html") %>"
+      templateUrl: "commits.html"
       controller: "CommitsCtrl"
     ).
     when("/comments",
-      templateUrl: "<%= asset_path("comments.html") %>"
+      templateUrl: "comments.html"
       controller: "CommentsCtrl"
     ).
     when("/settings",
-      templateUrl: "<%= asset_path("settings.html") %>"
+      templateUrl: "settings.html"
       controller: "SettingsCtrl"
     )

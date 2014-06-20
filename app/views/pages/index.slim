@@ -18,6 +18,10 @@ html(
           li top-nav-link="/comments" Comments
           li top-nav-link="/settings" Settings
 
+      script(type="text/ng-template" id="commits.html")= render "commits"
+      script(type="text/ng-template" id="comments.html")= render "comments"
+      script(type="text/ng-template" id="settings.html")= render "settings"
+
       div(ng-view)
         .loading-view Loading…
 
