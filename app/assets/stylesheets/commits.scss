@@ -34,11 +34,11 @@
   font-size: $font-small;
 }
 
-.your-last-clicked-commit {
+.commit.your-last-clicked {
   background: $yellow;
 }
 
-.your-last-clicked-commit.is-reviewed {
+.commit.your-last-clicked.is-reviewed {
   background: $yellow-green;
 }
 

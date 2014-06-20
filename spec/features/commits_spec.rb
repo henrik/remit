@@ -54,9 +54,9 @@ describe "Commits page", :js do
   end
 
   def commit_becomes_marked_as_last_clicked
-    expect(page).not_to have_selector(".your-last-clicked-commit")
+    expect(page).not_to have_selector(".your-last-clicked")
     yield
-    expect(page).to have_selector(".your-last-clicked-commit")
+    expect(page).to have_selector(".your-last-clicked")
   end
 
   def commit_is_marked_as_reviewed_by_ada
