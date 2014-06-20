@@ -69,6 +69,14 @@
   }
 }
 
-.comments-list.hide-comments-by-me .authored-by-you {
-  display: none;
+// .hide-comments-on-others must precede .hide-comments-by-me
+// since if both apply, your commits should remain hidden.
+
+.hide-comments-on-others {
+  .comment { display: none; }
+  .comment.authored-by-you { display: block; }
+}
+
+.hide-comments-by-me {
+  .comment.authored-by-you { display: none; }
 }

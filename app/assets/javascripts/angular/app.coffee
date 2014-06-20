@@ -10,6 +10,7 @@ window.app = angular.module "Remit", [
 app.run ($rootScope, $location, Settings) ->
   $rootScope.settings = Settings.load
     include_my_comments: true
+    include_comments_on_others: true
 
   $rootScope.navClass = (path) ->
     "current" if $location.path() == path
