@@ -14,20 +14,17 @@ ul.comments-list(
     ng-init="commit = comment.commit_data"
     ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
   )
-    a(href="{{comment.url}}" ng-click="clicked(comment)" fluid-app-link)
+    a(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
         .comment-proper-author
           img.comment-proper-author-gravatar gravatar-src="comment.author_email || 'show-default'"
           img.comment-commit-author-gravatar gravatar-src="commit ? commit.author_email : 'show-default'"
           '
-          strong= "{{comment.author_name}}"
+          strong once-text="comment.author_name"
           '
           ' on
           span.known-commit ng-show="commit"
-            em.comment-commit-summary
-              ' "{{commit.summary}}"
+            em.comment-commit-summary once-text="commit.summary"
           span.unknown-commit ng-hide="commit"
-            strong
-              ' {{comment.commit_sha}}
-        .comment-proper-body
-          ' {{comment.body}}
+            strong once-text="comment.commit_sha"
+        .comment-proper-body once-text="comment.body"
