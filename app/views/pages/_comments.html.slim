@@ -17,8 +17,8 @@ ul.comments-list(
     a(href="{{comment.url}}" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
         .comment-proper-author
-          img.comment-proper-author-gravatar gravatar-src="comment.author_email" ng-show="comment.author_email"
-          img.comment-commit-author-gravatar gravatar-src="commit.author_email" ng-show="commit"
+          img.comment-proper-author-gravatar gravatar-src="comment.author_email || 'show-default'"
+          img.comment-commit-author-gravatar gravatar-src="commit ? commit.author_email : 'show-default'"
           '
           strong= "{{comment.author_name}}"
           '
