@@ -75,14 +75,16 @@
   }
 }
 
-// .hide-comments-on-others must precede .hide-comments-by-me
-// since if both apply, your commits should remain hidden.
+.hide-comments-by-me {
+  .comment.authored-by-you { display: none; }
+}
 
 .hide-comments-on-others {
   .comment { display: none; }
   .comment.on-your-commit { display: block; }
 }
 
-.hide-comments-by-me {
-  .comment.authored-by-you { display: none; }
-}
+// If we show comments by me but hide comments on others,
+// my comments on others should keep showing.
+.hide-comments-on-others .comment.authored-by-you { display: block; }
+.hide-comments-on-others.hide-comments-by-me .comment.authored-by-you { display: none; }
