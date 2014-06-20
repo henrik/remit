@@ -53,6 +53,13 @@ Visit <http://localhost:9292>
     rake dev:commits N=3  # 3 new commits
     rake dev:comments N=3  # 3 new comments
 
+#### Import a production DB into dev
+
+    heroku addons:add pgbackups:auto-month  # Free
+    rake dev:db
+
+You may need to exit Rails consoles and servers to avoid an error about DB being in use.
+
 #### See what a full payload looks like
 
 See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments).
