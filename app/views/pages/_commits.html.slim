@@ -15,7 +15,7 @@ p.nothing-left-to-review ng-hide="stats.allUnreviewed"
 
 ul.commits-list
   li.commit(
-    id="commit-{{commit.id}}"
+    once-id="'commit-' + commit.id"
     ng-repeat="commit in commits track by commit.id"
     ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
   )
