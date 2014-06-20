@@ -34,3 +34,12 @@ describe "Service: Settings", ->
 
     settings = Settings.load(mydefault: "something else")
     expect(settings.mydefault).toEqual("hello")
+
+  it "applies defaults if a setting key was previously unknown", ->
+    settings = Settings.load()
+    expect(settings.mydefault).toBeUndefined()
+
+    Settings.save()
+
+    settings = Settings.load(mydefault: "hello")
+    expect(settings.mydefault).toEqual("hello")

@@ -8,7 +8,10 @@ app.service "Settings", (ipCookie) ->
   @data = {}
 
   @load = (defaultData) ->
-    @data = ipCookie(@key) || defaultData || {}
+    @data = ipCookie(@key) || {}
+    for key, value of defaultData
+      @data[key] = value unless (key of @data)
+    @data
 
   @save = ->
     ipCookie("settings", @data, expires: 999999)  # This number of days.
