@@ -1,6 +1,6 @@
 # Remit
 
-<img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" style="max-height: 150px">
+<img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
 **Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
 
