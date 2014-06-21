@@ -1,5 +1,7 @@
 # Remit
 
+<img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" style="max-height: 150px">
+
 **Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
 
 Web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
