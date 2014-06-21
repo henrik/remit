@@ -147,6 +147,8 @@ Remit will automatically remove the `target="_blank"` from links when Fluid.app 
 
 ## Import reviewed state from Hubreview
 
+Did you use our predecessor [Hubreview](https://github.com/joakimk/hubreview)?
+
 Run this in a Heroku console in the Hubreview repo:
 
 ```
