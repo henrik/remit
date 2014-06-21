@@ -66,8 +66,10 @@
   opacity: 0.4;
 }
 
-.comment.your-last-clicked, .comment.on-your-commit.your-last-clicked {
-  .comment-proper-author { background: $yellow; }
+.comment:active, .comment.your-last-clicked {
+  &, &.on-your-commit {  // Be higher specificity than the regular .on-your-commit
+    .comment-proper-author { background: $yellow; }
+  }
 }
 
 .comment.on-your-commit {
