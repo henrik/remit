@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   post "/commits/:id/reviewed" => 'commits#reviewed'
   delete "/commits/:id/unreviewed" => 'commits#unreviewed'
 
-  root 'pages#index'
+  # All paths should render the same page and then we route in JS.
+  get 'commits'  => 'pages#index'
+  get 'comments' => 'pages#index'
+  get 'settings' => 'pages#index'
 
-  # Catch-all since we don't use hashbang URLs; all paths should
-  # render the same page and then we route in JS.
-  get '*path' => 'pages#index'
+  root 'pages#index'
 end
