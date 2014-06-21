@@ -23,3 +23,9 @@
   border: 1px solid $border-color;
   border-radius: 3px;
 }
+
+@mixin truncate-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

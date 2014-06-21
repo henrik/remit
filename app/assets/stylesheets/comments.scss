@@ -24,9 +24,7 @@
 
 .comment-proper-body,
 .comment-proper-author {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  @include truncate-ellipsis;
 }
 
 .comment-proper-author {

@@ -32,13 +32,14 @@ ul.commits-list
         img.commit-avatar gravatar-src="commit.author_email"
         '
 
-        p.commit-summary once-text="commit.summary"
+        .commit-summary-and-details
+          p.commit-summary once-text="commit.summary"
 
-        p.commit-details
-          '
-          ' in
-          strong once-text="commit.repository"
-          '
-          span.by-author
-            ' by
-            strong once-text="commit.author_name"
+          p.commit-details
+            '
+            ' in
+            strong once-text="commit.repository"
+            '
+            span.by-author
+              ' by
+              strong once-text="commit.author_name"

@@ -55,6 +55,10 @@
     display: none;
   }
 
+  .commit-summary-and-details {
+    @include truncate-ellipsis;
+  }
+
   .commit-summary, .commit-details {
     display: inline;
     line-height: $small-gravatar-side;
