@@ -1,8 +1,5 @@
 doctype html
-html(
-  ng-app="Remit"
-  ng-init="comments = #{comments.to_json}; commits = #{commits.to_json}; maxRecords = #{max_records.to_json}"
-)
+html ng-app="Remit"
   head
     title(ng-bind="pageTitle") Remit
     link rel="shortcut icon" href=image_path("favicon.png")
@@ -31,3 +28,11 @@ html(
         a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
 
     = javascript_include_tag "application"
+
+    javascript:
+      angular.module("Remit.PreloadedData", []).
+        constant("preloadedData", {
+          maxRecords: #{raw max_records.to_json},
+          comments:   #{raw comments.to_json},
+          commits:    #{raw commits.to_json},
+        });
