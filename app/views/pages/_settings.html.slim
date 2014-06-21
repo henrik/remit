@@ -22,4 +22,8 @@
 
     .help-text
       p Determines <em>your</em> commits and comments by substring.
-      p If your name is "Ada Lovelace", a commit authored by "Ada Lovelace and Charles Babbage" is considered yours.
+      p
+        span ng-hide="settings.name" If your name is "{{exampleAuthor()}}", a
+        span ng-show="settings.name" A
+        '
+        ' commit authored by "{{exampleAuthor()}}" or by "Ada Lovelace and {{exampleAuthor()}}" will be considered yours.
