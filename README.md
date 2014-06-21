@@ -1,10 +1,10 @@
-# Remit
+**Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
 
 <img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
-**Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
+**Remit** is a web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
 
-Web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
+It's super easy to set up on a free Heroku instance.
 
 Keeps track of what has been reviewed and links to GitHub commits for the actual review.
 
