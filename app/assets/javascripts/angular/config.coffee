@@ -1,9 +1,6 @@
 app.config (PusherServiceProvider) ->
   # Configure for pusher-fake in tests.
-  if window.pusherOptions
-    opts = pusherOptions
-  else
-    opts = {}
+  opts = window.pusherOptions || {}
 
   # Uncomment for debug.
   # opts.log = (m) -> window.console.log(m)
