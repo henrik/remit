@@ -122,7 +122,9 @@ Where `MY_WEBHOOK_KEY` is whatever you assigned above (see it again with `heroku
 
 #### Reload clients automatically
 
-To reload clients automatically when you push an update, change the version number in `config/application.rb`.
+To reload clients automatically when you deploy to Heroku, change the version number in `config/application.rb`.
+
+If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a Pusher WebSocket message with the new version number. That message causes clients to reload if they're running a different version.
 
 ## Use with Fluid.app
 
