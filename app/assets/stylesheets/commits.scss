@@ -26,7 +26,15 @@
   @include big-gravatar;
   background: $gray;
   float: left;
-  margin: 14px 10px 4px 0;
+  margin: 8px 10px 4px 0;
+}
+
+.commit-summary-and-details {
+  margin: 10px 0;
+}
+
+.commit-summary, .commit-details {
+  margin: 6px 0;
 }
 
 .commit-details {
@@ -57,6 +65,7 @@
 
   .commit-summary-and-details {
     @include truncate-ellipsis;
+    margin: 0;
   }
 
   .commit-summary, .commit-details {
