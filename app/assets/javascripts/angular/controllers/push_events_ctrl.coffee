@@ -24,10 +24,10 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
       commit.reviewer_email = null
 
   subscribe "app_deployed", (data) ->
-    deployed_version = data.version
-    our_version = $scope.appVersion
-    console.log "Deployed v#{deployed_version}; we've got v#{our_version}"
-    if our_version != deployed_version
+    deployedVersion = data.version
+    ourVersion = $scope.appVersion
+    console.log "Deployed v#{deployedVersion}; we've got v#{ourVersion}"
+    if ourVersion != deployedVersion
       $window.location.reload()
 
 
