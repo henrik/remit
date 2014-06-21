@@ -4,7 +4,13 @@ class UserFacingController < ApplicationController
   def require_auth_key
     expected_key = ENV["AUTH_KEY"]
 
-    raise "AUTH_KEY must be configured in production. Please see README." unless expected_key
+    unless expected_key
+      if Rails.env.production?
+        raise "AUTH_KEY must be configured in production. Please see README."
+      else
+        return
+      end
+    end
 
     # Remember auth key in the session so you don't have to provide it with every single request.
     # A changed expected key will expire your session.

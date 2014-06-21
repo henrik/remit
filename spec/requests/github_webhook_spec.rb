@@ -66,7 +66,25 @@ describe "Receiving GitHub payloads by webhook" do
     expect(Commit.count).to be 0
   end
 
+  it "authorizes you via WEBHOOK_KEY if present" do
+    ENV["WEBHOOK_KEY"] = "sesame"
+
+    post_a_ping "/github_webhook"
+    expect(response.code).to eq "401"
+
+    post_a_ping "/github_webhook?auth_key=sesame"
+    expect(response.code).to eq "200"
+
+    ENV["WEBHOOK_KEY"] = nil
+  end
+
   private
+
+  def post_a_ping(url)
+    post url,
+      { zen: "Yo.", hook_id: 123 },
+      { "X-Github-Event" => "ping" }
+  end
 
   def expect_push(event, hash)
     expect(Pusher).to receive(:trigger).with("the_channel", event, hash).and_call_original

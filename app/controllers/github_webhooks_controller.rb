@@ -56,7 +56,11 @@ class GithubWebhooksController < ApplicationController
 
   def require_auth_key
     unless ENV["WEBHOOK_KEY"]
-      raise "WEBHOOK_KEY must be configured in production. Please see README."
+      if Rails.env.production?
+        raise "WEBHOOK_KEY must be configured in production. Please see README."
+      else
+        return
+      end
     end
 
     unless params[:auth_key] == ENV["WEBHOOK_KEY"]
