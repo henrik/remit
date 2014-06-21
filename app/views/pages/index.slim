@@ -15,8 +15,9 @@ html ng-app="Remit"
           li top-nav-link="/comments" Comments
           li top-nav-link="/settings" Settings
 
-      p.please-provide-details ng-hide="settings.email && settings.name"
-        ' Please <a href="/settings">provide your details</a> so we can tell which commits, comments and reviews are yours.
+      a.block-link href="/settings"
+        p.please-provide-details ng-hide="settings.email && settings.name"
+          ' <b>Please provide your details</b> so we can tell which commits, comments and reviews are yours.
 
       script(type="text/ng-template" id="commits.html")= render "commits"
       script(type="text/ng-template" id="comments.html")= render "comments"

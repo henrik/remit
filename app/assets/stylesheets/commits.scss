@@ -1,8 +1,6 @@
 .left-to-review, .nothing-left-to-review {
+  @include block-message;
   background: $mid-gray;
-  margin: 10px 0;
-  padding: 10px;
-  text-align: center;
 }
 
 .commits-list {

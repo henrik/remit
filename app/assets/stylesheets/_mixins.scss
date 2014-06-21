@@ -29,3 +29,9 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@mixin block-message {
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+}
