@@ -66,10 +66,13 @@ describe "Receiving GitHub payloads by webhook" do
     expect(Commit.count).to be 0
   end
 
-  it "authorizes you via WEBHOOK_KEY if present" do
+  it "authorizes you against the WEBHOOK_KEY if present" do
     ENV["WEBHOOK_KEY"] = "sesame"
 
     post_a_ping "/github_webhook"
+    expect(response.code).to eq "401"
+
+    post_a_ping "/github_webhook?auth_key=jafar"
     expect(response.code).to eq "401"
 
     post_a_ping "/github_webhook?auth_key=sesame"
