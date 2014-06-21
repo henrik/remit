@@ -11,7 +11,7 @@ module Remit
   # Increase this version number if you want to force clients to reload.
   # The current version will be sent out to clients on deploy, and a
   # version change will force a reload.
-  self.version = "0.1"
+  self.version = "0.2"
 
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
