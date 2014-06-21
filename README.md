@@ -16,6 +16,8 @@ Review the Remit commits using Remit:
 
 <https://remit-on-remit.herokuapp.com/?auth_key=demo>
 
+Please keep in mind that it's meant to be used within Fluid.app so you get a GitHub panel on the side. Details below.
+
 ### Why commit-by-commit review?
 
 If you think truly continuous integration and delivery (perhaps with feature flags) is important, you may prefer not to work with pull requests as a rule.
