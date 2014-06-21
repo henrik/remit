@@ -39,4 +39,14 @@ namespace :dev do
 
     puts "Done with response codes #{responses.join(", ")}"
   end
+
+  task :deploy => :environment do
+    puts "Faking a post-deploy webhook…"
+
+    session = ActionDispatch::Integration::Session.new(Rails.application)
+
+    response = session.post("/heroku_webhook")
+
+    puts "Done with response code #{response}"
+  end
 end

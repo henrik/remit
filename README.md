@@ -52,10 +52,11 @@ Run:
 
 Visit <http://localhost:9292>
 
-#### Fake new data coming in
+#### Fake incoming webhooks
 
-    rake dev:commits N=3  # 3 new commits
-    rake dev:comments N=3  # 3 new comments
+    rake dev:commits N=3   # 3 new commits from GitHub
+    rake dev:comments N=3  # 3 new comments from GitHub
+    rake dev:deploy        # Heroku says it deployed
 
 #### Import a production DB into dev
 
@@ -90,13 +91,16 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 
     heroku new remit-SOMETHING-UNIQUE
 
+    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
+
     # DB. Free plan with max 10,000 rows.
     heroku addons:add heroku-postgresql:dev
 
     # For WebSockets. Free plan with 20 concurrents, 100,000 messages/month. https://addons.heroku.com/pusher
     heroku addons:add pusher
 
-    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
+    heroku addons:add deployhooks:http --url=https://remit-SOMETHING-UNIQUE.herokuapp.com/heroku_webhook?auth_key=MY_WEBHOOK_KEY
+
     git push heroku master
     heroku run rake db:schema:load
 
@@ -116,6 +120,9 @@ Not so fortunate? In the settings for any repo you want to use this with, add a 
 
 Where `MY_WEBHOOK_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
 
+#### Reload clients automatically
+
+To reload clients automatically when you push an update, change the version number in `config/application.rb`.
 
 ## Use with Fluid.app
 

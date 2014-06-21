@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resource :github_webhook, only: [ :create ]
+  resource :heroku_webhook, only: [ :create ]
 
   post "/commits/:id/reviewed" => 'commits#reviewed'
   delete "/commits/:id/unreviewed" => 'commits#unreviewed'

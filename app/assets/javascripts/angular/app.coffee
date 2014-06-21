@@ -9,6 +9,7 @@ window.app = angular.module "Remit", [
 ]
 
 app.run ($rootScope, Settings, preloadedData) ->
+  $rootScope.appVersion = preloadedData.appVersion
   $rootScope.maxRecords = preloadedData.maxRecords
   $rootScope.commits = preloadedData.commits
   $rootScope.comments = preloadedData.comments

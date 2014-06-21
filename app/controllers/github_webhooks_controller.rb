@@ -1,6 +1,6 @@
-class GithubWebhooksController < ApplicationController
-  skip_before_action :verify_authenticity_token
+# This controller receives commits and comments from GitHub.
 
+class GithubWebhooksController < WebhooksBaseController
   def create
     case request.headers["X-Github-Event"]
     when "ping"
@@ -52,19 +52,5 @@ class GithubWebhooksController < ApplicationController
     pushed_branch = params.fetch(:ref).split("/").last
     master_branch = params.fetch(:repository).fetch(:master_branch)
     pushed_branch == master_branch
-  end
-
-  def require_auth_key
-    unless ENV["WEBHOOK_KEY"]
-      if Rails.env.production?
-        raise "WEBHOOK_KEY must be configured in production. Please see README."
-      else
-        return
-      end
-    end
-
-    unless params[:auth_key] == ENV["WEBHOOK_KEY"]
-      render status: 401, text: "Not authorized! Did you forget to provide auth_key in the URL?"
-    end
   end
 end

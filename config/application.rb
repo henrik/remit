@@ -7,6 +7,12 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Remit
+  mattr_accessor :version
+  # Increase this version number if you want to force clients to reload.
+  # The current version will be sent out to clients on deploy, and a
+  # version change will force a reload.
+  self.version = "0.1"
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

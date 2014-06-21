@@ -38,6 +38,7 @@ html ng-app="Remit"
     javascript:
       angular.module("Remit.PreloadedData", []).
         constant("preloadedData", {
+          appVersion: #{raw Remit.version.to_json},
           maxRecords: #{raw max_records.to_json},
           comments:   #{raw comments.to_json},
           commits:    #{raw commits.to_json},
