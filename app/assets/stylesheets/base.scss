@@ -10,6 +10,12 @@ a {
   &:hover { color: #777; }
 }
 
+a.block-link {
+  text-decoration: none;
+  color: inherit;
+  &:hover { color: inherit; }
+}
+
 label {
   font-weight: $weight-bold;
 }

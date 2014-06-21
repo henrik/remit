@@ -19,26 +19,26 @@ ul.commits-list
     ng-repeat="commit in commits track by commit.id"
     ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
   )
-    .commit-wrapper
-      .commit-controls
-        button.small.mark-as-reviewed ng-click="markAsReviewed(commit)" ng-hide="commit.reviewed" Mark as reviewed
+    a.block-link(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link)
+      .commit-wrapper
+        .commit-controls
+          button.small.mark-as-reviewed ng-click="markAsReviewed(commit, $event)" ng-hide="commit.reviewed" Mark as reviewed
 
-        '
-        button.small.mark-as-new ng-click="markAsNew(commit)" ng-show="commit.reviewed" Mark as new
-        '
-        img.commit-reviewer-avatar gravatar-src="commit.reviewer_email || 'show-a-placeholder'" ng-show="commit.reviewed"
+          '
+          button.small.mark-as-new ng-click="markAsNew(commit, $event)" ng-show="commit.reviewed" Mark as new
+          '
+          img.commit-reviewer-avatar gravatar-src="commit.reviewer_email || 'show-a-placeholder'" ng-show="commit.reviewed"
 
-      img.commit-avatar gravatar-src="commit.author_email"
-      '
-
-      p.commit-summary
-        a(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link once-text="commit.summary")
-
-      p.commit-details
+        img.commit-avatar gravatar-src="commit.author_email"
         '
-        ' in
-        strong once-text="commit.repository"
-        '
-        span.by-author
-          ' by
-          strong once-text="commit.author_name"
+
+        p.commit-summary once-text="commit.summary"
+
+        p.commit-details
+          '
+          ' in
+          strong once-text="commit.repository"
+          '
+          span.by-author
+            ' by
+            strong once-text="commit.author_name"

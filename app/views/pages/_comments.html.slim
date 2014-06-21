@@ -14,7 +14,7 @@ ul.comments-list(
     ng-init="commit = comment.commit_data"
     ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
   )
-    a(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
+    a.block-link(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
         .comment-proper-author
           img.comment-proper-author-gravatar gravatar-src="comment.author_email || 'show-default'"

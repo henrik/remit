@@ -16,13 +16,20 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
     $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
   , true
 
-  $scope.markAsReviewed = (commit) ->
+  $scope.markAsReviewed = (commit, $event) ->
+    stopEvent $event
     Commits.markAsReviewed(commit, $scope.settings.email).
       error(reportServerError)
 
-  $scope.markAsNew = (commit) ->
+  $scope.markAsNew = (commit, $event) ->
+    stopEvent $event
     Commits.markAsNew(commit).
       error(reportServerError)
+
+  # We have buttons nested within links, so we need this.
+  stopEvent = ($event) ->
+    $event.stopPropagation()
+    $event.preventDefault()
 
   reportServerError = ->
     $window.alert("Server error! Your update may have been lost.")
