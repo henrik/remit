@@ -20,3 +20,23 @@
     max-height: 999px;  // http://stackoverflow.com/a/8331169/6962
   }
 }
+
+.please-provide-details {
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: all ease-in-out 0.2s;
+  }
+
+  &.ng-hide-add.ng-hide-add-active,
+  &.ng-hide-remove {
+    opacity: 0;
+    line-height: 0;
+    max-height: 0;
+  }
+
+  &.ng-hide-add,
+  &.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+    line-height: 1;
+    max-height: 999px;
+  }
+}
