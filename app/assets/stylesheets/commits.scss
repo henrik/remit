@@ -103,11 +103,16 @@
 .mark-as-reviewed {
   background-color: $green;
   font-weight: $weight-bold;
+  &:hover { background-color: darken($green, 5%); }
+  &:active { background-color: darken($green, 15%); }
 }
 
 .mark-as-new {
+  background-color: $white;
   opacity: 0.5;
   .commit:hover & { opacity: 1; }
+  &:hover { background-color: darken($white, 5%); }
+  &:active { background-color: darken($white, 15%); }
 }
 
 // angular-animation
