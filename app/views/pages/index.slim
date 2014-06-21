@@ -24,10 +24,14 @@ html ng-app="Remit"
       div(ng-view)
 
       footer
-        a(href="http://github.com/henrik/remit" fluid-app-link) Remit
-        '
-        ' by
-        a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
+        p
+          a(href="http://github.com/henrik/remit" fluid-app-link)
+            = image_tag("favicon.png", class: "footer-logo")
+        p
+          a(href="http://github.com/henrik/remit" fluid-app-link) Remit
+          '
+          ' by
+          a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
 
     = javascript_include_tag "application"
 

@@ -46,10 +46,13 @@
 }
 
 footer {
-  border-top: 1px solid $border-color;
-  padding: $vspace $left-column-inset $vspace $left-column-inset;
-  margin: 0;
+  text-align: center;
+  margin: ($vspace * 2) $left-column-inset;
   font-size: $font-small;
+}
+
+.footer-logo {
+  max-height: 50px;
 }
 
 .settings-gravatar {
