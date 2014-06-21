@@ -5,7 +5,9 @@
     p
       label for="setting-email" Your email:
       '
-      input type="email" id="setting-email" ng-change="save()" ng-model="settings.email"
+      / type="email" causes "bouncing" of .please-provide-details
+      / because "foo@bar." is not considered a real value.
+      input id="setting-email" ng-change="save()" ng-model="settings.email"
 
     p.help-text Uniquely identifies you as a reviewer. Used for your Gravatar.
 
