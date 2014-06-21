@@ -11,7 +11,7 @@
 .comments-list {
   list-style-type: none;
   padding: 0;
-  margin: 10px;
+  margin: 10px 4px;
 }
 
 .comment {
@@ -44,13 +44,9 @@
 }
 
 .comment-proper {
-  @include grow-on-hover;
+  @include listing;
   margin-top: 10px;
-  border: 1px solid $mid-gray;
-  border-radius: 3px;
-  &:hover {
-    border-color: $dark-gray;
-  }
+  &:hover { border-color: $dark-gray; }
 }
 
 .comment-proper-author {

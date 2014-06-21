@@ -12,10 +12,9 @@
 }
 
 .commit {
+  @include listing;
   @include contain-floats;
-  @include grow-on-hover;
-  border-bottom: 1px solid $border-color;
-  &:last-child { border-bottom: 0; }
+  margin: 2px 4px;
 }
 
 .commit-wrapper {

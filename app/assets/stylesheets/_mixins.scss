@@ -17,3 +17,9 @@
 @mixin grow-on-hover {
   &:hover { -webkit-transform: scale(1.01); }
 }
+
+@mixin listing {
+  @include grow-on-hover;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+}
