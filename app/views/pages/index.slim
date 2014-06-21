@@ -31,10 +31,3 @@ html(
         a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
 
     = javascript_include_tag "application"
-
-    javascript:
-      window.pusherKey = "#{Pusher.key}";
-
-    - if Rails.env.test?
-      javascript:
-        window.pusherOptions = #{raw PusherFake.configuration.to_options.to_json};
