@@ -1,5 +1,7 @@
 .settings-wrapper {
   margin: $vspace $left-column-inset;
+  padding-bottom: $vspace;
+  border-bottom: 1px solid $border-color;
 }
 
 .help-text {
