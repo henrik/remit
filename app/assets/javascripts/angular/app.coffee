@@ -7,7 +7,7 @@ window.app = angular.module "Remit", [
   "once"
 ]
 
-app.run ($rootScope, $location, Settings) ->
+app.run ($rootScope, Settings) ->
   $rootScope.settings = Settings.load
     include_my_comments: false
     include_comments_on_others: true
