@@ -7,8 +7,6 @@ html ng-app="Remit"
     = csrf_meta_tags
   body.ng-cloak ng-controller="PushEventsCtrl"
     .wrapper
-      img.settings-gravatar gravatar-src="settings.email" ng-show="settings.email"
-
       nav.top-nav
         ul
           li top-nav-link="/commits" Commits

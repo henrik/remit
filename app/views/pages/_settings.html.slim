@@ -9,11 +9,17 @@
       / because "foo@bar." is not considered a real value.
       input id="setting-email" ng-change="save()" ng-model="settings.email"
 
-    p.help-text Uniquely identifies you as a reviewer. Used for your Gravatar.
+    p.help-text
+      ' Uniquely identifies you as a reviewer. Used for
+      img.settings-gravatar gravatar-src="settings.email" ng-show="settings.email"
+      '
+      ' your Gravatar.
 
     p
       label for="setting-name" Your name:
       '
       input id="setting-name" ng-change="save()" ng-model="settings.name"
 
-    p.help-text Determines <em>your</em> commits and comments by substring: if your name is "Ada Lovelace", a commit authored by "Ada Lovelace and Charles Babbage" is considered yours.
+    .help-text
+      p Determines <em>your</em> commits and comments by substring.
+      p If your name is "Ada Lovelace", a commit authored by "Ada Lovelace and Charles Babbage" is considered yours.
