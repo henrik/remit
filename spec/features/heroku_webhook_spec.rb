@@ -11,6 +11,7 @@ describe "Heroku webhooks", :js do
     # Force a reload!
 
     set_server_version "2.0"
+
     expect_page_to_reload do
       the_heroku_webhook_is_triggered
     end
@@ -22,6 +23,7 @@ describe "Heroku webhooks", :js do
     expect_page_not_to_reload do
       the_heroku_webhook_is_triggered
     end
+    expect_client_version "2.0"
   end
 
   private
