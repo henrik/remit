@@ -57,10 +57,10 @@ describe Comment, "#as_json" do
   }
 
   it "includes the desired attributes" do
-    expect(comment.as_json).to include({
+    expect(comment.as_json).to include(
       body: "Yo.",
       author_name: "charlesbabbage",
-    }.stringify_keys)
+    )
   end
 end
 

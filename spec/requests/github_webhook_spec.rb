@@ -10,7 +10,7 @@ describe "Receiving GitHub payloads by webhook" do
   end
 
   it "stores commit comments and pushes an event" do
-    expect_push "comment_updated", { comment: a_hash_including("body" => "Hi.") }
+    expect_push "comment_updated", { comment: a_hash_including(body: "Hi.") }
 
     post "/github_webhook",
       { comment: FactoryGirl.comment_payload(body: "Hi.") },

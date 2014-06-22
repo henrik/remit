@@ -25,21 +25,8 @@ class Comment < ActiveRecord::Base
     comment
   end
 
-  def as_json(opts = {})
-    super(opts.reverse_merge(
-      methods: [
-        :github_id,
-        :body,
-        :author_name,
-        :url,
-        :commit_sha,
-        # TODO: generate JSON differently so we can call this "commit"
-        :commit_data,
-        :author_email,
-        :timestamp,
-      ],
-      only: [],
-    ))
+  def as_json(_opts = {})
+    CommentSerializer.new(self).as_json
   end
 
   def body
@@ -52,18 +39,5 @@ class Comment < ActiveRecord::Base
 
   def timestamp
     payload[:created_at]
-  end
-
-  def author_name
-    author.name_or_username
-  end
-
-  def commit_data
-    commit && commit.as_json
-  end
-
-  # May be nil.
-  def author_email
-    author.email
   end
 end
