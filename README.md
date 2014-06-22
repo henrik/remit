@@ -33,9 +33,7 @@ Read more in this blog post: ["The risks of feature branches and pre-merge code 
   * "an item referred to someone for consideration"
   * "forgive (a sin)"
 
-## Setup
-
-### Development
+## Development
 
 Assumes you have
   * Ruby 2.1.2
@@ -52,24 +50,25 @@ Run:
 
 Visit <http://localhost:9292>
 
-#### Fake incoming webhooks
+### Fake incoming webhooks
 
     rake dev:commits N=3   # 3 new commits from GitHub
     rake dev:comments N=3  # 3 new comments from GitHub
     rake dev:deploy        # Heroku says it deployed
 
-#### Import a production DB into dev
+### Import a production DB into dev
 
     heroku addons:add pgbackups:auto-month  # Free
     rake dev:db
 
 You may need to exit Rails consoles and servers to avoid an error about DB being in use.
 
-#### See what a full payload looks like
+### See what a full payload looks like
 
 See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments).
 
-### Test
+
+## Test
 
     # Full suite
     rake
@@ -85,9 +84,10 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
     # Assumes you've started a dev server with bin/rails server
     open http://localhost:3000/specs
 
-### Production
 
-#### Set the app up on Heroku
+## Production
+
+### Set the app up on Heroku
 
     heroku new remit-SOMETHING-UNIQUE
 
@@ -108,7 +108,7 @@ If you want to use [Honeybadger](https://www.honeybadger.io) for exception track
 
     heroku config:set HONEYBADGER_API_KEY=your_key
 
-#### Configure the webhook on GitHub
+### Configure the webhook on GitHub
 
 Working at [Barsoom](http://barsoom.se)? [We've got you covered.](https://github.com/barsoom/servers/wiki/Automatically-apply-webhooks-to-all-our-repos)
 
@@ -120,11 +120,33 @@ Not so fortunate? In the settings for any repo you want to use this with, add a 
 
 Where `MY_WEBHOOK_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
 
-#### Reload clients automatically
+### Reload clients automatically
 
 To reload clients automatically when you deploy to Heroku, change the version number in `config/application.rb`.
 
 If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a Pusher WebSocket message with the new version number. That message causes clients to reload if they're running a different version.
+
+### Import reviewed state from Hubreview
+
+Did you use our predecessor [Hubreview](https://github.com/joakimk/hubreview)?
+
+Run this in a Heroku console in the Hubreview repo:
+
+```
+json = Revision.where(reviewed: true).pluck(:name, :in_review_at, :created_at, :review_time).map { |n,ra,ca,rt| { sha: n, at: ((ra || ca) + rt.to_i).to_i } }.to_json; nil
+File.write("tmp/json", json)
+`scp tmp/json you@your-server`
+```
+
+And this in Remit:
+
+```
+`scp you@your-server:json tmp/json`
+raw = File.read("tmp/json"); raw.length
+data = JSON.parse(raw); data.first
+data.each { |x| Commit.where(sha: x["sha"]).where("reviewed_at IS NULL").update_all(reviewed_at: Time.at(x["at"])) }
+```
+
 
 ## Use with Fluid.app
 
@@ -154,26 +176,6 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
 
 Remit will automatically remove the `target="_blank"` from links when Fluid.app is detected, so "current tab in current window" does the right thing.
 
-## Import reviewed state from Hubreview
-
-Did you use our predecessor [Hubreview](https://github.com/joakimk/hubreview)?
-
-Run this in a Heroku console in the Hubreview repo:
-
-```
-json = Revision.where(reviewed: true).pluck(:name, :in_review_at, :created_at, :review_time).map { |n,ra,ca,rt| { sha: n, at: ((ra || ca) + rt.to_i).to_i } }.to_json; nil
-File.write("tmp/json", json)
-`scp tmp/json you@your-server`
-```
-
-And this in Remit:
-
-```
-`scp you@your-server:json tmp/json`
-raw = File.read("tmp/json"); raw.length
-data = JSON.parse(raw); data.first
-data.each { |x| Commit.where(sha: x["sha"]).where("reviewed_at IS NULL").update_all(reviewed_at: Time.at(x["at"])) }
-```
 
 ## Credits
 
