@@ -26,7 +26,6 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
   subscribe "app_deployed", (data) ->
     deployedVersion = data.version
     ourVersion = $scope.appVersion
-    console.log "Deployed v#{deployedVersion}; we've got v#{ourVersion}"
     if ourVersion != deployedVersion
       $window.location.reload()
 

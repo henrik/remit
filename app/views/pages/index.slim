@@ -2,6 +2,7 @@ doctype html
 html ng-app="Remit"
   head
     title(ng-bind="pageTitle") Remit
+    meta name="version" content="#{Remit.version}"
     link rel="shortcut icon" href=image_path(Rails.env.development? ? "favicon-dev.png" : "favicon.png")
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
