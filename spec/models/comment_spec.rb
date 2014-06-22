@@ -47,23 +47,6 @@ describe Comment, ".create_or_update_from_payload" do
   end
 end
 
-describe Comment, "#as_json" do
-  let(:comment) {
-    build(:comment,
-      commit_sha: "faa",
-      body: "Yo.",
-      author: Author.new(username: "charlesbabbage"),
-    )
-  }
-
-  it "includes the desired attributes" do
-    expect(comment.as_json).to include(
-      body: "Yo.",
-      author_name: "charlesbabbage",
-    )
-  end
-end
-
 describe Comment, "#commit" do
   it "finds a related commit if there is one" do
     commit = create(:commit, sha: "faa")
