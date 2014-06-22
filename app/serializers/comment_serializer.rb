@@ -1,6 +1,4 @@
-class CommentSerializer < ActiveModel::Serializer
-  self.root = false
-
+class CommentSerializer < ApplicationSerializer
   attributes :github_id,
     :author_name,
     :author_email,

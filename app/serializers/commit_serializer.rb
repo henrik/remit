@@ -1,6 +1,4 @@
-class CommitSerializer < ActiveModel::Serializer
-  self.root = false
-
+class CommitSerializer < ApplicationSerializer
   attributes :id,
     :author_name,
     :author_email,
