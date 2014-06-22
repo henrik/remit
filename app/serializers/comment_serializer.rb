@@ -2,12 +2,12 @@ class CommentSerializer < ActiveModel::Serializer
   self.root = false
 
   attributes :github_id,
-    :body,
     :author_name,
     :author_email,
     :url,
-    :commit_sha,
+    :body,
     :commit,
+    :commit_sha,
     :timestamp
 
   private
@@ -21,6 +21,7 @@ class CommentSerializer < ActiveModel::Serializer
     comment.author.email
   end
 
+  # May not have an associated commit.
   def commit
     comment.commit.try(:as_json)
   end
