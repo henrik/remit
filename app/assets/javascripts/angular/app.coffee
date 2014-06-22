@@ -12,7 +12,7 @@ window.app = angular.module "Remit", [
 
 app.run ($rootScope, $location, Settings, preloadedData) ->
   $rootScope.maxRecords = preloadedData.maxRecords
-  $rootScope.commits  = preloadedData.commits
+  $rootScope.commits = Commit.decorate(preloadedData.commits)
   $rootScope.comments = preloadedData.comments
 
   $rootScope.$on "$routeChangeSuccess", ->

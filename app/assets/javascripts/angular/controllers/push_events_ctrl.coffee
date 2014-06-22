@@ -8,7 +8,8 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentU
 
 
   subscribe "commits_updated", (data) ->
-    $scope.commits = limitRecords data.commits.concat($scope.commits)
+    newCommits = Commit.decorate(data.commits)
+    $scope.commits = limitRecords newCommits.concat($scope.commits)
 
   subscribe "comment_updated", (data) ->
     $scope.comments = limitRecords [ data.comment ].concat($scope.comments)
