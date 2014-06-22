@@ -16,8 +16,9 @@ class CommitsController < UserFacingController
   def unreviewed
     id = params[:id].to_i
 
-    Commit.find(id).mark_as_unreviewed
-    push_event "commit_unreviewed", id: id
+    commit = Commit.find(id)
+    commit.mark_as_unreviewed
+    push_event "commit_unreviewed", commit
 
     render text: "OK"
   end

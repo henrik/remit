@@ -14,14 +14,10 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
     $scope.comments = limitRecords [ data.comment ].concat($scope.comments)
 
   subscribe "commit_reviewed", (data) ->
-    withCommit data, (commit) ->
-      commit.isReviewed = true
-      commit.reviewerEmail = data.reviewerEmail
+    updateCommitFrom(data)
 
   subscribe "commit_unreviewed", (data) ->
-    withCommit data, (commit) ->
-      commit.isReviewed = false
-      commit.reviewerEmail = null
+    updateCommitFrom(data)
 
   subscribe "app_deployed", (data) ->
     deployedVersion = data.version
@@ -33,8 +29,8 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
   limitRecords = (list) ->
     list.slice(0, $scope.maxRecords)
 
-  withCommit = (data, cb) ->
+  updateCommitFrom = (data) ->
     for commit in $scope.commits
       if commit.id == data.id
-        cb(commit)
+        commit[key] = value for key, value of data
         break
