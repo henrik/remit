@@ -15,12 +15,12 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
 
   subscribe "commit_reviewed", (data) ->
     withCommit data, (commit) ->
-      commit.reviewed = true
+      commit.isReviewed = true
       commit.reviewerEmail = data.reviewerEmail
 
   subscribe "commit_unreviewed", (data) ->
     withCommit data, (commit) ->
-      commit.reviewed = false
+      commit.isReviewed = false
       commit.reviewerEmail = null
 
   subscribe "app_deployed", (data) ->

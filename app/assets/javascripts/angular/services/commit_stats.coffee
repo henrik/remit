@@ -7,7 +7,7 @@ app.service "CommitStats", () ->
     for commit in commits
       byYou = yourName and commit.authorName.indexOf(yourName) != -1
 
-      if !commit.reviewed
+      if !commit.isReviewed
         out.allUnreviewed += 1
         out.youCanReview  += 1 unless byYou
 

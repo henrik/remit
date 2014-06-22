@@ -9,27 +9,27 @@ describe "Service: CommitStats.stats()", ->
 
   it "counts unreviewed commits", ->
     commits = [
-      { reviewed: false },
-      { reviewed: true },
-      { reviewed: false },
+      { isReviewed: false },
+      { isReviewed: true },
+      { isReviewed: false },
     ]
     stats = CommitStats.stats(commits)
     expect(stats.allUnreviewed).toEqual(2)
 
   it "counts commits you can review", ->
     commits = [
-      { reviewed: false, authorName: "The Ada L" },
-      { reviewed: false, authorName: "Charles Baby" },
-      { reviewed: false, authorName: "Ada & Charles" },
+      { isReviewed: false, authorName: "The Ada L" },
+      { isReviewed: false, authorName: "Charles Baby" },
+      { isReviewed: false, authorName: "Ada & Charles" },
     ]
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.youCanReview).toEqual(1)
 
   it "counts unreviewed commits by you", ->
     commits = [
-      { reviewed: false, authorName: "The Ada L" },
-      { reviewed: false, authorName: "Charles Baby" },
-      { reviewed: false, authorName: "Ada & Charles" },
+      { isReviewed: false, authorName: "The Ada L" },
+      { isReviewed: false, authorName: "Charles Baby" },
+      { isReviewed: false, authorName: "Ada & Charles" },
     ]
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.yourUnreviewed).toEqual(2)

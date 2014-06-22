@@ -17,17 +17,17 @@ ul.commits-list
   li.commit(
     once-id="'commit-' + commit.id"
     ng-repeat="commit in commits track by commit.id"
-    ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.reviewed }"
+    ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.isReviewed }"
   )
     a.block-link(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link)
       .commit-wrapper
         .commit-controls
-          button.small.mark-as-reviewed ng-click="markAsReviewed(commit, $event)" ng-hide="commit.reviewed" Mark as reviewed
+          button.small.mark-as-reviewed ng-click="markAsReviewed(commit, $event)" ng-hide="commit.isReviewed" Mark as reviewed
 
           '
-          button.small.mark-as-new ng-click="markAsNew(commit, $event)" ng-show="commit.reviewed" Mark as new
+          button.small.mark-as-new ng-click="markAsNew(commit, $event)" ng-show="commit.isReviewed" Mark as new
           '
-          img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'" ng-show="commit.reviewed"
+          img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'" ng-show="commit.isReviewed"
 
         img.commit-avatar gravatar-src="commit.authorEmail"
         '
