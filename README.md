@@ -92,9 +92,17 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 
 ### Set the app up on Heroku
 
-    heroku new remit-SOMETHING-UNIQUE
+    # Customize this
+    HEROKU_NAME="remit-SOMETHING-UNIQUE"
 
-    heroku config:set AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"` SECRET_KEY_BASE=`rake secret`
+    # No customizations required below
+
+    heroku new $HEROKU_NAME
+
+    AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"`
+    WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"`
+
+    heroku config:set AUTH_KEY=$AUTH_KEY WEBHOOK_KEY=$WEBHOOK_KEY SECRET_KEY_BASE=`rake secret`
 
     # DB. Free plan with max 10,000 rows.
     heroku addons:add heroku-postgresql:dev
@@ -102,14 +110,16 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
     # For WebSockets. Free plan with 20 concurrents, 100,000 messages/month. https://addons.heroku.com/pusher
     heroku addons:add pusher
 
-    heroku addons:add deployhooks:http --url=https://remit-SOMETHING-UNIQUE.herokuapp.com/heroku_webhook?auth_key=MY_WEBHOOK_KEY
+    heroku addons:add deployhooks:http --url=https://$HEROKU_NAME.herokuapp.com/heroku_webhook?auth_key=$WEBHOOK_KEY
 
     git push heroku master
     heroku run rake db:schema:load
 
 If you want to use [Honeybadger](https://www.honeybadger.io) for exception tracking, also do
 
-    heroku config:set HONEYBADGER_API_KEY=your_key
+    heroku config:set HONEYBADGER_API_KEY=your_key_as_provided_by_honeybadger
+
+You need to customize that key, of course.
 
 ### Configure the webhook on GitHub
 
@@ -122,6 +132,10 @@ Not so fortunate? In the settings for any repo you want to use this with, add a 
     Let me select individual events:  [x] Push  [x] Commit comment
 
 Where `MY_WEBHOOK_KEY` is whatever you assigned above (see it again with `heroku config:get WEBHOOK_KEY`).
+
+If you just set the app up with the instructions above, you can get the URL into your clipboard like this on OS X:
+
+    echo https://$HEROKU_NAME.herokuapp.com/github_webhook?auth_key=$WEBHOOK_KEY | pbcopy && echo "Copied: `pbpaste`"
 
 ### Reload clients automatically
 
