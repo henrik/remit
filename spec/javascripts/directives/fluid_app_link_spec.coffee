@@ -8,7 +8,7 @@ describe "Directive: fluidAppLink", ->
   beforeEach ->
     provide "FluidApp", FluidApp
 
-  $compile = $rootScope = undefined
+  $compile = $rootScope = null
   beforeEach inject (_$compile_, _$rootScope_) ->
     $compile = _$compile_
     $rootScope = _$rootScope_
