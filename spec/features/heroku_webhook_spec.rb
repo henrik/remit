@@ -27,25 +27,17 @@ describe "Heroku webhooks", :js do
   private
 
   def expect_page_not_to_reload
-    watch_for_page_reloads
+    page.evaluate_script "window.notReloaded = true"
     yield
-    allow_time_for_a_reload_to_happen
+    sleep 0.01  # Sadly, we need this.
     expect(page.evaluate_script("window.notReloaded")).to be_truthy
   end
 
   def expect_page_to_reload
-    watch_for_page_reloads
-    yield
-    allow_time_for_a_reload_to_happen
-    expect(page.evaluate_script("window.notReloaded")).to be_falsy
-  end
-
-  def watch_for_page_reloads
     page.evaluate_script "window.notReloaded = true"
-  end
-
-  def allow_time_for_a_reload_to_happen
+    yield
     sleep 0.01  # Sadly, we need this.
+    expect(page.evaluate_script("window.notReloaded")).to be_falsy
   end
 
   def the_heroku_webhook_is_triggered
