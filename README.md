@@ -92,7 +92,9 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 
 ### Set the app up on Heroku
 
-    # Customize this
+We assume you have a [Heroku](http://heroku.com) account.
+
+    # Customize this. It must be unique and will be your Heroku subdomain.
     HEROKU_NAME="remit-SOMETHING-UNIQUE"
 
     # No customizations required below
