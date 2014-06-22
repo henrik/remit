@@ -18,6 +18,7 @@ FactoryGirl.define do
         body: body,
         commit_id: commit_sha,
         created_at: Time.now.iso8601,
+        html_url: "http://example.com",
         user: {
           login: user_login,
         },
