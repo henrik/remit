@@ -17,17 +17,22 @@ ul.commits-list
   li.commit(
     once-id="'commit-' + commit.id"
     ng-repeat="commit in commits track by commit.id"
-    ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.isReviewed }"
+    ng-class="{ 'your-last-clicked': isYourLastClicked(commit), 'authored-by-you': authoredByYou(commit), 'is-reviewed': commit.isReviewed, 'is-being-reviewed': commit.isBeingReviewed }"
   )
     a.block-link(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link)
       .commit-wrapper
         .commit-controls
-          button.small.mark-as-reviewed ng-click="markAsReviewed(commit, $event)" ng-hide="commit.isReviewed" Mark as reviewed
-
-          '
-          button.small.mark-as-new ng-click="markAsNew(commit, $event)" ng-show="commit.isReviewed" Mark as new
-          '
-          img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'" ng-show="commit.isReviewed"
+          div ng-show="commit.isNew"
+            button.small.start-review ng-click="startReview(commit, $event)" Start review
+          div ng-show="commit.isBeingReviewed"
+            button.small.abandon-review ng-click="abandonReview(commit, $event)" Abandon review
+            '
+            button.small.mark-as-reviewed ng-show="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)" Mark as reviewed
+            img.commit-reviewer-avatar gravatar-src="commit.pendingReviewerEmail || 'show-a-placeholder'"
+          div ng-show="commit.isReviewed"
+            button.small.mark-as-new ng-click="markAsNew(commit, $event)" Mark as new
+            '
+            img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'"
 
         img.commit-avatar gravatar-src="commit.authorEmail"
         '

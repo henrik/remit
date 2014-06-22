@@ -7,8 +7,8 @@ class CommitSerializer < ApplicationSerializer
     :repository,
     :timestamp,
     :received_timestamp,
-    :is_reviewed,
-    :reviewer_email
+    :is_new, :is_being_reviewed, :is_reviewed,
+    :pending_reviewer_email, :reviewer_email
 
   private
 
@@ -26,6 +26,18 @@ class CommitSerializer < ApplicationSerializer
 
   def reviewer_email
     commit.reviewed_by_author.try(:email)
+  end
+
+  def pending_reviewer_email
+    commit.review_started_by_author.try(:email)
+  end
+
+  def is_new
+    commit.new?
+  end
+
+  def is_being_reviewed
+    commit.being_reviewed?
   end
 
   def is_reviewed

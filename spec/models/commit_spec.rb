@@ -70,6 +70,23 @@ describe Commit, "#reviewed?" do
   end
 end
 
+describe Commit, "#mark_as_being_reviewed_by" do
+  it "assigns review_started attributes, unassigns reviewed attributes, and persists the record" do
+    commit = build(:commit,
+      reviewed_at: Time.now,
+      reviewed_by_author: Author.new,
+    )
+
+    commit.mark_as_being_reviewed_by("charles@babbage.com")
+
+    expect(commit).to be_persisted
+    expect(commit.review_started_at).to be_present
+    expect(commit.review_started_by_author.email).to eq "charles@babbage.com"
+    expect(commit.reviewed_at).to be_nil
+    expect(commit.reviewed_by_author).to be_nil
+  end
+end
+
 describe Commit, "#mark_as_reviewed_by" do
   it "assigns reviewed_at, reviewed_by_author and persists the record" do
     commit = build(:commit, reviewed_at: nil)
@@ -83,12 +100,19 @@ describe Commit, "#mark_as_reviewed_by" do
 end
 
 describe Commit, "#mark_as_unreviewed" do
-  it "unassigns reviewed_at and reviewed_by_author and persists the record" do
-    commit = build(:commit, reviewed_at: Time.now, reviewed_by_author: Author.new)
+  it "unassigns pending/review attributes and persists the record" do
+    commit = build(:commit,
+      review_started_at: Time.now,
+      review_started_by_author: Author.new,
+      reviewed_at: Time.now,
+      reviewed_by_author: Author.new,
+    )
 
     commit.mark_as_unreviewed
 
     expect(commit).to be_persisted
+    expect(commit.review_started_at).to be_nil
+    expect(commit.review_started_by_author).to be_nil
     expect(commit.reviewed_at).to be_nil
     expect(commit.reviewed_by_author).to be_nil
   end

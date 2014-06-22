@@ -16,6 +16,16 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
     $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
   , true
 
+  $scope.startReview = (commit, $event) ->
+    stopEvent $event
+    Commits.startReview(commit, $scope.settings.email).
+      error(reportServerError)
+
+  $scope.abandonReview = (commit, $event) ->
+    stopEvent $event
+    Commits.markAsNew(commit).
+      error(reportServerError)
+
   $scope.markAsReviewed = (commit, $event) ->
     stopEvent $event
     Commits.markAsReviewed(commit, $scope.settings.email).

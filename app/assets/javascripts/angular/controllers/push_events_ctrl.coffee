@@ -13,6 +13,9 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
   subscribe "comment_updated", (data) ->
     $scope.comments = limitRecords [ data.comment ].concat($scope.comments)
 
+  subscribe "commit_being_reviewed", (data) ->
+    updateCommitFrom(data)
+
   subscribe "commit_reviewed", (data) ->
     updateCommitFrom(data)
 

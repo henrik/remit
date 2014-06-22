@@ -39,12 +39,24 @@
   font-size: $font-small;
 }
 
+.commit.is-reviewed {
+  background: $green;
+}
+
+.commit.is-being-reviewed {
+  background: $blue;
+}
+
 .commit.your-last-clicked {
   background: $yellow;
 }
 
 .commit.your-last-clicked.is-reviewed {
   background: $yellow-green;
+}
+
+.commit.your-last-clicked.is-being-reviewed {
+  background: $yellow;
 }
 
 .commit.authored-by-you,
@@ -80,10 +92,6 @@
   button {
     display: none;
   }
-}
-
-.commit.is-reviewed {
-  background: $green;
 }
 
 .commit-controls {
@@ -123,4 +131,10 @@
   .commit:hover & { opacity: 1; }
   &:hover { background-color: darken($white, 5%); }
   &:active { background-color: darken($white, 15%); }
+}
+
+.abandon-review {
+  background-color: $red;
+  &:hover { background-color: darken($red, 5%); }
+  &:active { background-color: darken($red, 15%); }
 }

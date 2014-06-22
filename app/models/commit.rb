@@ -7,6 +7,7 @@ class Commit < ActiveRecord::Base
 
   belongs_to :author
   belongs_to :reviewed_by_author, class: Author
+  belongs_to :review_started_by_author, class: Author
 
   scope :newest_first, -> { order("id DESC") }
   scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
@@ -50,23 +51,46 @@ class Commit < ActiveRecord::Base
     payload.fetch(:timestamp)
   end
 
+  def new?
+    !reviewed? && !being_reviewed?
+  end
+
+  def being_reviewed?
+    review_started_at? && !reviewed?
+  end
+
   def reviewed?
     reviewed_at?
   end
 
-  def mark_as_reviewed_by(email)
-    author = email.presence && Author.create_or_update_from_payload(email: email)
+  def mark_as_being_reviewed_by(email)
+    update_attributes!(
+      review_started_at: Time.now,
+      review_started_by_author: find_author_for_email(email),
+      reviewed_at: nil,
+      reviewed_by_author: nil,
+    )
+  end
 
+  def mark_as_reviewed_by(email)
     update_attributes!(
       reviewed_at: Time.now,
-      reviewed_by_author: author,
+      reviewed_by_author: find_author_for_email(email),
     )
   end
 
   def mark_as_unreviewed
     update_attributes!(
+      review_started_at: nil,
+      review_started_by_author: nil,
       reviewed_at: nil,
       reviewed_by_author: nil,
     )
+  end
+
+  private
+
+  def find_author_for_email(email)
+    email.presence && Author.create_or_update_from_payload(email: email)
   end
 end

@@ -12,13 +12,31 @@ describe "Commits page", :js do
     visitor :ada do
       configure_settings
 
-      # Ada marks it as reviewed.
-      commit_does_not_look_reviewed
+      commit_looks_new
+      click_button "Start review"
+      commit_looks_pending
+    end
+
+    visitor :charles do
+      commit_looks_pending
+    end
+
+    visitor :ada do
+      click_button "Abandon review"
+      commit_looks_new
+    end
+
+    visitor :charles do
+      commit_looks_new
+    end
+
+    visitor :ada do
+      click_button "Start review"
       click_button "Mark as reviewed"
       commit_looks_reviewed
     end
 
-    commit_is_marked_as_reviewed_by_ada
+    verify_that_commit_is_persisted_as_reviewed_by_ada
 
     visitor :charles do
       # Charles sees that Ada reviewed it.
@@ -26,12 +44,12 @@ describe "Commits page", :js do
 
       # Charles marks it as new.
       click_button "Mark as new"
-      commit_does_not_look_reviewed
+      commit_looks_new
     end
 
     visitor :ada do
       # Ada sees that Charles marked it as new again.
-      commit_does_not_look_reviewed
+      commit_looks_new
     end
   end
 
@@ -49,7 +67,7 @@ describe "Commits page", :js do
     visit "/"
   end
 
-  def commit_is_marked_as_reviewed_by_ada
+  def verify_that_commit_is_persisted_as_reviewed_by_ada
     sleep 0.1  # FIXME: :/ Waiting for non-DOM Ajax to complete.
     commit = Commit.last!
     expect(commit).to be_reviewed
@@ -60,8 +78,12 @@ describe "Commits page", :js do
     expect(page).to have_selector(".is-reviewed")
   end
 
-  def commit_does_not_look_reviewed
-    expect(page).not_to have_selector(".is-reviewed")
+  def commit_looks_pending
+    expect(page).to have_selector(".is-being-reviewed")
+  end
+
+  def commit_looks_new
+    expect(page).not_to have_selector(".is-reviewed, .is-being-reviewed")
   end
 
   # http://blog.bruzilla.com/post/20889863144/using-multiple-capybara-sessions-in-rspec-request-specs
