@@ -10,38 +10,38 @@ describe "Heroku webhooks", :js do
     # Webhook happens when a new version is around?
     # Force a reload!
 
-    watch_for_page_reloads
-
     set_server_version "2.0"
-    the_heroku_webhook_is_triggered
-
-    expect_page_to_have_reloaded
+    expect_page_to_reload do
+      the_heroku_webhook_is_triggered
+    end
     expect_client_version "2.0"
 
     # Webhook happens when the version hasn't changed?
     # Don't reload.
 
-    watch_for_page_reloads
-
-    the_heroku_webhook_is_triggered
-
-    expect_page_not_to_have_reloaded
+    expect_page_not_to_reload do
+      the_heroku_webhook_is_triggered
+    end
   end
 
   private
 
-  def watch_for_page_reloads
-    page.evaluate_script "window.notReloaded = true"
-  end
-
-  def expect_page_not_to_have_reloaded
+  def expect_page_not_to_reload
+    watch_for_page_reloads
+    yield
     allow_time_for_a_reload_to_happen
     expect(page.evaluate_script("window.notReloaded")).to be_truthy
   end
 
-  def expect_page_to_have_reloaded
+  def expect_page_to_reload
+    watch_for_page_reloads
+    yield
     allow_time_for_a_reload_to_happen
     expect(page.evaluate_script("window.notReloaded")).to be_falsy
+  end
+
+  def watch_for_page_reloads
+    page.evaluate_script "window.notReloaded = true"
   end
 
   def allow_time_for_a_reload_to_happen
