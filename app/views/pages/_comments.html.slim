@@ -10,21 +10,21 @@ ul.comments-list(
   ng-class="{ 'hide-comments-by-me': !settings.include_my_comments, 'hide-comments-on-others': !settings.include_comments_on_others }"
 )
   li.comment(
-    ng-repeat="comment in comments track by comment.github_id"
+    ng-repeat="comment in comments track by comment.githubId"
     ng-init="commit = comment.commit"
     ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
   )
     a.block-link(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
         .comment-proper-author
-          img.comment-proper-author-gravatar gravatar-src="comment.author_email || 'show-default'"
-          img.comment-commit-author-gravatar gravatar-src="commit ? commit.author_email : 'show-default'"
+          img.comment-proper-author-gravatar gravatar-src="comment.authorEmail || 'show-default'"
+          img.comment-commit-author-gravatar gravatar-src="commit ? commit.authorEmail : 'show-default'"
           '
-          strong once-text="comment.author_name"
+          strong once-text="comment.authorName"
           '
           ' on
           span.known-commit ng-show="commit"
             em.comment-commit-summary once-text="commit.summary"
           span.unknown-commit ng-hide="commit"
-            strong once-text="comment.commit_sha"
+            strong once-text="comment.commitSha"
         .comment-proper-body once-text="comment.body"

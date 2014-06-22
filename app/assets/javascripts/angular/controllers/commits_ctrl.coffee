@@ -5,7 +5,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
     commit == Commits.yourLastClicked
 
   $scope.authoredByYou = (commit) ->
-    $scope.settings.name and commit.author_name.indexOf($scope.settings.name) != -1
+    $scope.settings.name and commit.authorName.indexOf($scope.settings.name) != -1
 
   $scope.clicked = (commit) ->
     Commits.yourLastClicked = commit

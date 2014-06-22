@@ -18,18 +18,18 @@ describe "Service: CommitStats.stats()", ->
 
   it "counts commits you can review", ->
     commits = [
-      { reviewed: false, author_name: "The Ada L" },
-      { reviewed: false, author_name: "Charles Baby" },
-      { reviewed: false, author_name: "Ada & Charles" },
+      { reviewed: false, authorName: "The Ada L" },
+      { reviewed: false, authorName: "Charles Baby" },
+      { reviewed: false, authorName: "Ada & Charles" },
     ]
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.youCanReview).toEqual(1)
 
   it "counts unreviewed commits by you", ->
     commits = [
-      { reviewed: false, author_name: "The Ada L" },
-      { reviewed: false, author_name: "Charles Baby" },
-      { reviewed: false, author_name: "Ada & Charles" },
+      { reviewed: false, authorName: "The Ada L" },
+      { reviewed: false, authorName: "Charles Baby" },
+      { reviewed: false, authorName: "Ada & Charles" },
     ]
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.yourUnreviewed).toEqual(2)

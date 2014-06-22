@@ -8,7 +8,7 @@ describe "Service: Commits.markAsReviewed", ->
       commit = {}
       Commits.markAsReviewed(commit, "charles@babbage.com")
       expect(commit.reviewed).toBeTruthy()
-      expect(commit.reviewer_email).toEqual("charles@babbage.com")
+      expect(commit.reviewerEmail).toEqual("charles@babbage.com")
 
   it "tells the server it was reviewed and returns a promise", ->
     inject (Commits, $httpBackend) ->
@@ -26,10 +26,10 @@ describe "Service: Commits.markAsReviewed", ->
 describe "Service: Commits.markAsNew", ->
   it "optimistically marks the model as not reviewed", ->
     inject (Commits) ->
-      commit = { reviewed: true, reviewer_email: "charles@babbage.com" }
+      commit = { reviewed: true, reviewerEmail: "charles@babbage.com" }
       Commits.markAsNew(commit)
       expect(commit.reviewed).toBeFalsy()
-      expect(commit.reviewer_email).toBeNull()
+      expect(commit.reviewerEmail).toBeNull()
 
   it "tells the server it was unreviewed", ->
     inject (Commits, $httpBackend) ->

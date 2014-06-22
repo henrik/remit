@@ -27,9 +27,9 @@ ul.commits-list
           '
           button.small.mark-as-new ng-click="markAsNew(commit, $event)" ng-show="commit.reviewed" Mark as new
           '
-          img.commit-reviewer-avatar gravatar-src="commit.reviewer_email || 'show-a-placeholder'" ng-show="commit.reviewed"
+          img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'" ng-show="commit.reviewed"
 
-        img.commit-avatar gravatar-src="commit.author_email"
+        img.commit-avatar gravatar-src="commit.authorEmail"
         '
 
         .commit-summary-and-details
@@ -42,4 +42,4 @@ ul.commits-list
             '
             span.by-author
               ' by
-              strong once-text="commit.author_name"
+              strong once-text="commit.authorName"
