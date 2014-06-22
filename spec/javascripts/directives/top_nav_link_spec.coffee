@@ -9,7 +9,7 @@ describe "Directive: topNavLink", ->
   beforeEach ->
     provide "$location", { path: -> fakePath }
 
-  $compile = $rootScope = $location = undefined
+  $compile = $rootScope = undefined
   beforeEach inject (_$compile_, _$rootScope_) ->
     $compile = _$compile_
     $rootScope = _$rootScope_
