@@ -12,10 +12,6 @@ describe "Commits page", :js do
     visitor :ada do
       configure_settings
 
-      commit_becomes_marked_as_last_clicked do
-        click_link "Compute Bernoulli numbers."
-      end
-
       # Ada marks it as reviewed.
       commit_does_not_look_reviewed
       click_button "Mark as reviewed"
@@ -51,12 +47,6 @@ describe "Commits page", :js do
     visit "/settings"
     fill_in "Your email", with: "ada@lovelace.com"
     visit "/"
-  end
-
-  def commit_becomes_marked_as_last_clicked
-    expect(page).not_to have_selector(".your-last-clicked")
-    yield
-    expect(page).to have_selector(".your-last-clicked")
   end
 
   def commit_is_marked_as_reviewed_by_ada
