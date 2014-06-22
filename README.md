@@ -58,7 +58,10 @@ Visit <http://localhost:9292>
 
 ### Import a production DB into dev
 
+    # One-time setup
     heroku addons:add pgbackups:auto-month  # Free
+
+    # Every time you want to import
     rake dev:db
 
 You may need to exit Rails consoles and servers to avoid an error about DB being in use.
