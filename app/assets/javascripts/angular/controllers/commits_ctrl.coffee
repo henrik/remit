@@ -17,7 +17,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
   , true
 
   $scope.startReview = (commit, $event) ->
-    stopEvent $event
+    # Don't stop the event: we want the commit to become active.
     Commits.startReview(commit, $scope.settings.email).
       error(reportServerError)
 
