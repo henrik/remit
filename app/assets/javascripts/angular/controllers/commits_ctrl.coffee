@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats, FluidApp) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
@@ -17,7 +17,10 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
   , true
 
   $scope.startReview = (commit, $event) ->
-    # Don't stop the event: we want the commit to become active.
+    # If we already clicked the commit to show it in the other pane, and maybe started
+    # writing a comment, we don't want to reload that pane when we start the review.
+    stopEvent($event) if FluidApp.running and $scope.isYourLastClicked(commit)
+
     Commits.startReview(commit, $scope.settings.email).
       error(reportServerError)
 
