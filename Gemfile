@@ -39,7 +39,7 @@ end
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-animate'
-gem 'rails-assets-angular-gravatar'
+gem 'rails-assets-angular-gravatar', '~> 0.2.0'
 gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
 gem 'rails-assets-angular-cookie'

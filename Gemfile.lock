@@ -132,8 +132,8 @@ GEM
       rails-assets-angular (= 1.2.18)
     rails-assets-angular-cookie (4.0.2)
       rails-assets-angular
-    rails-assets-angular-gravatar (0.1.5)
-      rails-assets-angular (~> 1.0)
+    rails-assets-angular-gravatar (0.2.0)
+      rails-assets-angular (~> 1.2.0)
     rails-assets-angular-mocks (1.2.18)
       rails-assets-angular (= 1.2.18)
     rails-assets-angular-once (0.1.8)
@@ -235,7 +235,7 @@ DEPENDENCIES
   rails-assets-angular
   rails-assets-angular-animate
   rails-assets-angular-cookie
-  rails-assets-angular-gravatar
+  rails-assets-angular-gravatar (~> 0.2.0)
   rails-assets-angular-mocks
   rails-assets-angular-once
   rails-assets-angular-pusher
