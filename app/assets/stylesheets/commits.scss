@@ -118,6 +118,11 @@
   margin-bottom: -3px;
 }
 
+.start-review {
+  // Not sure why this is 10px and not 6px (the margin), but it is.
+  margin-right: $small-gravatar-side + 10px;
+}
+
 .mark-as-reviewed {
   background-color: $green;
   font-weight: $weight-bold;
