@@ -25,16 +25,16 @@ describe "Receiving GitHub payloads by webhook" do
   it "stores commits and pushes an event" do
     expect_push "commits_updated", {
       commits: [
-        a_hash_including(summary: "hi" ),
-        a_hash_including(summary: "ho" ),
+        a_hash_including(summary: "newer commit" ),
+        a_hash_including(summary: "older commit" ),
       ],
     }
 
     post "/github_webhook",
       {
         commits: [
-          FactoryGirl.commit_payload(message: "hi"),
-          FactoryGirl.commit_payload(message: "ho"),
+          FactoryGirl.commit_payload(message: "older commit"),
+          FactoryGirl.commit_payload(message: "newer commit"),
         ],
         repository: { name: "myrepo", master_branch: "master" },
         ref: "refs/heads/master",
@@ -46,7 +46,7 @@ describe "Receiving GitHub payloads by webhook" do
     expect(Commit.count).to eq 2
 
     commit = Commit.first!
-    expect(commit.summary).to eq "hi"
+    expect(commit.summary).to eq "older commit"
     expect(commit.payload[:repository][:name]).to eq "myrepo"
   end
 

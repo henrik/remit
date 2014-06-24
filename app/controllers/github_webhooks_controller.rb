@@ -38,9 +38,12 @@ class GithubWebhooksController < WebhooksBaseController
     # Ignore commits outside the master branch.
     # It's usually experimental work in progress and not ready for review.
     if on_master_branch?(payloads)
+      # The first commit of the payload is the oldest one.
+      # Persist them like that (for a sensible id order), but
+      # reverse them for the view, as it sorts newest first.
       commits = payloads.map { |payload|
         Commit.create_or_update_from_payload(payload, params)
-      }
+      }.reverse
 
       push_event "commits_updated", commits: commits.as_json
     end
