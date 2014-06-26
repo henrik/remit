@@ -40,12 +40,13 @@
 
 .commits-badge {
   background: $dark-gray;
-  color: $white;
-  font-weight: $weight-thin;
   font-size: $font-small;
-  border-radius: 3px;
-  padding: 3px 5px;
+  font-weight: $weight-thin;
+  border-radius: 5px;
+  padding: 4px 6px;
   margin-left: 4px;
+  color: $black;
+  text-shadow: rgba($white, 0.7) 1px 1px 0;
 }
 
 .wrapper {
