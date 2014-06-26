@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats, FluidApp) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
@@ -19,7 +19,8 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
   $scope.startReview = (commit, $event) ->
     # If we already clicked the commit to show it in the other pane, and maybe started
     # writing a comment, we don't want to reload that pane when we start the review.
-    stopEvent($event) if FluidApp.running and $scope.isYourLastClicked(commit)
+    # Or if we opened it in another tab, we don't want a second tab to open.
+    stopEvent($event) if $scope.isYourLastClicked(commit)
 
     Commits.startReview(commit, $scope.settings.email).
       error(reportServerError)
