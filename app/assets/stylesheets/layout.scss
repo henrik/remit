@@ -52,16 +52,18 @@
   display: inline-block;
   min-width: 1.5em;
 
-  $badge-count-low-color: $dark-gray;
-  $badge-count-high-color: $red;
-  $badge-count-max: 25;
+  // Change color with counts
+
+  $low-color: $dark-gray;
+  $high-color: $red;
+  $max-out-at: 25;
 
   // For counts higher than the max (we don't show the element at 0).
-  &.commits-badge { background: $badge-count-high-color; }
+  &.commits-badge { background: $high-color; }
 
-  @for $i from 1 through $badge-count-max {
-    $percent: percentage(($i - 1) / $badge-count-max);
-    &.commits-badge-count-#{$i} { background: mix($badge-count-high-color, $badge-count-low-color, $percent) }
+  @for $i from 1 through $max-out-at {
+    $percent: percentage(($i - 1) / $max-out-at);
+    &.commits-badge-count-#{$i} { background: mix($high-color, $low-color, $percent) }
   }
 }
 
