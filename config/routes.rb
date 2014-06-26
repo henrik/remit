@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   post "/commits/:id/reviewed" => 'commits#reviewed'
   post "/commits/:id/started_review" => 'commits#started_review'
-  delete "/commits/:id/unreviewed" => 'commits#unreviewed'
+  post "/commits/:id/unreviewed" => 'commits#unreviewed'
 
   # All paths should render the same page and then we route in JS.
   get 'commits'  => 'pages#index'

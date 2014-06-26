@@ -21,7 +21,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
 
   $scope.abandonReview = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit).
+    Commits.markAsNew(commit, $scope.settings.email).
       error(reportServerError)
 
   $scope.markAsReviewed = (commit, $event) ->
@@ -31,7 +31,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
 
   $scope.markAsNew = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit).
+    Commits.markAsNew(commit, $scope.settings.email).
       error(reportServerError)
 
   # We have buttons nested within links, so we need this.

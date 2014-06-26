@@ -39,7 +39,14 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
     list.slice(0, $scope.maxRecords)
 
   updateCommitFrom = (data) ->
+    # Ignore updates triggered by the current user to avoid state flickering.
+    # Se comment in Commits service.
+    userEmail = $scope.settings.email
+    updateEmail = data.email
+    updateWasTriggeredByTheCurrentUser = updateEmail and userEmail and updateEmail is userEmail
+    return if updateWasTriggeredByTheCurrentUser
+
     for commit in $scope.commits
-      if commit.id == data.id
-        commit[key] = value for key, value of data
+      if commit.id == data.commit.id
+        commit[key] = value for key, value of data.commit
         break

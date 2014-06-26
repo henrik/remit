@@ -1,8 +1,10 @@
 app.service "Commits", ($http) ->
   this.yourLastClicked = null
 
-  # We're optimistically changing local values until the request completes and updates
-  # the entities again (as it has done for everyone but the person who made the change).
+  # We're optimistically changing local values for the reviewer.
+  # The HTTP requests changes them server-side and notifies others.
+  # The notifications are ignored for the reviewer to avoid flickering
+  # if a notification arrives AFTER the next optimistic state change.
 
   this.startReview = (commit, byEmail) ->
     promise = $http.post("/commits/#{commit.id}/started_review", email: byEmail)
@@ -18,8 +20,8 @@ app.service "Commits", ($http) ->
     commit.reviewerEmail = byEmail
     promise
 
-  this.markAsNew = (commit) ->
-    promise = $http.delete("/commits/#{commit.id}/unreviewed")
+  this.markAsNew = (commit, byEmail) ->
+    promise = $http.post("/commits/#{commit.id}/unreviewed", email: byEmail)
     commit.isBeingReviewed = false
     commit.isReviewed = false
     commit.isNew = true

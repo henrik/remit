@@ -58,10 +58,13 @@ describe "Service: Commits.markAsNew", ->
 
   it "tells the server it was unreviewed", ->
     inject (Commits, $httpBackend) ->
-      $httpBackend.expect("DELETE", "/commits/123/unreviewed").respond()
+      $httpBackend.expect("POST",
+        "/commits/123/unreviewed",
+        email: "charles@babbage.com"
+      ).respond()
 
       commit = { id: 123 }
-      rval = Commits.markAsNew(commit)
+      rval = Commits.markAsNew(commit, "charles@babbage.com")
       expect(typeof(rval.success)).toEqual("function")
 
       $httpBackend.flush()

@@ -3,26 +3,34 @@
 
 class CommitsController < UserFacingController
   def started_review
-    commit = Commit.find(params[:id])
-    commit.mark_as_being_reviewed_by(params[:email])
-    push_event "commit_being_reviewed", commit
+    commit.mark_as_being_reviewed_by(email)
+    push_event "commit_being_reviewed", commit: commit, email: email
 
     render text: "OK"
   end
 
   def reviewed
-    commit = Commit.find(params[:id])
-    commit.mark_as_reviewed_by(params[:email])
-    push_event "commit_reviewed", commit
+    commit.mark_as_reviewed_by(email)
+    push_event "commit_reviewed", commit: commit, email: email
 
     render text: "OK"
   end
 
   def unreviewed
-    commit = Commit.find(params[:id])
+    Rails.logger.debug "unreviewed!! email #{email.inspect}, params #{params.inspect}"
     commit.mark_as_unreviewed
-    push_event "commit_unreviewed", commit
+    push_event "commit_unreviewed", commit: commit, email: email
 
     render text: "OK"
+  end
+
+  private
+
+  def commit
+    @commit ||= Commit.find(params[:id])
+  end
+
+  def email
+    params[:email]
   end
 end
