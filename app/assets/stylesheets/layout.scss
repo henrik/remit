@@ -59,7 +59,7 @@
   $max-out-at: 25;
 
   // For counts higher than the max (we don't show the element at 0).
-  &.commits-badge { background: $high-color; }
+  background: $high-color;
 
   @for $i from 1 through $max-out-at {
     $percent: percentage(($i - 1) / $max-out-at);
