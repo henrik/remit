@@ -22,14 +22,14 @@ ul.commits-list
     a.block-link(once-href="commit.url" ng-click="clicked(commit)" fluid-app-link)
       .commit-wrapper
         .commit-controls
-          div ng-show="commit.isNew"
+          div ng-if="commit.isNew"
             button.small.start-review ng-click="startReview(commit, $event)" Start review
-          div ng-show="commit.isBeingReviewed"
+          div ng-if="commit.isBeingReviewed"
             button.small.abandon-review ng-click="abandonReview(commit, $event)" Abandon review
             '
-            button.small.mark-as-reviewed ng-show="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)" Mark as reviewed
+            button.small.mark-as-reviewed ng-if="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)" Mark as reviewed
             img.commit-reviewer-avatar gravatar-src="commit.pendingReviewerEmail || 'show-a-placeholder'"
-          div ng-show="commit.isReviewed"
+          div ng-if="commit.isReviewed"
             button.small.mark-as-new ng-click="markAsNew(commit, $event)" Mark as new
             '
             img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'"
