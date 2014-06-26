@@ -47,6 +47,18 @@
   margin-left: 4px;
   color: $black;
   text-shadow: rgba($white, 0.7) 1px 1px 0;
+
+  $badge-count-low-color: $dark-gray;
+  $badge-count-high-color: $red;
+  $badge-count-max: 25;
+
+  // For counts higher than the max (we don't show the element at 0).
+  &.commits-badge { background: $badge-count-high-color; }
+
+  @for $i from 1 through $badge-count-max {
+    $percent: percentage(($i - 1) / $badge-count-max);
+    &.commits-badge-count-#{$i} { background: mix($badge-count-high-color, $badge-count-low-color, $percent) }
+  }
 }
 
 .wrapper {

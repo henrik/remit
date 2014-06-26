@@ -12,7 +12,7 @@ html ng-app="Remit"
         ul
           li top-nav-link="/commits"
             ' Commits
-            span.commits-badge ng-if="stats.youCanReview"
+            span.commits-badge ng-if="stats.youCanReview" class="commits-badge-count-{{stats.youCanReview}}"
               ' {{stats.youCanReview}}
           li top-nav-link="/comments" Comments
           li top-nav-link="/settings" Settings
