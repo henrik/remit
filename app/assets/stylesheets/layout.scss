@@ -48,6 +48,10 @@
   color: $black;
   text-shadow: rgba($white, 0.7) 1px 1px 0;
 
+  // Don't jump in size when changing between one and two digits.
+  display: inline-block;
+  min-width: 1.5em;
+
   $badge-count-low-color: $dark-gray;
   $badge-count-high-color: $red;
   $badge-count-max: 25;
