@@ -31,14 +31,14 @@ describe "Heroku webhooks", :js do
   def expect_page_not_to_reload
     page.evaluate_script "window.notReloaded = true"
     yield
-    sleep 0.01  # Sadly, we need this.
+    sleep 0.05  # Sadly, we need this.
     expect(page.evaluate_script("window.notReloaded")).to be_truthy
   end
 
   def expect_page_to_reload
     page.evaluate_script "window.notReloaded = true"
     yield
-    sleep 0.01  # Sadly, we need this.
+    sleep 0.05  # Sadly, we need this.
     expect(page.evaluate_script("window.notReloaded")).to be_falsy
   end
 
