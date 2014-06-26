@@ -33,3 +33,13 @@ describe "Service: CommitStats.stats()", ->
     ]
     stats = CommitStats.stats(commits, "Ada")
     expect(stats.yourUnreviewed).toEqual(2)
+
+  it "determines the oldest commit you can review", ->
+    commits = [
+      { id: 44, isReviewed: false, authorName: "Ada" },
+      { id: 33, isReviewed: false, authorName: "Ada" },
+      { id: 22, isReviewed: false, authorName: "Charles" },
+      { id: 11, isReviewed: true,  authorName: "Ada" },
+    ]
+    stats = CommitStats.stats(commits, "Charles")
+    expect(stats.oldestCommitYouCanReview.id).toEqual(33)
