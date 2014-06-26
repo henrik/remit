@@ -38,6 +38,16 @@
   }
 }
 
+.commits-badge {
+  background: $dark-gray;
+  color: $white;
+  font-weight: $weight-thin;
+  font-size: $font-small;
+  border-radius: 3px;
+  padding: 3px 5px;
+  margin-left: 4px;
+}
+
 .wrapper {
   background: #fff;
   width: 100%;

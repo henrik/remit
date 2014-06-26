@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
@@ -9,12 +9,6 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits, CommitStats
 
   $scope.clicked = (commit) ->
     Commits.yourLastClicked = commit
-
-  # Only run this calculation once for every update of this
-  # collection (including property changes within).
-  $scope.$watch "commits", ->
-    $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
-  , true
 
   $scope.startReview = (commit, $event) ->
     # If we already clicked the commit to show it in the other pane, and maybe started

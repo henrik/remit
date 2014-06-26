@@ -1,4 +1,4 @@
-app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
+app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
 
   # We must receive pushes even before you visit (=load) one of the subview
   # controllers (e.g. CommitsCtrl), so it can't be handled there.
@@ -27,6 +27,12 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher) ->
     ourVersion = $scope.appVersion
     if ourVersion != deployedVersion
       $window.location.reload()
+
+  # Only run this calculation once for every update of this
+  # collection (including property changes within).
+  $scope.$watch "commits", ->
+    $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
+  , true
 
 
   limitRecords = (list) ->

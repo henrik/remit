@@ -10,7 +10,10 @@ html ng-app="Remit"
     .wrapper
       nav.top-nav
         ul
-          li top-nav-link="/commits" Commits
+          li top-nav-link="/commits"
+            ' Commits
+            span.commits-badge ng-if="stats.youCanReview"
+              ' {{stats.youCanReview}}
           li top-nav-link="/comments" Comments
           li top-nav-link="/settings" Settings
 
