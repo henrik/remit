@@ -1,10 +1,10 @@
 p.left-to-review ng-show="stats.allUnreviewed"
   ' Commits to review:
   '
-  strong= "{{stats.youCanReview}}"
+  strong {{stats.youCanReview}}
   '
   ' by others,
-  strong= "{{stats.yourUnreviewed}}"
+  strong {{stats.yourUnreviewed}}
   '
   ' by you
   span ng-if="stats.oldestCommitYouCanReview"
