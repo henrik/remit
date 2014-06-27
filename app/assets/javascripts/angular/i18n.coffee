@@ -51,7 +51,7 @@ angular.module "ngLocale", [], ($provide) ->
         "Nov",
         "Dec"
       ],
-      "mediumDate": "EEE yyyy-MM-dd 'at' HH:mm",
+      "mediumDate": "EEE d MMM 'at' HH:mm",
     },
     "id": "en-us",
   }
