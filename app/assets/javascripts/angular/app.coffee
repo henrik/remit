@@ -8,11 +8,14 @@ window.app = angular.module "Remit", [
   "once"
 ]
 
-app.run ($rootScope, Settings, preloadedData) ->
+app.run ($rootScope, $location, Settings, preloadedData) ->
   $rootScope.appVersion = preloadedData.appVersion
   $rootScope.maxRecords = preloadedData.maxRecords
   $rootScope.commits = preloadedData.commits
   $rootScope.comments = preloadedData.comments
+
+  $rootScope.$on "$routeChangeSuccess", ->
+    $rootScope.isOnSettingsPage = $location.path() == "/settings"
 
   $rootScope.settings = Settings.load
     include_my_comments: false
