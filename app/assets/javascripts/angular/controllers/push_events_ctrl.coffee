@@ -28,11 +28,12 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
     if ourVersion != deployedVersion
       $window.location.reload()
 
-  # Only run this calculation once for every update of this
-  # collection (including property changes within).
-  $scope.$watch "commits", ->
-    $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
-  , true
+  # Update commit stats.
+  # We watch explicitly so we don't have to recalculate on every single digest.
+  # If this ever gets noticeably slow, we could optimize further by debouncing name setting.
+  updateCommitStats = -> $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
+  $scope.$watch "commits", updateCommitStats, true
+  $scope.$watch "settings.name", updateCommitStats
 
 
   limitRecords = (list) ->
