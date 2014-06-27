@@ -26,14 +26,22 @@ ul.commits-list
       .commit-wrapper
         .commit-controls
           div ng-if="commit.isNew"
-            button.small.start-review ng-click="startReview(commit, $event)" Start review
+            button.small.start-review ng-click="startReview(commit, $event)"
+              i.fa.fa-eye'
+              ' Start review
           div ng-if="commit.isBeingReviewed"
-            button.small.abandon-review ng-click="abandonReview(commit, $event)" Abandon review
+            button.small.abandon-review ng-click="abandonReview(commit, $event)"
+              i.fa.fa-times'
+              ' Abandon review
             '
-            button.small.mark-as-reviewed ng-if="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)" Mark as reviewed
+            button.small.mark-as-reviewed ng-if="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)"
+              i.fa.fa-check'
+              ' Mark as reviewed
             img.commit-reviewer-avatar gravatar-src="commit.pendingReviewerEmail || 'show-a-placeholder'"
           div ng-if="commit.isReviewed"
-            button.small.mark-as-new ng-click="markAsNew(commit, $event)" Mark as new
+            button.small.mark-as-new ng-click="markAsNew(commit, $event)"
+              i.fa.fa-eye-slash'
+              ' Mark as new
             '
             img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'"
 

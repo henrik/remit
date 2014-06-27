@@ -44,6 +44,7 @@ gem 'rails-assets-angular-pusher'
 gem 'rails-assets-pusher'
 gem 'rails-assets-angular-cookie'
 gem 'rails-assets-angular-once'
+gem 'rails-assets-font-awesome'
 
 group :development, :test do
   gem 'rails-assets-angular-mocks'
