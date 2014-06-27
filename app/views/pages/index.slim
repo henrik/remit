@@ -11,11 +11,16 @@ html ng-app="Remit"
       nav.top-nav
         ul
           li top-nav-link="/commits"
+            i.fa.fa-lg.fa-eye'
             ' Commits
             span.commits-badge ng-if="stats.youCanReview" class="commits-badge-count-{{stats.youCanReview}}"
               ' {{stats.youCanReview}}
-          li top-nav-link="/comments" Comments
-          li top-nav-link="/settings" Settings
+          li top-nav-link="/comments"
+            i.fa.fa-lg.fa-comments'
+            ' Comments
+          li top-nav-link="/settings"
+            i.fa.fa-lg.fa-cog'
+            ' Settings
 
       a.block-link href="/settings"
         p.please-provide-details ng-hide="settings.email && settings.name"

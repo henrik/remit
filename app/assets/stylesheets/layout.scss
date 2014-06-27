@@ -13,6 +13,7 @@
     display: inline-block;
     width: 33%;
     text-align: center;
+    font-size: $font-large;
 
     border-right: 1px solid $border-color;
     &:last-child { border-right: 0; }
@@ -26,6 +27,11 @@
     &.current a {
       opacity: 1;
       font-weight: $weight-bold;
+    }
+
+    .fa {
+      margin-right: 5px;
+      color: $darker-gray;
     }
   }
 
