@@ -19,7 +19,8 @@ html ng-app="Remit"
 
       a.block-link href="/settings"
         p.please-provide-details ng-hide="settings.email && settings.name"
-          ' <b>Please provide your details</b> so we can tell which commits, comments and reviews are yours.
+          ' Can't tell which commits, comments and reviews are yours!
+          strong Click here to provide your details.
 
       script(type="text/ng-template" id="commits.html")= render "commits"
       script(type="text/ng-template" id="comments.html")= render "comments"
