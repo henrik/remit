@@ -31,7 +31,7 @@ ul.commits-list
               ' Start review
           div ng-if="commit.isBeingReviewed"
             button.small.abandon-review ng-click="abandonReview(commit, $event)"
-              i.fa.fa-times'
+              i.fa.fa-eye-slash'
               ' Abandon review
             '
             button.small.mark-as-reviewed ng-if="commit.pendingReviewerEmail == settings.email" ng-click="markAsReviewed(commit, $event)"

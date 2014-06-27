@@ -131,15 +131,13 @@
 }
 
 .mark-as-new {
-  background-color: $white;
   opacity: 0.5;
   .commit:hover & { opacity: 1; }
-  &:hover { background-color: darken($white, 5%); }
-  &:active { background-color: darken($white, 15%); }
 }
 
+.mark-as-new,
 .abandon-review {
-  background-color: $red;
-  &:hover { background-color: darken($red, 5%); }
-  &:active { background-color: darken($red, 15%); }
+  background-color: $white;
+  &:hover { background-color: darken($white, 5%); }
+  &:active { background-color: darken($white, 15%); }
 }
