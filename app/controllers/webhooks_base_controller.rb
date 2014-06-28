@@ -4,16 +4,12 @@ class WebhooksBaseController < ApplicationController
   private
 
   def require_auth_key
-    unless ENV["WEBHOOK_KEY"]
-      if Rails.env.production?
-        raise "WEBHOOK_KEY must be configured in production. Please see README."
-      else
-        return
-      end
-    end
+    authorization = WebhookAuthorization.new(params[:auth_key])
+    authorization.authorize || render_auth_failure
+  end
 
-    unless params[:auth_key] == ENV["WEBHOOK_KEY"]
-      render status: 401, text: "Not authorized! Did you forget to provide auth_key in the URL?"
-    end
+  def render_auth_failure
+    render status: 401,
+      text: "Not authorized! Did you forget to provide auth_key in the URL?"
   end
 end
