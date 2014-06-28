@@ -9,7 +9,9 @@ p.left-to-review ng-show="stats.allUnreviewed"
   ' by you
   span ng-if="stats.oldestCommitYouCanReview"
     br
-    ' Oldest by others: <a href="#commit-{{stats.oldestCommitYouCanReview.id}}">{{stats.oldestCommitYouCanReview.timestamp | date}}</a>
+    ' Oldest by others:
+    a(href="{{stats.oldestCommitYouCanReview.url}}" ng-click="jumpTo(stats.oldestCommitYouCanReview)" fluid-app-link)
+      ' {{stats.oldestCommitYouCanReview.timestamp | date}}
 
 p.nothing-left-to-review ng-hide="stats.allUnreviewed"
   strong Nothing left to review!

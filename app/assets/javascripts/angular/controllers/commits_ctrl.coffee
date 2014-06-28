@@ -1,4 +1,4 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
@@ -6,6 +6,14 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, Commits) ->
 
   $scope.authoredByYou = (commit) ->
     $scope.settings.name and commit.authorName.indexOf($scope.settings.name) != -1
+
+  $scope.jumpTo = (commit) ->
+    # Scroll down
+    $location.hash("commit-#{commit.id}")
+    # Highlight
+    Commits.yourLastClicked = commit
+    # Navigate - that's the default event of the link.
+    # We don't want to do it from JS to avoid popup blocker issues etc.
 
   $scope.clicked = (commit) ->
     Commits.yourLastClicked = commit
