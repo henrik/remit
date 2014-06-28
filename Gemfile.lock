@@ -34,6 +34,7 @@ GEM
     angular_rails_csrf (1.0.1)
       rails (>= 3, < 5)
     arel (5.0.1.20140414130214)
+    attr_extras (3.0.0)
     builder (3.2.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
@@ -221,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   angular_rails_csrf
+  attr_extras
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
