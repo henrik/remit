@@ -1,7 +1,7 @@
 # Handles updates to commits.
 # Looking for the list of commits? That's JS via PagesController.
 
-class CommitsController < UserFacingController
+class CommitsController < UsersBaseController
   def started_review
     commit.mark_as_being_reviewed_by(email)
     push_event "commit_being_reviewed", commit: commit, email: email

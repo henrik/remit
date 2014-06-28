@@ -1,4 +1,4 @@
-class UserFacingController < ApplicationController
+class UsersBaseController < ApplicationController
   private
 
   def require_auth_key
