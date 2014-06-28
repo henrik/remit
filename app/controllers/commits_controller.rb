@@ -1,5 +1,5 @@
 # Handles updates to commits.
-# Looking for the list of commits? That's JS via PagesController.
+# Looking for the list of commits? That's PagesController.
 
 class CommitsController < UsersBaseController
   def started_review
@@ -17,7 +17,6 @@ class CommitsController < UsersBaseController
   end
 
   def unreviewed
-    Rails.logger.debug "unreviewed!! email #{email.inspect}, params #{params.inspect}"
     commit.mark_as_unreviewed
     push_event "commit_unreviewed", commit: commit, email: email
 
