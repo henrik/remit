@@ -7,6 +7,14 @@ describe "Service: CommitStats.stats()", ->
   beforeEach inject (_CommitStats_) ->
     CommitStats = _CommitStats_
 
+  it "counts all commits", ->
+    commits = [
+      { isReviewed: false },
+      { isReviewed: true },
+    ]
+    stats = CommitStats.stats(commits)
+    expect(stats.all).toEqual(2)
+
   it "counts unreviewed commits", ->
     commits = [
       { isReviewed: false },
