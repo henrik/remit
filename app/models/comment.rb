@@ -10,19 +10,7 @@ class Comment < ActiveRecord::Base
   scope :includes_for_listing, -> { includes({ :commit => :author }, :author) }
 
   def self.create_or_update_from_payload(payload)
-    payload = payload.deep_symbolize_keys
-
-    # This is the only attribute we get.
-    author_username = payload.fetch(:user).fetch(:login)
-    author = Author.create_or_update_from_payload(username: author_username)
-
-    comment = Comment.where(github_id: payload[:id]).first_or_initialize
-    comment.commit_sha = payload[:commit_id]
-    comment.payload = payload
-    comment.author = author
-    comment.save!
-
-    comment
+    CreateOrUpdateFromPayload.call(payload)
   end
 
   def as_json(_opts = {})
