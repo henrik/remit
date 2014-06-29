@@ -25,7 +25,7 @@ class Commit < ActiveRecord::Base
   end
 
   def summary
-    payload.fetch(:message).lines.first.first(MESSAGE_SUMMARY_LENGTH)
+    message.lines.first.first(MESSAGE_SUMMARY_LENGTH)
   end
 
   def url
@@ -74,6 +74,10 @@ class Commit < ActiveRecord::Base
   end
 
   private
+
+  def message
+    payload.fetch(:message)
+  end
 
   def find_author_for_email(email)
     email.presence && Author.create_or_update_from_payload(email: email)
