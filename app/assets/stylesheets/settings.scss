@@ -1,3 +1,10 @@
+.settings-link-on-settings-page {
+  // Pretend it's not a link.
+  // Conditionally removing a wrapping element (the link) seems
+  // difficult in AngularJS.
+  cursor: default;
+}
+
 .settings-wrapper {
   margin: $vspace $left-column-inset;
   padding-bottom: $vspace;

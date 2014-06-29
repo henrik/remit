@@ -23,7 +23,7 @@ html ng-app="Remit"
             i.fa.fa-lg.fa-cog'
             ' Settings
 
-      a.block-link href="/settings"
+      a.block-link ng-class="{ 'settings-link-on-settings-page': isOnSettingsPage }" href="/settings"
         p.please-provide-details ng-hide="settings.email && settings.name"
           ' Can't tell which commits, comments and reviews are yours!
           strong ng-hide="isOnSettingsPage" Click here to provide your details.
