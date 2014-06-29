@@ -1,4 +1,4 @@
-**Status: rough around the edges but usable. [See outstanding issues.](https://github.com/henrik/remit/issues)**
+**Status: Commit reviewing is quite solid. Comment viewing is still a bit rough. [See outstanding issues.](https://github.com/henrik/remit/issues)**
 
 <img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
