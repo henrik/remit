@@ -1,19 +1,11 @@
-BackendConfig = {}
-
-BackendConfig.pusherKey = <%= Pusher.key.to_json %>
-
-<% if Rails.env.test?  # Configure for pusher-fake in tests only. %>
-BackendConfig.pusherOptions = <%= PusherFake.configuration.to_options.to_json %>
-<% end %>
-
 app.config (PusherServiceProvider) ->
-  opts = BackendConfig.pusherOptions || {}
+  opts = Remit.pusherConfig.options
 
   # Uncomment for debug.
   # opts.log = (m) -> window.console.log(m)
 
   PusherServiceProvider
-    .setToken(BackendConfig.pusherKey)
+    .setToken(Remit.pusherConfig.key)
     .setOptions(opts)
 
 angular.module("ui.gravatar").config (gravatarServiceProvider) ->
