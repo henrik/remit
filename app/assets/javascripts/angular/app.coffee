@@ -1,3 +1,5 @@
+window.Remit = {}
+
 window.app = angular.module "Remit", [
   "Remit.PreloadedData"
   "ngRoute"
@@ -9,9 +11,8 @@ window.app = angular.module "Remit", [
 ]
 
 app.run ($rootScope, $location, Settings, preloadedData) ->
-  $rootScope.appVersion = preloadedData.appVersion
   $rootScope.maxRecords = preloadedData.maxRecords
-  $rootScope.commits = preloadedData.commits
+  $rootScope.commits  = preloadedData.commits
   $rootScope.comments = preloadedData.comments
 
   $rootScope.$on "$routeChangeSuccess", ->

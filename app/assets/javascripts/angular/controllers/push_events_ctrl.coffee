@@ -24,7 +24,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
 
   subscribe "app_deployed", (data) ->
     deployedVersion = data.version
-    ourVersion = $scope.appVersion
+    ourVersion = Remit.version
     if ourVersion != deployedVersion
       $window.location.reload()
 
