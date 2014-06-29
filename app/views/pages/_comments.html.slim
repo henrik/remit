@@ -6,6 +6,9 @@
     input type="checkbox" ng-model="settings.include_comments_on_others" ng-change="saveSettings()"
     ' Comments on others
 
+p.no-data ng-if="!comments.length"
+  ' There are no comments yet! Write some.
+
 ul.comments-list(
   ng-class="{ 'hide-comments-by-me': !settings.include_my_comments, 'hide-comments-on-others': !settings.include_comments_on_others }"
 )

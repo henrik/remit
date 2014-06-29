@@ -1,7 +1,6 @@
 app.service "CommitStats", () ->
   this.stats = (commits, yourName) ->
     out =
-      all: commits.length
       allUnreviewed: 0
       youCanReview: 0
       oldestTimestampYouCanReview: null

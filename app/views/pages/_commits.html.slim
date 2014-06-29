@@ -13,10 +13,14 @@ p.left-to-review ng-show="stats.allUnreviewed"
     a(href="{{stats.oldestCommitYouCanReview.url}}" ng-click="jumpTo(stats.oldestCommitYouCanReview)" fluid-app-link)
       ' {{stats.oldestCommitYouCanReview.timestamp | date}}
 
-p.nothing-left-to-review ng-show="stats.all && !stats.allUnreviewed"
+p.nothing-left-to-review ng-show="commits.length && !stats.allUnreviewed"
   strong Nothing left to review!
   '
   ' Good job.
+
+p.no-data ng-if="!commits.length"
+  ' There are no commits yet! Make some.
+
 
 ul.commits-list
   li.commit(

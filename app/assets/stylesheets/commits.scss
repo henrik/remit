@@ -1,3 +1,9 @@
+.no-data {
+  margin: $vspace;
+  text-align: center;
+  font-size: $font-large;
+}
+
 .left-to-review, .nothing-left-to-review {
   @include block-message;
   background: $mid-gray;
