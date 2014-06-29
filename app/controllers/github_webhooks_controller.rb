@@ -3,14 +3,10 @@
 class GithubWebhooksController < WebhooksBaseController
   def create
     case request.headers["X-Github-Event"]
-    when "ping"
-      pong
-    when "commit_comment"
-      store_comment
-    when "push"
-      store_commits
-    else
-      render text: "Unhandled event.", status: 412
+    when "ping" then pong
+    when "commit_comment" then store_comment
+    when "push" then store_commits
+    else unhandled_event
     end
   end
 
@@ -24,11 +20,8 @@ class GithubWebhooksController < WebhooksBaseController
   # https://developer.github.com/v3/activity/events/types/#commitcommentevent
   # https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository
   def store_comment
-    payload = params[:comment]
-    comment = Comment.create_or_update_from_payload(payload)
-
+    comment = Comment.create_or_update_from_payload(params[:comment])
     push_event "comment_updated", comment: comment.as_json
-
     render text: "Thanks!"
   end
 
@@ -55,5 +48,9 @@ class GithubWebhooksController < WebhooksBaseController
     pushed_branch = params.fetch(:ref).split("/").last
     master_branch = params.fetch(:repository).fetch(:master_branch)
     pushed_branch == master_branch
+  end
+
+  def unhandled_event
+    render text: "Unhandled event.", status: 412
   end
 end
