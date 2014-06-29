@@ -64,7 +64,7 @@ Visit <http://localhost:9292>
     # Every time you want to import
     rake dev:db
 
-You may need to exit Rails consoles and servers to avoid an error about DB being in use.
+You may need to exit local Rails consoles and servers to avoid an error about DB being in use.
 
 ### See what a full payload looks like
 

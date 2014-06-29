@@ -19,7 +19,7 @@ class CommentSerializer < ApplicationSerializer
     comment.author.email
   end
 
-  # May not have an associated commit.
+  # May or may not have an associated commit.
   def commit
     comment.commit.try(:as_json)
   end
