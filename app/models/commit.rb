@@ -12,23 +12,8 @@ class Commit < ActiveRecord::Base
   scope :newest_first, -> { order("id DESC") }
   scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
 
-  def self.create_or_update_from_payload(payload, parent_payload)
-    payload = payload.deep_symbolize_keys
-    parent_payload = parent_payload.deep_symbolize_keys
-
-    payload = payload.merge(
-      repository: parent_payload.fetch(:repository),
-    )
-
-    author_payload = payload.fetch(:author)
-    author = Author.create_or_update_from_payload(author_payload)
-
-    commit = Commit.where(sha: payload.fetch(:id)).first_or_initialize
-    commit.payload = payload
-    commit.author = author
-    commit.save!
-
-    commit
+  def self.create_or_update_from_payload(commit_payload, push_payload)
+    CreateOrUpdateFromPayload.call(commit_payload, push_payload)
   end
 
   def as_json(_opts = {})
