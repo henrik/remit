@@ -1,7 +1,7 @@
 class Comment
   class CreateOrUpdateFromPayload
     method_object :call,
-      :comment_payload
+      :payload
 
     def call
       comment = find_or_initialize
@@ -30,7 +30,7 @@ class Comment
     end
 
     def payload
-      @comment_payload.deep_symbolize_keys
+      @payload.deep_symbolize_keys
     end
   end
 end
