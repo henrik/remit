@@ -1,4 +1,8 @@
 # Only intended for use by Barsoom.
+#
+# Usage:
+# script/deploy
+# MIGRATE=t script/deploy
 
 set -e
 
@@ -7,6 +11,8 @@ git push origin
 
 echo; echo "Deploying production"; echo
 git push heroku
+[ "$MIGRATE" ] && heroku run rake db:migrate --remote heroku
 
 echo; echo "Deploying Remit-on-Remit demo"; echo
 git push demo
+[ "$MIGRATE" ] && heroku run rake db:migrate --remote demo
