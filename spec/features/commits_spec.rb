@@ -10,7 +10,8 @@ describe "Commits page", :js do
     end
 
     visitor :ada do
-      configure_settings
+      configure_settings email: "ada@lovelace.com"
+      visit "/"
 
       commit_looks_new
       click_button "Start review"
@@ -55,20 +56,8 @@ describe "Commits page", :js do
 
   private
 
-  def visitors(*names, &block)
-    names.each do |name|
-      visitor(name, &block)
-    end
-  end
-
-  def configure_settings
-    visit "/settings"
-    fill_in "Your email", with: "ada@lovelace.com"
-    visit "/"
-  end
-
   def verify_that_commit_is_persisted_as_reviewed_by_ada
-    sleep 0.1  # FIXME: :/ Waiting for non-DOM Ajax to complete.
+    wait_for_non_dom_ajax_to_complete
     commit = Commit.last!
     expect(commit).to be_reviewed
     expect(commit.reviewed_by_author.email).to eq "ada@lovelace.com"
@@ -84,13 +73,5 @@ describe "Commits page", :js do
 
   def commit_looks_new
     expect(page).not_to have_selector(".is-reviewed, .is-being-reviewed")
-  end
-
-  # http://blog.bruzilla.com/post/20889863144/using-multiple-capybara-sessions-in-rspec-request-specs
-  def visitor(name)
-    old_session = Capybara.session_name
-    Capybara.session_name = name
-    yield
-    Capybara.session_name = old_session
   end
 end
