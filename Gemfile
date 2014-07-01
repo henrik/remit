@@ -38,7 +38,11 @@ end
 #   * require from application.js / application.scss
 #   * restart the Rails server
 #
-gem 'rails-assets-angular'
+# Updating Angular?
+# Force new version builds here if necessary: https://rails-assets.org/components/new
+# Run: bundle update rails-assets-angular rails-assets-angular-route rails-assets-angular-mocks rails-assets-angular-animate
+#
+gem 'rails-assets-angular', '~> 1.2.19'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-animate'
 gem 'rails-assets-angular-gravatar', '~> 0.2.0'

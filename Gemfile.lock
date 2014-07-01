@@ -141,20 +141,20 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.2)
       sprockets-rails (~> 2.0)
-    rails-assets-angular (1.2.18)
-    rails-assets-angular-animate (1.2.18)
-      rails-assets-angular (= 1.2.18)
+    rails-assets-angular (1.2.19)
+    rails-assets-angular-animate (1.2.19)
+      rails-assets-angular (= 1.2.19)
     rails-assets-angular-cookie (4.0.2)
       rails-assets-angular
     rails-assets-angular-gravatar (0.2.0)
       rails-assets-angular (~> 1.2.0)
-    rails-assets-angular-mocks (1.2.18)
-      rails-assets-angular (= 1.2.18)
+    rails-assets-angular-mocks (1.2.19)
+      rails-assets-angular (= 1.2.19)
     rails-assets-angular-once (0.1.8)
     rails-assets-angular-pusher (0.0.8)
       rails-assets-angular (~> 1.2.0)
-    rails-assets-angular-route (1.2.18)
-      rails-assets-angular (= 1.2.18)
+    rails-assets-angular-route (1.2.19)
+      rails-assets-angular (= 1.2.19)
     rails-assets-font-awesome (4.1.0)
     rails-assets-pusher (2.2.2)
     rails_12factor (0.0.2)
@@ -252,7 +252,7 @@ DEPENDENCIES
   pusher
   pusher-fake
   rails (= 4.1.2)
-  rails-assets-angular
+  rails-assets-angular (~> 1.2.19)
   rails-assets-angular-animate
   rails-assets-angular-cookie
   rails-assets-angular-gravatar (~> 0.2.0)
