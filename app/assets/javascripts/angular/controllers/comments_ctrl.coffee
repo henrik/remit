@@ -1,4 +1,4 @@
-app.controller "CommentsCtrl", ($rootScope, $scope, Settings, Comments) ->
+app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments) ->
   $rootScope.pageTitle = "Comments"
 
   $scope.isYourLastClicked = (comment) ->
@@ -15,3 +15,21 @@ app.controller "CommentsCtrl", ($rootScope, $scope, Settings, Comments) ->
 
   $scope.saveSettings = ->
     Settings.save()
+
+  $scope.markAsResolved = (comment, $event) ->
+    stopEvent $event
+    Comments.markAsResolved(comment, $scope.settings.email).
+      error(reportServerError)
+
+  $scope.markAsNew = (comment, $event) ->
+    stopEvent $event
+    Comments.markAsNew(comment, $scope.settings.email).
+      error(reportServerError)
+
+  # We have buttons nested within links, so we need this.
+  stopEvent = ($event) ->
+    $event.stopPropagation()
+    $event.preventDefault()
+
+  reportServerError = ->
+    $window.alert("Server error! Your update may have been lost.")

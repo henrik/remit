@@ -15,7 +15,7 @@ ul.comments-list(
   li.comment(
     ng-repeat="comment in comments track by comment.githubId"
     ng-init="commit = comment.commit"
-    ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit) }"
+    ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit), 'is-resolved': comment.isResolved }"
   )
     a.block-link(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
@@ -33,4 +33,16 @@ ul.comments-list(
           '
           ' on
           span once-text="comment.timestamp | date"
+
+          .comment-controls ng-if="!authoredByYou(comment)"
+            div ng-if="comment.isNew"
+              button.small.mark-as-resolved ng-click="markAsResolved(comment, $event)"
+                i.fa.fa-eye'
+                ' Mark as resolved
+            div ng-if="comment.isResolved"
+              button.small.mark-as-new ng-click="markAsNew(comment, $event)"
+                i.fa.fa-eye-slash'
+                ' Mark as new
+              img.comment-resolver-avatar gravatar-src="comment.resolverEmail || 'show-a-placeholder'"
+
         .comment-proper-body once-text="comment.body"

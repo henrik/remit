@@ -1,12 +1,15 @@
 class CommentSerializer < ApplicationSerializer
-  attributes :github_id,
+  attributes :id,
+    :github_id,
     :author_name,
     :author_email,
     :url,
     :body,
     :commit,
     :commit_sha,
-    :timestamp
+    :timestamp,
+    :resolver_email,
+    :is_new, :is_resolved
 
   private
 
@@ -22,6 +25,18 @@ class CommentSerializer < ApplicationSerializer
   # May or may not have an associated commit.
   def commit
     comment.commit.try(:as_json)
+  end
+
+  def resolver_email
+    comment.resolved_by_author.try(:email)
+  end
+
+  def is_new
+    comment.new?
+  end
+
+  def is_resolved
+    comment.resolved?
   end
 
   alias_method :comment, :object

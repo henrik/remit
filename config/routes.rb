@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   post "/commits/:id/started_review" => 'commits#started_review'
   post "/commits/:id/unreviewed" => 'commits#unreviewed'
 
+  post "/comments/:id/resolved" => 'comments#resolved'
+  post "/comments/:id/unresolved" => 'comments#unresolved'
+
   # All paths should render the same page and then we route in JS.
   get 'commits'  => 'pages#index'
   get 'comments' => 'pages#index'

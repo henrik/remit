@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622184544) do
+ActiveRecord::Schema.define(version: 20140701184309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,17 +25,20 @@ ActiveRecord::Schema.define(version: 20140622184544) do
   end
 
   create_table "comments", force: true do |t|
-    t.text     "payload",    null: false
+    t.text     "payload",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "github_id",  null: false
-    t.string   "commit_sha", null: false
-    t.integer  "author_id",  null: false
+    t.integer  "github_id",             null: false
+    t.string   "commit_sha",            null: false
+    t.integer  "author_id",             null: false
+    t.datetime "resolved_at"
+    t.integer  "resolved_by_author_id"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
   add_index "comments", ["commit_sha"], name: "index_comments_on_commit_sha", using: :btree
   add_index "comments", ["github_id"], name: "index_comments_on_github_id", unique: true, using: :btree
+  add_index "comments", ["resolved_by_author_id"], name: "index_comments_on_resolved_by_author_id", using: :btree
 
   create_table "commits", force: true do |t|
     t.string   "sha",                         null: false

@@ -22,6 +22,12 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
   subscribe "commit_unreviewed", (data) ->
     updateCommitFrom(data)
 
+  subscribe "comment_resolved", (data) ->
+    updateCommentFrom(data)
+
+  subscribe "comment_unresolved", (data) ->
+    updateCommentFrom(data)
+
   subscribe "app_deployed", (data) ->
     deployedVersion = data.version
     ourVersion = Remit.version
@@ -50,4 +56,10 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
     for commit in $scope.commits
       if commit.id == data.commit.id
         commit[key] = value for key, value of data.commit
+        break
+
+  updateCommentFrom = (data) ->
+    for comment in $scope.comments
+      if comment.id == data.comment.id
+        comment[key] = value for key, value of data.comment
         break

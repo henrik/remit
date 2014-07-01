@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
   serialize :payload, Hash
 
   belongs_to :author
+  belongs_to :resolved_by_author, class: Author
+
   belongs_to :commit,
     foreign_key: :commit_sha,
     primary_key: :sha
@@ -27,5 +29,33 @@ class Comment < ActiveRecord::Base
 
   def timestamp
     payload[:created_at]
+  end
+
+  def new?
+    not resolved?
+  end
+
+  def resolved?
+    resolved_at?
+  end
+
+  def mark_as_resolved_by(email)
+    update_attributes!(
+      resolved_at: Time.now,
+      resolved_by_author: find_author_for_email(email),
+    )
+  end
+
+  def mark_as_unresolved
+    update_attributes!(
+      resolved_at: nil,
+      resolved_by_author: nil,
+    )
+  end
+
+  private
+
+  def find_author_for_email(email)
+    email.presence && Author.create_or_update_from_payload(email: email)
   end
 end

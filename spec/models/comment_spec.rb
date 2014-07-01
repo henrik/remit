@@ -59,3 +59,37 @@ describe Comment, "#commit" do
     expect(comment.commit).to be_nil
   end
 end
+
+describe Comment, "#resolved?" do
+  it "is true if resolved_at is set" do
+    comment = build(:comment, resolved_at: Time.now)
+    expect(comment.resolved?).to be_truthy
+  end
+end
+
+describe Comment, "#mark_as_resolved_by" do
+  it "assigns resolved_at, resolved_by_author and persists the record" do
+    comment = build(:comment, resolved_at: nil)
+
+    comment.mark_as_resolved_by("charles@babbage.com")
+
+    expect(comment).to be_persisted
+    expect(comment.resolved_at).to be_present
+    expect(comment.resolved_by_author.email).to eq "charles@babbage.com"
+  end
+end
+
+describe Comment, "#mark_as_unresolved" do
+  it "unassigns resolved attributes and persists the record" do
+    comment = build(:comment,
+      resolved_at: Time.now,
+      resolved_by_author: Author.new,
+    )
+
+    comment.mark_as_unresolved
+
+    expect(comment).to be_persisted
+    expect(comment.resolved_at).to be_nil
+    expect(comment.resolved_by_author).to be_nil
+  end
+end

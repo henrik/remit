@@ -51,7 +51,8 @@
   background: $gray;
 }
 
-.comment.authored-by-you {
+.comment.authored-by-you,
+.comment.is-resolved {
   opacity: 0.4;
 }
 
@@ -84,3 +85,7 @@
 // my comments on others should keep showing.
 .hide-comments-on-others .comment.authored-by-you { display: block; }
 .hide-comments-on-others.hide-comments-by-me .comment.authored-by-you { display: none; }
+
+.comment-resolver-avatar {
+  @include small-gravatar;
+}
