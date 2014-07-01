@@ -30,6 +30,7 @@ input {
 }
 
 button {
+  cursor: pointer;
   background: $gray;
   border: 1px solid $darker-gray;
   &:active { background: $mid-gray; }

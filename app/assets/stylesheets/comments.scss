@@ -36,9 +36,12 @@
 .comment-commit-author-gravatar,
 .comment-proper-author-gravatar {
   @include small-gravatar;
-  margin-right: 4px;
   // No idea why we need this, but the avatar is aligned wrong otherwise.
   margin-bottom: -6px;
+}
+
+.comment-commit-author-gravatar {
+  margin-right: 4px;
 }
 
 .comment-proper {
@@ -86,6 +89,23 @@
 .hide-comments-on-others .comment.authored-by-you { display: block; }
 .hide-comments-on-others.hide-comments-by-me .comment.authored-by-you { display: none; }
 
+.commenter-to-commentee-arrow {
+  color: $darker-gray;
+  margin: 0 2px 0 3px;
+}
+
+.comment-controls {
+  float: right;
+  margin-left: 5px;
+  margin-top: 2px;
+  margin-bottom: -6px;  // No idea why we need this, but without it we get extra height.
+
+  button {
+    vertical-align: top;
+  }
+}
+
 .comment-resolver-avatar {
   @include small-gravatar;
+  margin-right: 6px;
 }
