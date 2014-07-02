@@ -14,9 +14,12 @@ p.left-to-review ng-show="stats.allUnreviewed"
       ' {{stats.oldestCommitYouCanReview.timestamp | date}}
 
 p.nothing-left-to-review ng-show="commits.length && !stats.allUnreviewed"
-  strong Nothing left to review!
+  i.fa.fa-trophy.fa-2x.trophy
   '
-  ' Good job.
+  span.text
+    strong Nothing left to review!
+    '
+    ' Good job.
 
 p.no-data ng-if="!commits.length"
   ' There are no commits yet! Make some.
