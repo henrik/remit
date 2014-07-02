@@ -1,5 +1,7 @@
 p.left-to-review ng-show="stats.allUnreviewed"
-  ' Commits to review:
+  strong {{stats.allUnreviewed}}
+  '
+  ' {{ stats.allUnreviewed === 1 ? 'commit' : 'commits' }} to review:
   '
   strong {{stats.youCanReview}}
   '
