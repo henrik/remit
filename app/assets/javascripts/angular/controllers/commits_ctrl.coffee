@@ -24,29 +24,21 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits) 
     # Or if we opened it in another tab, we don't want a second tab to open.
     stopEvent($event) if $scope.isYourLastClicked(commit)
 
-    Commits.startReview(commit, $scope.settings.email).
-      error(reportServerError)
+    Commits.startReview(commit, $scope.settings.email)
 
   $scope.abandonReview = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit, $scope.settings.email).
-      error(reportServerError)
+    Commits.markAsNew(commit, $scope.settings.email)
 
   $scope.markAsReviewed = (commit, $event) ->
     stopEvent $event
-    Commits.markAsReviewed(commit, $scope.settings.email).
-      error(reportServerError)
+    Commits.markAsReviewed(commit, $scope.settings.email)
 
   $scope.markAsNew = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit, $scope.settings.email).
-      error(reportServerError)
+    Commits.markAsNew(commit, $scope.settings.email)
 
   # We have buttons nested within links, so we need this.
   stopEvent = ($event) ->
     $event.stopPropagation()
     $event.preventDefault()
-
-  reportServerError = ->
-    if $window.confirm("Server error! Your update may have been lost. Reload the page to make sure you're up to date.")
-      $window.location.reload()

@@ -1,4 +1,4 @@
-app.service "Commits", ($http) ->
+app.service "Commits", ($http, ErrorReporter) ->
   this.yourLastClicked = null
 
   # We're optimistically changing local values for the reviewer.
@@ -7,25 +7,28 @@ app.service "Commits", ($http) ->
   # if a notification arrives AFTER the next optimistic state change.
 
   this.startReview = (commit, byEmail) ->
-    promise = $http.post("/commits/#{commit.id}/started_review", email: byEmail)
+    $http.post("/commits/#{commit.id}/started_review", email: byEmail).
+      error(ErrorReporter.reportServerError)
+
     commit.isNew = false
     commit.isBeingReviewed = true
     commit.pendingReviewerEmail = byEmail
-    promise
 
   this.markAsReviewed = (commit, byEmail) ->
-    promise = $http.post("/commits/#{commit.id}/reviewed", email: byEmail)
+    $http.post("/commits/#{commit.id}/reviewed", email: byEmail).
+      error(ErrorReporter.reportServerError)
+
     commit.isBeingReviewed = false
     commit.isReviewed = true
     commit.reviewerEmail = byEmail
-    promise
 
   this.markAsNew = (commit, byEmail) ->
-    promise = $http.post("/commits/#{commit.id}/unreviewed", email: byEmail)
+    $http.post("/commits/#{commit.id}/unreviewed", email: byEmail).
+      error(ErrorReporter.reportServerError)
+
     commit.isBeingReviewed = false
     commit.isReviewed = false
     commit.isNew = true
     commit.reviewerEmail = null
-    promise
 
   this

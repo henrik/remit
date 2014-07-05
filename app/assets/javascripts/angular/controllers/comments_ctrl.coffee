@@ -18,19 +18,13 @@ app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments)
 
   $scope.markAsResolved = (comment, $event) ->
     stopEvent $event
-    Comments.markAsResolved(comment, $scope.settings.email).
-      error(reportServerError)
+    Comments.markAsResolved(comment, $scope.settings.email)
 
   $scope.markAsNew = (comment, $event) ->
     stopEvent $event
-    Comments.markAsNew(comment, $scope.settings.email).
-      error(reportServerError)
+    Comments.markAsNew(comment, $scope.settings.email)
 
   # We have buttons nested within links, so we need this.
   stopEvent = ($event) ->
     $event.stopPropagation()
     $event.preventDefault()
-
-  reportServerError = ->
-    if $window.confirm("Server error! Your update may have been lost. Reload the page to make sure you're up to date.")
-      $window.location.reload()
