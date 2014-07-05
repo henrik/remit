@@ -1,4 +1,4 @@
-app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments) ->
+app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, CurrentUser, Comments) ->
   $rootScope.pageTitle = "Comments"
 
   $scope.isYourLastClicked = (comment) ->
@@ -18,11 +18,11 @@ app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments)
 
   $scope.markAsResolved = (comment, $event) ->
     stopEvent $event
-    Comments.markAsResolved(comment, $scope.settings.email)
+    Comments.markAsResolved(comment, CurrentUser.email)
 
   $scope.markAsNew = (comment, $event) ->
     stopEvent $event
-    Comments.markAsNew(comment, $scope.settings.email)
+    Comments.markAsNew(comment, CurrentUser.email)
 
   # We have buttons nested within links, so we need this.
   stopEvent = ($event) ->

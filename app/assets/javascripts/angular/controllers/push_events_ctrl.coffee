@@ -1,4 +1,4 @@
-app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
+app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentUser) ->
 
   # We must receive pushes even before you visit (=load) one of the subview
   # controllers (e.g. CommitsCtrl), so it can't be handled there.
@@ -48,7 +48,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
   updateCommitFrom = (data) ->
     # Ignore updates triggered by the current user to avoid state flickering.
     # Se comment in Commits service.
-    userEmail = $scope.settings.email
+    userEmail = CurrentUser.email
     updateEmail = data.email
     updateWasTriggeredByTheCurrentUser = updateEmail and userEmail and updateEmail is userEmail
     return if updateWasTriggeredByTheCurrentUser
