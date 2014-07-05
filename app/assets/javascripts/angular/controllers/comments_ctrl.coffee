@@ -32,4 +32,5 @@ app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments)
     $event.preventDefault()
 
   reportServerError = ->
-    $window.alert("Server error! Your update may have been lost.")
+    if $window.confirm("Server error! Your update may have been lost. Reload the page to make sure you're up to date.")
+      $window.location.reload()

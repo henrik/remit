@@ -48,4 +48,5 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits) 
     $event.preventDefault()
 
   reportServerError = ->
-    $window.alert("Server error! Your update may have been lost.")
+    if $window.confirm("Server error! Your update may have been lost. Reload the page to make sure you're up to date.")
+      $window.location.reload()
