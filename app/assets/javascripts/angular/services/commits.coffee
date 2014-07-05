@@ -7,28 +7,29 @@ app.service "Commits", ($http, ErrorReporter) ->
   # if a notification arrives AFTER the next optimistic state change.
 
   this.startReview = (commit, byEmail) ->
-    $http.post("/commits/#{commit.id}/started_review", email: byEmail).
-      error(ErrorReporter.reportServerError)
+    post("/commits/#{commit.id}/started_review", email: byEmail)
 
     commit.isNew = false
     commit.isBeingReviewed = true
     commit.pendingReviewerEmail = byEmail
 
   this.markAsReviewed = (commit, byEmail) ->
-    $http.post("/commits/#{commit.id}/reviewed", email: byEmail).
-      error(ErrorReporter.reportServerError)
+    post("/commits/#{commit.id}/reviewed", email: byEmail)
 
     commit.isBeingReviewed = false
     commit.isReviewed = true
     commit.reviewerEmail = byEmail
 
   this.markAsNew = (commit, byEmail) ->
-    $http.post("/commits/#{commit.id}/unreviewed", email: byEmail).
-      error(ErrorReporter.reportServerError)
+    post("/commits/#{commit.id}/unreviewed", email: byEmail)
 
     commit.isBeingReviewed = false
     commit.isReviewed = false
     commit.isNew = true
     commit.reviewerEmail = null
+
+  post = (args...) ->
+    $http.post(args...).
+      error(ErrorReporter.reportServerError)
 
   this
