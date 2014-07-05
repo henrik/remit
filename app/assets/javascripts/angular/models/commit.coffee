@@ -1,9 +1,3 @@
-class @Commit
-  @decorate: (data) ->
-    data.map (datum) -> new Commit(datum)
+#= require angular/models/application_model
 
-  constructor: (props) ->
-    this[name] = value for name, value of props
-
-  hasAuthor: (authorName) ->
-    authorName and @authorName.indexOf(authorName) != -1
+class @Commit extends ApplicationModel
