@@ -8,10 +8,10 @@ app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, CurrentUs
     Comments.yourLastClicked = comment
 
   $scope.authoredByYou = (comment) ->
-    $scope.settings.name and comment.authorName.indexOf($scope.settings.name) != -1
+    CurrentUser.isAuthorOf(comment)
 
   $scope.onYourCommit = (commit) ->
-    $scope.settings.name and commit and commit.authorName.indexOf($scope.settings.name) != -1
+    commit and CurrentUser.isAuthorOf(commit)
 
   $scope.saveSettings = ->
     Settings.save()

@@ -37,7 +37,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentU
   # Update commit stats.
   # We watch explicitly so we don't have to recalculate on every single digest.
   # If this ever gets noticeably slow, we could optimize further by debouncing name setting.
-  updateCommitStats = -> $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
+  updateCommitStats = -> $scope.stats = CommitStats.stats($scope.commits, CurrentUser.name)
   $scope.$watch "commits", updateCommitStats, true
   $scope.$watch "settings.name", updateCommitStats
 

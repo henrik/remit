@@ -5,7 +5,7 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits, 
     commit == Commits.yourLastClicked
 
   $scope.authoredByYou = (commit) ->
-    $scope.settings.name and commit.authorName.indexOf($scope.settings.name) != -1
+    CurrentUser.isAuthorOf(commit)
 
   $scope.jumpTo = (commit) ->
     # Scroll down
