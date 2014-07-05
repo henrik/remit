@@ -7,7 +7,7 @@ app.service "CommitStats", () ->
       oldestIdYouCanReview: null
 
     for commit in commits
-      byYou = yourName and commit.authorName.indexOf(yourName) != -1
+      byYou = commit.hasAuthor(yourName)
 
       if !commit.isReviewed
         out.allUnreviewed += 1

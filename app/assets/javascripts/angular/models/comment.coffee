@@ -1,6 +1,6 @@
-class @Commit
+class @Comment
   @decorate: (data) ->
-    data.map (datum) -> new Commit(datum)
+    data.map (datum) -> new Comment(datum)
 
   constructor: (props) ->
     this[name] = value for name, value of props

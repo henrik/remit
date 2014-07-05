@@ -4,9 +4,6 @@ app.service "CurrentUser", (Settings) ->
     @email = Settings.data.email
     @name = Settings.data.name
 
-  @isAuthorOf = (thing) ->
-    @name and thing.authorName.indexOf(@name) != -1
-
   @setUp()
 
   Settings.watch(this.setUp)
