@@ -1,4 +1,4 @@
-app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentUser) ->
+app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
 
   # We must receive pushes even before you visit (=load) one of the subview
   # controllers (e.g. CommitsCtrl), so it can't be handled there.
@@ -8,11 +8,10 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentU
 
 
   subscribe "commits_updated", (data) ->
-    newCommits = Commit.decorate(data.commits)
-    $scope.commits = limitRecords newCommits.concat($scope.commits)
+    $scope.commits = limitRecords data.commits.concat($scope.commits)
 
   subscribe "comment_updated", (data) ->
-    $scope.comments = limitRecords [ new Comment(data.comment) ].concat($scope.comments)
+    $scope.comments = limitRecords [ data.comment ].concat($scope.comments)
 
   subscribe "commit_being_reviewed", (data) ->
     updateCommitFrom(data)
@@ -38,7 +37,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentU
   # Update commit stats.
   # We watch explicitly so we don't have to recalculate on every single digest.
   # If this ever gets noticeably slow, we could optimize further by debouncing name setting.
-  updateCommitStats = -> $scope.stats = CommitStats.stats($scope.commits, CurrentUser.name)
+  updateCommitStats = -> $scope.stats = CommitStats.stats($scope.commits, $scope.settings.name)
   $scope.$watch "commits", updateCommitStats, true
   $scope.$watch "settings.name", updateCommitStats
 
@@ -49,7 +48,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats, CurrentU
   updateCommitFrom = (data) ->
     # Ignore updates triggered by the current user to avoid state flickering.
     # Se comment in Commits service.
-    userEmail = CurrentUser.email
+    userEmail = $scope.settings.email
     updateEmail = data.email
     updateWasTriggeredByTheCurrentUser = updateEmail and userEmail and updateEmail is userEmail
     return if updateWasTriggeredByTheCurrentUser

@@ -1,11 +1,11 @@
-app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits, CurrentUser) ->
+app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits) ->
   $rootScope.pageTitle = "Commits"
 
   $scope.isYourLastClicked = (commit) ->
     commit == Commits.yourLastClicked
 
   $scope.authoredByYou = (commit) ->
-    commit.hasAuthor(CurrentUser.name)
+    $scope.settings.name and commit.authorName.indexOf($scope.settings.name) != -1
 
   $scope.jumpTo = (commit) ->
     # Scroll down
@@ -24,19 +24,19 @@ app.controller "CommitsCtrl", ($rootScope, $scope, $window, $location, Commits, 
     # Or if we opened it in another tab, we don't want a second tab to open.
     stopEvent($event) if $scope.isYourLastClicked(commit)
 
-    Commits.startReview(commit, CurrentUser.email)
+    Commits.startReview(commit, $scope.settings.email)
 
   $scope.abandonReview = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit, CurrentUser.email)
+    Commits.markAsNew(commit, $scope.settings.email)
 
   $scope.markAsReviewed = (commit, $event) ->
     stopEvent $event
-    Commits.markAsReviewed(commit, CurrentUser.email)
+    Commits.markAsReviewed(commit, $scope.settings.email)
 
   $scope.markAsNew = (commit, $event) ->
     stopEvent $event
-    Commits.markAsNew(commit, CurrentUser.email)
+    Commits.markAsNew(commit, $scope.settings.email)
 
   # We have buttons nested within links, so we need this.
   stopEvent = ($event) ->

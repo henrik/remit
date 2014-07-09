@@ -11,7 +11,7 @@ describe "Service: Settings", ->
     ipCookie = _ipCookie_
 
   beforeEach ->
-    Settings._reset()
+    Settings.reset()
 
   it "can write and read settings", ->
     # This is the suggested usage pattern.
@@ -43,15 +43,3 @@ describe "Service: Settings", ->
 
     settings = Settings.load(mydefault: "hello")
     expect(settings.mydefault).toEqual("hello")
-
-  it "calls registered callbacks on changes", ->
-    cb = jasmine.createSpy("cb")
-
-    Settings.watch cb
-
-    data = Settings.load()
-    expect(cb).toHaveBeenCalledWith({})
-
-    data.name = "Ada"
-    Settings.save()
-    expect(cb).toHaveBeenCalledWith(name: "Ada")

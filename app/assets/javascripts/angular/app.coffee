@@ -12,8 +12,8 @@ window.app = angular.module "Remit", [
 
 app.run ($rootScope, $location, Settings, preloadedData) ->
   $rootScope.maxRecords = preloadedData.maxRecords
-  $rootScope.commits  = Commit.decorate(preloadedData.commits)
-  $rootScope.comments = Comment.decorate(preloadedData.comments)
+  $rootScope.commits  = preloadedData.commits
+  $rootScope.comments = preloadedData.comments
 
   $rootScope.$on "$routeChangeSuccess", ->
     $rootScope.isOnSettingsPage = $location.path() == "/settings"

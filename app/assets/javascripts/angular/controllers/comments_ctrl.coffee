@@ -1,4 +1,4 @@
-app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, CurrentUser, Comments) ->
+app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, Comments) ->
   $rootScope.pageTitle = "Comments"
 
   $scope.isYourLastClicked = (comment) ->
@@ -8,21 +8,21 @@ app.controller "CommentsCtrl", ($rootScope, $scope, $window, Settings, CurrentUs
     Comments.yourLastClicked = comment
 
   $scope.authoredByYou = (comment) ->
-    comment.hasAuthor(CurrentUser.name)
+    $scope.settings.name and comment.authorName.indexOf($scope.settings.name) != -1
 
   $scope.onYourCommit = (commit) ->
-    commit and commit.hasAuthor(CurrentUser.name)
+    $scope.settings.name and commit and commit.authorName.indexOf($scope.settings.name) != -1
 
   $scope.saveSettings = ->
     Settings.save()
 
   $scope.markAsResolved = (comment, $event) ->
     stopEvent $event
-    Comments.markAsResolved(comment, CurrentUser.email)
+    Comments.markAsResolved(comment, $scope.settings.email)
 
   $scope.markAsNew = (comment, $event) ->
     stopEvent $event
-    Comments.markAsNew(comment, CurrentUser.email)
+    Comments.markAsNew(comment, $scope.settings.email)
 
   # We have buttons nested within links, so we need this.
   stopEvent = ($event) ->
