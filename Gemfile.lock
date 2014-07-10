@@ -86,7 +86,7 @@ GEM
       excon (~> 0.27)
       multi_json (~> 1.8)
     hike (1.2.3)
-    honeybadger (1.15.0)
+    honeybadger (1.16.1)
       json
     http_parser.rb (0.6.0)
     httpclient (2.3.4.1)
