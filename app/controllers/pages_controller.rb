@@ -1,7 +1,7 @@
 class PagesController < UsersBaseController
   # The number of records to show (on load and after updates), for speed.
   # Gets slower with more records.
-  MAX_RECORDS = 300
+  MAX_RECORDS = 250
 
   def index
     render locals: {
