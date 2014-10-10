@@ -9,10 +9,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'slim'
 gem 'honeybadger'
-gem 'pusher'
 gem 'angular_rails_csrf'
 gem 'active_model_serializers'
 gem 'attr_extras'
+gem 'message_bus'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
@@ -28,7 +28,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'pusher-fake'
   gem 'jasmine-rails'
 end
 
@@ -46,11 +45,11 @@ gem 'rails-assets-angular', '~> 1.2.19'
 gem 'rails-assets-angular-route'
 gem 'rails-assets-angular-animate'
 gem 'rails-assets-angular-gravatar', '~> 0.2.0'
-gem 'rails-assets-angular-pusher'
-gem 'rails-assets-pusher'
 gem 'rails-assets-angular-cookie'
 gem 'rails-assets-angular-once'
 gem 'rails-assets-font-awesome'
+gem 'rails-assets-jquery'
+gem 'rails-assets-lodash'
 
 group :development, :test do
   gem 'rails-assets-angular-mocks'

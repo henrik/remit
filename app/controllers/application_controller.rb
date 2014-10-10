@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       text: "Not authorized! Did you forget to provide auth_key in the URL?"
   end
 
-  def push_event(event, hash)
-    Pusher.trigger("the_channel", event, hash)
+  def push_event(channel, data)
+    MessageBus.publish(channel, data.as_json)
   end
 end

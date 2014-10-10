@@ -50,11 +50,6 @@ html ng-app="Remit"
     javascript:
       Remit.version = #{raw Remit.version.to_json};
 
-      Remit.pusherConfig = {
-        key: #{raw Pusher.key.to_json},
-        options: #{raw (Rails.env.test? ? PusherFake.configuration.to_options : {}).to_json},
-      };
-
       angular.module("Remit.PreloadedData", []).
         constant("preloadedData", {
           maxRecords: #{raw max_records.to_json},

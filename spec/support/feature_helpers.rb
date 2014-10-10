@@ -5,8 +5,10 @@ module FeatureSpecHelpers
   end
 
   def configure_settings(email:)
-    visit "/settings"
+    visit_and_init_message_bus "/settings"
+    wait_for_message_bus_initialization
     fill_in "Your email", with: email
+    fill_in "Your name", with: email
   end
 
   def visitors(*names, &block)
@@ -21,6 +23,42 @@ module FeatureSpecHelpers
     Capybara.session_name = name
     yield
     Capybara.session_name = old_session
+  end
+
+  def visit_and_init_message_bus(path)
+    visit path
+    wait_for_message_bus_initialization
+  end
+
+  def wait_for_message_bus_initialization
+    should_wait = page.evaluate_script(<<-EOS
+      (function() {
+        if(!window.MessageBus) {
+          return false; // message bus isn't here, there is no way to wait for it to be initialized
+        }
+        else {
+          window.MessageBus.isReady = function() {
+            return _.any(this.callbacks, function(callback) { return callback.last_id !== -1; })
+          };
+          return true;
+        }
+      })()
+     EOS
+    )
+    return unless should_wait
+
+    wait_until do
+      page.evaluate_script("window.MessageBus.isReady();")
+    end
+  end
+
+  def wait_until
+    Timeout.timeout(Capybara.default_wait_time) do
+      sleep(0.1) until value = yield
+      value
+    end
+  rescue Capybara::NotSupportedByDriverError
+    # Do nothing if we run this from a non-JS test.
   end
 end
 

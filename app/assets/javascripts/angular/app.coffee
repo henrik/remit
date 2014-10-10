@@ -4,7 +4,6 @@ window.app = angular.module "Remit", [
   "Remit.PreloadedData"
   "ngRoute"
   "ngAnimate"
-  "doowb.angular-pusher"
   "ui.gravatar"
   "ipCookie"
   "once"

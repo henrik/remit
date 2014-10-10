@@ -10,7 +10,7 @@ describe "Receiving GitHub payloads by webhook" do
   end
 
   it "stores commit comments and pushes an event" do
-    expect_push "comment_updated", { comment: a_hash_including(body: "Hi.") }
+    expect_push "comment_updated", { "comment" => a_hash_including("body" => "Hi.") }
 
     post "/github_webhook",
       { comment: FactoryGirl.comment_payload(body: "Hi.") },
@@ -24,9 +24,9 @@ describe "Receiving GitHub payloads by webhook" do
 
   it "stores commits and pushes an event" do
     expect_push "commits_updated", {
-      commits: [
-        a_hash_including(summary: "newer commit" ),
-        a_hash_including(summary: "older commit" ),
+      "commits" => [
+        a_hash_including("summary" => "newer commit" ),
+        a_hash_including("summary" => "older commit" ),
       ],
     }
 
@@ -89,7 +89,7 @@ describe "Receiving GitHub payloads by webhook" do
       { "X-Github-Event" => "ping" }
   end
 
-  def expect_push(event, hash)
-    expect(Pusher).to receive(:trigger).with("the_channel", event, hash).and_call_original
+  def expect_push(channel, data)
+    expect(MessageBus).to receive(:publish).with(channel, data).and_call_original
   end
 end

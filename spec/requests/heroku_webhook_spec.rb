@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "Receiving Heroku deploys by webhook" do
   it "sends the current app version to clients" do
-    expect_push "app_deployed", { version: Remit.version }
+    expect_push "app_deployed", { "version" => Remit.version }
 
     post "/heroku_webhook", head: "cafebabe"
 
@@ -26,7 +26,7 @@ describe "Receiving Heroku deploys by webhook" do
 
   private
 
-  def expect_push(event, hash)
-    expect(Pusher).to receive(:trigger).with("the_channel", event, hash).and_call_original
+  def expect_push(channel, data)
+    expect(MessageBus).to receive(:publish).with(channel, data).and_call_original
   end
 end

@@ -50,21 +50,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    cookiejar (0.3.2)
-    daemons (1.1.9)
     database_cleaner (1.3.0)
     diff-lcs (1.2.5)
-    em-http-request (1.1.2)
-      addressable (>= 2.3.4)
-      cookiejar
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.0)
-      eventmachine (>= 1.0.0.beta.4)
-    em-websocket (0.5.1)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     excon (0.37.0)
@@ -88,8 +75,6 @@ GEM
     hike (1.2.3)
     honeybadger (1.16.1)
       json
-    http_parser.rb (0.6.0)
-    httpclient (2.3.4.1)
     i18n (0.6.9)
     jasmine-core (2.0.0)
     jasmine-rails (0.9.0)
@@ -104,6 +89,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    message_bus (0.9.6)
+      eventmachine
+      rack (>= 1.1.3)
+      redis
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.3.5)
@@ -119,15 +108,6 @@ GEM
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyglot (0.3.5)
-    pusher (0.12.0)
-      httpclient (~> 2.3.0)
-      multi_json (~> 1.0)
-      signature (~> 0.1.6)
-    pusher-fake (1.0.1)
-      em-http-request (~> 1.1)
-      em-websocket (~> 0.5)
-      multi_json (~> 1.6)
-      thin (~> 1.5)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -151,12 +131,11 @@ GEM
     rails-assets-angular-mocks (1.2.19)
       rails-assets-angular (= 1.2.19)
     rails-assets-angular-once (0.1.8)
-    rails-assets-angular-pusher (0.0.8)
-      rails-assets-angular (~> 1.2.0)
     rails-assets-angular-route (1.2.19)
       rails-assets-angular (= 1.2.19)
     rails-assets-font-awesome (4.1.0)
-    rails-assets-pusher (2.2.2)
+    rails-assets-jquery (2.1.1)
+    rails-assets-lodash (2.4.1)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -169,6 +148,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.7.0)
     rake (10.3.2)
+    redis (3.1.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (3.0.1)
@@ -194,7 +174,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    signature (0.1.7)
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -209,10 +188,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     temple (0.6.7)
-    thin (1.6.2)
-      daemons (>= 1.0.9)
-      eventmachine (>= 1.0.0)
-      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -247,10 +222,9 @@ DEPENDENCIES
   heroku
   honeybadger
   jasmine-rails
+  message_bus
   pg
   poltergeist
-  pusher
-  pusher-fake
   rails (= 4.1.2)
   rails-assets-angular (~> 1.2.19)
   rails-assets-angular-animate
@@ -258,10 +232,10 @@ DEPENDENCIES
   rails-assets-angular-gravatar (~> 0.2.0)
   rails-assets-angular-mocks
   rails-assets-angular-once
-  rails-assets-angular-pusher
   rails-assets-angular-route
   rails-assets-font-awesome
-  rails-assets-pusher
+  rails-assets-jquery
+  rails-assets-lodash
   rails_12factor
   rspec-rails
   sass-rails (~> 4.0.3)

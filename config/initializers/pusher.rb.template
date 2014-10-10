@@ -1,7 +1,0 @@
-# https://devcenter.heroku.com/articles/pusher
-
-if Rails.env.development?
-  Pusher.app_id = "REPLACE"
-  Pusher.key    = "THESE"
-  Pusher.secret = "VALUES"
-end

@@ -1,10 +1,12 @@
-app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
+app.controller "PushEventsCtrl", ($scope, $window, CommitStats, MessageBus) ->
 
   # We must receive pushes even before you visit (=load) one of the subview
   # controllers (e.g. CommitsCtrl), so it can't be handled there.
 
-  subscribe = (event, cb) ->
-    Pusher.subscribe "the_channel", event, cb
+  subscribe = (channel, cb) =>
+    MessageBus.subscribe channel, (data) =>
+      $scope.$apply =>
+        cb(data)
 
 
   subscribe "commits_updated", (data) ->
@@ -47,7 +49,7 @@ app.controller "PushEventsCtrl", ($scope, $window, Pusher, CommitStats) ->
 
   updateCommitFrom = (data) ->
     # Ignore updates triggered by the current user to avoid state flickering.
-    # Se comment in Commits service.
+    # See comment in Commits service.
     userEmail = $scope.settings.email
     updateEmail = data.email
     updateWasTriggeredByTheCurrentUser = updateEmail and userEmail and updateEmail is userEmail

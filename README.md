@@ -43,9 +43,6 @@ Run:
 
     bundle
     bin/rake db:setup
-    cp config/initializers/pusher.rb{.template,}
-    # Configure for development per https://devcenter.heroku.com/articles/pusher
-    vim config/initializers/pusher.rb
     bin/rails server
 
 Visit <http://localhost:9292>
@@ -109,9 +106,6 @@ We assume you have a [Heroku](http://heroku.com) account.
     # DB. Free plan with max 10,000 rows.
     heroku addons:add heroku-postgresql:dev
 
-    # For WebSockets. Free plan with 20 concurrents, 100,000 messages/month. https://addons.heroku.com/pusher
-    heroku addons:add pusher
-
     heroku addons:add deployhooks:http --url=https://$HEROKU_NAME.herokuapp.com/heroku_webhook?auth_key=$WEBHOOK_KEY
 
     git push heroku master
@@ -143,7 +137,7 @@ If you just set the app up with the instructions above, you can get the URL into
 
 To reload clients automatically when you deploy to Heroku, change the version number in `config/application.rb`.
 
-If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a Pusher WebSocket message with the new version number. That message causes clients to reload if they're running a different version.
+If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a [MessageBus](https://github.com/SamSaffron/message_bus) message with the new version number. That message causes clients to reload if they're running a different version.
 
 ### Import reviewed state from Hubreview
 

@@ -4,7 +4,7 @@ describe "Heroku webhooks", :js do
   it "causes a reload if client version is different from server version" do
     set_server_version "1.0"
 
-    visit "/"
+    visit_and_init_message_bus "/"
     expect_client_version "1.0"
 
     # Webhook happens when a new version is around?
@@ -31,14 +31,14 @@ describe "Heroku webhooks", :js do
   def expect_page_not_to_reload
     page.evaluate_script "window.notReloaded = true"
     yield
-    sleep 0.05  # Sadly, we need this.
+    sleep 0.5  # Sadly, we need this.
     expect(page.evaluate_script("window.notReloaded")).to be_truthy
   end
 
   def expect_page_to_reload
     page.evaluate_script "window.notReloaded = true"
     yield
-    sleep 0.05  # Sadly, we need this.
+    sleep 0.5  # Sadly, we need this.
     expect(page.evaluate_script("window.notReloaded")).to be_falsy
   end
 
