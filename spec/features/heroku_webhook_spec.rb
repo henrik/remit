@@ -4,7 +4,7 @@ describe "Heroku webhooks", :js do
   it "causes a reload if client version is different from server version" do
     set_server_version "1.0"
 
-    visit_and_init_message_bus "/"
+    visit_and_wait_for_message_bus_init "/"
     expect_client_version "1.0"
 
     # Webhook happens when a new version is around?

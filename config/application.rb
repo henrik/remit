@@ -14,7 +14,11 @@ module Remit
   self.version = "0.3"
 
   class Application < Rails::Application
+
+    # Required for message_bus.
+    # https://github.com/SamSaffron/message_bus/issues/17
     config.middleware.delete Rack::Lock
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

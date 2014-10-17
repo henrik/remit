@@ -5,15 +5,14 @@ describe "Comments page", :js do
     comment = create(:comment, body: "Hello.")
 
     visitors :ada, :charles do
-      visit_and_init_message_bus "/"
+      visit_and_wait_for_message_bus_init "/"
       click_link "Comments"
       expect(page).to have_content "Hello."
     end
 
     visitor :ada do
       configure_settings email: "ada@lovelace.com"
-      visit_and_init_message_bus "/comments"
-      wait_for_message_bus_initialization
+      visit_and_wait_for_message_bus_init "/comments"
 
       comment_looks_new
       click_button "Mark as resolved"

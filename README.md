@@ -2,7 +2,7 @@
 
 <img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
-**Remit** is a web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and WebSockets.
+**Remit** is a web app for commit-by-commit code review of GitHub repositories. A modern, live UI thanks to AngularJS and message\_bus.
 
 It's super easy to set up on a free Heroku instance.
 
@@ -38,11 +38,13 @@ Read more in this blog post: ["The risks of feature branches and pre-merge code 
 Assumes you have
   * Ruby 2.1.2
   * Bundler
+  * Redis
 
 Run:
 
     bundle
     bin/rake db:setup
+    redis-server  # Unless it's already running.
     bin/rails server
 
 Visit <http://localhost:9292>
@@ -69,6 +71,8 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 
 
 ## Test
+
+    redis-server  # Unless it's already running.
 
     # Full suite
     rake
@@ -106,6 +110,9 @@ We assume you have a [Heroku](http://heroku.com) account.
     # DB. Free plan with max 10,000 rows.
     heroku addons:add heroku-postgresql:dev
 
+    # For message_bus. Free plan, 25 MB.
+    heroku addons:add rediscloud
+
     heroku addons:add deployhooks:http --url=https://$HEROKU_NAME.herokuapp.com/heroku_webhook?auth_key=$WEBHOOK_KEY
 
     git push heroku master
@@ -137,7 +144,7 @@ If you just set the app up with the instructions above, you can get the URL into
 
 To reload clients automatically when you deploy to Heroku, change the version number in `config/application.rb`.
 
-If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a [MessageBus](https://github.com/SamSaffron/message_bus) message with the new version number. That message causes clients to reload if they're running a different version.
+If you've set up a Heroku deploy webhook per the instructions above, it will be called after deploy and generate a [message\_bus](https://github.com/SamSaffron/message_bus) message with the new version number. That message causes clients to reload if they're running a different version.
 
 ### Import reviewed state from Hubreview
 

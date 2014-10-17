@@ -5,10 +5,8 @@ module FeatureSpecHelpers
   end
 
   def configure_settings(email:)
-    visit_and_init_message_bus "/settings"
-    wait_for_message_bus_initialization
+    visit_and_wait_for_message_bus_init "/settings"
     fill_in "Your email", with: email
-    fill_in "Your name", with: email
   end
 
   def visitors(*names, &block)
@@ -25,7 +23,7 @@ module FeatureSpecHelpers
     Capybara.session_name = old_session
   end
 
-  def visit_and_init_message_bus(path)
+  def visit_and_wait_for_message_bus_init(path)
     visit path
     wait_for_message_bus_initialization
   end
@@ -33,16 +31,16 @@ module FeatureSpecHelpers
   def wait_for_message_bus_initialization
     should_wait = page.evaluate_script(<<-EOS
       (function() {
-        if(!window.MessageBus) {
+        if (!window.MessageBus) {
           return false; // message bus isn't here, there is no way to wait for it to be initialized
         }
         else {
           window.MessageBus.isReady = function() {
-            return _.any(this.callbacks, function(callback) { return callback.last_id !== -1; })
+            return _.any(this.callbacks, function(callback) { return callback.last_id !== -1; });
           };
           return true;
         }
-      })()
+      })();
      EOS
     )
     return unless should_wait

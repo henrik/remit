@@ -5,13 +5,13 @@ describe "Commits page", :js do
     create(:commit, message: "Compute Bernoulli numbers.", url: "/")  # URL is "/" so clicking a commit brings us back.
 
     visitors :ada, :charles do
-      visit_and_init_message_bus "/"
+      visit_and_wait_for_message_bus_init "/"
       expect(page).to have_content "Compute Bernoulli numbers."
     end
 
     visitor :ada do
       configure_settings email: "ada@lovelace.com"
-      visit_and_init_message_bus "/"
+      visit_and_wait_for_message_bus_init "/"
 
       commit_looks_new
       click_button "Start review"
