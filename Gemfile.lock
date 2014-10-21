@@ -2,29 +2,29 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
-    actionmailer (4.1.2)
-      actionpack (= 4.1.2)
-      actionview (= 4.1.2)
-      mail (~> 2.5.4)
-    actionpack (4.1.2)
-      actionview (= 4.1.2)
-      activesupport (= 4.1.2)
+    actionmailer (4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      mail (~> 2.5, >= 2.5.4)
+    actionpack (4.1.6)
+      actionview (= 4.1.6)
+      activesupport (= 4.1.6)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    actionview (4.1.2)
-      activesupport (= 4.1.2)
+    actionview (4.1.6)
+      activesupport (= 4.1.6)
       builder (~> 3.1)
       erubis (~> 2.7.0)
     active_model_serializers (0.8.1)
       activemodel (>= 3.0)
-    activemodel (4.1.2)
-      activesupport (= 4.1.2)
+    activemodel (4.1.6)
+      activesupport (= 4.1.6)
       builder (~> 3.1)
-    activerecord (4.1.2)
-      activemodel (= 4.1.2)
-      activesupport (= 4.1.2)
+    activerecord (4.1.6)
+      activemodel (= 4.1.6)
+      activesupport (= 4.1.6)
       arel (~> 5.0.0)
-    activesupport (4.1.2)
+    activesupport (4.1.6)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -75,7 +75,7 @@ GEM
     hike (1.2.3)
     honeybadger (1.16.1)
       json
-    i18n (0.6.9)
+    i18n (0.6.11)
     jasmine-core (2.0.0)
     jasmine-rails (0.9.0)
       jasmine-core (>= 1.3, < 3.0)
@@ -86,16 +86,15 @@ GEM
     kgio (2.6.0)
     launchy (2.4.2)
       addressable (~> 2.3)
-    mail (2.5.4)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
     message_bus (0.9.6)
       eventmachine
       rack (>= 1.1.3)
       redis
-    mime-types (1.25.1)
+    mime-types (2.4.2)
     mini_portile (0.6.0)
-    minitest (5.3.5)
+    minitest (5.4.2)
     multi_json (1.10.1)
     netrc (0.7.7)
     nokogiri (1.6.2.1)
@@ -107,19 +106,18 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.1.2)
-      actionmailer (= 4.1.2)
-      actionpack (= 4.1.2)
-      actionview (= 4.1.2)
-      activemodel (= 4.1.2)
-      activerecord (= 4.1.2)
-      activesupport (= 4.1.2)
+    rails (4.1.6)
+      actionmailer (= 4.1.6)
+      actionpack (= 4.1.6)
+      actionview (= 4.1.6)
+      activemodel (= 4.1.6)
+      activerecord (= 4.1.6)
+      activesupport (= 4.1.6)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.2)
+      railties (= 4.1.6)
       sprockets-rails (~> 2.0)
     rails-assets-angular (1.2.19)
     rails-assets-angular-animate (1.2.19)
@@ -141,9 +139,9 @@ GEM
       rails_stdout_logging
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
-    railties (4.1.2)
-      actionpack (= 4.1.2)
-      activesupport (= 4.1.2)
+    railties (4.1.6)
+      actionpack (= 4.1.6)
+      activesupport (= 4.1.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.7.0)
@@ -178,23 +176,20 @@ GEM
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
     spring (1.1.3)
-    sprockets (2.11.0)
+    sprockets (2.8.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.1.3)
+    sprockets-rails (2.2.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     temple (0.6.7)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    treetop (1.4.15)
-      polyglot
-      polyglot (>= 0.3.1)
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
@@ -215,7 +210,7 @@ DEPENDENCIES
   angular_rails_csrf
   attr_extras
   capybara
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   database_cleaner
   factory_girl_rails
   faker
@@ -225,7 +220,7 @@ DEPENDENCIES
   message_bus
   pg
   poltergeist
-  rails (= 4.1.2)
+  rails (= 4.1.6)
   rails-assets-angular (~> 1.2.19)
   rails-assets-angular-animate
   rails-assets-angular-cookie
@@ -238,8 +233,8 @@ DEPENDENCIES
   rails-assets-lodash
   rails_12factor
   rspec-rails
-  sass-rails (~> 4.0.3)
+  sass-rails
   slim
   spring
-  uglifier (>= 1.3.0)
+  uglifier
   unicorn
