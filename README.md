@@ -207,6 +207,8 @@ There have been reports of issues with GitHub inside Fluid.app (e.g. not being a
 
 * Mostly by [Henrik Nyh](http://henrik.nyh.se)
 * Very much inspired by [Hubreview](https://github.com/joakimk/hubreview) by [Joakim Kolsjö](https://github.com/joakimk)
+* [Victor Arias](https://github.com/victorarias)
+* [Tomas Skogberg](https://github.com/tskogberg)
 
 
 ## License
