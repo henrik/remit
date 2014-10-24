@@ -5,10 +5,11 @@ FactoryGirl.define do
     ignore do
       body "Yo."
       user_login "myusername"
+      commit nil
     end
 
     sequence(:github_id)
-    sequence(:commit_sha) { |n| "aaf#{n}" }
+    sequence(:commit_sha) { |n| commit ? commit.sha : "aaf#{n}" }
 
     author { build(:author, username: user_login) }
 

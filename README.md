@@ -167,6 +167,10 @@ data = JSON.parse(raw); data.first
 data.each { |x| Commit.where(sha: x["sha"]).where("reviewed_at IS NULL").update_all(reviewed_at: Time.at(x["at"])) }
 ```
 
+### Remove old data automatically
+
+Running out of space on the free Heroku DB plan? See `app/models/remove_old_commits_and_comments.rb`.
+
 
 ## Use with Fluid.app
 
