@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe RemoveOldCommitsAndComments, ".remove_commits_beyond" do
+describe RemoveOldCommitsAndComments, ".beyond_the_first_n_commits" do
   it "removes only commits beyond the first n, and their associated comments" do
     # These commits, the oldest ones, should be removed.
 
@@ -20,7 +20,7 @@ describe RemoveOldCommitsAndComments, ".remove_commits_beyond" do
     comment_4_a = create(:comment, commit: commit_4)
     comment_4_b = create(:comment, commit: commit_4)
 
-    message = RemoveOldCommitsAndComments.remove_commits_beyond(1)
+    message = RemoveOldCommitsAndComments.beyond_the_first_n_commits(1)
 
     expect(Commit.all).to match_array [ commit_4 ]
     expect(Comment.all).to match_array [ comment_4_a, comment_4_b ]
