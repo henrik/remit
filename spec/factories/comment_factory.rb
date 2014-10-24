@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :comment do
-    ignore do
+    transient do
       body "Yo."
       user_login "myusername"
       commit nil

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :commit do
-    ignore do
+    transient do
       message { Faker::Company.catch_phrase }
       url "http://example.com"
       author_email { Faker::Internet.email }
