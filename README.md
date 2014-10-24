@@ -47,7 +47,7 @@ Run:
     redis-server  # Unless it's already running.
     bin/rails server
 
-Visit <http://localhost:9292>
+Visit <http://localhost:3000>
 
 ### Fake incoming webhooks
 
