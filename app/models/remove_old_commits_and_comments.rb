@@ -2,6 +2,10 @@
 # https://devcenter.heroku.com/articles/scheduler
 # to clean up old data, if you're running out of DB space:
 #
+#   # Add this addon:
+#   heroku addons:add scheduler:standard
+#
+#   # Schedule this:
 #   rails runner "puts RemoveOldCommitsAndComments.beyond_the_first_n_commits(1000)"
 #
 # Change the number as you see fit, of course.
