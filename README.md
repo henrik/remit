@@ -202,6 +202,10 @@ Remit will automatically remove the `target="_blank"` from links when Fluid.app 
 
 There have been reports of issues with GitHub inside Fluid.app (e.g. not being able to write line comments) on OS X Mountain Lion. If you have those issues, upgrade to OS X Mavericks or later.
 
+### [CircleCI](https://circleci.com/)
+
+We use CircleCI for Continuous Integration and Deployment. If you're interested how we set it up, contact us.
+
 
 ## Credits
 

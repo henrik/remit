@@ -1,0 +1,9 @@
+test:
+  override:
+    - bundle exec rake
+
+deployment:
+  deploy:
+    branch: master
+    commands:
+      - sh tmp/deploy.sh
