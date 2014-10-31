@@ -36,7 +36,7 @@ Read more in this blog post: ["The risks of feature branches and pre-merge code 
 ## Development
 
 Assumes you have
-  * Ruby 2.1.3
+  * Ruby 2.1.4
   * Bundler
   * Redis
 
