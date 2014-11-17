@@ -1,6 +1,6 @@
 app.provider "MessageBus", ->
   init = ->
-    MessageBus.maxPollInterval = 400  # ms
+    MessageBus.callbackInterval = 500  # ms
     MessageBus.start()
 
   $get: ->
