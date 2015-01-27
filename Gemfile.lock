@@ -85,7 +85,7 @@ GEM
       excon (~> 0.38)
       multi_json (~> 1.8)
     hike (1.2.3)
-    honeybadger (1.16.6)
+    honeybadger (1.16.7)
       json
     i18n (0.7.0)
     jasmine-core (2.1.3)
