@@ -1,7 +1,6 @@
 class Commit
   class CreateOrUpdateFromPayload
-    method_object :call,
-      :commit_payload, :push_payload
+    method_object :commit_payload, :push_payload
 
     def call
       commit = find_or_initialize

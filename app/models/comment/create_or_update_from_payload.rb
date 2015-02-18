@@ -1,7 +1,6 @@
 class Comment
   class CreateOrUpdateFromPayload
-    method_object :call,
-      :payload
+    method_object :payload
 
     def call
       comment = find_or_initialize

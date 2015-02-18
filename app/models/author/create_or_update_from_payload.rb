@@ -1,7 +1,6 @@
 class Author
   class CreateOrUpdateFromPayload
-    method_object :call,
-      :payload
+    method_object :payload
 
     def call
       author = find_or_initialize
