@@ -43,7 +43,7 @@ GEM
     angular_rails_csrf (1.0.3)
       rails (>= 3, < 5)
     arel (6.0.0)
-    attr_extras (3.1.0)
+    attr_extras (4.2.0)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
