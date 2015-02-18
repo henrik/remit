@@ -16,21 +16,21 @@ ActiveRecord::Schema.define(version: 20140701184309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "email",      limit: 255
-    t.string   "username",   limit: 255
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "payload",                           null: false
+  create_table "comments", force: true do |t|
+    t.text     "payload",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "github_id",                         null: false
-    t.string   "commit_sha",            limit: 255, null: false
-    t.integer  "author_id",                         null: false
+    t.integer  "github_id",             null: false
+    t.string   "commit_sha",            null: false
+    t.integer  "author_id",             null: false
     t.datetime "resolved_at"
     t.integer  "resolved_by_author_id"
   end
@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 20140701184309) do
   add_index "comments", ["github_id"], name: "index_comments_on_github_id", unique: true, using: :btree
   add_index "comments", ["resolved_by_author_id"], name: "index_comments_on_resolved_by_author_id", using: :btree
 
-  create_table "commits", force: :cascade do |t|
-    t.string   "sha",                         limit: 255, null: false
-    t.text     "payload",                                 null: false
+  create_table "commits", force: true do |t|
+    t.string   "sha",                         null: false
+    t.text     "payload",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "reviewed_at"
-    t.integer  "author_id",                               null: false
+    t.integer  "author_id",                   null: false
     t.integer  "reviewed_by_author_id"
     t.datetime "review_started_at"
     t.integer  "review_started_by_author_id"

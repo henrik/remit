@@ -3,7 +3,7 @@
 #
 # https://github.com/slim-template/slim/pull/434
 
-Slim::Engine.set_options attr_list_delims: {
+Slim::Engine.set_default_options attr_list_delims: {
   "(" => ")",
   "[" => "]",
 }

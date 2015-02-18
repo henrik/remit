@@ -24,12 +24,12 @@ ul.comments-list(
           .comment-controls ng-if="!authoredByYou(comment)"
             div ng-if="comment.isNew"
               button.small.mark-as-resolved ng-click="markAsResolved(comment, $event)"
-                i.fa.fa-eye>
+                i.fa.fa-eye'
                 ' Mark as resolved
             div ng-if="comment.isResolved"
               img.comment-resolver-avatar gravatar-src="comment.resolverEmail || 'show-a-placeholder'"
               button.small.mark-as-new ng-click="markAsNew(comment, $event)"
-                i.fa.fa-eye-slash>
+                i.fa.fa-eye-slash'
                 ' Mark as new
 
           img.comment-proper-author-gravatar gravatar-src-once="comment.authorEmail || 'show-default'"
