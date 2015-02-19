@@ -94,7 +94,7 @@ GEM
       railties (>= 3.1.0)
       sprockets-rails
     json (1.8.2)
-    kgio (2.9.2)
+    kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.1)
