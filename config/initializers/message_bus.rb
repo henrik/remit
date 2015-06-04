@@ -1,3 +1,12 @@
-if ENV["REDISCLOUD_URL"]
-  MessageBus.redis_config = { url: ENV["REDISCLOUD_URL"], namespace: "messagebus" }
+url = ENV["REDISCLOUD_URL"]
+
+if ENV["DEVBOX"]
+  # Redis supports multiple databases, we normally use 0, but tests use 1 and up
+  # so that they can use the same redis server but not collide with the regular database.
+  database_number = Rails.env.test? ? (ENV["TEST_ENV_NUMBER"].to_i + 1) : 0
+  url = "redis://127.0.0.1:#{`service_port redis`.chomp}/#{database_number}"
+end
+
+if url
+  MessageBus.redis_config = { url: url, namespace: "messagebus" }
 end

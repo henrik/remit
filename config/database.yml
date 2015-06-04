@@ -21,6 +21,14 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
+  # Vagrant development box support
+  <% if ENV["DEVBOX"] %>
+  username: postgres
+  password: dev
+  host: localhost
+  port: <%= `service_port postgres` %>
+  <% end %>
+
 development:
   <<: *default
   database: remit_development

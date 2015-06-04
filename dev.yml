@@ -1,0 +1,16 @@
+# Dependencies and docker images that can be used to setup a
+# development environment for this app in combination with
+# the information in Gemfile (gems, ruby version, etc).
+
+dependencies:
+  node: "0.10.30"
+  phantomjs: "1.9.8"
+
+docker_services:
+  postgres:
+    image: "postgres:9.3.5"
+    options: "-e POSTGRES_PASSWORD=dev --publish 5432 -v $DATABASE_ROOT/remit/postgres:/var/lib/postgresql/data"
+  redis:
+    image: "redis:2.8.19"
+    options: "--publish 6379 -v $DATABASE_ROOT/remit/redis:/data"
+    command: "redis-server --appendonly yes"
