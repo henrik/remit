@@ -39,7 +39,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.7)
     angular_rails_csrf (1.0.3)
       rails (>= 3, < 5)
     arel (6.0.0)
@@ -62,7 +61,6 @@ GEM
     database_cleaner (1.4.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    excon (0.44.2)
     execjs (2.3.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -73,16 +71,6 @@ GEM
       i18n (~> 0.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
-    heroku (3.26.1)
-      heroku-api (~> 0.3.19)
-      launchy (>= 0.3.2)
-      multi_json (~> 1.10.1)
-      netrc (>= 0.10.0)
-      rest-client (= 1.6.7)
-      rubyzip (= 0.9.9)
-    heroku-api (0.3.22)
-      excon (~> 0.38)
-      multi_json (~> 1.8)
     hike (1.2.3)
     honeybadger (2.0.6)
     i18n (0.7.0)
@@ -94,8 +82,6 @@ GEM
       sprockets-rails
     json (1.8.2)
     kgio (2.9.3)
-    launchy (2.4.3)
-      addressable (~> 2.3)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -107,7 +93,6 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.10.1)
-    netrc (0.10.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.1)
@@ -167,8 +152,6 @@ GEM
     raindrops (0.13.0)
     rake (10.4.2)
     redis (3.2.1)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec-core (3.2.0)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -186,7 +169,6 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.1)
-    rubyzip (0.9.9)
     sass (3.4.12)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -241,7 +223,6 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
-  heroku
   honeybadger
   jasmine-rails
   message_bus
