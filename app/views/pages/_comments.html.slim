@@ -15,7 +15,7 @@ ul.comments-list(
   li.comment(
     ng-repeat="comment in comments track by comment.githubId"
     ng-init="commit = comment.commit"
-    ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit), 'is-resolved': comment.isResolved }"
+    ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit), 'on-your-comment': onYourComment(comment), 'is-resolved': comment.isResolved }"
   )
     a.block-link(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper

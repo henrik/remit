@@ -31,6 +31,10 @@ class Comment < ActiveRecord::Base
     payload[:created_at]
   end
 
+  def thread_identifier
+    [ payload[:commit_id], payload[:position], payload[:line] ].join(":")
+  end
+
   def new?
     not resolved?
   end

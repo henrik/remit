@@ -9,7 +9,8 @@ class CommentSerializer < ApplicationSerializer
     :commit_sha,
     :timestamp,
     :resolver_email,
-    :is_new, :is_resolved
+    :is_new, :is_resolved,
+    :thread_identifier
 
   private
 

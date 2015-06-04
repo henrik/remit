@@ -82,6 +82,7 @@
 .hide-comments-on-others {
   .comment { display: none; }
   .comment.on-your-commit { display: block; }
+  .comment.on-your-comment { display: block; }
 }
 
 // If we show comments by me but hide comments on others,
