@@ -44,7 +44,11 @@ Run:
 
     bundle
     bin/rake db:setup
-    redis-server  # Unless it's already running.
+
+    # In a background tab (since it'll run in the foreground),
+    # unles it's already running.
+    redis-server
+
     bin/rails server
 
 Visit <http://localhost:3000>
@@ -72,7 +76,9 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 
 ## Test
 
-    redis-server  # Unless it's already running.
+    # In a background tab (since it'll run in the foreground),
+    # unles it's already running.
+    redis-server
 
     # Full suite
     rake
