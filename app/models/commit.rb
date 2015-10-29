@@ -11,6 +11,11 @@ class Commit < ActiveRecord::Base
 
   scope :newest_first, -> { order("id DESC") }
   scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
+  scope :unreviewed, -> { where("reviewed_at IS NULL") }
+
+  scope :for_index, -> {
+    newest_first.includes_for_listing.limit(PagesController::MAX_RECORDS)
+  }
 
   def self.create_or_update_from_payload(commit_payload, push_payload)
     CreateOrUpdateFromPayload.call(commit_payload, push_payload)

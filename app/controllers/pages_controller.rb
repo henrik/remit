@@ -7,7 +7,7 @@ class PagesController < UsersBaseController
     render locals: {
       max_records: MAX_RECORDS,
       comments: Comment.newest_first.includes_for_listing.first(MAX_RECORDS),
-      commits: Commit.newest_first.includes_for_listing.first(MAX_RECORDS),
+      commits: Commit.for_index,
     }
   end
 end

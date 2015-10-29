@@ -33,6 +33,14 @@ FactoryGirl.define do
         repository: { name: "myrepo" },
       }
     }
+
+    trait :reviewed do
+      reviewed_at { Time.now }
+    end
+
+    trait :unreviewed do
+      reviewed_at { nil }
+    end
   end
 end
 

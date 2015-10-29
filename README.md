@@ -208,6 +208,21 @@ Remit will automatically remove the `target="_blank"` from links when Fluid.app 
 
 There have been reports of issues with GitHub inside Fluid.app (e.g. not being able to write line comments) on OS X Mountain Lion. If you have those issues, upgrade to OS X Mavericks or later.
 
+### API
+
+There is an API:
+
+`api/v1/unreviewed_commits?auth_key=something` gives you JSON data like
+
+```
+{
+  count: 123,
+  oldest_timestamp: "2015-01-01T12:00:00Z"
+}
+```
+
+suitable e.g. for displaying on a dashboard.
+
 ### [CircleCI](https://circleci.com/)
 
 We use CircleCI for Continuous Integration and Deployment. If you're interested how we set it up, contact us.
