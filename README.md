@@ -212,12 +212,13 @@ There have been reports of issues with GitHub inside Fluid.app (e.g. not being a
 
 There is an API:
 
-`api/v1/unreviewed_commits?auth_key=something` gives you JSON data like
+`/api/v1/unreviewed_commits?auth_key=something` gives you JSON data like
 
 ```
 {
   count: 123,
-  oldest_timestamp: "2015-01-01T12:00:00Z"
+  oldest_timestamp: "2015-01-01T12:00:00Z",
+  oldest_age_in_seconds: 12345,
 }
 ```
 
