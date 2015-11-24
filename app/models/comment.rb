@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   serialize :payload, Hash
+  serialize :cached_data, Hash
 
   belongs_to :author
   belongs_to :resolved_by_author, class: Author
@@ -8,8 +9,10 @@ class Comment < ActiveRecord::Base
     foreign_key: :commit_sha,
     primary_key: :sha
 
-  scope :newest_first, -> { order("id DESC") }
+  scope :newest_first, -> { order("comments.id DESC") }
   scope :includes_for_listing, -> { includes({ :commit => :author }, :author) }
+
+  before_save -> { self.cached_data = as_json }
 
   def self.create_or_update_from_payload(payload)
     CreateOrUpdateFromPayload.call(payload)

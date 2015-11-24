@@ -4,18 +4,21 @@ class Commit < ActiveRecord::Base
   MESSAGE_SUMMARY_LENGTH = 50
 
   serialize :payload, Hash
+  serialize :cached_data, Hash
 
   belongs_to :author
   belongs_to :reviewed_by_author, class: Author
   belongs_to :review_started_by_author, class: Author
 
-  scope :newest_first, -> { order("id DESC") }
+  scope :newest_first, -> { order("commits.id DESC") }
   scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
-  scope :unreviewed, -> { where("reviewed_at IS NULL") }
+  scope :unreviewed, -> { where("commits.reviewed_at IS NULL") }
 
   scope :for_index, -> {
     newest_first.includes_for_listing.limit(PagesController::MAX_RECORDS)
   }
+
+  before_save -> { self.cached_data = as_json }
 
   def self.create_or_update_from_payload(commit_payload, push_payload)
     CreateOrUpdateFromPayload.call(commit_payload, push_payload)

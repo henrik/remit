@@ -1,3 +1,5 @@
+# NOTE: Cached data is used for display, so serialization changes will require
+#       a migration to apply to all records. E.g: Commit.find_each(&:save)
 class CommitSerializer < ApplicationSerializer
   attributes :id,
     :author_name,

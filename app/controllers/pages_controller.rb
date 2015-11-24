@@ -6,8 +6,8 @@ class PagesController < UsersBaseController
   def index
     render locals: {
       max_records: MAX_RECORDS,
-      comments: Comment.newest_first.includes_for_listing.first(MAX_RECORDS),
-      commits: Commit.for_index,
+      comments: Comment.newest_first.includes_for_listing.limit(MAX_RECORDS).pluck(:cached_data),
+      commits: Commit.for_index.pluck(:cached_data),
     }
   end
 end

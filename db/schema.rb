@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701184309) do
+ActiveRecord::Schema.define(version: 20151124200943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: true do |t|
+  create_table "authors", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "username"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140701184309) do
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.text     "payload",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140701184309) do
     t.integer  "author_id",             null: false
     t.datetime "resolved_at"
     t.integer  "resolved_by_author_id"
+    t.text     "cached_data"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140701184309) do
   add_index "comments", ["github_id"], name: "index_comments_on_github_id", unique: true, using: :btree
   add_index "comments", ["resolved_by_author_id"], name: "index_comments_on_resolved_by_author_id", using: :btree
 
-  create_table "commits", force: true do |t|
+  create_table "commits", force: :cascade do |t|
     t.string   "sha",                         null: false
     t.text     "payload",                     null: false
     t.datetime "created_at"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140701184309) do
     t.integer  "reviewed_by_author_id"
     t.datetime "review_started_at"
     t.integer  "review_started_by_author_id"
+    t.text     "cached_data"
   end
 
   add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
