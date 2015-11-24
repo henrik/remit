@@ -20,3 +20,4 @@ app.run ($rootScope, $location, Settings, preloadedData) ->
   $rootScope.settings = Settings.load
     include_my_comments: false
     include_comments_on_others: true
+    include_resolved_comments: true

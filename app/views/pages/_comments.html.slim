@@ -5,6 +5,9 @@
   label
     input type="checkbox" ng-model="settings.include_comments_on_others" ng-change="saveSettings()"
     ' Comments on others
+  label
+    input type="checkbox" ng-model="settings.include_resolved_comments" ng-change="saveSettings()"
+    ' Resolved comments
 
 p.no-data ng-if="!comments.length"
   ' There are no comments yet! Write some.
@@ -16,6 +19,7 @@ ul.comments-list(
     ng-repeat="comment in comments track by comment.githubId"
     ng-init="commit = comment.commit"
     ng-class="{ 'your-last-clicked': isYourLastClicked(comment), 'authored-by-you': authoredByYou(comment), 'on-your-commit': onYourCommit(commit), 'on-your-comment': onYourComment(comment), 'is-resolved': comment.isResolved }"
+    ng-if="!comment.isResolved || (comment.isResolved && settings.include_resolved_comments)"
   )
     a.block-link(once-href="comment.url" ng-click="clicked(comment)" fluid-app-link)
       .comment-proper
