@@ -51,6 +51,10 @@ gem 'rails-assets-font-awesome'
 gem 'rails-assets-jquery'
 gem 'rails-assets-lodash'
 
+gem 'react-rails'
+gem 'sprockets-coffee-react'
+gem 'rails-assets-md5'
+
 group :development, :test do
   gem 'rails-assets-angular-mocks'
 end

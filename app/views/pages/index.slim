@@ -6,53 +6,63 @@ html ng-app="Remit"
     link rel="shortcut icon" href=image_path(Rails.env.development? ? "favicon-dev.png" : "favicon.png")
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
-  body.ng-cloak ng-controller="PushEventsCtrl"
-    .wrapper
 
-      nav.top-nav
-        ul
-          li top-nav-link="/commits"
-            i.fa.fa-lg.fa-eye>
-            ' Commits
-            span.commits-badge ng-if="stats.youCanReview" class="commits-badge-count-{{stats.youCanReview}}"
-              ' {{stats.youCanReview}}
-          li top-nav-link="/comments"
-            i.fa.fa-lg.fa-comments>
-            ' Comments
-          li top-nav-link="/settings"
-            i.fa.fa-lg.fa-cog>
-            ' Settings
+  / Exploring alternatives to make this app faster and easier to maintain
+  - if params[:use_react_prototype]
 
-      a.block-link ng-class="{ 'settings-link-on-settings-page': isOnSettingsPage }" href="/settings"
-        p.please-provide-details ng-hide="settings.email && settings.name"
-          ' Can't tell which commits, comments and reviews are yours!
-          strong ng-hide="isOnSettingsPage" Click here to provide your details.
-          strong ng-show="isOnSettingsPage" Please provide your details below.
+    body
+      = javascript_include_tag "application_react"
+      = react_component "Remit", maxRecords: max_records, comments: comments, commits: commits
 
-      script(type="text/ng-template" id="commits.html")= render "commits"
-      script(type="text/ng-template" id="comments.html")= render "comments"
-      script(type="text/ng-template" id="settings.html")= render "settings"
+  - else
 
-      div(ng-view)
+    body.ng-cloak ng-controller="PushEventsCtrl"
+      .wrapper
 
-      footer
-        p
-          a(href="http://github.com/henrik/remit" fluid-app-link)
-            = image_tag("favicon.png", class: "footer-logo")
-        p
-          a(href="http://github.com/henrik/remit" fluid-app-link) Remit
-          '
-          ' by
-          a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
+        nav.top-nav
+          ul
+            li top-nav-link="/commits"
+              i.fa.fa-lg.fa-eye>
+              ' Commits
+              span.commits-badge ng-if="stats.youCanReview" class="commits-badge-count-{{stats.youCanReview}}"
+                ' {{stats.youCanReview}}
+            li top-nav-link="/comments"
+              i.fa.fa-lg.fa-comments>
+              ' Comments
+            li top-nav-link="/settings"
+              i.fa.fa-lg.fa-cog>
+              ' Settings
 
-    = javascript_include_tag "application"
+        a.block-link ng-class="{ 'settings-link-on-settings-page': isOnSettingsPage }" href="/settings"
+          p.please-provide-details ng-hide="settings.email && settings.name"
+            ' Can't tell which commits, comments and reviews are yours!
+            strong ng-hide="isOnSettingsPage" Click here to provide your details.
+            strong ng-show="isOnSettingsPage" Please provide your details below.
 
-    javascript:
-      Remit.version = #{raw Remit.version.to_json};
+        script(type="text/ng-template" id="commits.html")= render "commits"
+        script(type="text/ng-template" id="comments.html")= render "comments"
+        script(type="text/ng-template" id="settings.html")= render "settings"
 
-      angular.module("Remit.PreloadedData", []).
-        constant("preloadedData", {
-          maxRecords: #{raw max_records.to_json},
-          comments:   #{raw comments.to_json},
-          commits:    #{raw commits.to_json},
-        });
+        div(ng-view)
+
+        footer
+          p
+            a(href="http://github.com/henrik/remit" fluid-app-link)
+              = image_tag("favicon.png", class: "footer-logo")
+          p
+            a(href="http://github.com/henrik/remit" fluid-app-link) Remit
+            '
+            ' by
+            a(href="http://henrik.nyh.se" fluid-app-link) Henrik Nyh
+
+      = javascript_include_tag "application"
+
+      javascript:
+        Remit.version = #{raw Remit.version.to_json};
+
+        angular.module("Remit.PreloadedData", []).
+          constant("preloadedData", {
+            maxRecords: #{raw max_records.to_json},
+            comments:   #{raw comments.to_json},
+            commits:    #{raw commits.to_json},
+          });
