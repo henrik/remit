@@ -21,7 +21,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_model_serializers (0.9.0)
+    active_model_serializers (0.9.3)
       activemodel (>= 3.2)
     activejob (4.2.5)
       activesupport (= 4.2.5)
@@ -39,16 +39,16 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    angular_rails_csrf (1.0.3)
+    angular_rails_csrf (1.0.4)
       rails (>= 3, < 5)
     arel (6.0.3)
-    attr_extras (4.2.0)
+    attr_extras (4.4.0)
     babel-source (5.8.34)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     builder (3.2.2)
-    capybara (2.4.4)
+    capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -60,26 +60,28 @@ GEM
       railties (>= 4.0.0, < 5.0)
     coffee-react (3.0.1)
       execjs
-    coffee-script (2.3.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
+    coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     connection_pool (2.2.0)
-    database_cleaner (1.4.0)
+    database_cleaner (1.5.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    execjs (2.3.0)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faker (1.4.3)
+    faker (1.6.1)
       i18n (~> 0.5)
+    font-awesome-rails (4.5.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    honeybadger (2.0.6)
+    honeybadger (2.3.1)
     i18n (0.7.0)
     jasmine-core (2.4.1)
     jasmine-rails (0.12.2)
@@ -88,7 +90,7 @@ GEM
       railties (>= 3.2.0)
       sprockets-rails
     json (1.8.3)
-    kgio (2.9.3)
+    kgio (2.10.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -102,9 +104,9 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
-    pg (0.18.1)
+    pg (0.18.4)
     phantomjs (1.9.8.0)
-    poltergeist (1.6.0)
+    poltergeist (1.8.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
@@ -123,21 +125,20 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.5)
       sprockets-rails
-    rails-assets-angular (1.2.28)
-    rails-assets-angular-animate (1.2.28)
-      rails-assets-angular (= 1.2.28)
-    rails-assets-angular-cookie (4.0.6)
+    rails-assets-angular (1.2.29)
+    rails-assets-angular-animate (1.2.29)
+      rails-assets-angular (= 1.2.29)
+    rails-assets-angular-cookie (4.0.9)
       rails-assets-angular
     rails-assets-angular-gravatar (0.2.4)
       rails-assets-angular (>= 1.0.0, < 1.4.0)
-    rails-assets-angular-mocks (1.3.13)
-      rails-assets-angular (>= 1.1.7)
-    rails-assets-angular-once (0.1.8)
-    rails-assets-angular-route (1.2.28)
-      rails-assets-angular (= 1.2.28)
-    rails-assets-font-awesome (4.3.0)
-    rails-assets-jquery (2.1.3)
-    rails-assets-lodash (3.2.0)
+    rails-assets-angular-mocks (1.2.29)
+      rails-assets-angular (= 1.2.29)
+    rails-assets-angular-once (0.1.9)
+    rails-assets-angular-route (1.2.29)
+      rails-assets-angular (= 1.2.29)
+    rails-assets-jquery (2.1.4)
+    rails-assets-lodash (3.10.1)
     rails-assets-md5 (0.3.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -151,13 +152,13 @@ GEM
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.4)
-    rails_stdout_logging (0.0.3)
+    rails_stdout_logging (0.0.4)
     railties (4.2.5)
       actionpack (= 4.2.5)
       activesupport (= 4.2.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.13.0)
+    raindrops (0.15.0)
     rake (10.4.2)
     react-rails (1.4.2)
       babel-transpiler (>= 0.7.0)
@@ -166,7 +167,7 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
-    redis (3.2.1)
+    redis (3.2.2)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -191,10 +192,10 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    slim (3.0.2)
+    slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
-    spring (1.2.0)
+    spring (1.5.0)
     sprockets (3.5.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -207,25 +208,25 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    temple (0.7.5)
+    temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.7.0)
+    uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.3)
+    unicorn (5.0.1)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
     unicorn-rails (2.2.0)
       rack
       unicorn
-    websocket-driver (0.5.1)
+    websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.1)
+    websocket-extensions (0.1.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -241,6 +242,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   faker
+  font-awesome-rails
   honeybadger
   jasmine-rails
   message_bus
@@ -254,7 +256,6 @@ DEPENDENCIES
   rails-assets-angular-mocks!
   rails-assets-angular-once!
   rails-assets-angular-route!
-  rails-assets-font-awesome!
   rails-assets-jquery!
   rails-assets-lodash!
   rails-assets-md5!
