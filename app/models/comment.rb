@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   serialize :payload, Hash
 
   belongs_to :author
-  belongs_to :resolved_by_author, class: Author
+  belongs_to :resolved_by_author, class_name: Author
 
   belongs_to :commit,
     foreign_key: :commit_sha,

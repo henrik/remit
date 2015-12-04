@@ -6,8 +6,8 @@ class Commit < ActiveRecord::Base
   serialize :payload, Hash
 
   belongs_to :author
-  belongs_to :reviewed_by_author, class: Author
-  belongs_to :review_started_by_author, class: Author
+  belongs_to :reviewed_by_author, class_name: Author
+  belongs_to :review_started_by_author, class_name: Author
 
   scope :newest_first, -> { order("id DESC") }
   scope :includes_for_listing, -> { includes(:author, :reviewed_by_author) }
