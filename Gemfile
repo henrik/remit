@@ -13,6 +13,10 @@ gem 'font-awesome-rails'
 gem 'active_model_serializers'
 gem 'attr_extras'
 gem 'message_bus'
+gem 'react-rails'
+gem 'sprockets-coffee-react'
+gem 'rails-assets-md5'
+
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
@@ -50,10 +54,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-once'
   gem 'rails-assets-jquery'
   gem 'rails-assets-lodash'
-
-  gem 'react-rails'
-  gem 'sprockets-coffee-react'
-  gem 'rails-assets-md5'
 
   group :development, :test do
     gem 'rails-assets-angular-mocks'

@@ -160,7 +160,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (10.4.2)
-    react-rails (1.4.2)
+    react-rails (1.5.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -258,14 +258,14 @@ DEPENDENCIES
   rails-assets-angular-route!
   rails-assets-jquery!
   rails-assets-lodash!
-  rails-assets-md5!
+  rails-assets-md5
   rails_12factor
-  react-rails!
+  react-rails
   rspec-rails
   sass-rails
   slim
   spring
-  sprockets-coffee-react!
+  sprockets-coffee-react
   uglifier
   unicorn
   unicorn-rails
