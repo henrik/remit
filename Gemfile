@@ -1,6 +1,5 @@
 ruby '2.2.3'
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -41,20 +40,22 @@ end
 # Force new version builds here if necessary: https://rails-assets.org/components/new
 # Run: bundle update rails-assets-angular rails-assets-angular-route rails-assets-angular-mocks rails-assets-angular-animate
 #
-gem 'rails-assets-angular', '~> 1.2.19'
-gem 'rails-assets-angular-route'
-gem 'rails-assets-angular-animate'
-gem 'rails-assets-angular-gravatar', '~> 0.2.0'
-gem 'rails-assets-angular-cookie'
-gem 'rails-assets-angular-once'
-gem 'rails-assets-font-awesome'
-gem 'rails-assets-jquery'
-gem 'rails-assets-lodash'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular', '~> 1.2.19'
+  gem 'rails-assets-angular-route'
+  gem 'rails-assets-angular-animate'
+  gem 'rails-assets-angular-gravatar', '~> 0.2.0'
+  gem 'rails-assets-angular-cookie'
+  gem 'rails-assets-angular-once'
+  gem 'rails-assets-font-awesome'
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-lodash'
 
-gem 'react-rails'
-gem 'sprockets-coffee-react'
-gem 'rails-assets-md5'
+  gem 'react-rails'
+  gem 'sprockets-coffee-react'
+  gem 'rails-assets-md5'
 
-group :development, :test do
-  gem 'rails-assets-angular-mocks'
+  group :development, :test do
+    gem 'rails-assets-angular-mocks'
+  end
 end

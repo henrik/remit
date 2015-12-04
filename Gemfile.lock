@@ -249,24 +249,24 @@ DEPENDENCIES
   pg
   poltergeist
   rails (= 4.2.0)
-  rails-assets-angular (~> 1.2.19)
-  rails-assets-angular-animate
-  rails-assets-angular-cookie
-  rails-assets-angular-gravatar (~> 0.2.0)
-  rails-assets-angular-mocks
-  rails-assets-angular-once
-  rails-assets-angular-route
-  rails-assets-font-awesome
-  rails-assets-jquery
-  rails-assets-lodash
-  rails-assets-md5
+  rails-assets-angular (~> 1.2.19)!
+  rails-assets-angular-animate!
+  rails-assets-angular-cookie!
+  rails-assets-angular-gravatar (~> 0.2.0)!
+  rails-assets-angular-mocks!
+  rails-assets-angular-once!
+  rails-assets-angular-route!
+  rails-assets-font-awesome!
+  rails-assets-jquery!
+  rails-assets-lodash!
+  rails-assets-md5!
   rails_12factor
-  react-rails
+  react-rails!
   rspec-rails
   sass-rails
   slim
   spring
-  sprockets-coffee-react
+  sprockets-coffee-react!
   uglifier
   unicorn
   unicorn-rails
