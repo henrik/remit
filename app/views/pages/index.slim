@@ -14,9 +14,16 @@ html ng-app="Remit"
       = javascript_include_tag "application_react"
       = react_component "Remit", maxRecords: max_records, comments: comments, commits: commits
 
+  - elsif params[:use_elm_prototype]
+
+    body
+      = javascript_include_tag "application_elm"
+      = elm_embed "Elm.Remit", maxRecords: max_records, commits: commits
+
   - else
 
     body.ng-cloak ng-controller="PushEventsCtrl"
+      = javascript_include_tag "application_angular"
       .wrapper
 
         nav.top-nav

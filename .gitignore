@@ -17,3 +17,6 @@
 
 # Ignore Redis DB, if started in this directory.
 dump.rdb
+
+/elm-stuff
+/node_modules

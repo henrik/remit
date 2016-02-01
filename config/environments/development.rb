@@ -32,6 +32,11 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  # required by elm-rails
+  config.assets.configure do |env|
+    env.cache = ActiveSupport::Cache.lookup_store(:null_store)
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

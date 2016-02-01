@@ -14,6 +14,7 @@ gem 'active_model_serializers'
 gem 'attr_extras'
 gem 'message_bus'
 gem 'react-rails'
+gem 'elm-rails'
 gem 'sprockets-coffee-react'
 gem 'rails-assets-md5'
 
