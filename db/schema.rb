@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203140631) do
+ActiveRecord::Schema.define(version: 20160203143316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160203140631) do
     t.integer  "reviewed_by_author_id"
     t.datetime "review_started_at"
     t.integer  "review_started_by_author_id"
-    t.text     "json_payload"
+    t.text     "json_payload",                            null: false
   end
 
   add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
