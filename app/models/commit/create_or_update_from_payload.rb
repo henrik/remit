@@ -5,6 +5,7 @@ class Commit
     def call
       commit = find_or_initialize
       commit.payload = payload
+      commit.json_payload = payload.as_json
       commit.author = create_or_update_author
       commit.save!
       commit
