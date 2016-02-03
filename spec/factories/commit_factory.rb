@@ -34,6 +34,10 @@ FactoryGirl.define do
       }
     }
 
+    json_payload {
+      payload.to_json
+    }
+
     trait :reviewed do
       reviewed_at { Time.now }
     end
