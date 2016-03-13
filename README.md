@@ -106,7 +106,7 @@ We assume you have a [Heroku](http://heroku.com) account.
 
     # No customizations required below
 
-    heroku new $HEROKU_NAME
+    heroku create $HEROKU_NAME
 
     AUTH_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"`
     WEBHOOK_KEY=`ruby -rsecurerandom -e "puts SecureRandom.urlsafe_base64"`
@@ -114,12 +114,12 @@ We assume you have a [Heroku](http://heroku.com) account.
     heroku config:set AUTH_KEY=$AUTH_KEY WEBHOOK_KEY=$WEBHOOK_KEY SECRET_KEY_BASE=`rake secret`
 
     # DB. Free plan with max 10,000 rows.
-    heroku addons:add heroku-postgresql:dev
+    heroku addons:create heroku-postgresql:hobby-dev
 
-    # For message_bus. Free plan, 25 MB.
-    heroku addons:add rediscloud
+    # For message_bus. Free plan, 30 MB.
+    heroku addons:create rediscloud:30
 
-    heroku addons:add deployhooks:http --url=https://$HEROKU_NAME.herokuapp.com/heroku_webhook?auth_key=$WEBHOOK_KEY
+    heroku addons:create deployhooks:http --url=https://$HEROKU_NAME.herokuapp.com/heroku_webhook?auth_key=$WEBHOOK_KEY
 
     git push heroku master
     heroku run rake db:schema:load
