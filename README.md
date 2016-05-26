@@ -46,7 +46,7 @@ Run:
     bin/rake db:setup
 
     # In a background tab (since it'll run in the foreground),
-    # unles it's already running.
+    # unless it's already running.
     redis-server
 
     bin/rails server
