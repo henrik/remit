@@ -77,7 +77,7 @@ See `db/seeds/push.json` (commits) and `db/seeds/commit_comment.json` (comments)
 ## Test
 
     # In a background tab (since it'll run in the foreground),
-    # unles it's already running.
+    # unless it's already running.
     redis-server
 
     # Full suite
