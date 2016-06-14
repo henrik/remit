@@ -54,7 +54,7 @@ ul.commits-list
               i.fa.fa-eye-slash>
               ' Mark as new
             '
-            img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'"
+            img.commit-reviewer-avatar gravatar-src="commit.reviewerEmail || 'show-a-placeholder'" title="{{commit.reviewerEmail}}"
 
         img.commit-avatar gravatar-src-once="commit.authorEmail"
         '
