@@ -25,6 +25,10 @@ FactoryGirl.define do
         },
       }
     }
+
+    json_payload {
+      payload.to_json
+    }
   end
 end
 

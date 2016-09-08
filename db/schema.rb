@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203143316) do
+ActiveRecord::Schema.define(version: 20160908125356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160203143316) do
     t.integer  "author_id",                         null: false
     t.datetime "resolved_at"
     t.integer  "resolved_by_author_id"
+    t.text     "json_payload"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree

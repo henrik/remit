@@ -6,6 +6,7 @@ class Comment
       comment = find_or_initialize
       comment.commit_sha = payload.fetch(:commit_id)
       comment.payload = payload
+      comment.json_payload = payload.to_json
       comment.author = create_or_update_author
       comment.save!
       comment
