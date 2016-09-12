@@ -6,13 +6,6 @@ class ApplicationController < ActionController::Base
   force_ssl if: :production?
   before_filter :require_auth_key
 
-  before_filter :redirect_to_another_installation
-
-  def redirect_to_another_installation
-    return unless ENV["REDIRECT_TO_OTHER_REMIT_URL"]
-    redirect_to ENV["REDIRECT_TO_OTHER_REMIT_URL"]
-  end
-
   private
 
   def production?
