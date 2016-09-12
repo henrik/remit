@@ -2,14 +2,6 @@ require "rails_helper"
 
 describe "Commits page", :js do
   it "works for simultaneous visitors" do
-    with_retries do
-      run_test
-    end
-  end
-
-  private
-
-  def run_test
     create(:commit, message: "Compute Bernoulli numbers.", url: "/")  # URL is "/" so clicking a commit brings us back.
 
     visitors :ada, :charles do
@@ -62,18 +54,7 @@ describe "Commits page", :js do
     end
   end
 
-  def with_retries
-    5.times do |i|
-      begin
-        yield
-        break
-      rescue RSpec::Expectations::ExpectationNotMetError => ex
-        raise ex if i == 4
-
-        Commit.delete_all
-      end
-    end
-  end
+  private
 
   def verify_that_commit_is_persisted_as_reviewed_by_ada
     wait_for_non_dom_ajax_to_complete
