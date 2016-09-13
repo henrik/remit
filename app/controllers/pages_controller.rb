@@ -1,7 +1,7 @@
 class PagesController < UsersBaseController
   # The number of records to show (on load and after updates), for speed.
   # Gets slower with more records.
-  MAX_RECORDS = 300
+  MAX_RECORDS = ENV["MAX_RECORDS_TO_SHOW"] ? ENV["MAX_RECORDS_TO_SHOW"].to_i : 300
 
   def index
     render locals: {
