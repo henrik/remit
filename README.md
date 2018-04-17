@@ -1,4 +1,4 @@
-**Status: Commit reviewing is quite solid. Comment viewing is still a bit rough. [See outstanding issues.](https://github.com/henrik/remit/issues)**
+**Status: Not maintained! See [Review](https://github.com/barsoom/review) instead.**
 
 <img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
