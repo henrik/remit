@@ -203,6 +203,7 @@ Fluid.app is for OS X. Please do contribute instructions for other platforms.
     * Clicked links open in: current tab in current window
 * In the "Panels" menu, select the first Browsa panel to show it
 * Drag the divider until it looks good
+* In the "Remit" menu, choose "User Agent > Google Chrome" (otherwise GitHub may disable certain features, like commenting on a specific line)
 
 Remit will automatically remove the `target="_blank"` from links when Fluid.app is detected, so "current tab in current window" does the right thing.
 
