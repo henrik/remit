@@ -186,7 +186,7 @@ This is sadly not possible with regular frames or iframes, as GitHub doesn't all
 
 Fluid.app is for OS X. Please do contribute instructions for other platforms.
 
-* Install [Fluid.app](http://fluidapp.com/).
+* Install [Fluid.app](http://fluidapp.com/). You can use Homebrew: `brew cask install fluid`
 * Launch Fluid.app, create a new app:
   * The URL should be `http://github.com`.
   * Use any name and icon you like. It defaults to the GitHub icon.
