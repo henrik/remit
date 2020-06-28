@@ -1,4 +1,4 @@
-**Status: Not maintained! See [Review](https://github.com/barsoom/review) instead.**
+**Status: Not maintained! See [Remit II (ex-remit)](https://github.com/barsoom/ex-remit) instead.**
 
 <img src="https://github.com/henrik/remit/raw/master/app/assets/images/favicon.png" alt="" height="150">
 
